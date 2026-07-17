@@ -631,24 +631,62 @@ fn test_provider(profile: ProviderProfile) -> CommandResult<ConnectionResult> {
             })?;
         request = request.bearer_auth(secret);
     }
-    match request.send() {
-        Ok(response) if response.status().is_success() => Ok(ConnectionResult {
-            ok: true,
-            message: format!("{} is ready with {}.", profile.name, profile.model),
-        }),
-        Ok(response) => Ok(ConnectionResult {
+    let response = match request.send() {
+        Ok(response) => response,
+        Err(error) => {
+            return Ok(ConnectionResult {
+                ok: false,
+                message: format!("Could not reach {}: {}", profile.name, error),
+            });
+        }
+    };
+    if !response.status().is_success() {
+        return Ok(ConnectionResult {
             ok: false,
             message: format!(
                 "{} responded with status {}.",
                 profile.name,
                 response.status()
             ),
-        }),
-        Err(error) => Ok(ConnectionResult {
-            ok: false,
-            message: format!("Could not reach {}: {}", profile.name, error),
-        }),
+        });
     }
+    if profile.kind == "ollama" {
+        let value: Value = response
+            .json()
+            .map_err(|error| CommandError::new("PROVIDER_RESPONSE", error.to_string(), true))?;
+        let requested = profile.model.trim();
+        let installed = value
+            .get("models")
+            .and_then(Value::as_array)
+            .into_iter()
+            .flatten()
+            .filter_map(|model| model.get("name").and_then(Value::as_str))
+            .collect::<Vec<_>>();
+        let available = installed.iter().any(|name| {
+            *name == requested
+                || name.strip_suffix(":latest") == Some(requested)
+                || requested.strip_suffix(":latest") == Some(*name)
+        });
+        if !available {
+            return Ok(ConnectionResult {
+                ok: false,
+                message: format!(
+                    "Ollama is running, but model '{}' is not installed. Available: {}.",
+                    requested,
+                    installed
+                        .iter()
+                        .take(5)
+                        .copied()
+                        .collect::<Vec<_>>()
+                        .join(", ")
+                ),
+            });
+        }
+    }
+    Ok(ConnectionResult {
+        ok: true,
+        message: format!("{} is ready with {}.", profile.name, profile.model),
+    })
 }
 
 fn pdf_bytes(title: &str, manuscript: &str) -> Vec<u8> {
@@ -1145,6 +1183,7 @@ fn generate_text(
     prompt: String,
     context: String,
     cloud_approved: bool,
+    purpose: Option<String>,
 ) -> CommandResult<String> {
     if profile.mode == "cloud" && !cloud_approved {
         return Err(CommandError::new(
@@ -1157,7 +1196,11 @@ fn generate_text(
         .timeout(std::time::Duration::from_secs(90))
         .build()
         .map_err(|e| CommandError::new("PROVIDER_ERROR", e.to_string(), true))?;
-    let system = "You are Thinkloom, a focused writing collaborator. Return only proposed prose; it will be staged for review.";
+    let system = if purpose.as_deref() == Some("conversation") {
+        "You are Thinkloom, a focused writing collaborator in an ideation conversation. Respond naturally to the writer's latest message, briefly reflect what is useful, and ask exactly one focused question. Do not force a stock interpretation, fabricate details, or draft prose unless asked."
+    } else {
+        "You are Thinkloom, a focused writing collaborator. Return only proposed prose; it will be staged for review."
+    };
     let (url, body) = if profile.kind == "ollama" {
         (
             format!("{}/api/chat", profile.endpoint.trim_end_matches('/')),

@@ -35,6 +35,9 @@ test("implements the control and privacy contracts", async () => {
   assert.match(source, /function createEmptyProject/);
   assert.match(source, /turns: \[\], ideas: \[\], manuscript: ""/);
   assert.match(source, /New project cancelled\. Your current project is unchanged\./);
+  assert.match(source, /purpose: "conversation"/);
+  assert.match(source, /did not reply/);
+  assert.doesNotMatch(source, /suggests a useful tension\. What changes when you see it as a shared condition/);
   assert.match(css, /prefers-reduced-motion/);
   assert.match(css, /:focus-visible/);
   assert.match(css, /html,body,#root\{[^}]*height:100%[^}]*overflow:hidden/);
