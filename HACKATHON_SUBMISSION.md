@@ -59,7 +59,7 @@ Thinkloom demonstrates a specific form of human-AI collaboration: the system can
 - [x] `/feedback` is submitted from the primary build task and the resulting session ID is added
 - [x] GitHub CLI is installed and authenticated
 - [x] Public repository is created and its URL is verified
-- [ ] Installers are attached to a public release available through the end of judging
+- [x] Installers are attached to a public release available through the end of judging
 - [ ] Demo is recorded with audio, kept under three minutes, uploaded publicly to YouTube, and linked
 - [ ] Demo is reviewed for unlicensed music, third-party material, private data, and incidental trademarks
 - [ ] Devpost submission is created and all required fields are completed
