@@ -29,7 +29,7 @@ Primary Codex build task: `019f6edd-de3d-78d2-8b6f-67af5fe6c44c`.
 
 Required `/feedback` session ID: `019f6edd-de3d-78d2-8b6f-67af5fe6c44c`.
 
-See [HACKATHON_SUBMISSION.md](HACKATHON_SUBMISSION.md), [DEMO_SCRIPT.md](DEMO_SCRIPT.md), and [JUDGING.md](JUDGING.md) for the submission package.
+See [CODEX_COLLABORATION_LOG.md](CODEX_COLLABORATION_LOG.md) for the complete project conversation record. See [HACKATHON_SUBMISSION.md](HACKATHON_SUBMISSION.md), [DEMO_SCRIPT.md](DEMO_SCRIPT.md), and [JUDGING.md](JUDGING.md) for the submission package.
 
 ## Implemented workflow
 

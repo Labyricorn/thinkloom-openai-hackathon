@@ -57,6 +57,7 @@ Thinkloom demonstrates a specific form of human-AI collaboration: the system can
 - [x] Entrant confirms sole ownership of the original project name, icon, example content, and other original assets
 - [x] AGPL-3.0-only license selected and added
 - [x] `/feedback` is submitted from the primary build task and the resulting session ID is added
+- [x] All Thinkloom Codex tasks are identified in `CODEX_COLLABORATION_LOG.md`, with task IDs kept distinct from verified `/feedback` IDs
 - [x] GitHub CLI is installed and authenticated
 - [x] Public repository is created and its URL is verified
 - [x] Installers are attached to a public release available through the end of judging
