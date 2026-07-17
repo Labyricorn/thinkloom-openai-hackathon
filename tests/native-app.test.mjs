@@ -31,6 +31,10 @@ test("implements the control and privacy contracts", async () => {
   assert.match(source, /GENERATION_PARTIALLY_ACCEPTED/);
   assert.match(source, /CLOUD_PROCESSING_APPROVED/);
   assert.match(source, /store_provider_secret/);
+  assert.match(source, /New empty project/);
+  assert.match(source, /function createEmptyProject/);
+  assert.match(source, /turns: \[\], ideas: \[\], manuscript: ""/);
+  assert.match(source, /New project cancelled\. Your current project is unchanged\./);
   assert.match(css, /prefers-reduced-motion/);
   assert.match(css, /:focus-visible/);
   assert.match(css, /html,body,#root\{[^}]*height:100%[^}]*overflow:hidden/);
