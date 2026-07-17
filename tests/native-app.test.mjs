@@ -33,6 +33,9 @@ test("implements the control and privacy contracts", async () => {
   assert.match(source, /store_provider_secret/);
   assert.match(css, /prefers-reduced-motion/);
   assert.match(css, /:focus-visible/);
+  assert.match(css, /html,body,#root\{[^}]*height:100%[^}]*overflow:hidden/);
+  assert.match(css, /\.app-shell\{[^}]*height:100dvh[^}]*overflow:hidden/);
+  assert.match(css, /\.ideation-layout\{height:100%;min-height:0/);
 });
 
 test("never ships retained audio assets", async () => {
