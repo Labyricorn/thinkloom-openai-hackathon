@@ -2,19 +2,15 @@
   "name": "thinkloom",
   "version": "0.1.0",
   "private": true,
-  "engines": {
-    "node": ">=22.13.0"
-  },
+  "type": "module",
+  "engines": { "node": ">=22.13.0" },
   "scripts": {
-    "dev": "vinext dev",
-    "build": "vinext build",
-    "start": "vinext start",
-    "test": "npm run typecheck && node --test tests/*.test.mjs",
-    "lint": "eslint . --ignore-pattern dist --ignore-pattern .next --ignore-pattern desktop-dist --ignore-pattern src-tauri/target",
-    "db:generate": "drizzle-kit generate",
+    "dev": "vite --port 1420 --strictPort",
+    "build": "npm run typecheck && vite build",
+    "preview": "vite preview",
     "typecheck": "tsc --noEmit",
-    "desktop:dev": "vite --config vite.desktop.config.ts",
-    "desktop:build": "vite build --config vite.desktop.config.ts",
+    "lint": "eslint src tests vite.config.ts",
+    "test": "npm run typecheck && node tests/native-app.test.mjs",
     "tauri": "tauri"
   },
   "dependencies": {
@@ -22,30 +18,21 @@
     "@tiptap/pm": "^3.28.0",
     "@tiptap/react": "^3.28.0",
     "@tiptap/starter-kit": "^3.28.0",
-    "drizzle-orm": "0.45.2",
-    "next": "16.2.6",
     "react": "19.2.6",
     "react-dom": "19.2.6"
   },
   "devDependencies": {
-    "@cloudflare/vite-plugin": "1.37.1",
-    "@cloudflare/workers-types": "^4.20260702.1",
-    "@tailwindcss/postcss": "4.2.1",
+    "@eslint/js": "9.39.4",
     "@tauri-apps/cli": "^2.11.4",
     "@types/node": "22.19.19",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "@vitejs/plugin-react": "6.0.2",
-    "@vitejs/plugin-rsc": "0.5.26",
-    "drizzle-kit": "0.31.10",
     "eslint": "9.39.4",
-    "eslint-config-next": "16.2.6",
-    "react-server-dom-webpack": "19.2.6",
-    "tailwindcss": "4.2.1",
+    "eslint-plugin-react-hooks": "7.1.1",
+    "globals": "14.0.0",
     "typescript": "5.9.3",
-    "vinext": "0.0.50",
-    "vite": "8.0.13",
-    "wrangler": "4.92.0"
-  },
-  "type": "module"
+    "typescript-eslint": "8.59.3",
+    "vite": "8.0.13"
+  }
 }

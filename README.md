@@ -1,16 +1,13 @@
 # Thinkloom
 
-Thinkloom is a desktop-first, local-first writing studio that helps one writer move from conversation to ideas, draft, revision, and a versioned release while preserving an inspectable creative-process record.
+Thinkloom is a native, local-first writing studio that helps one writer move from conversation to ideas, draft, revision, and a versioned release while preserving an inspectable creative-process record.
 
-This repository contains two builds of the same React interface:
-
-- a Tauri 2 desktop application backed by Rust, SQLite, canonical Markdown/JSON/JSONL files, hidden Git checkpoints, operating-system credentials, and atomic exports;
-- a Sites companion build for product preview and browser-based evaluation.
+The application is built with Tauri 2, React, TypeScript, Rust, SQLite, canonical Markdown/JSON/JSONL files, hidden Git checkpoints, operating-system credentials, and atomic exports. There is no hosted or browser companion build.
 
 ## Implemented workflow
 
 - Reversible Ideation, Drafting, and Finalization phases
-- Typed conversation, challenge levels, push-to-talk browser transcription, and optional visible speech output
+- Typed conversation, challenge levels, push-to-talk transcription, and optional visible speech output
 - Suggested ideas with explicit accept/reject, editing, variants, archiving, source links, drafting sets, and merges
 - TipTap/ProseMirror structured manuscript editor with canonical Markdown round-tripping, undo/redo, headings, lists, selection replacement, and cursor insertion
 - Persisted preview-first generation states with retry-safe provider errors and partial acceptance
@@ -30,9 +27,8 @@ Requirements: Node.js 22.13 or newer, Rust 1.77.2 or newer, Git, and the Windows
 ```powershell
 npm install
 npm run dev
-npm run desktop:dev
 npm run build
-npm run desktop:build
+npm run tauri -- dev
 npm run tauri -- build
 ```
 
@@ -49,7 +45,7 @@ cargo test
 
 ## Project storage
 
-A desktop project is self-contained. Canonical files live under `manuscript/`, `ideas/`, `conversations/`, `provenance/`, and `style/`. Live SQLite state and rotating snapshots are under `.thinkloom/` and are excluded from the project’s hidden Git history. Audio retention is always false; no audio file extension is created by the native service.
+A Thinkloom project is self-contained. Canonical files live under `manuscript/`, `ideas/`, `conversations/`, `provenance/`, and `style/`. Live SQLite state and rotating snapshots are under `.thinkloom/` and are excluded from the project's hidden Git history. Audio retention is always false; no audio file extension is created by the native service.
 
 ## Provider setup
 

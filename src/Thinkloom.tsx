@@ -73,7 +73,7 @@ const StructuredEditor = forwardRef<StructuredEditorHandle, { value: string; onC
 });
 export default function Thinkloom() {
   const [project, setProject] = useState<State>(initial); const [hydrated, setHydrated] = useState(false); const [view, setView] = useState<View>("ideation"); const [message, setMessage] = useState(""); const [notice, setNotice] = useState("Project ready. History is being recorded."); const [busy, setBusy] = useState(false); const [listening, setListening] = useState(false); const [showRejected, setShowRejected] = useState(false); const [editingIdea, setEditingIdea] = useState<string | null>(null); const [newHabit, setNewHabit] = useState(""); const [sanitized, setSanitized] = useState(true); const [credential, setCredential] = useState(""); const [projectPath, setProjectPath] = useState(""); const editor = useRef<StructuredEditorHandle>(null); const finalEditor = useRef<HTMLTextAreaElement>(null); const conversationEnd = useRef<HTMLDivElement>(null);
-  useEffect(() => { queueMicrotask(() => { try { const raw = localStorage.getItem("thinkloom-project-v1"); if (raw) setProject({ ...initial, ...JSON.parse(raw) as State }); } catch {} setHydrated(true); }); }, []);
+  useEffect(() => { queueMicrotask(() => { try { const raw = localStorage.getItem("thinkloom-project-v1"); if (raw) setProject({ ...initial, ...JSON.parse(raw) as State }); } catch { /* Ignore invalid local recovery state. */ } setHydrated(true); }); }, []);
   useEffect(() => { if (hydrated) localStorage.setItem("thinkloom-project-v1", JSON.stringify(project)); }, [project, hydrated]);
   const mutate = useCallback((type: string, summary: string, update: (current: State) => State, actor: Actor = "user") => { setProject((current) => { const previousHash = current.events.at(-1)?.hash ?? null; const event: Event = { id: uid("event"), type, actor, at: now(), summary, previousHash, hash: hash(`${previousHash}|${type}|${summary}|${Date.now()}`), provider: actor === "assistant" ? current.provider.name : undefined }; const next = { ...update(current), events: [...current.events, event], updatedAt: event.at }; void invokeNative("persist_state", { appState: next }).catch(() => undefined); return next; }); setNotice(summary); }, []);
   const navigate = (next: View) => { setView(next); if (["ideation", "drafting", "finalization"].includes(next) && project.phase !== next) mutate("PHASE_CHANGED", `Moved to ${next}`, (current) => ({ ...current, phase: next as Phase })); };
@@ -162,8 +162,3 @@ export default function Thinkloom() {
     <footer className="app-footer"><span>Thinkloom 0.1.0</span><span>Local-first · audio retention always off</span><span>{project.events.at(-1)?.hash ?? "No history"}</span></footer>
   </main>;
 }
-
-
-
-
-

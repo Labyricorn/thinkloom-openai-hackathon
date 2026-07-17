@@ -4,10 +4,10 @@
   "version": "0.1.0",
   "identifier": "com.thinkloom.desktop",
   "build": {
-    "beforeDevCommand": "npm run desktop:dev",
+    "beforeDevCommand": "npm run dev",
     "devUrl": "http://localhost:1420",
-    "beforeBuildCommand": "npm run desktop:build",
-    "frontendDist": "../desktop-dist"
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist"
   },
   "app": {
     "windows": [
