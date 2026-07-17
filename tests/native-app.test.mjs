@@ -93,3 +93,48 @@ test("never ships retained audio assets", async () => {
   const files = await walk(root);
   assert.equal(files.some((name) => /\.(wav|mp3|m4a|ogg|webm)$/i.test(name)), false);
 });
+
+test("externalizes and documents every model prompt", async () => {
+  const [conversationRaw, draftingRaw, source, rust, guide, packageRaw, tauriRaw, cargoRaw] = await Promise.all([
+    readFile(new URL("../src-tauri/prompts/conversation.json", import.meta.url), "utf8"),
+    readFile(new URL("../src-tauri/prompts/drafting.json", import.meta.url), "utf8"),
+    readFile(new URL("../src/Thinkloom.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../src-tauri/src/lib.rs", import.meta.url), "utf8"),
+    readFile(new URL("../PROMPTS.md", import.meta.url), "utf8"),
+    readFile(new URL("../package.json", import.meta.url), "utf8"),
+    readFile(new URL("../src-tauri/tauri.conf.json", import.meta.url), "utf8"),
+    readFile(new URL("../src-tauri/Cargo.toml", import.meta.url), "utf8"),
+  ]);
+  const conversation = JSON.parse(conversationRaw);
+  const drafting = JSON.parse(draftingRaw);
+
+  assert.equal(conversation.schemaVersion, 1);
+  assert.match(conversation.systemPrompt, /Thinkloom/i);
+  assert.match(conversation.userPromptTemplate, /\{\{challenge_guidance\}\}/);
+  assert.match(conversation.userPromptTemplate, /\{\{context\}\}/);
+  assert.deepEqual(Object.keys(conversation.challengeGuidance).sort(), ["Balanced", "Gentle", "Rigorous"]);
+  assert.equal(drafting.schemaVersion, 1);
+  assert.match(drafting.draftPromptTemplate, /\{\{relation\}\}/);
+  assert.match(drafting.editorialPromptTemplate, /\{\{action\}\}/);
+  assert.match(drafting.draftPromptTemplate, /\{\{context\}\}/);
+  assert.match(drafting.editorialPromptTemplate, /\{\{context\}\}/);
+
+  assert.match(source, /promptVariables/);
+  assert.match(source, /ensure_prompt_files/);
+  assert.match(source, /Open prompt folder/);
+  assert.doesNotMatch(source, /const challengeGuidance|const variants: Record/);
+  assert.match(rust, /include_str!\("\.\.\/prompts\/conversation\.json"\)/);
+  assert.match(rust, /include_str!\("\.\.\/prompts\/drafting\.json"\)/);
+  assert.match(rust, /Prompt files reload before every model request/);
+  assert.doesNotMatch(rust, /You are Thinkloom, a focused writing collaborator in an ideation conversation/);
+  for (const phrase of ["Files and effects", "Editing safely", "Resetting a prompt", "Privacy and security"]) {
+    assert.match(guide, new RegExp(phrase, "i"));
+  }
+
+  const version = JSON.parse(packageRaw).version;
+  assert.equal(version, "0.2.0");
+  assert.equal(JSON.parse(tauriRaw).version, version);
+  const escapedVersion = version.replaceAll(".", "\\.");
+  assert.match(cargoRaw, new RegExp("^version = \"" + escapedVersion + "\"$", "m"));
+  assert.match(source, new RegExp("Thinkloom " + escapedVersion));
+});

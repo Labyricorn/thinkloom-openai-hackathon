@@ -1,6 +1,6 @@
 [package]
 name = "thinkloom"
-version = "0.1.0"
+version = "0.2.0"
 description = "Local-first writing studio with creative provenance"
 authors = ["Christopher Chambers"]
 license = "AGPL-3.0-only"

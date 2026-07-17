@@ -1,22 +1,26 @@
 use chrono::Utc;
 use rusqlite::{params, Connection};
-use serde::{Deserialize, Serialize};
+use serde::{de::DeserializeOwned, Deserialize, Serialize};
 use serde_json::{json, Value};
 use sha2::{Digest, Sha256};
 use std::{
+    collections::HashMap,
     fs,
     io::Write,
     path::{Path, PathBuf},
     process::Command,
     sync::Mutex,
 };
-use tauri::State;
+use tauri::{AppHandle, Manager, State};
 use uuid::Uuid;
 use walkdir::WalkDir;
 use zip::{write::SimpleFileOptions, ZipArchive, ZipWriter};
 
 const SCHEMA_VERSION: &str = "1.0";
 const APP_VERSION: &str = env!("CARGO_PKG_VERSION");
+const CONVERSATION_PROMPT_DEFAULT: &str = include_str!("../prompts/conversation.json");
+const DRAFTING_PROMPT_DEFAULT: &str = include_str!("../prompts/drafting.json");
+const PROMPT_GUIDE: &str = include_str!("../../PROMPTS.md");
 
 #[derive(Default)]
 struct RuntimeState {
@@ -85,6 +89,32 @@ struct ProviderProfile {
     model: String,
     mode: String,
 }
+#[derive(Debug, Deserialize)]
+#[serde(rename_all = "camelCase")]
+struct ConversationPromptConfig {
+    schema_version: u32,
+    system_prompt: String,
+    user_prompt_template: String,
+    challenge_guidance: HashMap<String, String>,
+}
+
+#[derive(Debug, Deserialize)]
+#[serde(rename_all = "camelCase")]
+struct DraftingPromptConfig {
+    schema_version: u32,
+    system_prompt: String,
+    draft_prompt_template: String,
+    editorial_prompt_template: String,
+}
+
+#[derive(Debug, Serialize)]
+#[serde(rename_all = "camelCase")]
+struct PromptConfigInfo {
+    directory: String,
+    files: Vec<String>,
+    reload_behavior: String,
+}
+
 #[derive(Debug, Serialize)]
 struct ConnectionResult {
     ok: bool,
@@ -147,6 +177,194 @@ fn write_json(path: &Path, value: &impl Serialize) -> CommandResult<()> {
         .map_err(|e| CommandError::new("SERIALIZE_ERROR", e.to_string(), false))?;
     atomic_write(path, &bytes)
 }
+fn prompt_config_dir(app: &AppHandle) -> CommandResult<PathBuf> {
+    app.path()
+        .app_config_dir()
+        .map(|path| path.join("prompts"))
+        .map_err(|error| {
+            CommandError::io(
+                "Could not locate the application configuration folder",
+                error,
+            )
+        })
+}
+
+fn ensure_prompt_files_at(app: &AppHandle) -> CommandResult<PathBuf> {
+    let directory = prompt_config_dir(app)?;
+    fs::create_dir_all(&directory).map_err(|error| {
+        CommandError::io("Could not create the prompt configuration folder", error)
+    })?;
+    for (name, contents) in [
+        ("conversation.json", CONVERSATION_PROMPT_DEFAULT),
+        ("drafting.json", DRAFTING_PROMPT_DEFAULT),
+        ("README.md", PROMPT_GUIDE),
+    ] {
+        let path = directory.join(name);
+        if !path.exists() {
+            atomic_write(&path, contents.as_bytes())?;
+        }
+    }
+    Ok(directory)
+}
+
+fn load_prompt_config<T: DeserializeOwned>(path: &Path) -> CommandResult<T> {
+    let raw = fs::read_to_string(path).map_err(|error| {
+        CommandError::io(
+            &format!("Could not read prompt configuration {}", path.display()),
+            error,
+        )
+    })?;
+    serde_json::from_str(&raw).map_err(|error| {
+        CommandError::new(
+            "PROMPT_CONFIG_INVALID",
+            format!("Invalid prompt configuration {}: {error}", path.display()),
+            true,
+        )
+    })
+}
+
+fn required_prompt_variable<'a>(
+    variables: &'a HashMap<String, String>,
+    name: &str,
+) -> CommandResult<&'a str> {
+    variables
+        .get(name)
+        .map(String::as_str)
+        .filter(|value| !value.trim().is_empty())
+        .ok_or_else(|| {
+            CommandError::new(
+                "PROMPT_VARIABLE_MISSING",
+                format!("The prompt variable '{{{{{name}}}}}' is missing."),
+                true,
+            )
+        })
+}
+
+fn render_prompt_template(
+    template: &str,
+    variables: &HashMap<String, String>,
+) -> CommandResult<String> {
+    let mut rendered = template.to_owned();
+    for (name, value) in variables {
+        rendered = rendered.replace(&format!("{{{{{name}}}}}"), value);
+    }
+    if let Some(start) = rendered.find("{{") {
+        if let Some(end) = rendered[start + 2..].find("}}") {
+            let name = &rendered[start + 2..start + 2 + end];
+            return Err(CommandError::new(
+                "PROMPT_VARIABLE_MISSING",
+                format!("The prompt template references unknown or unavailable variable '{{{{{name}}}}}'."),
+                true,
+            ));
+        }
+    }
+    Ok(rendered)
+}
+
+fn prompts_for_request(
+    app: &AppHandle,
+    purpose: &str,
+    mut variables: HashMap<String, String>,
+) -> CommandResult<(String, String)> {
+    let directory = ensure_prompt_files_at(app)?;
+    match purpose {
+        "conversation" => {
+            let path = directory.join("conversation.json");
+            let config: ConversationPromptConfig = load_prompt_config(&path)?;
+            if config.schema_version != 1
+                || config.system_prompt.trim().is_empty()
+                || config.user_prompt_template.trim().is_empty()
+            {
+                return Err(CommandError::new(
+                    "PROMPT_CONFIG_INVALID",
+                    format!(
+                        "{} must use schemaVersion 1 and non-empty required prompt fields.",
+                        path.display()
+                    ),
+                    true,
+                ));
+            }
+            let challenge = required_prompt_variable(&variables, "challenge")?;
+            let guidance = config.challenge_guidance.get(challenge).ok_or_else(|| {
+                CommandError::new(
+                    "PROMPT_CONFIG_INVALID",
+                    format!(
+                        "{} has no challengeGuidance entry for '{challenge}'.",
+                        path.display()
+                    ),
+                    true,
+                )
+            })?;
+            variables.insert("challenge_guidance".into(), guidance.clone());
+            Ok((
+                config.system_prompt,
+                render_prompt_template(&config.user_prompt_template, &variables)?,
+            ))
+        }
+        "drafting" => {
+            let path = directory.join("drafting.json");
+            let config: DraftingPromptConfig = load_prompt_config(&path)?;
+            if config.schema_version != 1
+                || config.system_prompt.trim().is_empty()
+                || config.draft_prompt_template.trim().is_empty()
+                || config.editorial_prompt_template.trim().is_empty()
+            {
+                return Err(CommandError::new(
+                    "PROMPT_CONFIG_INVALID",
+                    format!(
+                        "{} must use schemaVersion 1 and non-empty required prompt fields.",
+                        path.display()
+                    ),
+                    true,
+                ));
+            }
+            let template = if required_prompt_variable(&variables, "action")? == "draft" {
+                &config.draft_prompt_template
+            } else {
+                &config.editorial_prompt_template
+            };
+            Ok((
+                config.system_prompt,
+                render_prompt_template(template, &variables)?,
+            ))
+        }
+        _ => Err(CommandError::new(
+            "PROMPT_PURPOSE_INVALID",
+            format!("No prompt configuration is registered for '{purpose}'."),
+            false,
+        )),
+    }
+}
+
+#[tauri::command]
+fn ensure_prompt_files(app: AppHandle) -> CommandResult<PromptConfigInfo> {
+    let directory = ensure_prompt_files_at(&app)?;
+    Ok(PromptConfigInfo {
+        directory: directory.to_string_lossy().into_owned(),
+        files: vec![
+            "conversation.json".into(),
+            "drafting.json".into(),
+            "README.md".into(),
+        ],
+        reload_behavior: "Prompt files reload before every model request.".into(),
+    })
+}
+
+#[tauri::command]
+fn open_prompt_folder(app: AppHandle) -> CommandResult<String> {
+    let directory = ensure_prompt_files_at(&app)?;
+    #[cfg(target_os = "windows")]
+    let mut command = Command::new("explorer.exe");
+    #[cfg(target_os = "macos")]
+    let mut command = Command::new("open");
+    #[cfg(all(unix, not(target_os = "macos")))]
+    let mut command = Command::new("xdg-open");
+    command.arg(&directory).spawn().map_err(|error| {
+        CommandError::io("Could not open the prompt configuration folder", error)
+    })?;
+    Ok(directory.to_string_lossy().into_owned())
+}
+
 fn init_db(root: &Path) -> CommandResult<Connection> {
     let state_dir = root.join(".thinkloom");
     fs::create_dir_all(&state_dir)
@@ -1179,11 +1397,11 @@ fn load_project_state(state: State<RuntimeState>) -> CommandResult<Option<Value>
 
 #[tauri::command]
 fn generate_text(
+    app: AppHandle,
     profile: ProviderProfile,
-    prompt: String,
-    context: String,
+    prompt_variables: HashMap<String, String>,
     cloud_approved: bool,
-    purpose: Option<String>,
+    purpose: String,
 ) -> CommandResult<String> {
     if profile.mode == "cloud" && !cloud_approved {
         return Err(CommandError::new(
@@ -1192,19 +1410,15 @@ fn generate_text(
             true,
         ));
     }
+    let (system, prompt) = prompts_for_request(&app, &purpose, prompt_variables)?;
     let client = reqwest::blocking::Client::builder()
         .timeout(std::time::Duration::from_secs(90))
         .build()
         .map_err(|e| CommandError::new("PROVIDER_ERROR", e.to_string(), true))?;
-    let system = if purpose.as_deref() == Some("conversation") {
-        "You are Thinkloom, a focused writing collaborator in an ideation conversation. Respond naturally to the writer's latest message, briefly reflect what is useful, and ask exactly one focused question. Do not force a stock interpretation, fabricate details, or draft prose unless asked."
-    } else {
-        "You are Thinkloom, a focused writing collaborator. Return only proposed prose; it will be staged for review."
-    };
     let (url, body) = if profile.kind == "ollama" {
         (
             format!("{}/api/chat", profile.endpoint.trim_end_matches('/')),
-            json!({"model":profile.model,"stream":false,"messages":[{"role":"system","content":system},{"role":"user","content":format!("{prompt}\n\nRelevant context:\n{context}")}]}),
+            json!({"model":profile.model,"stream":false,"messages":[{"role":"system","content":system},{"role":"user","content":prompt}]}),
         )
     } else {
         (
@@ -1212,7 +1426,7 @@ fn generate_text(
                 "{}/chat/completions",
                 profile.endpoint.trim_end_matches('/')
             ),
-            json!({"model":profile.model,"stream":false,"messages":[{"role":"system","content":system},{"role":"user","content":format!("{prompt}\n\nRelevant context:\n{context}")}]}),
+            json!({"model":profile.model,"stream":false,"messages":[{"role":"system","content":system},{"role":"user","content":prompt}]}),
         )
     };
     let mut request = client.post(url).json(&body);
@@ -1271,6 +1485,8 @@ pub fn run() {
             store_provider_secret,
             delete_provider_secret,
             test_provider,
+            ensure_prompt_files,
+            open_prompt_folder,
             generate_text,
             export_project,
             create_backup,
@@ -1286,6 +1502,27 @@ pub fn run() {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn bundled_prompt_configs_parse_and_templates_validate() {
+        let conversation: ConversationPromptConfig =
+            serde_json::from_str(CONVERSATION_PROMPT_DEFAULT).unwrap();
+        let drafting: DraftingPromptConfig = serde_json::from_str(DRAFTING_PROMPT_DEFAULT).unwrap();
+        assert_eq!(conversation.schema_version, 1);
+        assert_eq!(drafting.schema_version, 1);
+
+        let mut variables = HashMap::new();
+        variables.insert("context".into(), "A current thought".into());
+        variables.insert("challenge_guidance".into(), "Ask one question.".into());
+        let rendered =
+            render_prompt_template(&conversation.user_prompt_template, &variables).unwrap();
+        assert!(rendered.contains("A current thought"));
+
+        variables.remove("context");
+        let error = render_prompt_template(&conversation.user_prompt_template, &variables)
+            .expect_err("an unresolved placeholder must fail");
+        assert_eq!(error.code, "PROMPT_VARIABLE_MISSING");
+    }
     #[test]
     fn pdf_is_structurally_complete() {
         let bytes = pdf_bytes("Title", "A short manuscript.");

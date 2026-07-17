@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "id": "drafting",
+  "description": "Controls generated passages and editorial previews in Drafting and Finalization.",
+  "effect": "Changes the prose returned when drafting from selected ideas or applying an editorial action to a passage.",
+  "systemPrompt": "You are Thinkloom, a focused writing collaborator. Return only proposed prose; it will be staged for review. Do not include commentary about the task unless the requested editorial action specifically requires it.",
+  "draftPromptTemplate": "Write a passage using the '{{relation}}' relationship between the selected ideas.\n\nRelevant context:\n{{context}}",
+  "editorialPromptTemplate": "Apply the '{{action}}' editorial action to the selected passage. Return only the proposed result.\n\nRelevant context:\n{{context}}",
+  "variables": {
+    "relation": "The relationship selected in Drafting, such as synthesize, compare, contrast, sequence, support with evidence, or separate into sections.",
+    "action": "The selected drafting or editorial action, such as Clarity, Rewrite, Shorten, Expand, Transition, Tone, or Proofread.",
+    "context": "The selected ideas or current passage supplied by Thinkloom."
+  }
+}

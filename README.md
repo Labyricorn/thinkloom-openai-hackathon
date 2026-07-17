@@ -78,6 +78,12 @@ Judges should not need to rebuild Thinkloom. A public Windows x64 installer rele
 
 A Thinkloom project is self-contained. Canonical files live under `manuscript/`, `ideas/`, `conversations/`, `provenance/`, and `style/`. Live SQLite state and rotating snapshots are under `.thinkloom/` and are excluded from the project's hidden Git history. Audio retention is always false; no audio file extension is created by the native service.
 
+## Prompt configuration
+
+Every language-model prompt is editable JSON. Thinkloom creates documented user copies of conversation.json and drafting.json and exposes their folder under Settings → Prompt configuration. The files reload before every request, so technical users can iterate without rebuilding or restarting. Invalid JSON or missing template variables stop the request with a recoverable error and leave the writing unchanged.
+
+See [PROMPTS.md](PROMPTS.md) for each file's effect, variables, editing workflow, validation behavior, and reset procedure.
+
 ## Provider setup
 
 Ollama defaults to `http://127.0.0.1:11434` and model `llama3.2`. OpenAI and compatible credentials are entered in Settings and saved through Windows Credential Manager, macOS Keychain, or Linux Secret Service. The first cloud operation in each project requires explicit approval.
