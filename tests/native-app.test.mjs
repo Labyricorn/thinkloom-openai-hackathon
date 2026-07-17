@@ -38,6 +38,38 @@ test("implements the control and privacy contracts", async () => {
   assert.match(css, /\.ideation-layout\{height:100%;min-height:0/);
 });
 
+function contrastRatio(foreground, background) {
+  const luminance = (hex) => {
+    const channels = hex.slice(1).match(/.{2}/g).map((value) => Number.parseInt(value, 16) / 255);
+    const linear = channels.map((value) => value <= 0.04045 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4);
+    return 0.2126 * linear[0] + 0.7152 * linear[1] + 0.0722 * linear[2];
+  };
+  const values = [luminance(foreground), luminance(background)].sort((a, b) => b - a);
+  return (values[0] + 0.05) / (values[1] + 0.05);
+}
+
+function themeToken(theme, name) {
+  return theme.match(new RegExp(`--${name}:(#[0-9a-f]{6})`, "i"))?.[1];
+}
+
+test("editable surfaces maintain high contrast in light and dark themes", async () => {
+  const css = await readFile(new URL("../src/globals.css", import.meta.url), "utf8");
+  const lightTheme = css.match(/^:root\{([^}]*)\}/)?.[1];
+  const darkTheme = css.match(/@media\(prefers-color-scheme:dark\)\{:root\{([^}]*)\}/)?.[1];
+  assert.ok(lightTheme && darkTheme, "Both system themes must define color tokens");
+
+  for (const [name, theme] of [["light", lightTheme], ["dark", darkTheme]]) {
+    const background = themeToken(theme, "field-bg");
+    const foreground = themeToken(theme, "field-ink");
+    const placeholder = themeToken(theme, "field-muted");
+    assert.ok(background && foreground && placeholder, `${name} field tokens must be complete`);
+    assert.ok(contrastRatio(foreground, background) >= 7, `${name} editable text must meet WCAG AAA contrast`);
+    assert.ok(contrastRatio(placeholder, background) >= 7, `${name} placeholder text must meet WCAG AAA contrast`);
+  }
+
+  assert.match(css, /\.edit-title,.idea-card textarea\{[^}]*background:var\(--field-bg\)[^}]*color:var\(--field-ink\)/);
+  assert.match(css, /\.format-toolbar button\{[^}]*background:var\(--field-bg\)[^}]*color:var\(--field-ink\)/);
+});
 test("never ships retained audio assets", async () => {
   async function walk(url) {
     const entries = await readdir(url, { withFileTypes: true });
