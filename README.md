@@ -27,9 +27,10 @@ GPT-5.6 Sol was used throughout the Codex discussions for product reasoning, arc
 
 Primary Codex build task: `019f6edd-de3d-78d2-8b6f-67af5fe6c44c`.
 
-Required `/feedback` session ID: **pending submission from the primary build task**.
+Required `/feedback` session ID: `019f6edd-de3d-78d2-8b6f-67af5fe6c44c`.
 
 See [HACKATHON_SUBMISSION.md](HACKATHON_SUBMISSION.md), [DEMO_SCRIPT.md](DEMO_SCRIPT.md), and [JUDGING.md](JUDGING.md) for the submission package.
+
 ## Implemented workflow
 
 - Reversible Ideation, Drafting, and Finalization phases

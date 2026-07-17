@@ -10,9 +10,9 @@ The current hackathon build is unsigned. Windows may show an unknown-publisher o
 
 ## Install without rebuilding
 
-Before Devpost submission, replace the pending item below with the public GitHub Release URL and attach both existing artifacts:
+Download the Windows installers from the public [Thinkloom v0.1.0 release](https://github.com/Labyricorn/thinkloom-openai-hackathon/releases/tag/v0.1.0):
 
-- **Pending public release URL**
+- [Public v0.1.0 release](https://github.com/Labyricorn/thinkloom-openai-hackathon/releases/tag/v0.1.0)
 - `Thinkloom_0.1.0_x64-setup.exe` (NSIS installer)
 - `Thinkloom_0.1.0_x64_en-US.msi` (MSI installer)
 

@@ -9,9 +9,9 @@ Status date: July 17, 2026
 - Track: Apps for Your Life
 - Created: July 16, 2026, during the submission period
 - Primary Codex build task: `019f6edd-de3d-78d2-8b6f-67af5fe6c44c`
-- `/feedback` session ID: **pending**
-- Intended repository: `https://github.com/Labyricorn/thinkloom-openai-hackathon` (**not yet created**)
-- Public release/testing URL: **pending**
+- `/feedback` session ID: `019f6edd-de3d-78d2-8b6f-67af5fe6c44c`
+- Public repository: `https://github.com/Labyricorn/thinkloom-openai-hackathon`
+- Public release/testing URL: `https://github.com/Labyricorn/thinkloom-openai-hackathon/releases/tag/v0.1.0`
 - Public YouTube demo URL: **pending**
 - License: GNU Affero General Public License v3.0 only
 
@@ -56,9 +56,9 @@ Thinkloom demonstrates a specific form of human-AI collaboration: the system can
 - [x] Demo narration and shot list prepared
 - [x] Entrant confirms sole ownership of the original project name, icon, example content, and other original assets
 - [x] AGPL-3.0-only license selected and added
-- [ ] `/feedback` is submitted from the primary build task and the resulting session ID is added
-- [ ] GitHub CLI is installed and authenticated
-- [ ] Public repository is created and its URL is verified
+- [x] `/feedback` is submitted from the primary build task and the resulting session ID is added
+- [x] GitHub CLI is installed and authenticated
+- [x] Public repository is created and its URL is verified
 - [ ] Installers are attached to a public release available through the end of judging
 - [ ] Demo is recorded with audio, kept under three minutes, uploaded publicly to YouTube, and linked
 - [ ] Demo is reviewed for unlicensed music, third-party material, private data, and incidental trademarks
@@ -69,6 +69,5 @@ Thinkloom demonstrates a specific form of human-AI collaboration: the system can
 ## Devpost fields still requiring the entrant
 
 - Public YouTube URL
-- `/feedback` session ID
 - Any profile information requested by Devpost
 - Final agreement to the Official Rules when submitting

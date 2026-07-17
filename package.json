@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "author": "Christopher Chambers",
   "license": "AGPL-3.0-only",
+  "repository": "https://github.com/Labyricorn/thinkloom-openai-hackathon.git",
+  "homepage": "https://github.com/Labyricorn/thinkloom-openai-hackathon",
   "private": true,
   "type": "module",
   "engines": { "node": ">=22.13.0" },
