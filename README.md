@@ -1,98 +1,58 @@
-# vinext-starter
+# Thinkloom
 
-A clean full-stack starter running on
-[vinext](https://github.com/cloudflare/vinext), with optional Cloudflare D1 and
-Drizzle support.
+Thinkloom is a desktop-first, local-first writing studio that helps one writer move from conversation to ideas, draft, revision, and a versioned release while preserving an inspectable creative-process record.
 
-## Prerequisites
+This repository contains two builds of the same React interface:
 
-- Node.js `>=22.13.0`
+- a Tauri 2 desktop application backed by Rust, SQLite, canonical Markdown/JSON/JSONL files, hidden Git checkpoints, operating-system credentials, and atomic exports;
+- a Sites companion build for product preview and browser-based evaluation.
 
-## Quick Start
+## Implemented workflow
 
-```bash
+- Reversible Ideation, Drafting, and Finalization phases
+- Typed conversation, challenge levels, push-to-talk browser transcription, and optional visible speech output
+- Suggested ideas with explicit accept/reject, editing, variants, archiving, source links, drafting sets, and merges
+- TipTap/ProseMirror structured manuscript editor with canonical Markdown round-tripping, undo/redo, headings, lists, selection replacement, and cursor insertion
+- Persisted preview-first generation states with retry-safe provider errors and partial acceptance
+- Ollama, OpenAI, and OpenAI-compatible provider profiles; credentials use the operating-system vault
+- Local/Cloud/Mixed status and project-scoped cloud approval
+- SQLite live state, atomic canonical files, seven rotating recovery snapshots, and a hidden Git repository per project
+- Append-only SHA-256 provenance journal with chain-head verification and a contribution relationship view
+- Named versions, restore controls, release checkpoints, and tags using non-Git language in the UI
+- Markdown, HTML, PDF, plain text, sanitized evidence ZIP, and complete project backup ZIP generation
+- ZIP import path, symlink, file-count, and expanded-size validation
+- Responsive, keyboard-navigable, screen-reader-labeled UI with reduced-motion and dark-mode support
+
+## Development
+
+Requirements: Node.js 22.13 or newer, Rust 1.77.2 or newer, Git, and the Windows WebView2 runtime for the primary desktop target.
+
+```powershell
 npm install
 npm run dev
+npm run desktop:dev
 npm run build
+npm run desktop:build
+npm run tauri -- build
 ```
 
-This starter does not use `wrangler.jsonc`.
+Quality checks:
 
-## Included Shape
-
-- edit site code under `app/`
-- `.openai/hosting.json` declares optional Sites D1 and R2 bindings
-- `vite.config.ts` simulates declared bindings for local development
-- `db/schema.ts` starts intentionally empty
-- `examples/d1/` contains an optional D1 example surface
-- `drizzle.config.ts` supports local migration generation when needed
-
-## Workspace Auth Headers
-
-OpenAI workspace sites can read the current user's email from
-`oai-authenticated-user-email`.
-
-SIWC-authenticated workspace sites may also receive
-`oai-authenticated-user-full-name` when the user's SIWC profile has a non-empty
-`name` claim. The full-name value is percent-encoded UTF-8 and is accompanied by
-`oai-authenticated-user-full-name-encoding: percent-encoded-utf-8`.
-
-Treat the full name as optional and fall back to email when it is absent:
-
-```tsx
-import { headers } from "next/headers";
-
-export default async function Home() {
-  const requestHeaders = await headers();
-  const email = requestHeaders.get("oai-authenticated-user-email");
-  const encodedFullName = requestHeaders.get("oai-authenticated-user-full-name");
-  const fullName =
-    encodedFullName &&
-    requestHeaders.get("oai-authenticated-user-full-name-encoding") ===
-      "percent-encoded-utf-8"
-      ? decodeURIComponent(encodedFullName)
-      : null;
-
-  const displayName = fullName ?? email;
-  // ...
-}
+```powershell
+npm run typecheck
+npm run lint
+npm test
+cd src-tauri
+cargo fmt --check
+cargo test
 ```
 
-## Optional Dispatch-Owned ChatGPT Sign-In
+## Project storage
 
-Import the ready-to-use helpers from `app/chatgpt-auth.ts` when the site needs
-optional or required ChatGPT sign-in:
+A desktop project is self-contained. Canonical files live under `manuscript/`, `ideas/`, `conversations/`, `provenance/`, and `style/`. Live SQLite state and rotating snapshots are under `.thinkloom/` and are excluded from the project’s hidden Git history. Audio retention is always false; no audio file extension is created by the native service.
 
-- Use `getChatGPTUser()` for optional signed-in UI.
-- Use `requireChatGPTUser(returnTo)` for server-rendered pages that should send
-  anonymous visitors through Sign in with ChatGPT.
-- Use `chatGPTSignInPath(returnTo)` and `chatGPTSignOutPath(returnTo)` for
-  browser links or actions.
-- Pass a same-origin relative `returnTo` path for the destination after sign-in
-  or sign-out. The helper validates and safely encodes it.
-- Mark protected pages with `export const dynamic = "force-dynamic"` because
-  they depend on per-request identity headers.
+## Provider setup
 
-Dispatch owns `/signin-with-chatgpt`, `/signout-with-chatgpt`, `/callback`, the
-OAuth cookies, and identity header injection. Do not implement app routes for
-those reserved paths. Routes that do not import and call the helper remain
-anonymous-compatible.
+Ollama defaults to `http://127.0.0.1:11434` and model `llama3.2`. OpenAI and compatible credentials are entered in Settings and saved through Windows Credential Manager, macOS Keychain, or Linux Secret Service. The first cloud operation in each project requires explicit approval.
 
-SIWC establishes identity only; it does not prove workspace membership. Use the
-Sites hosting platform's access policy controls for workspace-wide restrictions,
-or enforce explicit server-side membership or allowlist checks.
-
-Use SIWC for account pages, user-specific dashboards, saved records, and write
-actions tied to the current ChatGPT user. Leave public content anonymous.
-
-## Useful Commands
-
-- `npm run dev`: start local development
-- `npm run build`: verify the vinext build output
-- `npm test`: build the starter and verify its rendered loading skeleton
-- `npm run db:generate`: generate Drizzle migrations after schema changes
-
-## Learn More
-
-- [vinext Documentation](https://github.com/cloudflare/vinext)
-- [Drizzle D1 Guide](https://orm.drizzle.team/docs/get-started/d1-new)
+See [IMPLEMENTATION_STATUS.md](IMPLEMENTATION_STATUS.md) for release gates that require external models, signing credentials, or additional platform validation.

@@ -1,38 +1,20 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { headers } from "next/headers";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-export const metadata: Metadata = {
-  title: "Writing Workspace Framework",
-  description: "A conversation-first writing workspace visualization.",
-  icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
-  },
-};
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
-  );
+export async function generateMetadata(): Promise<Metadata> {
+  const requestHeaders = await headers();
+  const host = requestHeaders.get("x-forwarded-host") ?? requestHeaders.get("host") ?? "localhost";
+  const protocol = requestHeaders.get("x-forwarded-proto") ?? (host.startsWith("localhost") ? "http" : "https");
+  const image = new URL("/og.png", `${protocol}://${host}`).toString();
+  return {
+    title: "Thinkloom — ideas into writing",
+    description: "A local-first writing studio for exploring ideas, shaping drafts, and preserving your creative process.",
+    icons: { icon: "/icon.png", shortcut: "/icon.png", apple: "/icon.png" },
+    openGraph: { title: "Thinkloom — ideas into writing", description: "Explore, shape, and publish thoughtful writing without losing the thread of how it came together.", type: "website", images: [{ url: image, width: 1732, height: 909, alt: "Thinkloom — ideas into writing, without losing the thread." }] },
+    twitter: { card: "summary_large_image", images: [image] },
+  };
 }
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) { return <html lang="en"><body>{children}</body></html>; }
+

@@ -1,5 +1,2 @@
-import { redirect } from "next/navigation";
-
-export default function Home() {
-  redirect("/writing-workspace-framework.html");
-}
+import Thinkloom from "./thinkloom";
+export default function Home() { return <Thinkloom />; }
