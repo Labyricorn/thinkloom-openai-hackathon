@@ -1,0 +1,39 @@
+{
+  "registry_version": "1.0",
+  "provenance_schema_version": "1.0",
+  "application_version": "0.4.0",
+  "name": "assertion-confidence-dimensions",
+  "description": "Independent non-numeric confidence dimensions.",
+  "values": [
+    "exact",
+    "degraded",
+    "unverified",
+    "not_applicable"
+  ],
+  "entries": [
+    {
+      "code": "integrity",
+      "meaning": "Whether canonical bytes, digests, and chain bindings validate."
+    },
+    {
+      "code": "identity",
+      "meaning": "Whether referenced subjects, objects, producers, and evidence identities resolve."
+    },
+    {
+      "code": "chronology",
+      "meaning": "Whether ordering and generation coordinates are complete and consistent."
+    },
+    {
+      "code": "derivation",
+      "meaning": "Whether the asserted transformation or relationship is supported by evidence."
+    },
+    {
+      "code": "authorship",
+      "meaning": "Whether the claimed actor relationship is supported without percentage attribution."
+    },
+    {
+      "code": "completeness",
+      "meaning": "Whether all evidence required for the asserted scope was evaluated."
+    }
+  ]
+}

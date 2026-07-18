@@ -1,0 +1,124 @@
+{
+  "registry_version": "1.0",
+  "provenance_schema_version": "1.0",
+  "application_version": "0.4.0",
+  "name": "assertion-reason-codes",
+  "description": "Stable explanations for assertion creation and evaluation outcomes.",
+  "entries": [
+    {
+      "code": "DIRECT_HASH_LINKED_DERIVATION",
+      "permitted_statuses": [
+        "exact"
+      ],
+      "meaning": "The asserted relationship is supported by direct retained records and matching digests."
+    },
+    {
+      "code": "VERIFIED_TRANSITIVE_DERIVATION",
+      "permitted_statuses": [
+        "exact"
+      ],
+      "meaning": "A deterministic verified chain of assertions supports the relationship."
+    },
+    {
+      "code": "REQUIRED_PROVENANCE_UNKNOWN",
+      "permitted_statuses": [
+        "unverified"
+      ],
+      "meaning": "Required provenance basis or evidence identity is unknown."
+    },
+    {
+      "code": "SOURCE_GENERATION_UNKNOWN",
+      "permitted_statuses": [
+        "unverified"
+      ],
+      "meaning": "A required project, artifact, or transcript generation is unknown."
+    },
+    {
+      "code": "REQUIRED_EVIDENCE_MISSING",
+      "permitted_statuses": [
+        "unverified"
+      ],
+      "meaning": "Evidence required for evaluation is absent."
+    },
+    {
+      "code": "DEPENDENCY_DIGEST_MISMATCH",
+      "permitted_statuses": [
+        "stale"
+      ],
+      "meaning": "A dependency digest differs from the asserted expectation."
+    },
+    {
+      "code": "DEPENDENCY_GENERATION_MISMATCH",
+      "permitted_statuses": [
+        "stale"
+      ],
+      "meaning": "A dependency generation differs from the asserted expectation."
+    },
+    {
+      "code": "SOURCE_ANCHOR_STALE",
+      "permitted_statuses": [
+        "stale"
+      ],
+      "meaning": "The source anchor no longer matches the evaluation target."
+    },
+    {
+      "code": "SCHEMA_INCOMPATIBLE",
+      "permitted_statuses": [
+        "refused"
+      ],
+      "meaning": "The available schema cannot be evaluated under the required contract."
+    },
+    {
+      "code": "POLICY_REFUSED",
+      "permitted_statuses": [
+        "refused"
+      ],
+      "meaning": "Policy explicitly prohibits producing the requested conclusion."
+    },
+    {
+      "code": "AUTHORIZED_EVIDENCE_UNAVAILABLE",
+      "permitted_statuses": [
+        "refused",
+        "unverified"
+      ],
+      "meaning": "Required protected evidence cannot be evaluated with current authorization."
+    },
+    {
+      "code": "ADVISORY_EVIDENCE_UNAVAILABLE",
+      "permitted_statuses": [
+        "degraded"
+      ],
+      "meaning": "Advisory evidence is unavailable and the named confidence dimensions are degraded."
+    },
+    {
+      "code": "ASSERTION_NOT_EVALUATED",
+      "permitted_statuses": [
+        "unverified"
+      ],
+      "meaning": "No authoritative evaluation has completed for this assertion and target."
+    },
+    {
+      "code": "AUTHORSHIP_UNCERTAIN",
+      "permitted_statuses": [
+        "degraded"
+      ],
+      "meaning": "Evidence does not support an exact authorship interpretation."
+    },
+    {
+      "code": "CHRONOLOGY_INCOMPLETE",
+      "permitted_statuses": [
+        "degraded",
+        "unverified"
+      ],
+      "meaning": "Ordering or generation evidence is incomplete."
+    },
+    {
+      "code": "COMPLETENESS_INCOMPLETE",
+      "permitted_statuses": [
+        "degraded",
+        "unverified"
+      ],
+      "meaning": "The evaluation does not cover all evidence required by its asserted scope."
+    }
+  ]
+}

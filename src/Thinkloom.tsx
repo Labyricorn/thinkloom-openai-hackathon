@@ -220,6 +220,6 @@ export default function Thinkloom() {
       <section className="settings-section panel wide prompt-settings"><div className="settings-heading"><span className="settings-number">04</span><div><h2>Prompt configuration</h2><p>Technical users can tune every instruction sent to the model.</p></div></div><p><strong>conversation.json</strong> affects Ideation replies. <strong>drafting.json</strong> affects passage and editorial previews. Files reload before every model request, so no restart is needed.</p><code className="prompt-path">{promptPath || "Preparing prompt files…"}</code><div className="project-actions"><button className="secondary-button" onClick={() => void openPromptFolder()}>Open prompt folder</button></div><small>README.md in this folder documents every field, variable, effect, validation rule, and reset procedure.</small></section>
     </div></section>}
     </section>
-    <footer className="app-footer"><span>Thinkloom 0.3.0</span><span>Local-first · audio retention always off</span><span>{project.events.at(-1)?.hash ?? "No history"}</span></footer>
+    <footer className="app-footer"><span>Thinkloom 0.4.0</span><span>Local-first · audio retention always off</span><span>{project.events.at(-1)?.hash ?? "No history"}</span></footer>
   </main>;
 }

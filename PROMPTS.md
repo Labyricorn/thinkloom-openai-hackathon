@@ -1,6 +1,6 @@
 # Thinkloom prompt configuration
 
-Thinkloom 0.3.0 exposes every instruction sent to a language model as editable JSON. The desktop app creates a prompts folder in its operating-system configuration directory and shows its exact path under Settings → Prompt configuration. Use Open prompt folder to open it.
+Thinkloom 0.4.0 exposes every instruction sent to a language model as editable JSON. The desktop app creates a prompts folder in its operating-system configuration directory and shows its exact path under Settings → Prompt configuration. Use Open prompt folder to open it.
 
 Prompt files are loaded immediately before every model request. Save a valid edit, then make the next request; no restart or rebuild is required. Thinkloom never overwrites existing user prompt files during startup or an update.
 

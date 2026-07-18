@@ -11,7 +11,7 @@ This specification defines the authority, persistence, integrity, privacy, recov
 
 It supersedes the provenance-specific transaction order, single-ledger layout, mutable-record assumptions, live-database snapshot method, and release-binding sequence in the earlier MVP architecture and implementation plans. It does not supersede their product requirements, native Tauri boundary, preview-first generation model, user-control requirements, accessibility requirements, or prohibition on retained audio.
 
-Thinkloom 0.3.0 includes the formal Stage 2 schemas and verification vectors, but its native writer is not represented as conforming to this specification. Full conformance begins only after the native implementation and required fault-injection tests are complete.
+Thinkloom 0.4.0 includes the formal Stage 2 schemas, canonical assertion envelopes, and verification vectors, but its native writer is not represented as conforming to this specification. Full conformance begins only after the native implementation and required fault-injection tests are complete.
 
 ## 2. Normative language
 
@@ -37,7 +37,7 @@ The strongest valid claim without an external anchor is:
 
 The following hierarchy is binding:
 
-1. **Immutable filesystem records and the provenance ledger** are authoritative evidence.
+1. **Immutable filesystem records, canonical provenance assertions, point-in-time assertion evaluations, and the provenance ledger** are authoritative evidence when bound by ledger references.
 2. **Canonical publication files and manuscript revisions** are authoritative publication content when bound by ledger references.
 3. **Release manifests** are authoritative bindings for a completed release.
 4. **SQLite** stores operational state, UI state, write intents, idempotency indexes, and rebuildable query indexes.
@@ -85,7 +85,7 @@ Large PDFs, ZIP packages, and regenerable binaries SHOULD remain outside ordinar
 
 ## 6. Identifiers and event ordering
 
-Stable sortable identifiers SHOULD use ULIDs with type prefixes, including `event_`, `record_`, `intent_`, `turn_`, `session_`, `invocation_`, `revision_`, `fragment_`, `checkpoint_`, and `release_`.
+Stable sortable identifiers SHOULD use ULIDs with type prefixes, including `event_`, `record_`, `intent_`, `turn_`, `session_`, `invocation_`, `revision_`, `fragment_`, `checkpoint_`, `release_`, `assertion_`, and `evaluation_`.
 
 Identifiers MAY be allocated before an operation commits. Abandoned identifiers MUST NOT be reused.
 
@@ -161,6 +161,8 @@ The following records become immutable after creation:
 - Sealed ledger segment and segment manifest
 - Release manifest
 - Protected record envelope
+- Provenance assertion
+- Assertion evaluation
 
 Mutable concepts MUST use immutable ordered revisions. `current.json` files and similar pointers MAY exist only as derived, non-authoritative conveniences.
 
@@ -307,6 +309,8 @@ The verifier MUST check, as applicable:
 - Source Git commit and tag bindings
 - Deterministic derived-index reproducibility
 - Protected record envelopes, and plaintext when keys are available
+- Provenance assertions
+- Assertion evaluations
 
 Finding severities are `INFO`, `WARNING`, `ERROR`, and `CRITICAL`. Overall statuses are:
 
@@ -321,6 +325,45 @@ An unavailable historical index generator is a warning, not an incomplete result
 Incremental verification MAY use a cached verified chain head. The cache is non-authoritative. Full verification is REQUIRED for release completion, backup import, explicit deep verification, and integrity recovery.
 
 Release and import gates MUST follow the approved status matrix: `INCOMPLETE`, `FAILED`, and `UNSAFE` block release; unverified imports never enter an active project destination.
+
+### 15.1 Canonical provenance assertions and evaluations
+
+A promoted fact or artifact relationship MUST be represented by an immutable `provenance-assertion` record rather than inferred from a derived index, UI state, or application-specific internal structure. An assertion states what was claimed, which generation and lifecycle phase it belongs to, which subsystem produced it, which retained evidence supports it, and which dependencies can invalidate its use.
+
+An assertion MUST contain:
+
+- Stable assertion, project, subject, and object identities
+- A machine-readable predicate
+- A source anchor naming a prior authoritative event, its sequence, and its event digest
+- Explicit source-generation coordinates
+- The lifecycle phase at which the relationship was asserted
+- Producer subsystem and application version
+- A provenance basis and retained evidence references
+- Structured invalidation dependencies with expected digests, expected generations, evidence class, and required/advisory role
+- A stable reason code
+- An exact assertion self-digest identity excluding only `assertion_sha256`
+
+The event that records an assertion MUST reference the already-written assertion record and digest. The assertion source anchor MUST identify basis evidence and MUST NOT identify the recording event when that would create a circular digest dependency.
+
+Time-dependent conclusions MUST NOT mutate the assertion. They MUST be stored as immutable `assertion-evaluation` records evaluated against an explicit chain head, event sequence, and project epoch. A later evaluation supersedes an earlier conclusion for current use without erasing or rewriting it.
+
+Assertion evaluation statuses are:
+
+- `exact`: all required provenance, generation, integrity, identity, chronology, derivation, authorship, and completeness inputs are known, compatible, and sufficient for the asserted scope.
+- `degraded`: the assertion remains usable only with an explicitly bounded limitation.
+- `refused`: policy, authorization, unsupported compatibility, or another mandatory gate prohibits a conclusion.
+- `stale`: a dependency digest, generation, or source anchor no longer matches the evaluation target.
+- `unverified`: required evaluation has not completed or mandatory evidence is unavailable without a demonstrated contradiction.
+
+Every evaluation MUST assess these dimensions independently: `integrity`, `identity`, `chronology`, `derivation`, `authorship`, and `completeness`. Dimension values are `exact`, `degraded`, `unverified`, or `not_applicable`. Numeric confidence scores and human-versus-AI percentages MUST NOT be used.
+
+An `exact` evaluation MUST have no uncertainty boundary, MUST contain valid results for every non-shadow dependency, and MUST contain no `degraded` or `unverified` confidence dimension. Shadow evidence never contributes authority and MAY remain unevaluated without changing exactness. A non-exact evaluation MUST identify the exact boundary, affected dimensions, dependencies when applicable, and a stable reason code. Unknown provenance, source generation, compatibility, or confidence MUST NOT silently produce an `exact` evaluation.
+
+Evidence classes are `mandatory_live`, `mandatory_retained`, `advisory`, and `shadow`. Missing or incompatible mandatory evidence prohibits `exact`. Advisory or shadow evidence MAY degrade completeness or another named dimension but MUST NOT silently change an authoritative assertion.
+
+Assertion and evaluation reason codes, lifecycle phases, statuses, dimensions, evidence classes, and boundary kinds MUST come from versioned machine-readable registries included in the schema package. Consumers MUST decide usability from these canonical records and registries rather than reopening producer-specific internal state.
+
+Derived indexes and reports MAY project assertions and the latest applicable evaluations, but remain non-authoritative consumers. They MUST NOT synthesize an `exact` result when no valid authoritative evaluation exists.
 
 ## 16. Derived indexes
 
@@ -449,6 +492,8 @@ manuscript-revision.schema.json
 edit-transaction.schema.json
 text-fragment-reference.schema.json
 derived-index-manifest.schema.json
+provenance-assertion.schema.json
+assertion-evaluation.schema.json
 verification-report.schema.json
 backup-manifest.schema.json
 release-manifest.schema.json
@@ -457,7 +502,7 @@ sanitized-export-manifest.schema.json
 purge-manifest.schema.json
 ```
 
-Prompt-template and other self-digesting schemas MUST define exact digest identity objects. Migration schemas are deferred until after Thinkloom 1.0.0.
+Prompt-template, provenance-assertion, and other self-digesting schemas MUST define exact digest identity objects. Migration schemas are deferred until after Thinkloom 1.0.0.
 
 ## 25. Required implementation characteristics
 

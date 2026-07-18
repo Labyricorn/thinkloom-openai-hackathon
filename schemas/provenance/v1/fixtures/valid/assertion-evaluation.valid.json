@@ -1,0 +1,76 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/assertion-evaluation.schema.json",
+  "description": "Valid Point-in-time assertion evaluation example.",
+  "instance": {
+    "schema_version": "1.0",
+    "evaluation_id": "evaluation_01J0000000000000000000000W",
+    "assertion_id": "assertion_01J0000000000000000000000V",
+    "assertion_sha256": "sha256:f6770d587b8f2af9a86ceaa67f9dd7346fe46708f2654871424c0431a7f9e826",
+    "project_id": "project_01J00000000000000000000001",
+    "evaluated_against": {
+      "chain_head": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+      "event_sequence": 3,
+      "project_epoch": 1,
+      "schema_catalog_sha256": "sha256:7777777777777777777777777777777777777777777777777777777777777777"
+    },
+    "evaluator": {
+      "subsystem": "native_verifier",
+      "application_version": "0.4.0"
+    },
+    "status": "exact",
+    "confidence": {
+      "integrity": "exact",
+      "identity": "exact",
+      "chronology": "exact",
+      "derivation": "exact",
+      "authorship": "not_applicable",
+      "completeness": "exact"
+    },
+    "boundary": null,
+    "dependency_results": [
+      {
+        "dependency_id": "event_01J00000000000000000000004",
+        "evidence_class": "mandatory_retained",
+        "status": "valid",
+        "observed_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "observed_generation": {
+          "project_epoch": 1,
+          "artifact_revision": 12,
+          "transcript_revision": 4
+        }
+      },
+      {
+        "dependency_id": "record_01J00000000000000000000005",
+        "evidence_class": "mandatory_live",
+        "status": "valid",
+        "observed_sha256": "sha256:8888888888888888888888888888888888888888888888888888888888888888",
+        "observed_generation": {
+          "project_epoch": 1,
+          "artifact_revision": 12,
+          "transcript_revision": 4
+        }
+      },
+      {
+        "dependency_id": "turn_01J00000000000000000000007",
+        "evidence_class": "advisory",
+        "status": "valid",
+        "observed_sha256": "sha256:7777777777777777777777777777777777777777777777777777777777777777",
+        "observed_generation": {
+          "project_epoch": 1,
+          "artifact_revision": 12,
+          "transcript_revision": 4
+        }
+      },
+      {
+        "dependency_id": "idea_01J00000000000000000000009",
+        "evidence_class": "shadow",
+        "status": "not_evaluated",
+        "observed_sha256": null,
+        "observed_generation": null
+      }
+    ],
+    "reason_code": "DIRECT_HASH_LINKED_DERIVATION",
+    "supersedes_evaluation_id": null,
+    "evaluated_at": "2026-07-17T18:44:12.789Z"
+  }
+}

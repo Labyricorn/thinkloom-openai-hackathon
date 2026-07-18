@@ -1,0 +1,1145 @@
+{
+  "vector_version": "1.0",
+  "assertion_recording_event": {
+    "schema_version": "1.0",
+    "event_id": "event_01J0000000000000000000000Y",
+    "event_sequence": 4,
+    "client_action_id": "client-action-0001",
+    "project_id": "project_01J00000000000000000000001",
+    "timestamp": "2026-07-17T18:45:13.012Z",
+    "event_type": "ASSERTION_RECORDED",
+    "actor": {
+      "type": "user",
+      "actor_id": null
+    },
+    "provider": null,
+    "inputs": [
+      {
+        "schema_version": "1.0",
+        "record_id": "event_01J00000000000000000000004",
+        "record_type": "other",
+        "sha256": "sha256:eb03e514fa6fcfcd291357668559b24387a84256fc39d6fb0621529003d0988e",
+        "path": "provenance/ledger/active.jsonl",
+        "revision_id": null,
+        "range": null
+      }
+    ],
+    "outputs": [
+      {
+        "schema_version": "1.0",
+        "record_id": "assertion_01J0000000000000000000000V",
+        "record_type": "provenance_assertion",
+        "sha256": "sha256:ae9c369ab2bb3ed7fb653a57367074056993f28bfe3b333eda28150b34c3f3b4",
+        "path": "records/assertions/assertion.json",
+        "revision_id": null,
+        "range": null
+      }
+    ],
+    "relationships": {
+      "parent_event_ids": [
+        "event_01J00000000000000000000004"
+      ],
+      "invocation_id": null
+    },
+    "metadata": {
+      "summary": "Recorded canonical provenance assertion",
+      "assertion_id": "assertion_01J0000000000000000000000V"
+    },
+    "previous_event_hash": "sha256:51935af27a4c989a014d975eab929f41fccafadedfbf1baafa15e3ce2a27a66d",
+    "event_hash": "sha256:5b674a7e126654f8b1c4ea0e31816eae81516869dc9682d601272077e0393815"
+  },
+  "assertion": {
+    "schema_version": "1.0",
+    "assertion_id": "assertion_01J0000000000000000000000V",
+    "project_id": "project_01J00000000000000000000001",
+    "subject": {
+      "entity_type": "artifact_revision",
+      "entity_id": "revision_01J0000000000000000000000B",
+      "content_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+    },
+    "predicate": "derived_from",
+    "object": {
+      "entity_type": "invocation_output",
+      "entity_id": "record_01J00000000000000000000005",
+      "content_sha256": "sha256:9999999999999999999999999999999999999999999999999999999999999999"
+    },
+    "source_anchor": {
+      "event_id": "event_01J00000000000000000000004",
+      "event_sequence": 2,
+      "event_hash": "sha256:eb03e514fa6fcfcd291357668559b24387a84256fc39d6fb0621529003d0988e"
+    },
+    "source_generation": {
+      "project_epoch": 1,
+      "artifact_revision": 12,
+      "transcript_revision": 4
+    },
+    "lifecycle_phase": "accepted_into_work",
+    "producer": {
+      "subsystem": "provenance_writer",
+      "application_version": "0.4.0"
+    },
+    "provenance": {
+      "basis": "direct_record",
+      "evidence": [
+        {
+          "evidence_id": "event_01J00000000000000000000004",
+          "evidence_type": "provenance_event",
+          "content_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555"
+        },
+        {
+          "evidence_id": "record_01J00000000000000000000005",
+          "evidence_type": "invocation_response",
+          "content_sha256": "sha256:9999999999999999999999999999999999999999999999999999999999999999"
+        }
+      ]
+    },
+    "dependencies": [
+      {
+        "dependency_id": "event_01J00000000000000000000004",
+        "dependency_type": "provenance_event",
+        "expected_sha256": "sha256:eb03e514fa6fcfcd291357668559b24387a84256fc39d6fb0621529003d0988e",
+        "expected_generation": {
+          "project_epoch": 1,
+          "artifact_revision": 12,
+          "transcript_revision": 4
+        },
+        "evidence_class": "mandatory_retained",
+        "role": "source_anchor",
+        "confidence_dimensions": [
+          "integrity",
+          "chronology",
+          "derivation"
+        ]
+      },
+      {
+        "dependency_id": "record_01J00000000000000000000005",
+        "dependency_type": "model_configuration",
+        "expected_sha256": "sha256:8888888888888888888888888888888888888888888888888888888888888888",
+        "expected_generation": {
+          "project_epoch": 1,
+          "artifact_revision": 12,
+          "transcript_revision": 4
+        },
+        "evidence_class": "mandatory_live",
+        "role": "model_configuration",
+        "confidence_dimensions": [
+          "identity",
+          "derivation"
+        ]
+      },
+      {
+        "dependency_id": "turn_01J00000000000000000000007",
+        "dependency_type": "transcript_turn",
+        "expected_sha256": "sha256:7777777777777777777777777777777777777777777777777777777777777777",
+        "expected_generation": {
+          "project_epoch": 1,
+          "artifact_revision": 12,
+          "transcript_revision": 4
+        },
+        "evidence_class": "advisory",
+        "role": "authorship_basis",
+        "confidence_dimensions": [
+          "authorship",
+          "completeness"
+        ]
+      },
+      {
+        "dependency_id": "idea_01J00000000000000000000009",
+        "dependency_type": "shadow_comparison",
+        "expected_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+        "expected_generation": {
+          "project_epoch": 1,
+          "artifact_revision": 12,
+          "transcript_revision": 4
+        },
+        "evidence_class": "shadow",
+        "role": "other",
+        "confidence_dimensions": [
+          "completeness"
+        ]
+      }
+    ],
+    "reason_code": "DIRECT_HASH_LINKED_DERIVATION",
+    "created_at": "2026-07-17T18:43:11.456Z",
+    "assertion_sha256": "sha256:ae9c369ab2bb3ed7fb653a57367074056993f28bfe3b333eda28150b34c3f3b4"
+  },
+  "assertion_identity": {
+    "schema_version": "1.0",
+    "assertion_id": "assertion_01J0000000000000000000000V",
+    "project_id": "project_01J00000000000000000000001",
+    "subject": {
+      "entity_type": "artifact_revision",
+      "entity_id": "revision_01J0000000000000000000000B",
+      "content_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+    },
+    "predicate": "derived_from",
+    "object": {
+      "entity_type": "invocation_output",
+      "entity_id": "record_01J00000000000000000000005",
+      "content_sha256": "sha256:9999999999999999999999999999999999999999999999999999999999999999"
+    },
+    "source_anchor": {
+      "event_id": "event_01J00000000000000000000004",
+      "event_sequence": 2,
+      "event_hash": "sha256:eb03e514fa6fcfcd291357668559b24387a84256fc39d6fb0621529003d0988e"
+    },
+    "source_generation": {
+      "project_epoch": 1,
+      "artifact_revision": 12,
+      "transcript_revision": 4
+    },
+    "lifecycle_phase": "accepted_into_work",
+    "producer": {
+      "subsystem": "provenance_writer",
+      "application_version": "0.4.0"
+    },
+    "provenance": {
+      "basis": "direct_record",
+      "evidence": [
+        {
+          "evidence_id": "event_01J00000000000000000000004",
+          "evidence_type": "provenance_event",
+          "content_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555"
+        },
+        {
+          "evidence_id": "record_01J00000000000000000000005",
+          "evidence_type": "invocation_response",
+          "content_sha256": "sha256:9999999999999999999999999999999999999999999999999999999999999999"
+        }
+      ]
+    },
+    "dependencies": [
+      {
+        "dependency_id": "event_01J00000000000000000000004",
+        "dependency_type": "provenance_event",
+        "expected_sha256": "sha256:eb03e514fa6fcfcd291357668559b24387a84256fc39d6fb0621529003d0988e",
+        "expected_generation": {
+          "project_epoch": 1,
+          "artifact_revision": 12,
+          "transcript_revision": 4
+        },
+        "evidence_class": "mandatory_retained",
+        "role": "source_anchor",
+        "confidence_dimensions": [
+          "integrity",
+          "chronology",
+          "derivation"
+        ]
+      },
+      {
+        "dependency_id": "record_01J00000000000000000000005",
+        "dependency_type": "model_configuration",
+        "expected_sha256": "sha256:8888888888888888888888888888888888888888888888888888888888888888",
+        "expected_generation": {
+          "project_epoch": 1,
+          "artifact_revision": 12,
+          "transcript_revision": 4
+        },
+        "evidence_class": "mandatory_live",
+        "role": "model_configuration",
+        "confidence_dimensions": [
+          "identity",
+          "derivation"
+        ]
+      },
+      {
+        "dependency_id": "turn_01J00000000000000000000007",
+        "dependency_type": "transcript_turn",
+        "expected_sha256": "sha256:7777777777777777777777777777777777777777777777777777777777777777",
+        "expected_generation": {
+          "project_epoch": 1,
+          "artifact_revision": 12,
+          "transcript_revision": 4
+        },
+        "evidence_class": "advisory",
+        "role": "authorship_basis",
+        "confidence_dimensions": [
+          "authorship",
+          "completeness"
+        ]
+      },
+      {
+        "dependency_id": "idea_01J00000000000000000000009",
+        "dependency_type": "shadow_comparison",
+        "expected_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+        "expected_generation": {
+          "project_epoch": 1,
+          "artifact_revision": 12,
+          "transcript_revision": 4
+        },
+        "evidence_class": "shadow",
+        "role": "other",
+        "confidence_dimensions": [
+          "completeness"
+        ]
+      }
+    ],
+    "reason_code": "DIRECT_HASH_LINKED_DERIVATION",
+    "created_at": "2026-07-17T18:43:11.456Z"
+  },
+  "evaluations": [
+    {
+      "schema_version": "1.0",
+      "evaluation_id": "evaluation_01J0000000000000000000000W",
+      "assertion_id": "assertion_01J0000000000000000000000V",
+      "assertion_sha256": "sha256:ae9c369ab2bb3ed7fb653a57367074056993f28bfe3b333eda28150b34c3f3b4",
+      "project_id": "project_01J00000000000000000000001",
+      "evaluated_against": {
+        "chain_head": "sha256:5b674a7e126654f8b1c4ea0e31816eae81516869dc9682d601272077e0393815",
+        "event_sequence": 4,
+        "project_epoch": 1,
+        "schema_catalog_sha256": "sha256:7777777777777777777777777777777777777777777777777777777777777777"
+      },
+      "evaluator": {
+        "subsystem": "native_verifier",
+        "application_version": "0.4.0"
+      },
+      "status": "exact",
+      "confidence": {
+        "integrity": "exact",
+        "identity": "exact",
+        "chronology": "exact",
+        "derivation": "exact",
+        "authorship": "not_applicable",
+        "completeness": "exact"
+      },
+      "boundary": null,
+      "dependency_results": [
+        {
+          "dependency_id": "event_01J00000000000000000000004",
+          "evidence_class": "mandatory_retained",
+          "status": "valid",
+          "observed_sha256": "sha256:eb03e514fa6fcfcd291357668559b24387a84256fc39d6fb0621529003d0988e",
+          "observed_generation": {
+            "project_epoch": 1,
+            "artifact_revision": 12,
+            "transcript_revision": 4
+          }
+        },
+        {
+          "dependency_id": "record_01J00000000000000000000005",
+          "evidence_class": "mandatory_live",
+          "status": "valid",
+          "observed_sha256": "sha256:8888888888888888888888888888888888888888888888888888888888888888",
+          "observed_generation": {
+            "project_epoch": 1,
+            "artifact_revision": 12,
+            "transcript_revision": 4
+          }
+        },
+        {
+          "dependency_id": "turn_01J00000000000000000000007",
+          "evidence_class": "advisory",
+          "status": "valid",
+          "observed_sha256": "sha256:7777777777777777777777777777777777777777777777777777777777777777",
+          "observed_generation": {
+            "project_epoch": 1,
+            "artifact_revision": 12,
+            "transcript_revision": 4
+          }
+        },
+        {
+          "dependency_id": "idea_01J00000000000000000000009",
+          "evidence_class": "shadow",
+          "status": "not_evaluated",
+          "observed_sha256": null,
+          "observed_generation": null
+        }
+      ],
+      "reason_code": "DIRECT_HASH_LINKED_DERIVATION",
+      "supersedes_evaluation_id": null,
+      "evaluated_at": "2026-07-17T18:44:12.789Z"
+    },
+    {
+      "schema_version": "1.0",
+      "evaluation_id": "evaluation_01J0000000000000000000000X",
+      "assertion_id": "assertion_01J0000000000000000000000V",
+      "assertion_sha256": "sha256:ae9c369ab2bb3ed7fb653a57367074056993f28bfe3b333eda28150b34c3f3b4",
+      "project_id": "project_01J00000000000000000000001",
+      "evaluated_against": {
+        "chain_head": "sha256:5b674a7e126654f8b1c4ea0e31816eae81516869dc9682d601272077e0393815",
+        "event_sequence": 4,
+        "project_epoch": 1,
+        "schema_catalog_sha256": "sha256:7777777777777777777777777777777777777777777777777777777777777777"
+      },
+      "evaluator": {
+        "subsystem": "native_verifier",
+        "application_version": "0.4.0"
+      },
+      "status": "degraded",
+      "confidence": {
+        "integrity": "exact",
+        "identity": "exact",
+        "chronology": "exact",
+        "derivation": "exact",
+        "authorship": "degraded",
+        "completeness": "degraded"
+      },
+      "boundary": {
+        "kind": "evidence_access",
+        "affected_dimensions": [
+          "authorship",
+          "completeness"
+        ],
+        "dependency_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "compatibility": null
+      },
+      "dependency_results": [
+        {
+          "dependency_id": "event_01J00000000000000000000004",
+          "evidence_class": "mandatory_retained",
+          "status": "valid",
+          "observed_sha256": "sha256:eb03e514fa6fcfcd291357668559b24387a84256fc39d6fb0621529003d0988e",
+          "observed_generation": {
+            "project_epoch": 1,
+            "artifact_revision": 12,
+            "transcript_revision": 4
+          }
+        },
+        {
+          "dependency_id": "record_01J00000000000000000000005",
+          "evidence_class": "mandatory_live",
+          "status": "valid",
+          "observed_sha256": "sha256:8888888888888888888888888888888888888888888888888888888888888888",
+          "observed_generation": {
+            "project_epoch": 1,
+            "artifact_revision": 12,
+            "transcript_revision": 4
+          }
+        },
+        {
+          "dependency_id": "turn_01J00000000000000000000007",
+          "evidence_class": "advisory",
+          "status": "missing",
+          "observed_sha256": null,
+          "observed_generation": null
+        },
+        {
+          "dependency_id": "idea_01J00000000000000000000009",
+          "evidence_class": "shadow",
+          "status": "not_evaluated",
+          "observed_sha256": null,
+          "observed_generation": null
+        }
+      ],
+      "reason_code": "ADVISORY_EVIDENCE_UNAVAILABLE",
+      "supersedes_evaluation_id": "evaluation_01J0000000000000000000000W",
+      "evaluated_at": "2026-07-17T18:45:13.012Z"
+    },
+    {
+      "schema_version": "1.0",
+      "evaluation_id": "evaluation_01J0000000000000000000000Y",
+      "assertion_id": "assertion_01J0000000000000000000000V",
+      "assertion_sha256": "sha256:ae9c369ab2bb3ed7fb653a57367074056993f28bfe3b333eda28150b34c3f3b4",
+      "project_id": "project_01J00000000000000000000001",
+      "evaluated_against": {
+        "chain_head": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "event_sequence": 5,
+        "project_epoch": 1,
+        "schema_catalog_sha256": "sha256:7777777777777777777777777777777777777777777777777777777777777777"
+      },
+      "evaluator": {
+        "subsystem": "native_verifier",
+        "application_version": "0.4.0"
+      },
+      "status": "stale",
+      "confidence": {
+        "integrity": "degraded",
+        "identity": "exact",
+        "chronology": "degraded",
+        "derivation": "degraded",
+        "authorship": "unverified",
+        "completeness": "degraded"
+      },
+      "boundary": {
+        "kind": "dependency_change",
+        "affected_dimensions": [
+          "integrity",
+          "chronology",
+          "derivation"
+        ],
+        "dependency_ids": [
+          "event_01J00000000000000000000004"
+        ],
+        "compatibility": null
+      },
+      "dependency_results": [
+        {
+          "dependency_id": "event_01J00000000000000000000004",
+          "evidence_class": "mandatory_retained",
+          "status": "changed",
+          "observed_sha256": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+          "observed_generation": {
+            "project_epoch": 1,
+            "artifact_revision": 13,
+            "transcript_revision": 4
+          }
+        },
+        {
+          "dependency_id": "record_01J00000000000000000000005",
+          "evidence_class": "mandatory_live",
+          "status": "valid",
+          "observed_sha256": "sha256:8888888888888888888888888888888888888888888888888888888888888888",
+          "observed_generation": {
+            "project_epoch": 1,
+            "artifact_revision": 12,
+            "transcript_revision": 4
+          }
+        },
+        {
+          "dependency_id": "turn_01J00000000000000000000007",
+          "evidence_class": "advisory",
+          "status": "valid",
+          "observed_sha256": "sha256:7777777777777777777777777777777777777777777777777777777777777777",
+          "observed_generation": {
+            "project_epoch": 1,
+            "artifact_revision": 12,
+            "transcript_revision": 4
+          }
+        },
+        {
+          "dependency_id": "idea_01J00000000000000000000009",
+          "evidence_class": "shadow",
+          "status": "not_evaluated",
+          "observed_sha256": null,
+          "observed_generation": null
+        }
+      ],
+      "reason_code": "DEPENDENCY_GENERATION_MISMATCH",
+      "supersedes_evaluation_id": "evaluation_01J0000000000000000000000X",
+      "evaluated_at": "2026-07-17T18:46:14.345Z"
+    },
+    {
+      "schema_version": "1.0",
+      "evaluation_id": "evaluation_01J0000000000000000000000Z",
+      "assertion_id": "assertion_01J0000000000000000000000V",
+      "assertion_sha256": "sha256:ae9c369ab2bb3ed7fb653a57367074056993f28bfe3b333eda28150b34c3f3b4",
+      "project_id": "project_01J00000000000000000000001",
+      "evaluated_against": {
+        "chain_head": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "event_sequence": 5,
+        "project_epoch": 1,
+        "schema_catalog_sha256": "sha256:7777777777777777777777777777777777777777777777777777777777777777"
+      },
+      "evaluator": {
+        "subsystem": "native_verifier",
+        "application_version": "0.4.0"
+      },
+      "status": "refused",
+      "confidence": {
+        "integrity": "exact",
+        "identity": "unverified",
+        "chronology": "exact",
+        "derivation": "unverified",
+        "authorship": "not_applicable",
+        "completeness": "unverified"
+      },
+      "boundary": {
+        "kind": "compatibility",
+        "affected_dimensions": [
+          "identity",
+          "derivation",
+          "completeness"
+        ],
+        "dependency_ids": [
+          "record_01J00000000000000000000005"
+        ],
+        "compatibility": {
+          "required_schema": "1.0",
+          "observed_schema": "2.0"
+        }
+      },
+      "dependency_results": [
+        {
+          "dependency_id": "event_01J00000000000000000000004",
+          "evidence_class": "mandatory_retained",
+          "status": "valid",
+          "observed_sha256": "sha256:eb03e514fa6fcfcd291357668559b24387a84256fc39d6fb0621529003d0988e",
+          "observed_generation": {
+            "project_epoch": 1,
+            "artifact_revision": 12,
+            "transcript_revision": 4
+          }
+        },
+        {
+          "dependency_id": "record_01J00000000000000000000005",
+          "evidence_class": "mandatory_live",
+          "status": "incompatible",
+          "observed_sha256": null,
+          "observed_generation": null
+        },
+        {
+          "dependency_id": "turn_01J00000000000000000000007",
+          "evidence_class": "advisory",
+          "status": "valid",
+          "observed_sha256": "sha256:7777777777777777777777777777777777777777777777777777777777777777",
+          "observed_generation": {
+            "project_epoch": 1,
+            "artifact_revision": 12,
+            "transcript_revision": 4
+          }
+        },
+        {
+          "dependency_id": "idea_01J00000000000000000000009",
+          "evidence_class": "shadow",
+          "status": "not_evaluated",
+          "observed_sha256": null,
+          "observed_generation": null
+        }
+      ],
+      "reason_code": "SCHEMA_INCOMPATIBLE",
+      "supersedes_evaluation_id": "evaluation_01J0000000000000000000000Y",
+      "evaluated_at": "2026-07-17T18:47:15.678Z"
+    },
+    {
+      "schema_version": "1.0",
+      "evaluation_id": "evaluation_01J00000000000000000000000",
+      "assertion_id": "assertion_01J0000000000000000000000V",
+      "assertion_sha256": "sha256:ae9c369ab2bb3ed7fb653a57367074056993f28bfe3b333eda28150b34c3f3b4",
+      "project_id": "project_01J00000000000000000000001",
+      "evaluated_against": {
+        "chain_head": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "event_sequence": 5,
+        "project_epoch": 1,
+        "schema_catalog_sha256": "sha256:7777777777777777777777777777777777777777777777777777777777777777"
+      },
+      "evaluator": {
+        "subsystem": "native_verifier",
+        "application_version": "0.4.0"
+      },
+      "status": "unverified",
+      "confidence": {
+        "integrity": "exact",
+        "identity": "unverified",
+        "chronology": "exact",
+        "derivation": "unverified",
+        "authorship": "not_applicable",
+        "completeness": "unverified"
+      },
+      "boundary": {
+        "kind": "evidence_access",
+        "affected_dimensions": [
+          "identity",
+          "derivation",
+          "completeness"
+        ],
+        "dependency_ids": [
+          "record_01J00000000000000000000005"
+        ],
+        "compatibility": null
+      },
+      "dependency_results": [
+        {
+          "dependency_id": "event_01J00000000000000000000004",
+          "evidence_class": "mandatory_retained",
+          "status": "valid",
+          "observed_sha256": "sha256:eb03e514fa6fcfcd291357668559b24387a84256fc39d6fb0621529003d0988e",
+          "observed_generation": {
+            "project_epoch": 1,
+            "artifact_revision": 12,
+            "transcript_revision": 4
+          }
+        },
+        {
+          "dependency_id": "record_01J00000000000000000000005",
+          "evidence_class": "mandatory_live",
+          "status": "inaccessible",
+          "observed_sha256": null,
+          "observed_generation": null
+        },
+        {
+          "dependency_id": "turn_01J00000000000000000000007",
+          "evidence_class": "advisory",
+          "status": "valid",
+          "observed_sha256": "sha256:7777777777777777777777777777777777777777777777777777777777777777",
+          "observed_generation": {
+            "project_epoch": 1,
+            "artifact_revision": 12,
+            "transcript_revision": 4
+          }
+        },
+        {
+          "dependency_id": "idea_01J00000000000000000000009",
+          "evidence_class": "shadow",
+          "status": "not_evaluated",
+          "observed_sha256": null,
+          "observed_generation": null
+        }
+      ],
+      "reason_code": "AUTHORIZED_EVIDENCE_UNAVAILABLE",
+      "supersedes_evaluation_id": "evaluation_01J0000000000000000000000Z",
+      "evaluated_at": "2026-07-17T18:48:16.901Z"
+    }
+  ],
+  "consumer_decisions": [
+    {
+      "status": "exact",
+      "action": "promote"
+    },
+    {
+      "status": "degraded",
+      "action": "warn"
+    },
+    {
+      "status": "refused",
+      "action": "refuse"
+    },
+    {
+      "status": "stale",
+      "action": "reevaluate"
+    },
+    {
+      "status": "unverified",
+      "action": "withhold_exact"
+    }
+  ],
+  "forbidden_exact_cases": {
+    "unknown_provenance": {
+      "schema_version": "1.0",
+      "assertion_id": "assertion_01J0000000000000000000000V",
+      "project_id": "project_01J00000000000000000000001",
+      "subject": {
+        "entity_type": "artifact_revision",
+        "entity_id": "revision_01J0000000000000000000000B",
+        "content_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+      },
+      "predicate": "derived_from",
+      "object": {
+        "entity_type": "invocation_output",
+        "entity_id": "record_01J00000000000000000000005",
+        "content_sha256": "sha256:9999999999999999999999999999999999999999999999999999999999999999"
+      },
+      "source_anchor": {
+        "event_id": "event_01J00000000000000000000004",
+        "event_sequence": 2,
+        "event_hash": "sha256:eb03e514fa6fcfcd291357668559b24387a84256fc39d6fb0621529003d0988e"
+      },
+      "source_generation": {
+        "project_epoch": 1,
+        "artifact_revision": 12,
+        "transcript_revision": 4
+      },
+      "lifecycle_phase": "accepted_into_work",
+      "producer": {
+        "subsystem": "provenance_writer",
+        "application_version": "0.4.0"
+      },
+      "dependencies": [
+        {
+          "dependency_id": "event_01J00000000000000000000004",
+          "dependency_type": "provenance_event",
+          "expected_sha256": "sha256:eb03e514fa6fcfcd291357668559b24387a84256fc39d6fb0621529003d0988e",
+          "expected_generation": {
+            "project_epoch": 1,
+            "artifact_revision": 12,
+            "transcript_revision": 4
+          },
+          "evidence_class": "mandatory_retained",
+          "role": "source_anchor",
+          "confidence_dimensions": [
+            "integrity",
+            "chronology",
+            "derivation"
+          ]
+        },
+        {
+          "dependency_id": "record_01J00000000000000000000005",
+          "dependency_type": "model_configuration",
+          "expected_sha256": "sha256:8888888888888888888888888888888888888888888888888888888888888888",
+          "expected_generation": {
+            "project_epoch": 1,
+            "artifact_revision": 12,
+            "transcript_revision": 4
+          },
+          "evidence_class": "mandatory_live",
+          "role": "model_configuration",
+          "confidence_dimensions": [
+            "identity",
+            "derivation"
+          ]
+        },
+        {
+          "dependency_id": "turn_01J00000000000000000000007",
+          "dependency_type": "transcript_turn",
+          "expected_sha256": "sha256:7777777777777777777777777777777777777777777777777777777777777777",
+          "expected_generation": {
+            "project_epoch": 1,
+            "artifact_revision": 12,
+            "transcript_revision": 4
+          },
+          "evidence_class": "advisory",
+          "role": "authorship_basis",
+          "confidence_dimensions": [
+            "authorship",
+            "completeness"
+          ]
+        },
+        {
+          "dependency_id": "idea_01J00000000000000000000009",
+          "dependency_type": "shadow_comparison",
+          "expected_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+          "expected_generation": {
+            "project_epoch": 1,
+            "artifact_revision": 12,
+            "transcript_revision": 4
+          },
+          "evidence_class": "shadow",
+          "role": "other",
+          "confidence_dimensions": [
+            "completeness"
+          ]
+        }
+      ],
+      "reason_code": "DIRECT_HASH_LINKED_DERIVATION",
+      "created_at": "2026-07-17T18:43:11.456Z",
+      "assertion_sha256": "sha256:ae9c369ab2bb3ed7fb653a57367074056993f28bfe3b333eda28150b34c3f3b4"
+    },
+    "unknown_confidence": {
+      "schema_version": "1.0",
+      "evaluation_id": "evaluation_01J0000000000000000000000W",
+      "assertion_id": "assertion_01J0000000000000000000000V",
+      "assertion_sha256": "sha256:ae9c369ab2bb3ed7fb653a57367074056993f28bfe3b333eda28150b34c3f3b4",
+      "project_id": "project_01J00000000000000000000001",
+      "evaluated_against": {
+        "chain_head": "sha256:5b674a7e126654f8b1c4ea0e31816eae81516869dc9682d601272077e0393815",
+        "event_sequence": 4,
+        "project_epoch": 1,
+        "schema_catalog_sha256": "sha256:7777777777777777777777777777777777777777777777777777777777777777"
+      },
+      "evaluator": {
+        "subsystem": "native_verifier",
+        "application_version": "0.4.0"
+      },
+      "status": "exact",
+      "confidence": {
+        "integrity": "exact",
+        "identity": "exact",
+        "chronology": "exact",
+        "derivation": "unverified",
+        "authorship": "not_applicable",
+        "completeness": "exact"
+      },
+      "boundary": null,
+      "dependency_results": [
+        {
+          "dependency_id": "event_01J00000000000000000000004",
+          "evidence_class": "mandatory_retained",
+          "status": "valid",
+          "observed_sha256": "sha256:eb03e514fa6fcfcd291357668559b24387a84256fc39d6fb0621529003d0988e",
+          "observed_generation": {
+            "project_epoch": 1,
+            "artifact_revision": 12,
+            "transcript_revision": 4
+          }
+        },
+        {
+          "dependency_id": "record_01J00000000000000000000005",
+          "evidence_class": "mandatory_live",
+          "status": "valid",
+          "observed_sha256": "sha256:8888888888888888888888888888888888888888888888888888888888888888",
+          "observed_generation": {
+            "project_epoch": 1,
+            "artifact_revision": 12,
+            "transcript_revision": 4
+          }
+        },
+        {
+          "dependency_id": "turn_01J00000000000000000000007",
+          "evidence_class": "advisory",
+          "status": "valid",
+          "observed_sha256": "sha256:7777777777777777777777777777777777777777777777777777777777777777",
+          "observed_generation": {
+            "project_epoch": 1,
+            "artifact_revision": 12,
+            "transcript_revision": 4
+          }
+        },
+        {
+          "dependency_id": "idea_01J00000000000000000000009",
+          "evidence_class": "shadow",
+          "status": "not_evaluated",
+          "observed_sha256": null,
+          "observed_generation": null
+        }
+      ],
+      "reason_code": "DIRECT_HASH_LINKED_DERIVATION",
+      "supersedes_evaluation_id": null,
+      "evaluated_at": "2026-07-17T18:44:12.789Z"
+    },
+    "incompatible_dependency": {
+      "schema_version": "1.0",
+      "evaluation_id": "evaluation_01J0000000000000000000000W",
+      "assertion_id": "assertion_01J0000000000000000000000V",
+      "assertion_sha256": "sha256:ae9c369ab2bb3ed7fb653a57367074056993f28bfe3b333eda28150b34c3f3b4",
+      "project_id": "project_01J00000000000000000000001",
+      "evaluated_against": {
+        "chain_head": "sha256:5b674a7e126654f8b1c4ea0e31816eae81516869dc9682d601272077e0393815",
+        "event_sequence": 4,
+        "project_epoch": 1,
+        "schema_catalog_sha256": "sha256:7777777777777777777777777777777777777777777777777777777777777777"
+      },
+      "evaluator": {
+        "subsystem": "native_verifier",
+        "application_version": "0.4.0"
+      },
+      "status": "exact",
+      "confidence": {
+        "integrity": "exact",
+        "identity": "exact",
+        "chronology": "exact",
+        "derivation": "exact",
+        "authorship": "not_applicable",
+        "completeness": "exact"
+      },
+      "boundary": null,
+      "dependency_results": [
+        {
+          "dependency_id": "event_01J00000000000000000000004",
+          "evidence_class": "mandatory_retained",
+          "status": "incompatible",
+          "observed_sha256": "sha256:eb03e514fa6fcfcd291357668559b24387a84256fc39d6fb0621529003d0988e",
+          "observed_generation": {
+            "project_epoch": 1,
+            "artifact_revision": 12,
+            "transcript_revision": 4
+          }
+        },
+        {
+          "dependency_id": "record_01J00000000000000000000005",
+          "evidence_class": "mandatory_live",
+          "status": "valid",
+          "observed_sha256": "sha256:8888888888888888888888888888888888888888888888888888888888888888",
+          "observed_generation": {
+            "project_epoch": 1,
+            "artifact_revision": 12,
+            "transcript_revision": 4
+          }
+        },
+        {
+          "dependency_id": "turn_01J00000000000000000000007",
+          "evidence_class": "advisory",
+          "status": "valid",
+          "observed_sha256": "sha256:7777777777777777777777777777777777777777777777777777777777777777",
+          "observed_generation": {
+            "project_epoch": 1,
+            "artifact_revision": 12,
+            "transcript_revision": 4
+          }
+        },
+        {
+          "dependency_id": "idea_01J00000000000000000000009",
+          "evidence_class": "shadow",
+          "status": "not_evaluated",
+          "observed_sha256": null,
+          "observed_generation": null
+        }
+      ],
+      "reason_code": "DIRECT_HASH_LINKED_DERIVATION",
+      "supersedes_evaluation_id": null,
+      "evaluated_at": "2026-07-17T18:44:12.789Z"
+    },
+    "uncertainty_boundary": {
+      "schema_version": "1.0",
+      "evaluation_id": "evaluation_01J0000000000000000000000W",
+      "assertion_id": "assertion_01J0000000000000000000000V",
+      "assertion_sha256": "sha256:ae9c369ab2bb3ed7fb653a57367074056993f28bfe3b333eda28150b34c3f3b4",
+      "project_id": "project_01J00000000000000000000001",
+      "evaluated_against": {
+        "chain_head": "sha256:5b674a7e126654f8b1c4ea0e31816eae81516869dc9682d601272077e0393815",
+        "event_sequence": 4,
+        "project_epoch": 1,
+        "schema_catalog_sha256": "sha256:7777777777777777777777777777777777777777777777777777777777777777"
+      },
+      "evaluator": {
+        "subsystem": "native_verifier",
+        "application_version": "0.4.0"
+      },
+      "status": "exact",
+      "confidence": {
+        "integrity": "exact",
+        "identity": "exact",
+        "chronology": "exact",
+        "derivation": "exact",
+        "authorship": "not_applicable",
+        "completeness": "exact"
+      },
+      "boundary": {
+        "kind": "coverage",
+        "affected_dimensions": [
+          "completeness"
+        ],
+        "dependency_ids": [],
+        "compatibility": null
+      },
+      "dependency_results": [
+        {
+          "dependency_id": "event_01J00000000000000000000004",
+          "evidence_class": "mandatory_retained",
+          "status": "valid",
+          "observed_sha256": "sha256:eb03e514fa6fcfcd291357668559b24387a84256fc39d6fb0621529003d0988e",
+          "observed_generation": {
+            "project_epoch": 1,
+            "artifact_revision": 12,
+            "transcript_revision": 4
+          }
+        },
+        {
+          "dependency_id": "record_01J00000000000000000000005",
+          "evidence_class": "mandatory_live",
+          "status": "valid",
+          "observed_sha256": "sha256:8888888888888888888888888888888888888888888888888888888888888888",
+          "observed_generation": {
+            "project_epoch": 1,
+            "artifact_revision": 12,
+            "transcript_revision": 4
+          }
+        },
+        {
+          "dependency_id": "turn_01J00000000000000000000007",
+          "evidence_class": "advisory",
+          "status": "valid",
+          "observed_sha256": "sha256:7777777777777777777777777777777777777777777777777777777777777777",
+          "observed_generation": {
+            "project_epoch": 1,
+            "artifact_revision": 12,
+            "transcript_revision": 4
+          }
+        },
+        {
+          "dependency_id": "idea_01J00000000000000000000009",
+          "evidence_class": "shadow",
+          "status": "not_evaluated",
+          "observed_sha256": null,
+          "observed_generation": null
+        }
+      ],
+      "reason_code": "DIRECT_HASH_LINKED_DERIVATION",
+      "supersedes_evaluation_id": null,
+      "evaluated_at": "2026-07-17T18:44:12.789Z"
+    },
+    "unknown_artifact_generation": {
+      "schema_version": "1.0",
+      "assertion_id": "assertion_01J0000000000000000000000V",
+      "project_id": "project_01J00000000000000000000001",
+      "subject": {
+        "entity_type": "artifact_revision",
+        "entity_id": "revision_01J0000000000000000000000B",
+        "content_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+      },
+      "predicate": "derived_from",
+      "object": {
+        "entity_type": "invocation_output",
+        "entity_id": "record_01J00000000000000000000005",
+        "content_sha256": "sha256:9999999999999999999999999999999999999999999999999999999999999999"
+      },
+      "source_anchor": {
+        "event_id": "event_01J00000000000000000000004",
+        "event_sequence": 2,
+        "event_hash": "sha256:eb03e514fa6fcfcd291357668559b24387a84256fc39d6fb0621529003d0988e"
+      },
+      "source_generation": {
+        "project_epoch": 1,
+        "artifact_revision": null,
+        "transcript_revision": 4
+      },
+      "lifecycle_phase": "accepted_into_work",
+      "producer": {
+        "subsystem": "provenance_writer",
+        "application_version": "0.4.0"
+      },
+      "provenance": {
+        "basis": "direct_record",
+        "evidence": [
+          {
+            "evidence_id": "event_01J00000000000000000000004",
+            "evidence_type": "provenance_event",
+            "content_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555"
+          },
+          {
+            "evidence_id": "record_01J00000000000000000000005",
+            "evidence_type": "invocation_response",
+            "content_sha256": "sha256:9999999999999999999999999999999999999999999999999999999999999999"
+          }
+        ]
+      },
+      "dependencies": [
+        {
+          "dependency_id": "event_01J00000000000000000000004",
+          "dependency_type": "provenance_event",
+          "expected_sha256": "sha256:eb03e514fa6fcfcd291357668559b24387a84256fc39d6fb0621529003d0988e",
+          "expected_generation": {
+            "project_epoch": 1,
+            "artifact_revision": 12,
+            "transcript_revision": 4
+          },
+          "evidence_class": "mandatory_retained",
+          "role": "source_anchor",
+          "confidence_dimensions": [
+            "integrity",
+            "chronology",
+            "derivation"
+          ]
+        },
+        {
+          "dependency_id": "record_01J00000000000000000000005",
+          "dependency_type": "model_configuration",
+          "expected_sha256": "sha256:8888888888888888888888888888888888888888888888888888888888888888",
+          "expected_generation": {
+            "project_epoch": 1,
+            "artifact_revision": 12,
+            "transcript_revision": 4
+          },
+          "evidence_class": "mandatory_live",
+          "role": "model_configuration",
+          "confidence_dimensions": [
+            "identity",
+            "derivation"
+          ]
+        },
+        {
+          "dependency_id": "turn_01J00000000000000000000007",
+          "dependency_type": "transcript_turn",
+          "expected_sha256": "sha256:7777777777777777777777777777777777777777777777777777777777777777",
+          "expected_generation": {
+            "project_epoch": 1,
+            "artifact_revision": 12,
+            "transcript_revision": 4
+          },
+          "evidence_class": "advisory",
+          "role": "authorship_basis",
+          "confidence_dimensions": [
+            "authorship",
+            "completeness"
+          ]
+        },
+        {
+          "dependency_id": "idea_01J00000000000000000000009",
+          "dependency_type": "shadow_comparison",
+          "expected_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+          "expected_generation": {
+            "project_epoch": 1,
+            "artifact_revision": 12,
+            "transcript_revision": 4
+          },
+          "evidence_class": "shadow",
+          "role": "other",
+          "confidence_dimensions": [
+            "completeness"
+          ]
+        }
+      ],
+      "reason_code": "DIRECT_HASH_LINKED_DERIVATION",
+      "created_at": "2026-07-17T18:43:11.456Z",
+      "assertion_sha256": "sha256:ae9c369ab2bb3ed7fb653a57367074056993f28bfe3b333eda28150b34c3f3b4"
+    }
+  },
+  "invariants": [
+    "The source anchor identifies prior basis evidence and differs from the later assertion-recording event.",
+    "The assertion digest excludes only assertion_sha256.",
+    "Evaluations are immutable point-in-time conclusions; later records supersede current use without mutation.",
+    "Unknown provenance, generation, compatibility, or confidence never produces exact.",
+    "Consumers decide from canonical assertions, evaluations, and registries without producer-specific internal state."
+  ]
+}

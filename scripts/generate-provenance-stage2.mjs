@@ -8,6 +8,7 @@ const output = path.join(root, "schemas", "provenance", "v1");
 const validDir = path.join(output, "fixtures", "valid");
 const invalidDir = path.join(output, "fixtures", "invalid");
 const vectorDir = path.join(output, "vectors");
+const registryDir = path.join(output, "registries");
 const baseId = "https://thinkloom.app/schemas/provenance/1.0";
 const draft = "https://json-schema.org/draft/2020-12/schema";
 const timestampValue = "2026-07-17T18:42:10.123Z";
@@ -22,6 +23,7 @@ const ids = {
   checkpoint: typedId("checkpoint", "D"), release: typedId("release", "E"), template: typedId("template", "F"), key: typedId("key", "G"),
   policy: typedId("policy", "H"), correction: typedId("correction", "J"), normalization: typedId("normalization", "K"), disposition: typedId("disposition", "M"),
   transaction: typedId("transaction", "N"), failure: typedId("failure", "P"), stream: typedId("stream", "Q"), purge: typedId("purge", "R"),
+  assertion: typedId("assertion", "V"), evaluation: typedId("evaluation", "W"),
 };
 
 if (!Object.values(ids).every((value) => /^[a-z]+_[0-9A-HJKMNP-TV-Z]{26}$/.test(value))) throw new Error("Generated fixture identifier is invalid.");
@@ -31,6 +33,7 @@ const timestamp = { type: "string", format: "date-time", pattern: "^\\d{4}-\\d{2
 const sha = { type: "string", pattern: "^sha256:[a-f0-9]{64}$" };
 const ulidPattern = "[0-9A-HJKMNP-TV-Z]{26}";
 const identifier = (prefix) => ({ type: "string", pattern: `^${prefix}_${ulidPattern}$` });
+const typedIdentifier = { type: "string", pattern: `^[a-z][a-z0-9_]*_${ulidPattern}$` };
 const repositoryPath = { type: "string", minLength: 1, pattern: "^(?!/)(?![A-Za-z]:)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(?:/|$))[^\\u0000-\\u001f]+$" };
 const nonEmptyString = { type: "string", minLength: 1 };
 const jsonValue = {};
@@ -39,6 +42,60 @@ const ref = (name) => ({ $ref: `${baseId}/${name}.schema.json` });
 const arrayOf = (items, options = {}) => ({ type: "array", items, ...options });
 const mapOf = (additionalProperties) => ({ type: "object", additionalProperties });
 const closed = (properties, required = Object.keys(properties), extra = {}) => ({ type: "object", properties, required, additionalProperties: false, ...extra });
+
+const assertionLifecyclePhases = ["proposed", "generated", "staged_preview", "accepted_into_work", "revised", "finalized", "published", "superseded", "purged"];
+const assertionEvaluationStatuses = ["exact", "degraded", "refused", "stale", "unverified"];
+const confidenceDimensions = ["integrity", "identity", "chronology", "derivation", "authorship", "completeness"];
+const confidenceValues = ["exact", "degraded", "unverified", "not_applicable"];
+const evidenceClasses = ["mandatory_live", "mandatory_retained", "advisory", "shadow"];
+const assertionBoundaryKinds = ["missing_provenance", "unknown_generation", "evidence_access", "compatibility", "dependency_change", "policy", "interpretation", "coverage"];
+const dependencyResultStatuses = ["valid", "missing", "changed", "inaccessible", "incompatible", "not_evaluated"];
+const assertionReasonCodes = [
+  "DIRECT_HASH_LINKED_DERIVATION",
+  "VERIFIED_TRANSITIVE_DERIVATION",
+  "REQUIRED_PROVENANCE_UNKNOWN",
+  "SOURCE_GENERATION_UNKNOWN",
+  "REQUIRED_EVIDENCE_MISSING",
+  "DEPENDENCY_DIGEST_MISMATCH",
+  "DEPENDENCY_GENERATION_MISMATCH",
+  "SOURCE_ANCHOR_STALE",
+  "SCHEMA_INCOMPATIBLE",
+  "POLICY_REFUSED",
+  "AUTHORIZED_EVIDENCE_UNAVAILABLE",
+  "ADVISORY_EVIDENCE_UNAVAILABLE",
+  "ASSERTION_NOT_EVALUATED",
+  "AUTHORSHIP_UNCERTAIN",
+  "CHRONOLOGY_INCOMPLETE",
+  "COMPLETENESS_INCOMPLETE",
+];
+const assertionBoundaryMeanings = {
+  missing_provenance: "Required provenance basis or evidence identity is absent.",
+  unknown_generation: "A required source or dependency generation is unknown.",
+  evidence_access: "Evidence exists or is expected but cannot currently be accessed.",
+  compatibility: "The observed schema or producer contract is incompatible.",
+  dependency_change: "A dependency digest, generation, or source anchor changed.",
+  policy: "A retention, authorization, or disclosure policy prohibits evaluation.",
+  interpretation: "Evidence integrity is known but its asserted interpretation is limited.",
+  coverage: "The evaluation does not cover every element required by the assertion scope.",
+};
+const assertionReasonMeanings = {
+  DIRECT_HASH_LINKED_DERIVATION: "The asserted relationship is supported by direct retained records and matching digests.",
+  VERIFIED_TRANSITIVE_DERIVATION: "A deterministic verified chain of assertions supports the relationship.",
+  REQUIRED_PROVENANCE_UNKNOWN: "Required provenance basis or evidence identity is unknown.",
+  SOURCE_GENERATION_UNKNOWN: "A required project, artifact, or transcript generation is unknown.",
+  REQUIRED_EVIDENCE_MISSING: "Evidence required for evaluation is absent.",
+  DEPENDENCY_DIGEST_MISMATCH: "A dependency digest differs from the asserted expectation.",
+  DEPENDENCY_GENERATION_MISMATCH: "A dependency generation differs from the asserted expectation.",
+  SOURCE_ANCHOR_STALE: "The source anchor no longer matches the evaluation target.",
+  SCHEMA_INCOMPATIBLE: "The available schema cannot be evaluated under the required contract.",
+  POLICY_REFUSED: "Policy explicitly prohibits producing the requested conclusion.",
+  AUTHORIZED_EVIDENCE_UNAVAILABLE: "Required protected evidence cannot be evaluated with current authorization.",
+  ADVISORY_EVIDENCE_UNAVAILABLE: "Advisory evidence is unavailable and the named confidence dimensions are degraded.",
+  ASSERTION_NOT_EVALUATED: "No authoritative evaluation has completed for this assertion and target.",
+  AUTHORSHIP_UNCERTAIN: "Evidence does not support an exact authorship interpretation.",
+  CHRONOLOGY_INCOMPLETE: "Ordering or generation evidence is incomplete.",
+  COMPLETENESS_INCOMPLETE: "The evaluation does not cover all evidence required by its asserted scope.",
+};
 
 const schemas = new Map();
 function add(name, title, body, example, description) {
@@ -83,8 +140,8 @@ const contentReferenceExample = {
 };
 add("content-reference", "Content reference", closed({
   schema_version: schemaVersion,
-  record_id: identifier("record"),
-  record_type: { enum: ["conversation_turn", "invocation_request", "invocation_response", "invocation_failure", "idea_revision", "manuscript_revision", "edit_transaction", "prompt_template", "model_configuration", "release_file", "source", "other"] },
+  record_id: typedIdentifier,
+  record_type: { enum: ["conversation_turn", "invocation_request", "invocation_response", "invocation_failure", "idea_revision", "manuscript_revision", "edit_transaction", "prompt_template", "model_configuration", "provenance_assertion", "assertion_evaluation", "release_file", "source", "other"] },
   sha256: sha,
   path: nullable(repositoryPath),
   revision_id: nullable(identifier("revision")),
@@ -99,7 +156,7 @@ add("provenance-policy", "Provenance policy", closed({
 }), policyExample, "Prospective project retention, protection, and export defaults.");
 
 const projectExample = {
-  schema_version: "1.0", application_version: "0.3.0", project_id: ids.project, title: "The Attention Commons", created_at: timestampValue, updated_at: laterTimestamp, current_phase: "ideation", publication_status: "working", provenance_policy_id: ids.policy, audio_retained: false,
+  schema_version: "1.0", application_version: "0.4.0", project_id: ids.project, title: "The Attention Commons", created_at: timestampValue, updated_at: laterTimestamp, current_phase: "ideation", publication_status: "working", provenance_policy_id: ids.policy, audio_retained: false,
 };
 add("project-manifest", "Project manifest", closed({
   schema_version: schemaVersion, application_version: { type: "string", pattern: "^\\d+\\.\\d+\\.\\d+$" }, project_id: identifier("project"), title: nonEmptyString, description: { type: "string" }, created_at: timestamp, updated_at: timestamp, current_phase: { enum: ["ideation", "drafting", "finalization"] }, publication_status: { enum: ["working", "finalized", "published"] }, provenance_policy_id: identifier("policy"), audio_retained: { const: false },
@@ -125,7 +182,7 @@ add("chain-head", "Chain head", closed({ schema_version: schemaVersion, project_
 const segmentExample = { schema_version: "1.0", project_id: ids.project, segment_number: 1, previous_segment_file_hash: null, first_event_hash: digest("4"), final_event_hash: digest("5"), first_event_sequence: 1, final_event_sequence: 2, event_count: 2, byte_length: 1024, segment_file_hash: digest("6"), sealed_at: timestampValue };
 add("ledger-segment-manifest", "Ledger segment manifest", closed({ schema_version: schemaVersion, project_id: identifier("project"), segment_number: { type: "integer", minimum: 1 }, previous_segment_file_hash: nullable(sha), first_event_hash: sha, final_event_hash: sha, first_event_sequence: { type: "integer", minimum: 1 }, final_event_sequence: { type: "integer", minimum: 1 }, event_count: { type: "integer", minimum: 1 }, byte_length: { type: "integer", minimum: 1 }, segment_file_hash: sha, sealed_at: timestamp }), segmentExample, "Immutable seal for one ledger segment.");
 
-const promptExample = { schema_version: "1.0", template_id: ids.template, version: 1, purpose: "draft_from_selected_ideas", canonical_template_body: "Use {{context}} to draft a passage.", variables: { context: { description: "Selected idea context", required: true } }, creation_application_version: "0.3.0", retention_classification: "project_record", template_sha256: digest("7"), created_at: timestampValue };
+const promptExample = { schema_version: "1.0", template_id: ids.template, version: 1, purpose: "draft_from_selected_ideas", canonical_template_body: "Use {{context}} to draft a passage.", variables: { context: { description: "Selected idea context", required: true } }, creation_application_version: "0.4.0", retention_classification: "project_record", template_sha256: digest("7"), created_at: timestampValue };
 add("prompt-template", "Prompt template", closed({ schema_version: schemaVersion, template_id: identifier("template"), version: { type: "integer", minimum: 1 }, purpose: { type: "string", pattern: "^[a-z][a-z0-9_]+$" }, canonical_template_body: nonEmptyString, variables: mapOf(closed({ description: nonEmptyString, required: { type: "boolean" } })), creation_application_version: { type: "string", pattern: "^\\d+\\.\\d+\\.\\d+$" }, retention_classification: { enum: ["application_default", "project_record", "protected_project_record"] }, template_sha256: sha, created_at: timestamp }), promptExample, "Immutable versioned prompt template. Its digest identity excludes template_sha256.");
 
 const promptRefExample = { schema_version: "1.0", template_id: ids.template, version: 1, path: "records/prompt-templates/drafting/template.json", template_sha256: digest("7") };
@@ -236,17 +293,189 @@ add("disposition-revision", "Invocation disposition revision", closed({ schema_v
 const indexManifestExample = { schema_version: "1.0", index_type: "contribution_graph", source_chain_head: digest("f"), source_event_count: 42, generator: { name: "thinkloom-indexer", version: "1.0.0", configuration_sha256: digest("0") }, content_sha256: digest("1"), generated_at: timestampValue };
 add("derived-index-manifest", "Derived index manifest", closed({ schema_version: schemaVersion, index_type: { enum: ["content_index", "contribution_graph", "manuscript_lineage", "checkpoint_index"] }, source_chain_head: sha, source_event_count: { type: "integer", minimum: 0 }, generator: closed({ name: nonEmptyString, version: { type: "string", pattern: "^\\d+\\.\\d+\\.\\d+$" }, configuration_sha256: sha }), content_sha256: sha, generated_at: timestamp }), indexManifestExample, "Non-authoritative reproducibility metadata for a derived index.");
 
+const generationCoordinates = closed({
+  project_epoch: { type: "integer", minimum: 1 },
+  artifact_revision: nullable({ type: "integer", minimum: 1 }),
+  transcript_revision: nullable({ type: "integer", minimum: 1 }),
+});
+const assertionEntityReference = closed({
+  entity_type: { enum: ["project", "artifact_revision", "manuscript_revision", "idea_revision", "transcript_revision", "invocation_request", "invocation_output", "prompt_template", "model_configuration", "release", "assertion", "other"] },
+  entity_id: typedIdentifier,
+  content_sha256: sha,
+});
+const assertionProducer = closed({
+  subsystem: { type: "string", pattern: "^[a-z][a-z0-9_]+$" },
+  application_version: { type: "string", pattern: "^\\d+\\.\\d+\\.\\d+$" },
+});
+const assertionEvidence = closed({
+  evidence_id: typedIdentifier,
+  evidence_type: { type: "string", pattern: "^[a-z][a-z0-9_]+$" },
+  content_sha256: sha,
+});
+const assertionDependency = closed({
+  dependency_id: typedIdentifier,
+  dependency_type: { type: "string", pattern: "^[a-z][a-z0-9_]+$" },
+  expected_sha256: sha,
+  expected_generation: generationCoordinates,
+  evidence_class: { enum: evidenceClasses },
+  role: { enum: ["source_anchor", "content_basis", "model_configuration", "prompt_template", "authorship_basis", "chronology_basis", "compatibility_basis", "other"] },
+  confidence_dimensions: arrayOf({ enum: confidenceDimensions }, { minItems: 1, uniqueItems: true }),
+});
+const assertionIdentity = {
+  schema_version: "1.0",
+  assertion_id: ids.assertion,
+  project_id: ids.project,
+  subject: { entity_type: "artifact_revision", entity_id: ids.revision2, content_sha256: digest("e") },
+  predicate: "derived_from",
+  object: { entity_type: "invocation_output", entity_id: ids.record, content_sha256: digest("9") },
+  source_anchor: { event_id: ids.event2, event_sequence: 2, event_hash: digest("5") },
+  source_generation: { project_epoch: 1, artifact_revision: 12, transcript_revision: 4 },
+  lifecycle_phase: "accepted_into_work",
+  producer: { subsystem: "provenance_writer", application_version: "0.4.0" },
+  provenance: { basis: "direct_record", evidence: [{ evidence_id: ids.event2, evidence_type: "provenance_event", content_sha256: digest("5") }, { evidence_id: ids.record, evidence_type: "invocation_response", content_sha256: digest("9") }] },
+  dependencies: [
+    { dependency_id: ids.event2, dependency_type: "provenance_event", expected_sha256: digest("5"), expected_generation: { project_epoch: 1, artifact_revision: 12, transcript_revision: 4 }, evidence_class: "mandatory_retained", role: "source_anchor", confidence_dimensions: ["integrity", "chronology", "derivation"] },
+    { dependency_id: ids.record, dependency_type: "model_configuration", expected_sha256: digest("8"), expected_generation: { project_epoch: 1, artifact_revision: 12, transcript_revision: 4 }, evidence_class: "mandatory_live", role: "model_configuration", confidence_dimensions: ["identity", "derivation"] },
+    { dependency_id: ids.turn, dependency_type: "transcript_turn", expected_sha256: digest("7"), expected_generation: { project_epoch: 1, artifact_revision: 12, transcript_revision: 4 }, evidence_class: "advisory", role: "authorship_basis", confidence_dimensions: ["authorship", "completeness"] },
+    { dependency_id: ids.idea, dependency_type: "shadow_comparison", expected_sha256: digest("2"), expected_generation: { project_epoch: 1, artifact_revision: 12, transcript_revision: 4 }, evidence_class: "shadow", role: "other", confidence_dimensions: ["completeness"] },
+  ],
+  reason_code: "DIRECT_HASH_LINKED_DERIVATION",
+  created_at: laterTimestamp,
+};
+const assertionExample = { ...assertionIdentity, assertion_sha256: sha256(assertionIdentity) };
+const assertionRules = {
+  allOf: [
+    {
+      if: { properties: { subject: { type: "object", properties: { entity_type: { const: "artifact_revision" } }, required: ["entity_type"] } }, required: ["subject"] },
+      then: { properties: { source_generation: { type: "object", properties: { artifact_revision: { type: "integer", minimum: 1 } }, required: ["artifact_revision"] } } },
+    },
+    {
+      if: { properties: { subject: { type: "object", properties: { entity_type: { const: "transcript_revision" } }, required: ["entity_type"] } }, required: ["subject"] },
+      then: { properties: { source_generation: { type: "object", properties: { transcript_revision: { type: "integer", minimum: 1 } }, required: ["transcript_revision"] } } },
+    },
+  ],
+};
+add("provenance-assertion", "Canonical provenance assertion", closed({
+  schema_version: schemaVersion,
+  assertion_id: identifier("assertion"),
+  project_id: identifier("project"),
+  subject: assertionEntityReference,
+  predicate: { type: "string", pattern: "^[a-z][a-z0-9_]+$" },
+  object: assertionEntityReference,
+  source_anchor: closed({ event_id: identifier("event"), event_sequence: { type: "integer", minimum: 1 }, event_hash: sha }),
+  source_generation: generationCoordinates,
+  lifecycle_phase: { enum: assertionLifecyclePhases },
+  producer: assertionProducer,
+  provenance: closed({ basis: { enum: ["direct_record", "deterministic_derivation", "declared_relationship", "verifier_observation"] }, evidence: arrayOf(assertionEvidence, { minItems: 1 }) }),
+  dependencies: arrayOf(assertionDependency, { minItems: 1 }),
+  reason_code: { enum: ["DIRECT_HASH_LINKED_DERIVATION", "VERIFIED_TRANSITIVE_DERIVATION"] },
+  created_at: timestamp,
+  assertion_sha256: sha,
+}, undefined, assertionRules), assertionExample, "Immutable machine-evaluable subject-predicate-object assertion anchored to prior authoritative evidence. Its digest identity excludes only assertion_sha256.");
+
+const confidenceAssessment = closed(Object.fromEntries(confidenceDimensions.map((dimension) => [dimension, { enum: confidenceValues }])));
+const assertionBoundary = closed({
+  kind: { enum: assertionBoundaryKinds },
+  affected_dimensions: arrayOf({ enum: confidenceDimensions }, { minItems: 1, uniqueItems: true }),
+  dependency_ids: arrayOf(typedIdentifier, { uniqueItems: true }),
+  compatibility: nullable(closed({ required_schema: nonEmptyString, observed_schema: nullable(nonEmptyString) })),
+});
+const dependencyResult = closed({
+  dependency_id: typedIdentifier,
+  evidence_class: { enum: evidenceClasses },
+  status: { enum: dependencyResultStatuses },
+  observed_sha256: nullable(sha),
+  observed_generation: nullable(generationCoordinates),
+});
+const evaluationExample = {
+  schema_version: "1.0",
+  evaluation_id: ids.evaluation,
+  assertion_id: ids.assertion,
+  assertion_sha256: assertionExample.assertion_sha256,
+  project_id: ids.project,
+  evaluated_against: { chain_head: digest("6"), event_sequence: 3, project_epoch: 1, schema_catalog_sha256: digest("7") },
+  evaluator: { subsystem: "native_verifier", application_version: "0.4.0" },
+  status: "exact",
+  confidence: { integrity: "exact", identity: "exact", chronology: "exact", derivation: "exact", authorship: "not_applicable", completeness: "exact" },
+  boundary: null,
+  dependency_results: [
+    { dependency_id: ids.event2, evidence_class: "mandatory_retained", status: "valid", observed_sha256: digest("5"), observed_generation: { project_epoch: 1, artifact_revision: 12, transcript_revision: 4 } },
+    { dependency_id: ids.record, evidence_class: "mandatory_live", status: "valid", observed_sha256: digest("8"), observed_generation: { project_epoch: 1, artifact_revision: 12, transcript_revision: 4 } },
+    { dependency_id: ids.turn, evidence_class: "advisory", status: "valid", observed_sha256: digest("7"), observed_generation: { project_epoch: 1, artifact_revision: 12, transcript_revision: 4 } },
+    { dependency_id: ids.idea, evidence_class: "shadow", status: "not_evaluated", observed_sha256: null, observed_generation: null },
+  ],
+  reason_code: "DIRECT_HASH_LINKED_DERIVATION",
+  supersedes_evaluation_id: null,
+  evaluated_at: "2026-07-17T18:44:12.789Z",
+};
+const exactConfidenceProperties = Object.fromEntries(confidenceDimensions.map((dimension) => [dimension, { enum: ["exact", "not_applicable"] }]));
+const evaluationRules = {
+  allOf: [
+    {
+      if: { properties: { status: { const: "exact" } }, required: ["status"] },
+      then: { properties: {
+        boundary: { type: "null" },
+        reason_code: { enum: ["DIRECT_HASH_LINKED_DERIVATION", "VERIFIED_TRANSITIVE_DERIVATION"] },
+        confidence: { type: "object", properties: exactConfidenceProperties, required: confidenceDimensions },
+        dependency_results: { type: "array", items: { type: "object", if: { properties: { evidence_class: { const: "shadow" } }, required: ["evidence_class"] }, else: { properties: { status: { const: "valid" } }, required: ["status"] } } },
+      } },
+    },
+    {
+      if: { properties: { status: { not: { const: "exact" } } }, required: ["status"] },
+      then: { properties: { boundary: { not: { type: "null" } } } },
+    },
+    {
+      if: { properties: { status: { const: "degraded" } }, required: ["status"] },
+      then: { properties: {
+        reason_code: { enum: ["ADVISORY_EVIDENCE_UNAVAILABLE", "AUTHORSHIP_UNCERTAIN", "CHRONOLOGY_INCOMPLETE", "COMPLETENESS_INCOMPLETE"] },
+        confidence: { type: "object", anyOf: confidenceDimensions.map((dimension) => ({ properties: { [dimension]: { const: "degraded" } }, required: [dimension] })) },
+        dependency_results: { type: "array", not: { contains: { type: "object", properties: { evidence_class: { enum: ["mandatory_live", "mandatory_retained"] }, status: { not: { const: "valid" } } }, required: ["evidence_class", "status"] } } },
+      } },
+    },
+    {
+      if: { properties: { status: { const: "refused" } }, required: ["status"] },
+      then: { properties: { reason_code: { enum: ["SCHEMA_INCOMPATIBLE", "POLICY_REFUSED", "AUTHORIZED_EVIDENCE_UNAVAILABLE"] } } },
+    },
+    {
+      if: { properties: { status: { const: "stale" } }, required: ["status"] },
+      then: { properties: {
+        reason_code: { enum: ["DEPENDENCY_DIGEST_MISMATCH", "DEPENDENCY_GENERATION_MISMATCH", "SOURCE_ANCHOR_STALE"] },
+        dependency_results: { type: "array", contains: { type: "object", properties: { status: { const: "changed" } }, required: ["status"] }, minContains: 1 },
+      } },
+    },
+    {
+      if: { properties: { status: { const: "unverified" } }, required: ["status"] },
+      then: { properties: { reason_code: { enum: ["REQUIRED_PROVENANCE_UNKNOWN", "SOURCE_GENERATION_UNKNOWN", "REQUIRED_EVIDENCE_MISSING", "AUTHORIZED_EVIDENCE_UNAVAILABLE", "ASSERTION_NOT_EVALUATED", "CHRONOLOGY_INCOMPLETE", "COMPLETENESS_INCOMPLETE"] } } },
+    },
+  ],
+};
+add("assertion-evaluation", "Point-in-time assertion evaluation", closed({
+  schema_version: schemaVersion,
+  evaluation_id: identifier("evaluation"),
+  assertion_id: identifier("assertion"),
+  assertion_sha256: sha,
+  project_id: identifier("project"),
+  evaluated_against: closed({ chain_head: sha, event_sequence: { type: "integer", minimum: 1 }, project_epoch: { type: "integer", minimum: 1 }, schema_catalog_sha256: sha }),
+  evaluator: assertionProducer,
+  status: { enum: assertionEvaluationStatuses },
+  confidence: confidenceAssessment,
+  boundary: nullable(assertionBoundary),
+  dependency_results: arrayOf(dependencyResult, { minItems: 1 }),
+  reason_code: { enum: assertionReasonCodes },
+  supersedes_evaluation_id: nullable(identifier("evaluation")),
+  evaluated_at: timestamp,
+}, undefined, evaluationRules), evaluationExample, "Immutable verifier conclusion about one assertion at an explicit chain head and project epoch.");
 const verificationExample = { schema_version: "1.0", verification_id: ids.record, project_id: ids.project, status: "VERIFIED_WITH_WARNINGS", verified_through_event_id: ids.event, verified_chain_head: digest("4"), checked_segments: 1, checked_events: 1, checked_records: 4, findings: [{ severity: "WARNING", code: "INDEX_STALE", message: "Contribution index is stale.", authoritative_evidence_affected: false, path: "provenance/indexes/contribution-graph.json", event_id: null }], verifier_version: "1.0.0", completed_at: laterTimestamp };
 add("verification-report", "Verification report", closed({ schema_version: schemaVersion, verification_id: identifier("record"), project_id: identifier("project"), status: { enum: ["VERIFIED", "VERIFIED_WITH_WARNINGS", "INCOMPLETE", "FAILED", "UNSAFE"] }, verified_through_event_id: nullable(identifier("event")), verified_chain_head: nullable(sha), checked_segments: { type: "integer", minimum: 0 }, checked_events: { type: "integer", minimum: 0 }, checked_records: { type: "integer", minimum: 0 }, findings: arrayOf(finding), verifier_version: { type: "string", pattern: "^\\d+\\.\\d+\\.\\d+$" }, completed_at: timestamp }), verificationExample, "Authoritative native verification result rendered by the UI.");
 
-const backupExample = { schema_version: "1.0", application_version: "0.3.0", project_id: ids.project, created_at: timestampValue, source_chain_head: digest("4"), sqlite_snapshot: { path: "database-snapshot/state.sqlite", sha256: digest("2"), size: 4096, sqlite_version: "3.46.0", database_schema_version: 1, completed_at: timestampValue }, files: [{ path: "project.json", sha256: digest("3"), size: 256 }], protected: false, recovery_key_envelope_path: null };
+const backupExample = { schema_version: "1.0", application_version: "0.4.0", project_id: ids.project, created_at: timestampValue, source_chain_head: digest("4"), sqlite_snapshot: { path: "database-snapshot/state.sqlite", sha256: digest("2"), size: 4096, sqlite_version: "3.46.0", database_schema_version: 1, completed_at: timestampValue }, files: [{ path: "project.json", sha256: digest("3"), size: 256 }], protected: false, recovery_key_envelope_path: null };
 add("backup-manifest", "Project backup manifest", closed({ schema_version: schemaVersion, application_version: { type: "string", pattern: "^\\d+\\.\\d+\\.\\d+$" }, project_id: identifier("project"), created_at: timestamp, source_chain_head: sha, sqlite_snapshot: closed({ path: repositoryPath, sha256: sha, size: { type: "integer", minimum: 1 }, sqlite_version: nonEmptyString, database_schema_version: { type: "integer", minimum: 1 }, completed_at: timestamp }), files: arrayOf(fileEntry, { minItems: 1 }), protected: { type: "boolean" }, recovery_key_envelope_path: nullable(repositoryPath) }), backupExample, "Complete staged-backup inventory including a verified online SQLite snapshot.");
 
 const releaseStateExample = { schema_version: "1.0", release_id: ids.release, project_id: ids.project, state: "RELEASE_STAGED", state_sequence: 5, source_commit: "0123456789abcdef0123456789abcdef01234567", source_chain_head: digest("4"), updated_at: laterTimestamp, failure: null };
 add("release-state", "Release state", closed({ schema_version: schemaVersion, release_id: identifier("release"), project_id: identifier("project"), state: { enum: ["WORKING", "FREEZING_SOURCE", "SOURCE_FROZEN", "GENERATING_RELEASE", "RELEASE_STAGED", "RELEASE_VERIFIED", "RELEASE_COMMITTED", "RELEASE_TAGGED", "COMPLETE", "RECOVERABLE", "FAILED"] }, state_sequence: { type: "integer", minimum: 1 }, source_commit: nullable({ type: "string", pattern: "^[a-f0-9]{40,64}$" }), source_chain_head: nullable(sha), updated_at: timestamp, failure: nullable(nonEmptyString) }), releaseStateExample, "Durable idempotent release-finalization state.");
 
 const releaseFiles = [{ path: "manuscript/final-manuscript.md", sha256: digest("4"), size: 1024 }, { path: "evidence/creative-process-report.md", sha256: digest("5"), size: 512 }];
-const releaseExample = { schema_version: "1.0", application_version: "0.3.0", release_id: ids.release, project_id: ids.project, version: "1.0.0", created_at: laterTimestamp, source_commit: "0123456789abcdef0123456789abcdef01234567", source_chain_head: digest("4"), source_manuscript: { path: "manuscript/final-manuscript.md", sha256: digest("4") }, sanitized: false, files: releaseFiles, release_files_merkle_root: releaseMerkleRoot(releaseFiles), merkle_algorithm: "thinkloom-release-merkle-v1" };
+const releaseExample = { schema_version: "1.0", application_version: "0.4.0", release_id: ids.release, project_id: ids.project, version: "1.0.0", created_at: laterTimestamp, source_commit: "0123456789abcdef0123456789abcdef01234567", source_chain_head: digest("4"), source_manuscript: { path: "manuscript/final-manuscript.md", sha256: digest("4") }, sanitized: false, files: releaseFiles, release_files_merkle_root: releaseMerkleRoot(releaseFiles), merkle_algorithm: "thinkloom-release-merkle-v1" };
 add("release-manifest", "Release manifest", closed({ schema_version: schemaVersion, application_version: { type: "string", pattern: "^\\d+\\.\\d+\\.\\d+$" }, release_id: identifier("release"), project_id: identifier("project"), version: { type: "string", pattern: "^\\d+\\.\\d+\\.\\d+$" }, created_at: timestamp, source_commit: { type: "string", pattern: "^[a-f0-9]{40,64}$" }, source_chain_head: sha, source_manuscript: closed({ path: repositoryPath, sha256: sha }), sanitized: { type: "boolean" }, files: arrayOf(fileEntry, { minItems: 1 }), release_files_merkle_root: sha, merkle_algorithm: { const: "thinkloom-release-merkle-v1" } }), releaseExample, "Non-self-referential binding of a frozen source to verified release files.");
 
 const sanitizedExample = { schema_version: "1.0", export_id: ids.record, project_id: ids.project, source_chain_head: digest("4"), profile: "sanitized", omission_rules: [{ category: "private_conversation", action: "exclude", count: 2 }], rules_sha256: digest("6"), files: [{ path: "final-manuscript.md", sha256: digest("4"), size: 1024 }], created_at: laterTimestamp };
@@ -391,6 +620,29 @@ function invalidCases(name, schema, example) {
       instance.key_derivation = null;
     });
   }
+  if (name === "provenance-assertion") {
+    push("provenance-assertion: artifact generation must be explicit", (instance) => {
+      instance.source_generation.artifact_revision = null;
+    });
+
+  }
+  if (name === "assertion-evaluation") {
+    push("assertion-evaluation: unknown confidence cannot be exact", (instance) => {
+      instance.confidence.derivation = "unverified";
+    });
+    push("assertion-evaluation: exact cannot carry an uncertainty boundary", (instance) => {
+      instance.boundary = { kind: "coverage", affected_dimensions: ["completeness"], dependency_ids: [], compatibility: null };
+    });
+    push("assertion-evaluation: exact requires every dependency to validate", (instance) => {
+      instance.dependency_results[0].status = "missing";
+      instance.dependency_results[0].observed_sha256 = null;
+    });
+    push("assertion-evaluation: stale requires a changed dependency", (instance) => {
+      instance.status = "stale";
+      instance.boundary = { kind: "dependency_change", affected_dimensions: ["integrity"], dependency_ids: [instance.dependency_results[0].dependency_id], compatibility: null };
+      instance.reason_code = "DEPENDENCY_DIGEST_MISMATCH";
+    });
+  }
   if (!cases.length) throw new Error(`No invalid fixture cases generated for ${name}.`);
   return cases;
 }
@@ -400,7 +652,7 @@ async function writeJson(filePath, value) {
 }
 
 await rm(output, { recursive: true, force: true });
-await Promise.all([validDir, invalidDir, vectorDir].map((directory) => mkdir(directory, { recursive: true })));
+await Promise.all([validDir, invalidDir, vectorDir, registryDir].map((directory) => mkdir(directory, { recursive: true })));
 
 for (const name of schemaNames) {
   const schema = schemas.get(name);
@@ -416,13 +668,104 @@ for (const name of schemaNames) {
   });
 }
 
+const registries = [
+  {
+    name: "assertion-lifecycle-phases",
+    description: "Immutable assertion lifecycle phase observed when the relationship was asserted.",
+    entries: [
+      { code: "proposed", meaning: "A relationship has been proposed but not adopted." },
+      { code: "generated", meaning: "A relationship was produced by a deterministic or model-assisted operation." },
+      { code: "staged_preview", meaning: "The relationship is visible for review but not accepted into canonical work." },
+      { code: "accepted_into_work", meaning: "The relationship was explicitly accepted into canonical project work." },
+      { code: "revised", meaning: "The relationship describes a later immutable revision." },
+      { code: "finalized", meaning: "The relationship belongs to finalized project content." },
+      { code: "published", meaning: "The relationship is bound into a published release." },
+      { code: "superseded", meaning: "A later assertion replaces this relationship for current interpretation without erasing it." },
+      { code: "purged", meaning: "The relationship is affected by an explicitly disclosed emergency reconstitution." },
+    ],
+  },
+  {
+    name: "assertion-evaluation-statuses",
+    description: "Consumer-facing point-in-time assertion conclusions.",
+    entries: [
+      { code: "exact", consumer_action: "promote", meaning: "All mandatory evidence and relevant confidence dimensions support the asserted scope." },
+      { code: "degraded", consumer_action: "warn", meaning: "Use is possible only within the recorded uncertainty boundary." },
+      { code: "refused", consumer_action: "refuse", meaning: "Policy, authorization, or compatibility prohibits a conclusion." },
+      { code: "stale", consumer_action: "reevaluate", meaning: "A source anchor, digest, or generation dependency changed." },
+      { code: "unverified", consumer_action: "withhold_exact", meaning: "Mandatory evaluation or evidence is incomplete without a demonstrated contradiction." },
+    ],
+  },
+  {
+    name: "assertion-confidence-dimensions",
+    description: "Independent non-numeric confidence dimensions.",
+    values: confidenceValues,
+    entries: [
+      { code: "integrity", meaning: "Whether canonical bytes, digests, and chain bindings validate." },
+      { code: "identity", meaning: "Whether referenced subjects, objects, producers, and evidence identities resolve." },
+      { code: "chronology", meaning: "Whether ordering and generation coordinates are complete and consistent." },
+      { code: "derivation", meaning: "Whether the asserted transformation or relationship is supported by evidence." },
+      { code: "authorship", meaning: "Whether the claimed actor relationship is supported without percentage attribution." },
+      { code: "completeness", meaning: "Whether all evidence required for the asserted scope was evaluated." },
+    ],
+  },
+  {
+    name: "assertion-evidence-classes",
+    description: "Evidence availability and authority requirements.",
+    entries: [
+      { code: "mandatory_live", exact_effect: "required", meaning: "Current accessible evidence is required for exact evaluation." },
+      { code: "mandatory_retained", exact_effect: "required", meaning: "Retained authoritative evidence and its digest are required for exact evaluation." },
+      { code: "advisory", exact_effect: "may_degrade", meaning: "Absence may degrade a named dimension but does not alter authoritative evidence." },
+      { code: "shadow", exact_effect: "no_authority", meaning: "Comparison-only evidence that never becomes authoritative by observation." },
+    ],
+  },
+  {
+    name: "assertion-boundary-kinds",
+    description: "Machine-readable boundaries preventing an unqualified exact conclusion.",
+    entries: assertionBoundaryKinds.map((code) => ({ code, meaning: assertionBoundaryMeanings[code] })),
+  },
+  {
+    name: "assertion-reason-codes",
+    description: "Stable explanations for assertion creation and evaluation outcomes.",
+    entries: [
+      { code: "DIRECT_HASH_LINKED_DERIVATION", permitted_statuses: ["exact"] },
+      { code: "VERIFIED_TRANSITIVE_DERIVATION", permitted_statuses: ["exact"] },
+      { code: "REQUIRED_PROVENANCE_UNKNOWN", permitted_statuses: ["unverified"] },
+      { code: "SOURCE_GENERATION_UNKNOWN", permitted_statuses: ["unverified"] },
+      { code: "REQUIRED_EVIDENCE_MISSING", permitted_statuses: ["unverified"] },
+      { code: "DEPENDENCY_DIGEST_MISMATCH", permitted_statuses: ["stale"] },
+      { code: "DEPENDENCY_GENERATION_MISMATCH", permitted_statuses: ["stale"] },
+      { code: "SOURCE_ANCHOR_STALE", permitted_statuses: ["stale"] },
+      { code: "SCHEMA_INCOMPATIBLE", permitted_statuses: ["refused"] },
+      { code: "POLICY_REFUSED", permitted_statuses: ["refused"] },
+      { code: "AUTHORIZED_EVIDENCE_UNAVAILABLE", permitted_statuses: ["refused", "unverified"] },
+      { code: "ADVISORY_EVIDENCE_UNAVAILABLE", permitted_statuses: ["degraded"] },
+      { code: "ASSERTION_NOT_EVALUATED", permitted_statuses: ["unverified"] },
+      { code: "AUTHORSHIP_UNCERTAIN", permitted_statuses: ["degraded"] },
+      { code: "CHRONOLOGY_INCOMPLETE", permitted_statuses: ["degraded", "unverified"] },
+      { code: "COMPLETENESS_INCOMPLETE", permitted_statuses: ["degraded", "unverified"] },
+    ],
+  },
+].map((registry) => ({
+  registry_version: "1.0",
+  provenance_schema_version: "1.0",
+  application_version: "0.4.0",
+  ...registry,
+  entries: registry.entries.map((entry) => registry.name === "assertion-reason-codes" ? { ...entry, meaning: assertionReasonMeanings[entry.code] } : entry),
+}));
+for (const registry of registries) await writeJson(path.join(registryDir, `${registry.name}.json`), registry);
 const catalog = {
   catalog_version: "1.0",
   dialect: draft,
   provenance_schema_version: "1.0",
-  application_version: "0.3.0",
-  compatible_application_versions: ["0.3.0"],
+  application_version: "0.4.0",
+  compatible_application_versions: ["0.4.0"],
   native_writer_conformance: false,
+  registries: registries.map(({ name, description }) => ({
+    name,
+    description,
+    id: `${baseId}/registries/${name}.json`,
+    file: `registries/${name}.json`,
+  })),
   normative_specification: "../../../docs/provenance/STAGE-1-NORMATIVE-SPECIFICATION.md",
   generated_by: "scripts/generate-provenance-stage2.mjs",
   schemas: schemaNames.map((name) => ({
@@ -695,7 +1038,106 @@ await writeJson(path.join(vectorDir, "backup-and-release-manifests.json"), {
   release_manifest: { ...releaseExample, source_chain_head: baseEvents.at(-1).event_hash },
   binding_rule: "Backup and release inventories bind the same frozen authoritative chain head while remaining distinct artifact classes.",
 });
-const readme = `# Thinkloom provenance schemas 1.0\n\nThis generated package is the formal Stage 2 contract for the approved provenance architecture. It targets JSON Schema Draft 2020-12 and ships with ${schemaNames.length} schemas, valid fixtures, invalid fixture suites, and deterministic verification vectors.\n\n- \`catalog.json\` is the machine-readable inventory.\n- \`*.schema.json\` are the formal contracts.\n- \`fixtures/valid\` contains one canonical valid instance per schema.\n- \`fixtures/invalid\` covers required fields, closed-object policy, and populated enum, pattern, and numeric/string/array bounds.\n- \`vectors\` fixes canonicalization, timestamps, paths, JSONL, event and segment chains, self-digests, protected records, key rotation and recovery, retention policy, sanitized export, deterministic indexes, verification reports, backups, and release-Merkle behavior.\n\nRegenerate with \`npm run provenance:schema:generate\`. Verify with \`npm run provenance:schema:test\`. Generated files must be committed together with generator and vector changes. Runtime adoption is a later implementation stage; presence of this package does not imply the current native writer already conforms.\n`;
+const vectorAssertionIdentity = {
+  ...assertionIdentity,
+  source_anchor: { event_id: baseEvents[1].event_id, event_sequence: baseEvents[1].event_sequence, event_hash: baseEvents[1].event_hash },
+  dependencies: assertionIdentity.dependencies.map((dependency, index) => index === 0 ? { ...dependency, expected_sha256: baseEvents[1].event_hash } : dependency),
+};
+const vectorAssertion = { ...vectorAssertionIdentity, assertion_sha256: sha256(vectorAssertionIdentity) };
+const assertionRecordingEvent = {
+  ...eventExample,
+  event_id: typedId("event", "Y"),
+  event_sequence: 4,
+  timestamp: "2026-07-17T18:45:13.012Z",
+  event_type: "ASSERTION_RECORDED",
+  inputs: [{ ...contentReferenceExample, record_id: baseEvents[1].event_id, record_type: "other", sha256: baseEvents[1].event_hash, path: "provenance/ledger/active.jsonl", revision_id: null, range: null }],
+  outputs: [{ ...contentReferenceExample, record_id: vectorAssertion.assertion_id, record_type: "provenance_assertion", sha256: vectorAssertion.assertion_sha256, path: "records/assertions/assertion.json", revision_id: null, range: null }],
+  relationships: { parent_event_ids: [baseEvents[1].event_id], invocation_id: null },
+  metadata: { summary: "Recorded canonical provenance assertion", assertion_id: vectorAssertion.assertion_id },
+  previous_event_hash: baseEvents.at(-1).event_hash,
+  event_hash: "",
+};
+assertionRecordingEvent.event_hash = hashEvent(assertionRecordingEvent);
+const exactAssertionEvaluation = {
+  ...evaluationExample,
+  assertion_sha256: vectorAssertion.assertion_sha256,
+  evaluated_against: { ...evaluationExample.evaluated_against, chain_head: assertionRecordingEvent.event_hash, event_sequence: assertionRecordingEvent.event_sequence },
+  dependency_results: evaluationExample.dependency_results.map((result, index) => index === 0 ? { ...result, observed_sha256: baseEvents[1].event_hash } : result),
+};
+const degradedAssertionEvaluation = {
+  ...exactAssertionEvaluation,
+  evaluation_id: typedId("evaluation", "X"),
+  status: "degraded",
+  confidence: { ...exactAssertionEvaluation.confidence, authorship: "degraded", completeness: "degraded" },
+  boundary: { kind: "evidence_access", affected_dimensions: ["authorship", "completeness"], dependency_ids: [ids.turn], compatibility: null },
+  dependency_results: exactAssertionEvaluation.dependency_results.map((result) => result.dependency_id === ids.turn ? { ...result, status: "missing", observed_sha256: null, observed_generation: null } : result),
+  reason_code: "ADVISORY_EVIDENCE_UNAVAILABLE",
+  supersedes_evaluation_id: exactAssertionEvaluation.evaluation_id,
+  evaluated_at: "2026-07-17T18:45:13.012Z",
+};
+const staleAssertionEvaluation = {
+  ...degradedAssertionEvaluation,
+  evaluation_id: typedId("evaluation", "Y"),
+  evaluated_against: { ...degradedAssertionEvaluation.evaluated_against, chain_head: digest("a"), event_sequence: 5 },
+  status: "stale",
+  confidence: { integrity: "degraded", identity: "exact", chronology: "degraded", derivation: "degraded", authorship: "unverified", completeness: "degraded" },
+  boundary: { kind: "dependency_change", affected_dimensions: ["integrity", "chronology", "derivation"], dependency_ids: [ids.event2], compatibility: null },
+  dependency_results: exactAssertionEvaluation.dependency_results.map((result) => result.dependency_id === ids.event2 ? { ...result, status: "changed", observed_sha256: digest("0"), observed_generation: { project_epoch: 1, artifact_revision: 13, transcript_revision: 4 } } : result),
+  reason_code: "DEPENDENCY_GENERATION_MISMATCH",
+  supersedes_evaluation_id: degradedAssertionEvaluation.evaluation_id,
+  evaluated_at: "2026-07-17T18:46:14.345Z",
+};
+const refusedAssertionEvaluation = {
+  ...staleAssertionEvaluation,
+  evaluation_id: typedId("evaluation", "Z"),
+  status: "refused",
+  confidence: { integrity: "exact", identity: "unverified", chronology: "exact", derivation: "unverified", authorship: "not_applicable", completeness: "unverified" },
+  boundary: { kind: "compatibility", affected_dimensions: ["identity", "derivation", "completeness"], dependency_ids: [ids.record], compatibility: { required_schema: "1.0", observed_schema: "2.0" } },
+  dependency_results: exactAssertionEvaluation.dependency_results.map((result) => result.dependency_id === ids.record ? { ...result, status: "incompatible", observed_sha256: null, observed_generation: null } : result),
+  reason_code: "SCHEMA_INCOMPATIBLE",
+  supersedes_evaluation_id: staleAssertionEvaluation.evaluation_id,
+  evaluated_at: "2026-07-17T18:47:15.678Z",
+};
+const unverifiedAssertionEvaluation = {
+  ...refusedAssertionEvaluation,
+  evaluation_id: typedId("evaluation", "0"),
+  status: "unverified",
+  confidence: { integrity: "exact", identity: "unverified", chronology: "exact", derivation: "unverified", authorship: "not_applicable", completeness: "unverified" },
+  boundary: { kind: "evidence_access", affected_dimensions: ["identity", "derivation", "completeness"], dependency_ids: [ids.record], compatibility: null },
+  dependency_results: exactAssertionEvaluation.dependency_results.map((result) => result.dependency_id === ids.record ? { ...result, status: "inaccessible", observed_sha256: null, observed_generation: null } : result),
+  reason_code: "AUTHORIZED_EVIDENCE_UNAVAILABLE",
+  supersedes_evaluation_id: refusedAssertionEvaluation.evaluation_id,
+  evaluated_at: "2026-07-17T18:48:16.901Z",
+};
+await writeJson(path.join(vectorDir, "assertion-envelope-and-invalidation.json"), {
+  vector_version: "1.0",
+  assertion_recording_event: assertionRecordingEvent,
+  assertion: vectorAssertion,
+  assertion_identity: vectorAssertionIdentity,
+  evaluations: [exactAssertionEvaluation, degradedAssertionEvaluation, staleAssertionEvaluation, refusedAssertionEvaluation, unverifiedAssertionEvaluation],
+  consumer_decisions: [
+    { status: "exact", action: "promote" },
+    { status: "degraded", action: "warn" },
+    { status: "refused", action: "refuse" },
+    { status: "stale", action: "reevaluate" },
+    { status: "unverified", action: "withhold_exact" },
+  ],
+  forbidden_exact_cases: {
+    unknown_provenance: { ...vectorAssertion, provenance: undefined },
+    unknown_confidence: { ...exactAssertionEvaluation, confidence: { ...exactAssertionEvaluation.confidence, derivation: "unverified" } },
+    incompatible_dependency: { ...exactAssertionEvaluation, dependency_results: exactAssertionEvaluation.dependency_results.map((result, index) => index === 0 ? { ...result, status: "incompatible" } : result) },
+    uncertainty_boundary: { ...exactAssertionEvaluation, boundary: { kind: "coverage", affected_dimensions: ["completeness"], dependency_ids: [], compatibility: null } },
+    unknown_artifact_generation: { ...vectorAssertion, source_generation: { ...vectorAssertion.source_generation, artifact_revision: null } },
+  },
+  invariants: [
+    "The source anchor identifies prior basis evidence and differs from the later assertion-recording event.",
+    "The assertion digest excludes only assertion_sha256.",
+    "Evaluations are immutable point-in-time conclusions; later records supersede current use without mutation.",
+    "Unknown provenance, generation, compatibility, or confidence never produces exact.",
+    "Consumers decide from canonical assertions, evaluations, and registries without producer-specific internal state.",
+  ],
+});
+const readme = `# Thinkloom provenance schemas 1.0\n\nThis generated package is the formal Stage 2 contract for the approved provenance architecture. It targets JSON Schema Draft 2020-12 and ships with ${schemaNames.length} schemas, valid fixtures, invalid fixture suites, and deterministic verification vectors.\n\n- \`catalog.json\` is the machine-readable inventory.\n- \`*.schema.json\` are the formal contracts.\n- \`registries\` defines assertion lifecycle, evaluation status, confidence, evidence, boundary, and reason semantics.\n- \`fixtures/valid\` contains one canonical valid instance per schema.\n- \`fixtures/invalid\` covers required fields, closed-object policy, and populated enum, pattern, and numeric/string/array bounds.\n- \`vectors\` fixes canonicalization, timestamps, paths, JSONL, event and segment chains, self-digests, protected records, key rotation and recovery, retention policy, sanitized export, deterministic indexes, verification reports, canonical assertions and evaluations, dependency invalidation, backups, and release-Merkle behavior.\n\nRegenerate with \`npm run provenance:schema:generate\`. Verify with \`npm run provenance:schema:test\`. Generated files must be committed together with generator and vector changes. Runtime adoption is a later implementation stage; presence of this package does not imply the current native writer already conforms.\n`;
 await writeFile(path.join(output, "README.md"), readme, "utf8");
 
 console.log(`Generated ${schemaNames.length} provenance schemas and fixtures in ${path.relative(root, output)}.`);

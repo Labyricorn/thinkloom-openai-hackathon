@@ -4,7 +4,7 @@
     {
       "description": "release-manifest.schema_version: reject missing required property",
       "instance": {
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "release_id": "release_01J0000000000000000000000E",
         "project_id": "project_01J00000000000000000000001",
         "version": "1.0.0",
@@ -67,7 +67,7 @@
       "description": "release-manifest.release_id: reject missing required property",
       "instance": {
         "schema_version": "1.0",
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "project_id": "project_01J00000000000000000000001",
         "version": "1.0.0",
         "created_at": "2026-07-17T18:43:11.456Z",
@@ -98,7 +98,7 @@
       "description": "release-manifest.project_id: reject missing required property",
       "instance": {
         "schema_version": "1.0",
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "release_id": "release_01J0000000000000000000000E",
         "version": "1.0.0",
         "created_at": "2026-07-17T18:43:11.456Z",
@@ -129,7 +129,7 @@
       "description": "release-manifest.version: reject missing required property",
       "instance": {
         "schema_version": "1.0",
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "release_id": "release_01J0000000000000000000000E",
         "project_id": "project_01J00000000000000000000001",
         "created_at": "2026-07-17T18:43:11.456Z",
@@ -160,7 +160,7 @@
       "description": "release-manifest.created_at: reject missing required property",
       "instance": {
         "schema_version": "1.0",
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "release_id": "release_01J0000000000000000000000E",
         "project_id": "project_01J00000000000000000000001",
         "version": "1.0.0",
@@ -191,7 +191,7 @@
       "description": "release-manifest.source_commit: reject missing required property",
       "instance": {
         "schema_version": "1.0",
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "release_id": "release_01J0000000000000000000000E",
         "project_id": "project_01J00000000000000000000001",
         "version": "1.0.0",
@@ -222,7 +222,7 @@
       "description": "release-manifest.source_chain_head: reject missing required property",
       "instance": {
         "schema_version": "1.0",
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "release_id": "release_01J0000000000000000000000E",
         "project_id": "project_01J00000000000000000000001",
         "version": "1.0.0",
@@ -253,7 +253,7 @@
       "description": "release-manifest.source_manuscript: reject missing required property",
       "instance": {
         "schema_version": "1.0",
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "release_id": "release_01J0000000000000000000000E",
         "project_id": "project_01J00000000000000000000001",
         "version": "1.0.0",
@@ -281,7 +281,7 @@
       "description": "release-manifest.sanitized: reject missing required property",
       "instance": {
         "schema_version": "1.0",
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "release_id": "release_01J0000000000000000000000E",
         "project_id": "project_01J00000000000000000000001",
         "version": "1.0.0",
@@ -312,7 +312,7 @@
       "description": "release-manifest.files: reject missing required property",
       "instance": {
         "schema_version": "1.0",
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "release_id": "release_01J0000000000000000000000E",
         "project_id": "project_01J00000000000000000000001",
         "version": "1.0.0",
@@ -332,7 +332,7 @@
       "description": "release-manifest.release_files_merkle_root: reject missing required property",
       "instance": {
         "schema_version": "1.0",
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "release_id": "release_01J0000000000000000000000E",
         "project_id": "project_01J00000000000000000000001",
         "version": "1.0.0",
@@ -363,7 +363,7 @@
       "description": "release-manifest.merkle_algorithm: reject missing required property",
       "instance": {
         "schema_version": "1.0",
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "release_id": "release_01J0000000000000000000000E",
         "project_id": "project_01J00000000000000000000001",
         "version": "1.0.0",
@@ -394,7 +394,7 @@
       "description": "release-manifest: reject unexpected property",
       "instance": {
         "schema_version": "1.0",
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "release_id": "release_01J0000000000000000000000E",
         "project_id": "project_01J00000000000000000000001",
         "version": "1.0.0",
@@ -427,7 +427,7 @@
       "description": "release-manifest.schema_version: reject value different from const",
       "instance": {
         "schema_version": "__INVALID_CONST__",
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "release_id": "release_01J0000000000000000000000E",
         "project_id": "project_01J00000000000000000000001",
         "version": "1.0.0",
@@ -491,7 +491,7 @@
       "description": "release-manifest.release_id: reject pattern mismatch",
       "instance": {
         "schema_version": "1.0",
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "release_id": "invalid-id",
         "project_id": "project_01J00000000000000000000001",
         "version": "1.0.0",
@@ -523,7 +523,7 @@
       "description": "release-manifest.project_id: reject pattern mismatch",
       "instance": {
         "schema_version": "1.0",
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "release_id": "release_01J0000000000000000000000E",
         "project_id": "invalid-id",
         "version": "1.0.0",
@@ -555,7 +555,7 @@
       "description": "release-manifest.version: reject pattern mismatch",
       "instance": {
         "schema_version": "1.0",
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "release_id": "release_01J0000000000000000000000E",
         "project_id": "project_01J00000000000000000000001",
         "version": " invalid!",
@@ -587,7 +587,7 @@
       "description": "release-manifest.created_at: reject pattern mismatch",
       "instance": {
         "schema_version": "1.0",
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "release_id": "release_01J0000000000000000000000E",
         "project_id": "project_01J00000000000000000000001",
         "version": "1.0.0",
@@ -619,7 +619,7 @@
       "description": "release-manifest.source_commit: reject pattern mismatch",
       "instance": {
         "schema_version": "1.0",
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "release_id": "release_01J0000000000000000000000E",
         "project_id": "project_01J00000000000000000000001",
         "version": "1.0.0",
@@ -651,7 +651,7 @@
       "description": "release-manifest.source_chain_head: reject pattern mismatch",
       "instance": {
         "schema_version": "1.0",
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "release_id": "release_01J0000000000000000000000E",
         "project_id": "project_01J00000000000000000000001",
         "version": "1.0.0",
@@ -683,7 +683,7 @@
       "description": "release-manifest.source_manuscript.path: reject missing required property",
       "instance": {
         "schema_version": "1.0",
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "release_id": "release_01J0000000000000000000000E",
         "project_id": "project_01J00000000000000000000001",
         "version": "1.0.0",
@@ -714,7 +714,7 @@
       "description": "release-manifest.source_manuscript.sha256: reject missing required property",
       "instance": {
         "schema_version": "1.0",
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "release_id": "release_01J0000000000000000000000E",
         "project_id": "project_01J00000000000000000000001",
         "version": "1.0.0",
@@ -745,7 +745,7 @@
       "description": "release-manifest.source_manuscript: reject unexpected property",
       "instance": {
         "schema_version": "1.0",
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "release_id": "release_01J0000000000000000000000E",
         "project_id": "project_01J00000000000000000000001",
         "version": "1.0.0",
@@ -778,7 +778,7 @@
       "description": "release-manifest.source_manuscript.path: reject pattern mismatch",
       "instance": {
         "schema_version": "1.0",
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "release_id": "release_01J0000000000000000000000E",
         "project_id": "project_01J00000000000000000000001",
         "version": "1.0.0",
@@ -810,7 +810,7 @@
       "description": "release-manifest.source_manuscript.path: reject string below minLength",
       "instance": {
         "schema_version": "1.0",
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "release_id": "release_01J0000000000000000000000E",
         "project_id": "project_01J00000000000000000000001",
         "version": "1.0.0",
@@ -842,7 +842,7 @@
       "description": "release-manifest.source_manuscript.sha256: reject pattern mismatch",
       "instance": {
         "schema_version": "1.0",
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "release_id": "release_01J0000000000000000000000E",
         "project_id": "project_01J00000000000000000000001",
         "version": "1.0.0",
@@ -874,7 +874,7 @@
       "description": "release-manifest.files: reject array below minItems",
       "instance": {
         "schema_version": "1.0",
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "release_id": "release_01J0000000000000000000000E",
         "project_id": "project_01J00000000000000000000001",
         "version": "1.0.0",
@@ -895,7 +895,7 @@
       "description": "release-manifest.files[0].path: reject missing required property",
       "instance": {
         "schema_version": "1.0",
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "release_id": "release_01J0000000000000000000000E",
         "project_id": "project_01J00000000000000000000001",
         "version": "1.0.0",
@@ -926,7 +926,7 @@
       "description": "release-manifest.files[0].sha256: reject missing required property",
       "instance": {
         "schema_version": "1.0",
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "release_id": "release_01J0000000000000000000000E",
         "project_id": "project_01J00000000000000000000001",
         "version": "1.0.0",
@@ -957,7 +957,7 @@
       "description": "release-manifest.files[0].size: reject missing required property",
       "instance": {
         "schema_version": "1.0",
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "release_id": "release_01J0000000000000000000000E",
         "project_id": "project_01J00000000000000000000001",
         "version": "1.0.0",
@@ -988,7 +988,7 @@
       "description": "release-manifest.files[0]: reject unexpected property",
       "instance": {
         "schema_version": "1.0",
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "release_id": "release_01J0000000000000000000000E",
         "project_id": "project_01J00000000000000000000001",
         "version": "1.0.0",
@@ -1021,7 +1021,7 @@
       "description": "release-manifest.files[0].path: reject pattern mismatch",
       "instance": {
         "schema_version": "1.0",
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "release_id": "release_01J0000000000000000000000E",
         "project_id": "project_01J00000000000000000000001",
         "version": "1.0.0",
@@ -1053,7 +1053,7 @@
       "description": "release-manifest.files[0].path: reject string below minLength",
       "instance": {
         "schema_version": "1.0",
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "release_id": "release_01J0000000000000000000000E",
         "project_id": "project_01J00000000000000000000001",
         "version": "1.0.0",
@@ -1085,7 +1085,7 @@
       "description": "release-manifest.files[0].sha256: reject pattern mismatch",
       "instance": {
         "schema_version": "1.0",
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "release_id": "release_01J0000000000000000000000E",
         "project_id": "project_01J00000000000000000000001",
         "version": "1.0.0",
@@ -1117,7 +1117,7 @@
       "description": "release-manifest.files[0].size: reject value below minimum",
       "instance": {
         "schema_version": "1.0",
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "release_id": "release_01J0000000000000000000000E",
         "project_id": "project_01J00000000000000000000001",
         "version": "1.0.0",
@@ -1149,7 +1149,7 @@
       "description": "release-manifest.release_files_merkle_root: reject pattern mismatch",
       "instance": {
         "schema_version": "1.0",
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "release_id": "release_01J0000000000000000000000E",
         "project_id": "project_01J00000000000000000000001",
         "version": "1.0.0",
@@ -1181,7 +1181,7 @@
       "description": "release-manifest.merkle_algorithm: reject value different from const",
       "instance": {
         "schema_version": "1.0",
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "release_id": "release_01J0000000000000000000000E",
         "project_id": "project_01J00000000000000000000001",
         "version": "1.0.0",

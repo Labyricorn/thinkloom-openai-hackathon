@@ -34,6 +34,11 @@ Stage 1 is complete only when every item below is represented without contradict
 | Stale-context handling | Specification §14; State Machines §3 | Complete |
 | Native verification authority | Specification §15 | Complete |
 | Verification findings/statuses and gates | Specification §15 | Complete |
+| Immutable assertion and point-in-time evaluation separation | Specification §15.1 | Complete |
+| Exact/degraded/refused/stale/unverified assertion semantics | Specification §15.1 | Complete |
+| Independent confidence dimensions without percentages | Specification §15.1 | Complete |
+| Structured invalidation dependencies and evidence classes | Specification §15.1 | Complete |
+| Unknown evidence never silently becomes exact | Specification §15.1 | Complete |
 | Historical index generator warning behavior | Specification §§15–16 | Complete |
 | Deterministic derived-index rules | Specification §16 | Complete |
 | Two-stage Git checkpoint without circularity | Specification §17; State Machines §6 | Complete |
@@ -70,6 +75,10 @@ Required outputs:
 - Deterministic derived-index fixtures.
 - Backup/release manifest and Merkle-root fixtures.
 - Verification-report fixtures for every status and severity.
+- Provenance-assertion and assertion-evaluation fixtures.
+- Versioned assertion lifecycle, reason-code, confidence-dimension, evidence-class, and boundary-kind registries.
+- Assertion self-digest, dependency invalidation, superseding evaluation, and consumer-decision vectors.
+- Invalid fixtures proving unknown provenance, generation, compatibility, or confidence cannot validate as exact.
 
 Stage 2 must preserve the distinction between the provenance schema version and the Thinkloom application version.
 
@@ -165,6 +174,15 @@ For each boundary, tests MUST prove one of:
 - Manual edit transactions after generated-text acceptance
 - Transcript correction after downstream use
 - Range verification across UTF-8, Unicode scalar, UTF-16, and editor coordinates
+- Assertion source anchors prior evidence without circularly anchoring the assertion-recording event
+- Assertion self-digest excludes only `assertion_sha256`
+- Exact, degraded, refused, stale, and unverified assertion evaluations
+- Every confidence dimension is explicit and contains no numeric authorship percentage
+- Unknown provenance, generation, compatibility, or confidence rejects exact evaluation
+- Mandatory-live, mandatory-retained, advisory, and shadow evidence behave distinctly
+- Digest and generation changes deterministically invalidate dependent evaluations
+- Later evaluations supersede current usability without mutating earlier assertion or evaluation records
+- Derived projections never synthesize exact without an authoritative exact evaluation
 
 ## 7. Privacy, secret, and encryption tests
 

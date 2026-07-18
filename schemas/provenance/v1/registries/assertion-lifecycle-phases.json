@@ -1,0 +1,45 @@
+{
+  "registry_version": "1.0",
+  "provenance_schema_version": "1.0",
+  "application_version": "0.4.0",
+  "name": "assertion-lifecycle-phases",
+  "description": "Immutable assertion lifecycle phase observed when the relationship was asserted.",
+  "entries": [
+    {
+      "code": "proposed",
+      "meaning": "A relationship has been proposed but not adopted."
+    },
+    {
+      "code": "generated",
+      "meaning": "A relationship was produced by a deterministic or model-assisted operation."
+    },
+    {
+      "code": "staged_preview",
+      "meaning": "The relationship is visible for review but not accepted into canonical work."
+    },
+    {
+      "code": "accepted_into_work",
+      "meaning": "The relationship was explicitly accepted into canonical project work."
+    },
+    {
+      "code": "revised",
+      "meaning": "The relationship describes a later immutable revision."
+    },
+    {
+      "code": "finalized",
+      "meaning": "The relationship belongs to finalized project content."
+    },
+    {
+      "code": "published",
+      "meaning": "The relationship is bound into a published release."
+    },
+    {
+      "code": "superseded",
+      "meaning": "A later assertion replaces this relationship for current interpretation without erasing it."
+    },
+    {
+      "code": "purged",
+      "meaning": "The relationship is affected by an explicitly disclosed emergency reconstitution."
+    }
+  ]
+}

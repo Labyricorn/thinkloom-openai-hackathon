@@ -10,7 +10,7 @@
     },
     "record_id": {
       "type": "string",
-      "pattern": "^record_[0-9A-HJKMNP-TV-Z]{26}$"
+      "pattern": "^[a-z][a-z0-9_]*_[0-9A-HJKMNP-TV-Z]{26}$"
     },
     "record_type": {
       "enum": [
@@ -23,6 +23,8 @@
         "edit_transaction",
         "prompt_template",
         "model_configuration",
+        "provenance_assertion",
+        "assertion_evaluation",
         "release_file",
         "source",
         "other"

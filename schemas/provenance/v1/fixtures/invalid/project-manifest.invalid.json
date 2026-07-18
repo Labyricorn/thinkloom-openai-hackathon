@@ -4,7 +4,7 @@
     {
       "description": "project-manifest.schema_version: reject missing required property",
       "instance": {
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "project_id": "project_01J00000000000000000000001",
         "title": "The Attention Commons",
         "created_at": "2026-07-17T18:42:10.123Z",
@@ -33,7 +33,7 @@
       "description": "project-manifest.project_id: reject missing required property",
       "instance": {
         "schema_version": "1.0",
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "title": "The Attention Commons",
         "created_at": "2026-07-17T18:42:10.123Z",
         "updated_at": "2026-07-17T18:43:11.456Z",
@@ -47,7 +47,7 @@
       "description": "project-manifest.title: reject missing required property",
       "instance": {
         "schema_version": "1.0",
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "project_id": "project_01J00000000000000000000001",
         "created_at": "2026-07-17T18:42:10.123Z",
         "updated_at": "2026-07-17T18:43:11.456Z",
@@ -61,7 +61,7 @@
       "description": "project-manifest.created_at: reject missing required property",
       "instance": {
         "schema_version": "1.0",
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "project_id": "project_01J00000000000000000000001",
         "title": "The Attention Commons",
         "updated_at": "2026-07-17T18:43:11.456Z",
@@ -75,7 +75,7 @@
       "description": "project-manifest.updated_at: reject missing required property",
       "instance": {
         "schema_version": "1.0",
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "project_id": "project_01J00000000000000000000001",
         "title": "The Attention Commons",
         "created_at": "2026-07-17T18:42:10.123Z",
@@ -89,7 +89,7 @@
       "description": "project-manifest.current_phase: reject missing required property",
       "instance": {
         "schema_version": "1.0",
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "project_id": "project_01J00000000000000000000001",
         "title": "The Attention Commons",
         "created_at": "2026-07-17T18:42:10.123Z",
@@ -103,7 +103,7 @@
       "description": "project-manifest.publication_status: reject missing required property",
       "instance": {
         "schema_version": "1.0",
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "project_id": "project_01J00000000000000000000001",
         "title": "The Attention Commons",
         "created_at": "2026-07-17T18:42:10.123Z",
@@ -117,7 +117,7 @@
       "description": "project-manifest.provenance_policy_id: reject missing required property",
       "instance": {
         "schema_version": "1.0",
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "project_id": "project_01J00000000000000000000001",
         "title": "The Attention Commons",
         "created_at": "2026-07-17T18:42:10.123Z",
@@ -131,7 +131,7 @@
       "description": "project-manifest.audio_retained: reject missing required property",
       "instance": {
         "schema_version": "1.0",
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "project_id": "project_01J00000000000000000000001",
         "title": "The Attention Commons",
         "created_at": "2026-07-17T18:42:10.123Z",
@@ -145,7 +145,7 @@
       "description": "project-manifest: reject unexpected property",
       "instance": {
         "schema_version": "1.0",
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "project_id": "project_01J00000000000000000000001",
         "title": "The Attention Commons",
         "created_at": "2026-07-17T18:42:10.123Z",
@@ -161,7 +161,7 @@
       "description": "project-manifest.schema_version: reject value different from const",
       "instance": {
         "schema_version": "__INVALID_CONST__",
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "project_id": "project_01J00000000000000000000001",
         "title": "The Attention Commons",
         "created_at": "2026-07-17T18:42:10.123Z",
@@ -191,7 +191,7 @@
       "description": "project-manifest.project_id: reject pattern mismatch",
       "instance": {
         "schema_version": "1.0",
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "project_id": "invalid-id",
         "title": "The Attention Commons",
         "created_at": "2026-07-17T18:42:10.123Z",
@@ -206,7 +206,7 @@
       "description": "project-manifest.title: reject string below minLength",
       "instance": {
         "schema_version": "1.0",
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "project_id": "project_01J00000000000000000000001",
         "title": "",
         "created_at": "2026-07-17T18:42:10.123Z",
@@ -221,7 +221,7 @@
       "description": "project-manifest.created_at: reject pattern mismatch",
       "instance": {
         "schema_version": "1.0",
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "project_id": "project_01J00000000000000000000001",
         "title": "The Attention Commons",
         "created_at": "not-a-timestamp",
@@ -236,7 +236,7 @@
       "description": "project-manifest.updated_at: reject pattern mismatch",
       "instance": {
         "schema_version": "1.0",
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "project_id": "project_01J00000000000000000000001",
         "title": "The Attention Commons",
         "created_at": "2026-07-17T18:42:10.123Z",
@@ -251,7 +251,7 @@
       "description": "project-manifest.current_phase: reject value outside enum",
       "instance": {
         "schema_version": "1.0",
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "project_id": "project_01J00000000000000000000001",
         "title": "The Attention Commons",
         "created_at": "2026-07-17T18:42:10.123Z",
@@ -266,7 +266,7 @@
       "description": "project-manifest.publication_status: reject value outside enum",
       "instance": {
         "schema_version": "1.0",
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "project_id": "project_01J00000000000000000000001",
         "title": "The Attention Commons",
         "created_at": "2026-07-17T18:42:10.123Z",
@@ -281,7 +281,7 @@
       "description": "project-manifest.provenance_policy_id: reject pattern mismatch",
       "instance": {
         "schema_version": "1.0",
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "project_id": "project_01J00000000000000000000001",
         "title": "The Attention Commons",
         "created_at": "2026-07-17T18:42:10.123Z",
@@ -296,7 +296,7 @@
       "description": "project-manifest.audio_retained: reject value different from const",
       "instance": {
         "schema_version": "1.0",
-        "application_version": "0.3.0",
+        "application_version": "0.4.0",
         "project_id": "project_01J00000000000000000000001",
         "title": "The Attention Commons",
         "created_at": "2026-07-17T18:42:10.123Z",

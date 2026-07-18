@@ -1,0 +1,557 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://thinkloom.app/schemas/provenance/1.0/provenance-assertion.schema.json",
+  "title": "Canonical provenance assertion",
+  "description": "Immutable machine-evaluable subject-predicate-object assertion anchored to prior authoritative evidence. Its digest identity excludes only assertion_sha256.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "assertion_id": {
+      "type": "string",
+      "pattern": "^assertion_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "project_id": {
+      "type": "string",
+      "pattern": "^project_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "subject": {
+      "type": "object",
+      "properties": {
+        "entity_type": {
+          "enum": [
+            "project",
+            "artifact_revision",
+            "manuscript_revision",
+            "idea_revision",
+            "transcript_revision",
+            "invocation_request",
+            "invocation_output",
+            "prompt_template",
+            "model_configuration",
+            "release",
+            "assertion",
+            "other"
+          ]
+        },
+        "entity_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*_[0-9A-HJKMNP-TV-Z]{26}$"
+        },
+        "content_sha256": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "entity_type",
+        "entity_id",
+        "content_sha256"
+      ],
+      "additionalProperties": false
+    },
+    "predicate": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]+$"
+    },
+    "object": {
+      "type": "object",
+      "properties": {
+        "entity_type": {
+          "enum": [
+            "project",
+            "artifact_revision",
+            "manuscript_revision",
+            "idea_revision",
+            "transcript_revision",
+            "invocation_request",
+            "invocation_output",
+            "prompt_template",
+            "model_configuration",
+            "release",
+            "assertion",
+            "other"
+          ]
+        },
+        "entity_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*_[0-9A-HJKMNP-TV-Z]{26}$"
+        },
+        "content_sha256": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "entity_type",
+        "entity_id",
+        "content_sha256"
+      ],
+      "additionalProperties": false
+    },
+    "source_anchor": {
+      "type": "object",
+      "properties": {
+        "event_id": {
+          "type": "string",
+          "pattern": "^event_[0-9A-HJKMNP-TV-Z]{26}$"
+        },
+        "event_sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "event_hash": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "event_id",
+        "event_sequence",
+        "event_hash"
+      ],
+      "additionalProperties": false
+    },
+    "source_generation": {
+      "type": "object",
+      "properties": {
+        "project_epoch": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "artifact_revision": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "transcript_revision": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "project_epoch",
+        "artifact_revision",
+        "transcript_revision"
+      ],
+      "additionalProperties": false
+    },
+    "lifecycle_phase": {
+      "enum": [
+        "proposed",
+        "generated",
+        "staged_preview",
+        "accepted_into_work",
+        "revised",
+        "finalized",
+        "published",
+        "superseded",
+        "purged"
+      ]
+    },
+    "producer": {
+      "type": "object",
+      "properties": {
+        "subsystem": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]+$"
+        },
+        "application_version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        }
+      },
+      "required": [
+        "subsystem",
+        "application_version"
+      ],
+      "additionalProperties": false
+    },
+    "provenance": {
+      "type": "object",
+      "properties": {
+        "basis": {
+          "enum": [
+            "direct_record",
+            "deterministic_derivation",
+            "declared_relationship",
+            "verifier_observation"
+          ]
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "evidence_id": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*_[0-9A-HJKMNP-TV-Z]{26}$"
+              },
+              "evidence_type": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]+$"
+              },
+              "content_sha256": {
+                "type": "string",
+                "pattern": "^sha256:[a-f0-9]{64}$"
+              }
+            },
+            "required": [
+              "evidence_id",
+              "evidence_type",
+              "content_sha256"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "basis",
+        "evidence"
+      ],
+      "additionalProperties": false
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "dependency_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*_[0-9A-HJKMNP-TV-Z]{26}$"
+          },
+          "dependency_type": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]+$"
+          },
+          "expected_sha256": {
+            "type": "string",
+            "pattern": "^sha256:[a-f0-9]{64}$"
+          },
+          "expected_generation": {
+            "type": "object",
+            "properties": {
+              "project_epoch": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "artifact_revision": {
+                "anyOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "transcript_revision": {
+                "anyOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "project_epoch",
+              "artifact_revision",
+              "transcript_revision"
+            ],
+            "additionalProperties": false
+          },
+          "evidence_class": {
+            "enum": [
+              "mandatory_live",
+              "mandatory_retained",
+              "advisory",
+              "shadow"
+            ]
+          },
+          "role": {
+            "enum": [
+              "source_anchor",
+              "content_basis",
+              "model_configuration",
+              "prompt_template",
+              "authorship_basis",
+              "chronology_basis",
+              "compatibility_basis",
+              "other"
+            ]
+          },
+          "confidence_dimensions": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "integrity",
+                "identity",
+                "chronology",
+                "derivation",
+                "authorship",
+                "completeness"
+              ]
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "dependency_id",
+          "dependency_type",
+          "expected_sha256",
+          "expected_generation",
+          "evidence_class",
+          "role",
+          "confidence_dimensions"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "reason_code": {
+      "enum": [
+        "DIRECT_HASH_LINKED_DERIVATION",
+        "VERIFIED_TRANSITIVE_DERIVATION"
+      ]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+    },
+    "assertion_sha256": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    }
+  },
+  "required": [
+    "schema_version",
+    "assertion_id",
+    "project_id",
+    "subject",
+    "predicate",
+    "object",
+    "source_anchor",
+    "source_generation",
+    "lifecycle_phase",
+    "producer",
+    "provenance",
+    "dependencies",
+    "reason_code",
+    "created_at",
+    "assertion_sha256"
+  ],
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "subject": {
+            "type": "object",
+            "properties": {
+              "entity_type": {
+                "const": "artifact_revision"
+              }
+            },
+            "required": [
+              "entity_type"
+            ]
+          }
+        },
+        "required": [
+          "subject"
+        ]
+      },
+      "then": {
+        "properties": {
+          "source_generation": {
+            "type": "object",
+            "properties": {
+              "artifact_revision": {
+                "type": "integer",
+                "minimum": 1
+              }
+            },
+            "required": [
+              "artifact_revision"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "subject": {
+            "type": "object",
+            "properties": {
+              "entity_type": {
+                "const": "transcript_revision"
+              }
+            },
+            "required": [
+              "entity_type"
+            ]
+          }
+        },
+        "required": [
+          "subject"
+        ]
+      },
+      "then": {
+        "properties": {
+          "source_generation": {
+            "type": "object",
+            "properties": {
+              "transcript_revision": {
+                "type": "integer",
+                "minimum": 1
+              }
+            },
+            "required": [
+              "transcript_revision"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "examples": [
+    {
+      "schema_version": "1.0",
+      "assertion_id": "assertion_01J0000000000000000000000V",
+      "project_id": "project_01J00000000000000000000001",
+      "subject": {
+        "entity_type": "artifact_revision",
+        "entity_id": "revision_01J0000000000000000000000B",
+        "content_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+      },
+      "predicate": "derived_from",
+      "object": {
+        "entity_type": "invocation_output",
+        "entity_id": "record_01J00000000000000000000005",
+        "content_sha256": "sha256:9999999999999999999999999999999999999999999999999999999999999999"
+      },
+      "source_anchor": {
+        "event_id": "event_01J00000000000000000000004",
+        "event_sequence": 2,
+        "event_hash": "sha256:5555555555555555555555555555555555555555555555555555555555555555"
+      },
+      "source_generation": {
+        "project_epoch": 1,
+        "artifact_revision": 12,
+        "transcript_revision": 4
+      },
+      "lifecycle_phase": "accepted_into_work",
+      "producer": {
+        "subsystem": "provenance_writer",
+        "application_version": "0.4.0"
+      },
+      "provenance": {
+        "basis": "direct_record",
+        "evidence": [
+          {
+            "evidence_id": "event_01J00000000000000000000004",
+            "evidence_type": "provenance_event",
+            "content_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555"
+          },
+          {
+            "evidence_id": "record_01J00000000000000000000005",
+            "evidence_type": "invocation_response",
+            "content_sha256": "sha256:9999999999999999999999999999999999999999999999999999999999999999"
+          }
+        ]
+      },
+      "dependencies": [
+        {
+          "dependency_id": "event_01J00000000000000000000004",
+          "dependency_type": "provenance_event",
+          "expected_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+          "expected_generation": {
+            "project_epoch": 1,
+            "artifact_revision": 12,
+            "transcript_revision": 4
+          },
+          "evidence_class": "mandatory_retained",
+          "role": "source_anchor",
+          "confidence_dimensions": [
+            "integrity",
+            "chronology",
+            "derivation"
+          ]
+        },
+        {
+          "dependency_id": "record_01J00000000000000000000005",
+          "dependency_type": "model_configuration",
+          "expected_sha256": "sha256:8888888888888888888888888888888888888888888888888888888888888888",
+          "expected_generation": {
+            "project_epoch": 1,
+            "artifact_revision": 12,
+            "transcript_revision": 4
+          },
+          "evidence_class": "mandatory_live",
+          "role": "model_configuration",
+          "confidence_dimensions": [
+            "identity",
+            "derivation"
+          ]
+        },
+        {
+          "dependency_id": "turn_01J00000000000000000000007",
+          "dependency_type": "transcript_turn",
+          "expected_sha256": "sha256:7777777777777777777777777777777777777777777777777777777777777777",
+          "expected_generation": {
+            "project_epoch": 1,
+            "artifact_revision": 12,
+            "transcript_revision": 4
+          },
+          "evidence_class": "advisory",
+          "role": "authorship_basis",
+          "confidence_dimensions": [
+            "authorship",
+            "completeness"
+          ]
+        },
+        {
+          "dependency_id": "idea_01J00000000000000000000009",
+          "dependency_type": "shadow_comparison",
+          "expected_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+          "expected_generation": {
+            "project_epoch": 1,
+            "artifact_revision": 12,
+            "transcript_revision": 4
+          },
+          "evidence_class": "shadow",
+          "role": "other",
+          "confidence_dimensions": [
+            "completeness"
+          ]
+        }
+      ],
+      "reason_code": "DIRECT_HASH_LINKED_DERIVATION",
+      "created_at": "2026-07-17T18:43:11.456Z",
+      "assertion_sha256": "sha256:f6770d587b8f2af9a86ceaa67f9dd7346fe46708f2654871424c0431a7f9e826"
+    }
+  ]
+}

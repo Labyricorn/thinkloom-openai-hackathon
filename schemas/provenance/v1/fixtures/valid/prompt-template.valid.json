@@ -13,7 +13,7 @@
         "required": true
       }
     },
-    "creation_application_version": "0.3.0",
+    "creation_application_version": "0.4.0",
     "retention_classification": "project_record",
     "template_sha256": "sha256:7777777777777777777777777777777777777777777777777777777777777777",
     "created_at": "2026-07-17T18:42:10.123Z"

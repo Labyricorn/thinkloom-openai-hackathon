@@ -24,12 +24,12 @@ function validator() {
 }
 
 const requiredSchemas = [
-  "backup-manifest", "chain-head", "content-reference", "conversation-session", "derived-index-manifest",
+  "assertion-evaluation", "backup-manifest", "chain-head", "content-reference", "conversation-session", "derived-index-manifest",
   "disposition-revision", "edit-transaction", "encrypted-key-envelope", "idea", "idea-revision",
   "invocation-failure", "invocation-request", "invocation-response", "invocation-state", "invocation-stream-state",
   "invocation-stream-summary", "ledger-segment-manifest", "manuscript-revision", "model-capability-snapshot",
   "model-configuration-snapshot", "project-key-manifest", "project-manifest", "prompt-template",
-  "prompt-template-reference", "provenance-event", "provenance-policy", "purge-manifest", "record-envelope",
+  "prompt-template-reference", "provenance-assertion", "provenance-event", "provenance-policy", "purge-manifest", "record-envelope",
   "recovery-key-envelope", "release-manifest", "release-state", "sanitized-export-manifest", "text-fragment-reference",
   "transcript-correction", "transcript-normalization", "transcript-turn", "verification-report", "write-intent",
 ];
@@ -37,8 +37,8 @@ const requiredSchemas = [
 test("catalogs every approved Stage 2 schema under Draft 2020-12", () => {
   assert.equal(catalog.catalog_version, "1.0");
   assert.equal(catalog.provenance_schema_version, "1.0");
-  assert.equal(catalog.application_version, "0.3.0");
-  assert.deepEqual(catalog.compatible_application_versions, ["0.3.0"]);
+  assert.equal(catalog.application_version, "0.4.0");
+  assert.deepEqual(catalog.compatible_application_versions, ["0.4.0"]);
   assert.equal(catalog.native_writer_conformance, false);
   assert.equal(catalog.dialect, "https://json-schema.org/draft/2020-12/schema");
   assert.deepEqual(catalog.schemas.map(({ name }) => name), requiredSchemas);
@@ -48,6 +48,19 @@ test("catalogs every approved Stage 2 schema under Draft 2020-12", () => {
   }
 });
 
+test("publishes complete versioned assertion registries", async () => {
+  const expected = ["assertion-boundary-kinds", "assertion-confidence-dimensions", "assertion-evaluation-statuses", "assertion-evidence-classes", "assertion-lifecycle-phases", "assertion-reason-codes"];
+  assert.deepEqual(catalog.registries.map(({ name }) => name).sort(), expected);
+  for (const entry of catalog.registries) {
+    const registry = await readJson(entry.file);
+    assert.equal(registry.registry_version, "1.0");
+    assert.equal(registry.provenance_schema_version, "1.0");
+    assert.equal(registry.application_version, "0.4.0");
+    assert.ok(registry.entries.length > 0);
+    assert.ok(registry.entries.every(({ meaning }) => typeof meaning === "string" && meaning.length > 0));
+    assert.equal(new Set(registry.entries.map(({ code }) => code)).size, registry.entries.length);
+  }
+});
 test("accepts every valid fixture", async () => {
   const ajv = validator();
   for (const entry of schemaEntries) {
@@ -239,4 +252,70 @@ test("validates backup and release manifests bound to one chain head", async () 
   assert.equal(validateRelease(vector.release_manifest), true, ajv.errorsText(validateRelease.errors));
   assert.equal(vector.backup_manifest.source_chain_head, vector.release_manifest.source_chain_head);
   assert.equal(releaseMerkleRoot(vector.release_manifest.files), vector.release_manifest.release_files_merkle_root);
+});
+test("keeps canonical assertions immutable while evaluations change over time", async () => {
+  const ajv = validator();
+  const vector = await readJson("vectors", "assertion-envelope-and-invalidation.json");
+  const validateAssertion = ajv.getSchema("https://thinkloom.app/schemas/provenance/1.0/provenance-assertion.schema.json");
+  const validateEvaluation = ajv.getSchema("https://thinkloom.app/schemas/provenance/1.0/assertion-evaluation.schema.json");
+
+  assert.equal(validateAssertion(vector.assertion), true, ajv.errorsText(validateAssertion.errors));
+  assert.equal(sha256(vector.assertion_identity), vector.assertion.assertion_sha256);
+  const identity = { ...vector.assertion };
+  delete identity.assertion_sha256;
+  assert.deepEqual(identity, vector.assertion_identity);
+  const validateEvent = ajv.getSchema("https://thinkloom.app/schemas/provenance/1.0/provenance-event.schema.json");
+  assert.equal(validateEvent(vector.assertion_recording_event), true, ajv.errorsText(validateEvent.errors));
+  assert.equal(hashEvent(vector.assertion_recording_event), vector.assertion_recording_event.event_hash);
+  assert.notEqual(vector.assertion.source_anchor.event_id, vector.assertion_recording_event.event_id);
+  assert.ok(vector.assertion_recording_event.event_sequence > vector.assertion.source_anchor.event_sequence);
+  assert.equal(vector.assertion_recording_event.outputs[0].record_id, vector.assertion.assertion_id);
+  assert.equal(vector.assertion_recording_event.outputs[0].sha256, vector.assertion.assertion_sha256);
+
+  const expectedStatuses = ["exact", "degraded", "refused", "stale", "unverified"];
+  assert.deepEqual([...new Set(vector.evaluations.map(({ status }) => status))].sort(), expectedStatuses.sort());
+  for (const [index, evaluation] of vector.evaluations.entries()) {
+    assert.equal(validateEvaluation(evaluation), true, `${evaluation.status}: ${ajv.errorsText(validateEvaluation.errors)}`);
+    assert.equal(evaluation.assertion_id, vector.assertion.assertion_id);
+    assert.equal(evaluation.assertion_sha256, vector.assertion.assertion_sha256);
+    assert.deepEqual(evaluation.dependency_results.map(({ dependency_id }) => dependency_id).sort(), vector.assertion.dependencies.map(({ dependency_id }) => dependency_id).sort());
+    for (const result of evaluation.dependency_results) {
+      assert.equal(result.evidence_class, vector.assertion.dependencies.find(({ dependency_id }) => dependency_id === result.dependency_id).evidence_class);
+    }
+    assert.deepEqual(Object.keys(evaluation.confidence).sort(), ["authorship", "chronology", "completeness", "derivation", "identity", "integrity"]);
+    assert.equal(Object.hasOwn(evaluation.confidence, "score"), false);
+    if (index) assert.equal(evaluation.supersedes_evaluation_id, vector.evaluations[index - 1].evaluation_id);
+  }
+
+  const exact = vector.evaluations.find(({ status }) => status === "exact");
+  assert.equal(exact.boundary, null);
+  assert.equal(Object.values(exact.confidence).some((value) => ["degraded", "unverified"].includes(value)), false);
+  assert.equal(exact.dependency_results.filter(({ evidence_class }) => evidence_class !== "shadow").every(({ status }) => status === "valid"), true);
+  assert.ok(exact.dependency_results.some(({ evidence_class, status }) => evidence_class === "shadow" && status === "not_evaluated"));
+  assert.ok(vector.evaluations.find(({ status }) => status === "stale").dependency_results.some(({ status }) => status === "changed"));
+
+  for (const [name, invalid] of Object.entries(vector.forbidden_exact_cases)) {
+    const validate = ["unknown_provenance", "unknown_artifact_generation"].includes(name) ? validateAssertion : validateEvaluation;
+    assert.equal(validate(invalid), false, `${name} must not validate`);
+  }
+  assert.doesNotMatch(JSON.stringify(vector), /human.{0,20}percentage|authorship.{0,20}score/i);
+});
+
+test("keeps assertion status, reason, confidence, and evidence semantics registry-driven", async () => {
+  const vector = await readJson("vectors", "assertion-envelope-and-invalidation.json");
+  const registries = Object.fromEntries(await Promise.all(catalog.registries.map(async (entry) => [entry.name, await readJson(entry.file)])));
+  const statusRegistry = registries["assertion-evaluation-statuses"];
+  const reasonRegistry = registries["assertion-reason-codes"];
+  const evidenceRegistry = registries["assertion-evidence-classes"];
+  const lifecycleRegistry = registries["assertion-lifecycle-phases"];
+
+  assert.ok(lifecycleRegistry.entries.some(({ code }) => code === vector.assertion.lifecycle_phase));
+  assert.deepEqual(vector.consumer_decisions, statusRegistry.entries.map(({ code: status, consumer_action: action }) => ({ status, action })));
+  for (const evaluation of vector.evaluations) {
+    const reason = reasonRegistry.entries.find(({ code }) => code === evaluation.reason_code);
+    assert.ok(reason, evaluation.reason_code);
+    assert.ok(reason.permitted_statuses.includes(evaluation.status), `${evaluation.reason_code} cannot explain ${evaluation.status}`);
+  }
+  assert.deepEqual(evidenceRegistry.entries.map(({ code }) => code), ["mandatory_live", "mandatory_retained", "advisory", "shadow"]);
+  assert.deepEqual(evidenceRegistry.entries.map(({ exact_effect }) => exact_effect), ["required", "required", "may_degrade", "no_authority"]);
 });

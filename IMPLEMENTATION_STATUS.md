@@ -1,6 +1,6 @@
 # Thinkloom implementation status
 
-Status date: 2026-07-17
+Status date: 2026-07-18
 
 ## Completed locally
 
@@ -12,6 +12,7 @@ Status date: 2026-07-17
 - M5 finalization/style/history: editorial action previews, editable style traits and disallowed habits, saved versions, comparison summary, restore, release checkpoints, provenance timeline, and contribution relationships.
 - M7 export/backup/evidence: Markdown, HTML, PDF, text, backup ZIP, evidence ZIP, sanitization disclosure, hashes, manifest, atomic finalization, and strict ZIP import validation.
 - Provenance Stage 2 contract (v0.3.0): 38 JSON Schema Draft 2020-12 schemas, valid/invalid fixture suites, canonical JSON and JSONL vectors, event-chain vectors, protected-record/key-rotation vectors, retention-policy vectors, and a formal release-files Merkle construction.
+- Canonical assertion envelopes (v0.4.0): immutable provenance assertions, point-in-time evaluations, six semantic registries, independent confidence dimensions, evidence classes, stable reason codes, and deterministic dependency-invalidation vectors.
 - Product surface: Sites, Next, Vinext, Cloudflare, and browser-companion code and configuration have been removed. Tauri is the sole application target.
 
 ## External release gates

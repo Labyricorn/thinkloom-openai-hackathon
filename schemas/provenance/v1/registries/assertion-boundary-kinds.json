@@ -1,0 +1,41 @@
+{
+  "registry_version": "1.0",
+  "provenance_schema_version": "1.0",
+  "application_version": "0.4.0",
+  "name": "assertion-boundary-kinds",
+  "description": "Machine-readable boundaries preventing an unqualified exact conclusion.",
+  "entries": [
+    {
+      "code": "missing_provenance",
+      "meaning": "Required provenance basis or evidence identity is absent."
+    },
+    {
+      "code": "unknown_generation",
+      "meaning": "A required source or dependency generation is unknown."
+    },
+    {
+      "code": "evidence_access",
+      "meaning": "Evidence exists or is expected but cannot currently be accessed."
+    },
+    {
+      "code": "compatibility",
+      "meaning": "The observed schema or producer contract is incompatible."
+    },
+    {
+      "code": "dependency_change",
+      "meaning": "A dependency digest, generation, or source anchor changed."
+    },
+    {
+      "code": "policy",
+      "meaning": "A retention, authorization, or disclosure policy prohibits evaluation."
+    },
+    {
+      "code": "interpretation",
+      "meaning": "Evidence integrity is known but its asserted interpretation is limited."
+    },
+    {
+      "code": "coverage",
+      "meaning": "The evaluation does not cover every element required by the assertion scope."
+    }
+  ]
+}

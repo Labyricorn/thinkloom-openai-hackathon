@@ -133,7 +133,7 @@ test("externalizes and documents every model prompt", async () => {
   }
 
   const version = JSON.parse(packageRaw).version;
-  assert.equal(version, "0.3.0");
+  assert.equal(version, "0.4.0");
   const packageLock = JSON.parse(packageLockRaw);
   assert.equal(packageLock.version, version);
   assert.equal(packageLock.packages[""].version, version);

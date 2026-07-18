@@ -1,0 +1,119 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/provenance-assertion.schema.json",
+  "description": "Valid Canonical provenance assertion example.",
+  "instance": {
+    "schema_version": "1.0",
+    "assertion_id": "assertion_01J0000000000000000000000V",
+    "project_id": "project_01J00000000000000000000001",
+    "subject": {
+      "entity_type": "artifact_revision",
+      "entity_id": "revision_01J0000000000000000000000B",
+      "content_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+    },
+    "predicate": "derived_from",
+    "object": {
+      "entity_type": "invocation_output",
+      "entity_id": "record_01J00000000000000000000005",
+      "content_sha256": "sha256:9999999999999999999999999999999999999999999999999999999999999999"
+    },
+    "source_anchor": {
+      "event_id": "event_01J00000000000000000000004",
+      "event_sequence": 2,
+      "event_hash": "sha256:5555555555555555555555555555555555555555555555555555555555555555"
+    },
+    "source_generation": {
+      "project_epoch": 1,
+      "artifact_revision": 12,
+      "transcript_revision": 4
+    },
+    "lifecycle_phase": "accepted_into_work",
+    "producer": {
+      "subsystem": "provenance_writer",
+      "application_version": "0.4.0"
+    },
+    "provenance": {
+      "basis": "direct_record",
+      "evidence": [
+        {
+          "evidence_id": "event_01J00000000000000000000004",
+          "evidence_type": "provenance_event",
+          "content_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555"
+        },
+        {
+          "evidence_id": "record_01J00000000000000000000005",
+          "evidence_type": "invocation_response",
+          "content_sha256": "sha256:9999999999999999999999999999999999999999999999999999999999999999"
+        }
+      ]
+    },
+    "dependencies": [
+      {
+        "dependency_id": "event_01J00000000000000000000004",
+        "dependency_type": "provenance_event",
+        "expected_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "expected_generation": {
+          "project_epoch": 1,
+          "artifact_revision": 12,
+          "transcript_revision": 4
+        },
+        "evidence_class": "mandatory_retained",
+        "role": "source_anchor",
+        "confidence_dimensions": [
+          "integrity",
+          "chronology",
+          "derivation"
+        ]
+      },
+      {
+        "dependency_id": "record_01J00000000000000000000005",
+        "dependency_type": "model_configuration",
+        "expected_sha256": "sha256:8888888888888888888888888888888888888888888888888888888888888888",
+        "expected_generation": {
+          "project_epoch": 1,
+          "artifact_revision": 12,
+          "transcript_revision": 4
+        },
+        "evidence_class": "mandatory_live",
+        "role": "model_configuration",
+        "confidence_dimensions": [
+          "identity",
+          "derivation"
+        ]
+      },
+      {
+        "dependency_id": "turn_01J00000000000000000000007",
+        "dependency_type": "transcript_turn",
+        "expected_sha256": "sha256:7777777777777777777777777777777777777777777777777777777777777777",
+        "expected_generation": {
+          "project_epoch": 1,
+          "artifact_revision": 12,
+          "transcript_revision": 4
+        },
+        "evidence_class": "advisory",
+        "role": "authorship_basis",
+        "confidence_dimensions": [
+          "authorship",
+          "completeness"
+        ]
+      },
+      {
+        "dependency_id": "idea_01J00000000000000000000009",
+        "dependency_type": "shadow_comparison",
+        "expected_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+        "expected_generation": {
+          "project_epoch": 1,
+          "artifact_revision": 12,
+          "transcript_revision": 4
+        },
+        "evidence_class": "shadow",
+        "role": "other",
+        "confidence_dimensions": [
+          "completeness"
+        ]
+      }
+    ],
+    "reason_code": "DIRECT_HASH_LINKED_DERIVATION",
+    "created_at": "2026-07-17T18:43:11.456Z",
+    "assertion_sha256": "sha256:f6770d587b8f2af9a86ceaa67f9dd7346fe46708f2654871424c0431a7f9e826"
+  }
+}

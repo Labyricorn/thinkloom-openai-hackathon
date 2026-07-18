@@ -13,11 +13,11 @@
           "required": true
         }
       },
-      "creation_application_version": "0.3.0",
+      "creation_application_version": "0.4.0",
       "retention_classification": "project_record",
       "created_at": "2026-07-17T18:42:10.123Z"
     },
-    "digest": "sha256:73055322741f5a248ae79ca2c38f699e40da7b5b5576f83a615a9816ddab8ba3",
+    "digest": "sha256:d13871e34755e1e115d5b58bd96286f9ce02b82f774247ad2bb1f41e8de0c3d8",
     "complete_record": {
       "schema_version": "1.0",
       "template_id": "template_01J0000000000000000000000F",
@@ -30,10 +30,10 @@
           "required": true
         }
       },
-      "creation_application_version": "0.3.0",
+      "creation_application_version": "0.4.0",
       "retention_classification": "project_record",
       "created_at": "2026-07-17T18:42:10.123Z",
-      "template_sha256": "sha256:73055322741f5a248ae79ca2c38f699e40da7b5b5576f83a615a9816ddab8ba3"
+      "template_sha256": "sha256:d13871e34755e1e115d5b58bd96286f9ce02b82f774247ad2bb1f41e8de0c3d8"
     },
     "excluded_fields": [
       "template_sha256"

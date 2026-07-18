@@ -1,0 +1,779 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://thinkloom.app/schemas/provenance/1.0/assertion-evaluation.schema.json",
+  "title": "Point-in-time assertion evaluation",
+  "description": "Immutable verifier conclusion about one assertion at an explicit chain head and project epoch.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "evaluation_id": {
+      "type": "string",
+      "pattern": "^evaluation_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "assertion_id": {
+      "type": "string",
+      "pattern": "^assertion_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "assertion_sha256": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "project_id": {
+      "type": "string",
+      "pattern": "^project_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "evaluated_against": {
+      "type": "object",
+      "properties": {
+        "chain_head": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "event_sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "project_epoch": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "schema_catalog_sha256": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "chain_head",
+        "event_sequence",
+        "project_epoch",
+        "schema_catalog_sha256"
+      ],
+      "additionalProperties": false
+    },
+    "evaluator": {
+      "type": "object",
+      "properties": {
+        "subsystem": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]+$"
+        },
+        "application_version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        }
+      },
+      "required": [
+        "subsystem",
+        "application_version"
+      ],
+      "additionalProperties": false
+    },
+    "status": {
+      "enum": [
+        "exact",
+        "degraded",
+        "refused",
+        "stale",
+        "unverified"
+      ]
+    },
+    "confidence": {
+      "type": "object",
+      "properties": {
+        "integrity": {
+          "enum": [
+            "exact",
+            "degraded",
+            "unverified",
+            "not_applicable"
+          ]
+        },
+        "identity": {
+          "enum": [
+            "exact",
+            "degraded",
+            "unverified",
+            "not_applicable"
+          ]
+        },
+        "chronology": {
+          "enum": [
+            "exact",
+            "degraded",
+            "unverified",
+            "not_applicable"
+          ]
+        },
+        "derivation": {
+          "enum": [
+            "exact",
+            "degraded",
+            "unverified",
+            "not_applicable"
+          ]
+        },
+        "authorship": {
+          "enum": [
+            "exact",
+            "degraded",
+            "unverified",
+            "not_applicable"
+          ]
+        },
+        "completeness": {
+          "enum": [
+            "exact",
+            "degraded",
+            "unverified",
+            "not_applicable"
+          ]
+        }
+      },
+      "required": [
+        "integrity",
+        "identity",
+        "chronology",
+        "derivation",
+        "authorship",
+        "completeness"
+      ],
+      "additionalProperties": false
+    },
+    "boundary": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "enum": [
+                "missing_provenance",
+                "unknown_generation",
+                "evidence_access",
+                "compatibility",
+                "dependency_change",
+                "policy",
+                "interpretation",
+                "coverage"
+              ]
+            },
+            "affected_dimensions": {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "integrity",
+                  "identity",
+                  "chronology",
+                  "derivation",
+                  "authorship",
+                  "completeness"
+                ]
+              },
+              "minItems": 1,
+              "uniqueItems": true
+            },
+            "dependency_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*_[0-9A-HJKMNP-TV-Z]{26}$"
+              },
+              "uniqueItems": true
+            },
+            "compatibility": {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "required_schema": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "observed_schema": {
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "required_schema",
+                    "observed_schema"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "kind",
+            "affected_dimensions",
+            "dependency_ids",
+            "compatibility"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "dependency_results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "dependency_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*_[0-9A-HJKMNP-TV-Z]{26}$"
+          },
+          "evidence_class": {
+            "enum": [
+              "mandatory_live",
+              "mandatory_retained",
+              "advisory",
+              "shadow"
+            ]
+          },
+          "status": {
+            "enum": [
+              "valid",
+              "missing",
+              "changed",
+              "inaccessible",
+              "incompatible",
+              "not_evaluated"
+            ]
+          },
+          "observed_sha256": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^sha256:[a-f0-9]{64}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "observed_generation": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "project_epoch": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "artifact_revision": {
+                    "anyOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 1
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "transcript_revision": {
+                    "anyOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 1
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "project_epoch",
+                  "artifact_revision",
+                  "transcript_revision"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "dependency_id",
+          "evidence_class",
+          "status",
+          "observed_sha256",
+          "observed_generation"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "reason_code": {
+      "enum": [
+        "DIRECT_HASH_LINKED_DERIVATION",
+        "VERIFIED_TRANSITIVE_DERIVATION",
+        "REQUIRED_PROVENANCE_UNKNOWN",
+        "SOURCE_GENERATION_UNKNOWN",
+        "REQUIRED_EVIDENCE_MISSING",
+        "DEPENDENCY_DIGEST_MISMATCH",
+        "DEPENDENCY_GENERATION_MISMATCH",
+        "SOURCE_ANCHOR_STALE",
+        "SCHEMA_INCOMPATIBLE",
+        "POLICY_REFUSED",
+        "AUTHORIZED_EVIDENCE_UNAVAILABLE",
+        "ADVISORY_EVIDENCE_UNAVAILABLE",
+        "ASSERTION_NOT_EVALUATED",
+        "AUTHORSHIP_UNCERTAIN",
+        "CHRONOLOGY_INCOMPLETE",
+        "COMPLETENESS_INCOMPLETE"
+      ]
+    },
+    "supersedes_evaluation_id": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^evaluation_[0-9A-HJKMNP-TV-Z]{26}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "evaluated_at": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+    }
+  },
+  "required": [
+    "schema_version",
+    "evaluation_id",
+    "assertion_id",
+    "assertion_sha256",
+    "project_id",
+    "evaluated_against",
+    "evaluator",
+    "status",
+    "confidence",
+    "boundary",
+    "dependency_results",
+    "reason_code",
+    "supersedes_evaluation_id",
+    "evaluated_at"
+  ],
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "exact"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "boundary": {
+            "type": "null"
+          },
+          "reason_code": {
+            "enum": [
+              "DIRECT_HASH_LINKED_DERIVATION",
+              "VERIFIED_TRANSITIVE_DERIVATION"
+            ]
+          },
+          "confidence": {
+            "type": "object",
+            "properties": {
+              "integrity": {
+                "enum": [
+                  "exact",
+                  "not_applicable"
+                ]
+              },
+              "identity": {
+                "enum": [
+                  "exact",
+                  "not_applicable"
+                ]
+              },
+              "chronology": {
+                "enum": [
+                  "exact",
+                  "not_applicable"
+                ]
+              },
+              "derivation": {
+                "enum": [
+                  "exact",
+                  "not_applicable"
+                ]
+              },
+              "authorship": {
+                "enum": [
+                  "exact",
+                  "not_applicable"
+                ]
+              },
+              "completeness": {
+                "enum": [
+                  "exact",
+                  "not_applicable"
+                ]
+              }
+            },
+            "required": [
+              "integrity",
+              "identity",
+              "chronology",
+              "derivation",
+              "authorship",
+              "completeness"
+            ]
+          },
+          "dependency_results": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "if": {
+                "properties": {
+                  "evidence_class": {
+                    "const": "shadow"
+                  }
+                },
+                "required": [
+                  "evidence_class"
+                ]
+              },
+              "else": {
+                "properties": {
+                  "status": {
+                    "const": "valid"
+                  }
+                },
+                "required": [
+                  "status"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "not": {
+              "const": "exact"
+            }
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "boundary": {
+            "not": {
+              "type": "null"
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "degraded"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "reason_code": {
+            "enum": [
+              "ADVISORY_EVIDENCE_UNAVAILABLE",
+              "AUTHORSHIP_UNCERTAIN",
+              "CHRONOLOGY_INCOMPLETE",
+              "COMPLETENESS_INCOMPLETE"
+            ]
+          },
+          "confidence": {
+            "type": "object",
+            "anyOf": [
+              {
+                "properties": {
+                  "integrity": {
+                    "const": "degraded"
+                  }
+                },
+                "required": [
+                  "integrity"
+                ]
+              },
+              {
+                "properties": {
+                  "identity": {
+                    "const": "degraded"
+                  }
+                },
+                "required": [
+                  "identity"
+                ]
+              },
+              {
+                "properties": {
+                  "chronology": {
+                    "const": "degraded"
+                  }
+                },
+                "required": [
+                  "chronology"
+                ]
+              },
+              {
+                "properties": {
+                  "derivation": {
+                    "const": "degraded"
+                  }
+                },
+                "required": [
+                  "derivation"
+                ]
+              },
+              {
+                "properties": {
+                  "authorship": {
+                    "const": "degraded"
+                  }
+                },
+                "required": [
+                  "authorship"
+                ]
+              },
+              {
+                "properties": {
+                  "completeness": {
+                    "const": "degraded"
+                  }
+                },
+                "required": [
+                  "completeness"
+                ]
+              }
+            ]
+          },
+          "dependency_results": {
+            "type": "array",
+            "not": {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "evidence_class": {
+                    "enum": [
+                      "mandatory_live",
+                      "mandatory_retained"
+                    ]
+                  },
+                  "status": {
+                    "not": {
+                      "const": "valid"
+                    }
+                  }
+                },
+                "required": [
+                  "evidence_class",
+                  "status"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "refused"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "reason_code": {
+            "enum": [
+              "SCHEMA_INCOMPATIBLE",
+              "POLICY_REFUSED",
+              "AUTHORIZED_EVIDENCE_UNAVAILABLE"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "stale"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "reason_code": {
+            "enum": [
+              "DEPENDENCY_DIGEST_MISMATCH",
+              "DEPENDENCY_GENERATION_MISMATCH",
+              "SOURCE_ANCHOR_STALE"
+            ]
+          },
+          "dependency_results": {
+            "type": "array",
+            "contains": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "const": "changed"
+                }
+              },
+              "required": [
+                "status"
+              ]
+            },
+            "minContains": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "unverified"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "reason_code": {
+            "enum": [
+              "REQUIRED_PROVENANCE_UNKNOWN",
+              "SOURCE_GENERATION_UNKNOWN",
+              "REQUIRED_EVIDENCE_MISSING",
+              "AUTHORIZED_EVIDENCE_UNAVAILABLE",
+              "ASSERTION_NOT_EVALUATED",
+              "CHRONOLOGY_INCOMPLETE",
+              "COMPLETENESS_INCOMPLETE"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "examples": [
+    {
+      "schema_version": "1.0",
+      "evaluation_id": "evaluation_01J0000000000000000000000W",
+      "assertion_id": "assertion_01J0000000000000000000000V",
+      "assertion_sha256": "sha256:f6770d587b8f2af9a86ceaa67f9dd7346fe46708f2654871424c0431a7f9e826",
+      "project_id": "project_01J00000000000000000000001",
+      "evaluated_against": {
+        "chain_head": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "event_sequence": 3,
+        "project_epoch": 1,
+        "schema_catalog_sha256": "sha256:7777777777777777777777777777777777777777777777777777777777777777"
+      },
+      "evaluator": {
+        "subsystem": "native_verifier",
+        "application_version": "0.4.0"
+      },
+      "status": "exact",
+      "confidence": {
+        "integrity": "exact",
+        "identity": "exact",
+        "chronology": "exact",
+        "derivation": "exact",
+        "authorship": "not_applicable",
+        "completeness": "exact"
+      },
+      "boundary": null,
+      "dependency_results": [
+        {
+          "dependency_id": "event_01J00000000000000000000004",
+          "evidence_class": "mandatory_retained",
+          "status": "valid",
+          "observed_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+          "observed_generation": {
+            "project_epoch": 1,
+            "artifact_revision": 12,
+            "transcript_revision": 4
+          }
+        },
+        {
+          "dependency_id": "record_01J00000000000000000000005",
+          "evidence_class": "mandatory_live",
+          "status": "valid",
+          "observed_sha256": "sha256:8888888888888888888888888888888888888888888888888888888888888888",
+          "observed_generation": {
+            "project_epoch": 1,
+            "artifact_revision": 12,
+            "transcript_revision": 4
+          }
+        },
+        {
+          "dependency_id": "turn_01J00000000000000000000007",
+          "evidence_class": "advisory",
+          "status": "valid",
+          "observed_sha256": "sha256:7777777777777777777777777777777777777777777777777777777777777777",
+          "observed_generation": {
+            "project_epoch": 1,
+            "artifact_revision": 12,
+            "transcript_revision": 4
+          }
+        },
+        {
+          "dependency_id": "idea_01J00000000000000000000009",
+          "evidence_class": "shadow",
+          "status": "not_evaluated",
+          "observed_sha256": null,
+          "observed_generation": null
+        }
+      ],
+      "reason_code": "DIRECT_HASH_LINKED_DERIVATION",
+      "supersedes_evaluation_id": null,
+      "evaluated_at": "2026-07-17T18:44:12.789Z"
+    }
+  ]
+}

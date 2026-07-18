@@ -1,0 +1,34 @@
+{
+  "registry_version": "1.0",
+  "provenance_schema_version": "1.0",
+  "application_version": "0.4.0",
+  "name": "assertion-evaluation-statuses",
+  "description": "Consumer-facing point-in-time assertion conclusions.",
+  "entries": [
+    {
+      "code": "exact",
+      "consumer_action": "promote",
+      "meaning": "All mandatory evidence and relevant confidence dimensions support the asserted scope."
+    },
+    {
+      "code": "degraded",
+      "consumer_action": "warn",
+      "meaning": "Use is possible only within the recorded uncertainty boundary."
+    },
+    {
+      "code": "refused",
+      "consumer_action": "refuse",
+      "meaning": "Policy, authorization, or compatibility prohibits a conclusion."
+    },
+    {
+      "code": "stale",
+      "consumer_action": "reevaluate",
+      "meaning": "A source anchor, digest, or generation dependency changed."
+    },
+    {
+      "code": "unverified",
+      "consumer_action": "withhold_exact",
+      "meaning": "Mandatory evaluation or evidence is incomplete without a demonstrated contradiction."
+    }
+  ]
+}

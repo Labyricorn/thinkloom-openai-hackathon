@@ -1,6 +1,6 @@
 # Thinkloom Stage 2 Provenance Schema Package
 
-Status: **Complete for Thinkloom 0.3.0**
+Status: **Complete for Thinkloom 0.4.0**
 Schema family: **1.0**
 Dialect: **JSON Schema Draft 2020-12**
 Runtime conformance: **Not yet implemented**
@@ -11,14 +11,14 @@ Stage 2 formalizes the approved provenance architecture without changing native 
 
 ## Package
 
-The machine-readable package is in [`schemas/provenance/v1`](../../schemas/provenance/v1/README.md). `catalog.json` identifies all 38 schemas, the schema and application versions, compatibility, fixture locations, and the generator.
+The machine-readable package is in [`schemas/provenance/v1`](../../schemas/provenance/v1/README.md). `catalog.json` identifies all 40 schemas, the schema and application versions, compatibility, fixture locations, and the generator.
 
 Each schema has:
 
 - one valid canonical fixture;
 - invalid cases for every top-level required field and the closed-object policy;
 - populated nested cases for enum, const, pattern, numeric, string, and array bounds; and
-- explicit conditional failures for protected records and recovery envelopes where ordinary keyword mutation is insufficient.
+- explicit conditional failures for protected records, recovery envelopes, assertion generations, and exact evaluation rules where ordinary keyword mutation is insufficient.
 
 ## Deterministic vectors
 
@@ -33,8 +33,11 @@ The vector suite covers:
 - device and recovery key envelopes plus key rotation;
 - non-mutating sanitized exports and omission-rule disclosure;
 - deterministic derived indexes;
-- backup and release manifests plus the release-files Merkle root; and
-- all verification statuses and finding severities.
+- backup and release manifests plus the release-files Merkle root;
+- all verification statuses and finding severities;
+- immutable assertion envelopes and exact self-digest identity;
+- point-in-time exact, degraded, refused, stale, and unverified evaluations; and
+- versioned reason, lifecycle, confidence, evidence, boundary, and consumer-decision registries.
 
 ## Verification
 
@@ -54,4 +57,4 @@ The schema tests are also part of `npm test`. Generated output must be committed
 
 ## Next boundary
 
-Thinkloom 0.3.0 must not claim native provenance conformance. The next implementation stage replaces the MVP persistence path with the approved single-writer protocol and then executes the durable-boundary fault-injection matrix.
+Thinkloom 0.4.0 must not claim native provenance conformance. The next implementation stage replaces the MVP persistence path with the approved single-writer protocol and then executes the durable-boundary fault-injection matrix.

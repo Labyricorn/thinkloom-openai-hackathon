@@ -2,14 +2,59 @@
   "catalog_version": "1.0",
   "dialect": "https://json-schema.org/draft/2020-12/schema",
   "provenance_schema_version": "1.0",
-  "application_version": "0.3.0",
+  "application_version": "0.4.0",
   "compatible_application_versions": [
-    "0.3.0"
+    "0.4.0"
   ],
   "native_writer_conformance": false,
+  "registries": [
+    {
+      "name": "assertion-lifecycle-phases",
+      "description": "Immutable assertion lifecycle phase observed when the relationship was asserted.",
+      "id": "https://thinkloom.app/schemas/provenance/1.0/registries/assertion-lifecycle-phases.json",
+      "file": "registries/assertion-lifecycle-phases.json"
+    },
+    {
+      "name": "assertion-evaluation-statuses",
+      "description": "Consumer-facing point-in-time assertion conclusions.",
+      "id": "https://thinkloom.app/schemas/provenance/1.0/registries/assertion-evaluation-statuses.json",
+      "file": "registries/assertion-evaluation-statuses.json"
+    },
+    {
+      "name": "assertion-confidence-dimensions",
+      "description": "Independent non-numeric confidence dimensions.",
+      "id": "https://thinkloom.app/schemas/provenance/1.0/registries/assertion-confidence-dimensions.json",
+      "file": "registries/assertion-confidence-dimensions.json"
+    },
+    {
+      "name": "assertion-evidence-classes",
+      "description": "Evidence availability and authority requirements.",
+      "id": "https://thinkloom.app/schemas/provenance/1.0/registries/assertion-evidence-classes.json",
+      "file": "registries/assertion-evidence-classes.json"
+    },
+    {
+      "name": "assertion-boundary-kinds",
+      "description": "Machine-readable boundaries preventing an unqualified exact conclusion.",
+      "id": "https://thinkloom.app/schemas/provenance/1.0/registries/assertion-boundary-kinds.json",
+      "file": "registries/assertion-boundary-kinds.json"
+    },
+    {
+      "name": "assertion-reason-codes",
+      "description": "Stable explanations for assertion creation and evaluation outcomes.",
+      "id": "https://thinkloom.app/schemas/provenance/1.0/registries/assertion-reason-codes.json",
+      "file": "registries/assertion-reason-codes.json"
+    }
+  ],
   "normative_specification": "../../../docs/provenance/STAGE-1-NORMATIVE-SPECIFICATION.md",
   "generated_by": "scripts/generate-provenance-stage2.mjs",
   "schemas": [
+    {
+      "name": "assertion-evaluation",
+      "id": "https://thinkloom.app/schemas/provenance/1.0/assertion-evaluation.schema.json",
+      "file": "assertion-evaluation.schema.json",
+      "valid_fixture": "fixtures/valid/assertion-evaluation.valid.json",
+      "invalid_fixture": "fixtures/invalid/assertion-evaluation.invalid.json"
+    },
     {
       "name": "backup-manifest",
       "id": "https://thinkloom.app/schemas/provenance/1.0/backup-manifest.schema.json",
@@ -177,6 +222,13 @@
       "file": "prompt-template-reference.schema.json",
       "valid_fixture": "fixtures/valid/prompt-template-reference.valid.json",
       "invalid_fixture": "fixtures/invalid/prompt-template-reference.invalid.json"
+    },
+    {
+      "name": "provenance-assertion",
+      "id": "https://thinkloom.app/schemas/provenance/1.0/provenance-assertion.schema.json",
+      "file": "provenance-assertion.schema.json",
+      "valid_fixture": "fixtures/valid/provenance-assertion.valid.json",
+      "invalid_fixture": "fixtures/invalid/provenance-assertion.invalid.json"
     },
     {
       "name": "provenance-event",

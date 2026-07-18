@@ -8,4 +8,4 @@ This directory contains the approved normative specification and formal Stage 2 
 - [Stage 2 Completion and Verification](STAGE-2-SCHEMA-PACKAGE.md)
 - [Stage 2 JSON Schema package](../../schemas/provenance/v1/README.md)
 
-Thinkloom 0.3.0 includes the 38-schema Draft 2020-12 package, valid and invalid fixtures, and deterministic conformance vectors. The native writer does not yet implement this contract and must not be represented as conforming until the later implementation and fault-injection stages are complete.
+Thinkloom 0.4.0 includes the 40-schema Draft 2020-12 package, versioned assertion registries, valid and invalid fixtures, and deterministic conformance vectors. The native writer does not yet implement this contract and must not be represented as conforming until the later implementation and fault-injection stages are complete.

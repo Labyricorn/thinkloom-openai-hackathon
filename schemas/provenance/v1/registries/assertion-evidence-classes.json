@@ -1,0 +1,29 @@
+{
+  "registry_version": "1.0",
+  "provenance_schema_version": "1.0",
+  "application_version": "0.4.0",
+  "name": "assertion-evidence-classes",
+  "description": "Evidence availability and authority requirements.",
+  "entries": [
+    {
+      "code": "mandatory_live",
+      "exact_effect": "required",
+      "meaning": "Current accessible evidence is required for exact evaluation."
+    },
+    {
+      "code": "mandatory_retained",
+      "exact_effect": "required",
+      "meaning": "Retained authoritative evidence and its digest are required for exact evaluation."
+    },
+    {
+      "code": "advisory",
+      "exact_effect": "may_degrade",
+      "meaning": "Absence may degrade a named dimension but does not alter authoritative evidence."
+    },
+    {
+      "code": "shadow",
+      "exact_effect": "no_authority",
+      "meaning": "Comparison-only evidence that never becomes authoritative by observation."
+    }
+  ]
+}
