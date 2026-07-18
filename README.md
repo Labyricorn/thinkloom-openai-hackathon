@@ -84,6 +84,12 @@ Every language-model prompt is editable JSON. Thinkloom creates documented user 
 
 See [PROMPTS.md](PROMPTS.md) for each file's effect, variables, editing workflow, validation behavior, and reset procedure.
 
+## Provenance architecture
+
+The approved Thinkloom 1.0 provenance architecture is documented in the [Stage 1 normative provenance specification](docs/provenance/README.md). It defines the future single-writer subsystem, canonical records, segmented ledger, recovery protocol, retention policy, native verification, and release bindings.
+
+This specification is a forward implementation contract. The current 0.2.0 provenance implementation must not be represented as already conforming to it.
+
 ## Provider setup
 
 Ollama defaults to `http://127.0.0.1:11434` and model `llama3.2`. OpenAI and compatible credentials are entered in Settings and saved through Windows Credential Manager, macOS Keychain, or Linux Secret Service. The first cloud operation in each project requires explicit approval.

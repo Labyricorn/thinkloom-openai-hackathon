@@ -26,6 +26,8 @@ These items cannot be honestly certified from this workspace alone and need proj
 
 ## Remaining hardening
 
+- Replace the current MVP provenance persistence path with the approved [Thinkloom 1.0 Stage 1 normative provenance subsystem](docs/provenance/README.md). The specification is complete; formal schemas, fixtures, native implementation, and fault-injection conformance remain future stages.
+
 - Run microphone/VAD/transcription integration tests once the approved model assets are supplied.
 - Run signed clean-install, upgrade, downgrade-warning, and uninstall tests on each release platform.
 - Run full 20,000-word interaction and fault-injection profiling on packaged release hardware.
