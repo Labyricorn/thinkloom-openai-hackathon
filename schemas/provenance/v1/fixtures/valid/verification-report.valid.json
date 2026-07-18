@@ -1,0 +1,27 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/verification-report.schema.json",
+  "description": "Valid Verification report example.",
+  "instance": {
+    "schema_version": "1.0",
+    "verification_id": "record_01J00000000000000000000005",
+    "project_id": "project_01J00000000000000000000001",
+    "status": "VERIFIED_WITH_WARNINGS",
+    "verified_through_event_id": "event_01J00000000000000000000003",
+    "verified_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+    "checked_segments": 1,
+    "checked_events": 1,
+    "checked_records": 4,
+    "findings": [
+      {
+        "severity": "WARNING",
+        "code": "INDEX_STALE",
+        "message": "Contribution index is stale.",
+        "authoritative_evidence_affected": false,
+        "path": "provenance/indexes/contribution-graph.json",
+        "event_id": null
+      }
+    ],
+    "verifier_version": "1.0.0",
+    "completed_at": "2026-07-17T18:43:11.456Z"
+  }
+}

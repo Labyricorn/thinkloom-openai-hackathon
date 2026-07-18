@@ -1,0 +1,277 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/invocation-stream-summary.schema.json",
+  "cases": [
+    {
+      "description": "invocation-stream-summary.schema_version: reject missing required property",
+      "instance": {
+        "stream_id": "stream_01J0000000000000000000000Q",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "terminal_state": "COMPLETED",
+        "bytes_received": 512,
+        "chunks_received": 4,
+        "duration_milliseconds": 2400,
+        "partial_output_preserved": false,
+        "completed_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "invocation-stream-summary.stream_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "terminal_state": "COMPLETED",
+        "bytes_received": 512,
+        "chunks_received": 4,
+        "duration_milliseconds": 2400,
+        "partial_output_preserved": false,
+        "completed_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "invocation-stream-summary.invocation_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "stream_id": "stream_01J0000000000000000000000Q",
+        "terminal_state": "COMPLETED",
+        "bytes_received": 512,
+        "chunks_received": 4,
+        "duration_milliseconds": 2400,
+        "partial_output_preserved": false,
+        "completed_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "invocation-stream-summary.terminal_state: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "stream_id": "stream_01J0000000000000000000000Q",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "bytes_received": 512,
+        "chunks_received": 4,
+        "duration_milliseconds": 2400,
+        "partial_output_preserved": false,
+        "completed_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "invocation-stream-summary.bytes_received: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "stream_id": "stream_01J0000000000000000000000Q",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "terminal_state": "COMPLETED",
+        "chunks_received": 4,
+        "duration_milliseconds": 2400,
+        "partial_output_preserved": false,
+        "completed_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "invocation-stream-summary.chunks_received: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "stream_id": "stream_01J0000000000000000000000Q",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "terminal_state": "COMPLETED",
+        "bytes_received": 512,
+        "duration_milliseconds": 2400,
+        "partial_output_preserved": false,
+        "completed_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "invocation-stream-summary.duration_milliseconds: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "stream_id": "stream_01J0000000000000000000000Q",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "terminal_state": "COMPLETED",
+        "bytes_received": 512,
+        "chunks_received": 4,
+        "partial_output_preserved": false,
+        "completed_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "invocation-stream-summary.partial_output_preserved: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "stream_id": "stream_01J0000000000000000000000Q",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "terminal_state": "COMPLETED",
+        "bytes_received": 512,
+        "chunks_received": 4,
+        "duration_milliseconds": 2400,
+        "completed_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "invocation-stream-summary.completed_at: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "stream_id": "stream_01J0000000000000000000000Q",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "terminal_state": "COMPLETED",
+        "bytes_received": 512,
+        "chunks_received": 4,
+        "duration_milliseconds": 2400,
+        "partial_output_preserved": false
+      }
+    },
+    {
+      "description": "invocation-stream-summary: reject unexpected property",
+      "instance": {
+        "schema_version": "1.0",
+        "stream_id": "stream_01J0000000000000000000000Q",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "terminal_state": "COMPLETED",
+        "bytes_received": 512,
+        "chunks_received": 4,
+        "duration_milliseconds": 2400,
+        "partial_output_preserved": false,
+        "completed_at": "2026-07-17T18:43:11.456Z",
+        "__unexpected": true
+      }
+    },
+    {
+      "description": "invocation-stream-summary.schema_version: reject value different from const",
+      "instance": {
+        "schema_version": "__INVALID_CONST__",
+        "stream_id": "stream_01J0000000000000000000000Q",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "terminal_state": "COMPLETED",
+        "bytes_received": 512,
+        "chunks_received": 4,
+        "duration_milliseconds": 2400,
+        "partial_output_preserved": false,
+        "completed_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "invocation-stream-summary.stream_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "stream_id": "invalid-id",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "terminal_state": "COMPLETED",
+        "bytes_received": 512,
+        "chunks_received": 4,
+        "duration_milliseconds": 2400,
+        "partial_output_preserved": false,
+        "completed_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "invocation-stream-summary.invocation_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "stream_id": "stream_01J0000000000000000000000Q",
+        "invocation_id": "invalid-id",
+        "terminal_state": "COMPLETED",
+        "bytes_received": 512,
+        "chunks_received": 4,
+        "duration_milliseconds": 2400,
+        "partial_output_preserved": false,
+        "completed_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "invocation-stream-summary.terminal_state: reject value outside enum",
+      "instance": {
+        "schema_version": "1.0",
+        "stream_id": "stream_01J0000000000000000000000Q",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "terminal_state": "__INVALID_ENUM__",
+        "bytes_received": 512,
+        "chunks_received": 4,
+        "duration_milliseconds": 2400,
+        "partial_output_preserved": false,
+        "completed_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "invocation-stream-summary.bytes_received: reject value below minimum",
+      "instance": {
+        "schema_version": "1.0",
+        "stream_id": "stream_01J0000000000000000000000Q",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "terminal_state": "COMPLETED",
+        "bytes_received": -1,
+        "chunks_received": 4,
+        "duration_milliseconds": 2400,
+        "partial_output_preserved": false,
+        "completed_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "invocation-stream-summary.bytes_received: reject value above maximum",
+      "instance": {
+        "schema_version": "1.0",
+        "stream_id": "stream_01J0000000000000000000000Q",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "terminal_state": "COMPLETED",
+        "bytes_received": 67108865,
+        "chunks_received": 4,
+        "duration_milliseconds": 2400,
+        "partial_output_preserved": false,
+        "completed_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "invocation-stream-summary.chunks_received: reject value below minimum",
+      "instance": {
+        "schema_version": "1.0",
+        "stream_id": "stream_01J0000000000000000000000Q",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "terminal_state": "COMPLETED",
+        "bytes_received": 512,
+        "chunks_received": -1,
+        "duration_milliseconds": 2400,
+        "partial_output_preserved": false,
+        "completed_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "invocation-stream-summary.duration_milliseconds: reject value below minimum",
+      "instance": {
+        "schema_version": "1.0",
+        "stream_id": "stream_01J0000000000000000000000Q",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "terminal_state": "COMPLETED",
+        "bytes_received": 512,
+        "chunks_received": 4,
+        "duration_milliseconds": -1,
+        "partial_output_preserved": false,
+        "completed_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "invocation-stream-summary.duration_milliseconds: reject value above maximum",
+      "instance": {
+        "schema_version": "1.0",
+        "stream_id": "stream_01J0000000000000000000000Q",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "terminal_state": "COMPLETED",
+        "bytes_received": 512,
+        "chunks_received": 4,
+        "duration_milliseconds": 1800001,
+        "partial_output_preserved": false,
+        "completed_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "invocation-stream-summary.completed_at: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "stream_id": "stream_01J0000000000000000000000Q",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "terminal_state": "COMPLETED",
+        "bytes_received": 512,
+        "chunks_received": 4,
+        "duration_milliseconds": 2400,
+        "partial_output_preserved": false,
+        "completed_at": "not-a-timestamp"
+      }
+    }
+  ]
+}

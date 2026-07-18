@@ -1,0 +1,13 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/chain-head.schema.json",
+  "description": "Valid Chain head example.",
+  "instance": {
+    "schema_version": "1.0",
+    "project_id": "project_01J00000000000000000000001",
+    "active_segment_number": 1,
+    "event_id": "event_01J00000000000000000000003",
+    "event_sequence": 1,
+    "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+    "updated_at": "2026-07-17T18:42:10.123Z"
+  }
+}

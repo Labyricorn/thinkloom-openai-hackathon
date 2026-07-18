@@ -1,0 +1,219 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/transcript-correction.schema.json",
+  "cases": [
+    {
+      "description": "transcript-correction.schema_version: reject missing required property",
+      "instance": {
+        "correction_id": "correction_01J0000000000000000000000J",
+        "turn_id": "turn_01J00000000000000000000007",
+        "revision_number": 1,
+        "corrected_text": "Attention shapes our public life.",
+        "reason": "user_correction",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "transcript-correction.correction_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "turn_id": "turn_01J00000000000000000000007",
+        "revision_number": 1,
+        "corrected_text": "Attention shapes our public life.",
+        "reason": "user_correction",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "transcript-correction.turn_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "correction_id": "correction_01J0000000000000000000000J",
+        "revision_number": 1,
+        "corrected_text": "Attention shapes our public life.",
+        "reason": "user_correction",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "transcript-correction.revision_number: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "correction_id": "correction_01J0000000000000000000000J",
+        "turn_id": "turn_01J00000000000000000000007",
+        "corrected_text": "Attention shapes our public life.",
+        "reason": "user_correction",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "transcript-correction.corrected_text: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "correction_id": "correction_01J0000000000000000000000J",
+        "turn_id": "turn_01J00000000000000000000007",
+        "revision_number": 1,
+        "reason": "user_correction",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "transcript-correction.reason: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "correction_id": "correction_01J0000000000000000000000J",
+        "turn_id": "turn_01J00000000000000000000007",
+        "revision_number": 1,
+        "corrected_text": "Attention shapes our public life.",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "transcript-correction.created_at: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "correction_id": "correction_01J0000000000000000000000J",
+        "turn_id": "turn_01J00000000000000000000007",
+        "revision_number": 1,
+        "corrected_text": "Attention shapes our public life.",
+        "reason": "user_correction",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "transcript-correction.event_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "correction_id": "correction_01J0000000000000000000000J",
+        "turn_id": "turn_01J00000000000000000000007",
+        "revision_number": 1,
+        "corrected_text": "Attention shapes our public life.",
+        "reason": "user_correction",
+        "created_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "transcript-correction: reject unexpected property",
+      "instance": {
+        "schema_version": "1.0",
+        "correction_id": "correction_01J0000000000000000000000J",
+        "turn_id": "turn_01J00000000000000000000007",
+        "revision_number": 1,
+        "corrected_text": "Attention shapes our public life.",
+        "reason": "user_correction",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004",
+        "__unexpected": true
+      }
+    },
+    {
+      "description": "transcript-correction.schema_version: reject value different from const",
+      "instance": {
+        "schema_version": "__INVALID_CONST__",
+        "correction_id": "correction_01J0000000000000000000000J",
+        "turn_id": "turn_01J00000000000000000000007",
+        "revision_number": 1,
+        "corrected_text": "Attention shapes our public life.",
+        "reason": "user_correction",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "transcript-correction.correction_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "correction_id": "invalid-id",
+        "turn_id": "turn_01J00000000000000000000007",
+        "revision_number": 1,
+        "corrected_text": "Attention shapes our public life.",
+        "reason": "user_correction",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "transcript-correction.turn_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "correction_id": "correction_01J0000000000000000000000J",
+        "turn_id": "invalid-id",
+        "revision_number": 1,
+        "corrected_text": "Attention shapes our public life.",
+        "reason": "user_correction",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "transcript-correction.revision_number: reject value below minimum",
+      "instance": {
+        "schema_version": "1.0",
+        "correction_id": "correction_01J0000000000000000000000J",
+        "turn_id": "turn_01J00000000000000000000007",
+        "revision_number": 0,
+        "corrected_text": "Attention shapes our public life.",
+        "reason": "user_correction",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "transcript-correction.corrected_text: reject string below minLength",
+      "instance": {
+        "schema_version": "1.0",
+        "correction_id": "correction_01J0000000000000000000000J",
+        "turn_id": "turn_01J00000000000000000000007",
+        "revision_number": 1,
+        "corrected_text": "",
+        "reason": "user_correction",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "transcript-correction.reason: reject value outside enum",
+      "instance": {
+        "schema_version": "1.0",
+        "correction_id": "correction_01J0000000000000000000000J",
+        "turn_id": "turn_01J00000000000000000000007",
+        "revision_number": 1,
+        "corrected_text": "Attention shapes our public life.",
+        "reason": "__INVALID_ENUM__",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "transcript-correction.created_at: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "correction_id": "correction_01J0000000000000000000000J",
+        "turn_id": "turn_01J00000000000000000000007",
+        "revision_number": 1,
+        "corrected_text": "Attention shapes our public life.",
+        "reason": "user_correction",
+        "created_at": "not-a-timestamp",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "transcript-correction.event_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "correction_id": "correction_01J0000000000000000000000J",
+        "turn_id": "turn_01J00000000000000000000007",
+        "revision_number": 1,
+        "corrected_text": "Attention shapes our public life.",
+        "reason": "user_correction",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "invalid-id"
+      }
+    }
+  ]
+}

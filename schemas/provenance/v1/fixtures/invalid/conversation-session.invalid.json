@@ -1,0 +1,296 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/conversation-session.schema.json",
+  "cases": [
+    {
+      "description": "conversation-session.schema_version: reject missing required property",
+      "instance": {
+        "session_id": "session_01J00000000000000000000006",
+        "project_id": "project_01J00000000000000000000001",
+        "title": "Opening discussion",
+        "mode": "typed",
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "turn_count": 2,
+        "audio_retained": false,
+        "retention_mode": "minimal"
+      }
+    },
+    {
+      "description": "conversation-session.session_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "title": "Opening discussion",
+        "mode": "typed",
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "turn_count": 2,
+        "audio_retained": false,
+        "retention_mode": "minimal"
+      }
+    },
+    {
+      "description": "conversation-session.project_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "session_id": "session_01J00000000000000000000006",
+        "title": "Opening discussion",
+        "mode": "typed",
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "turn_count": 2,
+        "audio_retained": false,
+        "retention_mode": "minimal"
+      }
+    },
+    {
+      "description": "conversation-session.title: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "session_id": "session_01J00000000000000000000006",
+        "project_id": "project_01J00000000000000000000001",
+        "mode": "typed",
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "turn_count": 2,
+        "audio_retained": false,
+        "retention_mode": "minimal"
+      }
+    },
+    {
+      "description": "conversation-session.mode: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "session_id": "session_01J00000000000000000000006",
+        "project_id": "project_01J00000000000000000000001",
+        "title": "Opening discussion",
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "turn_count": 2,
+        "audio_retained": false,
+        "retention_mode": "minimal"
+      }
+    },
+    {
+      "description": "conversation-session.started_at: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "session_id": "session_01J00000000000000000000006",
+        "project_id": "project_01J00000000000000000000001",
+        "title": "Opening discussion",
+        "mode": "typed",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "turn_count": 2,
+        "audio_retained": false,
+        "retention_mode": "minimal"
+      }
+    },
+    {
+      "description": "conversation-session.ended_at: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "session_id": "session_01J00000000000000000000006",
+        "project_id": "project_01J00000000000000000000001",
+        "title": "Opening discussion",
+        "mode": "typed",
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "turn_count": 2,
+        "audio_retained": false,
+        "retention_mode": "minimal"
+      }
+    },
+    {
+      "description": "conversation-session.turn_count: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "session_id": "session_01J00000000000000000000006",
+        "project_id": "project_01J00000000000000000000001",
+        "title": "Opening discussion",
+        "mode": "typed",
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "audio_retained": false,
+        "retention_mode": "minimal"
+      }
+    },
+    {
+      "description": "conversation-session.audio_retained: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "session_id": "session_01J00000000000000000000006",
+        "project_id": "project_01J00000000000000000000001",
+        "title": "Opening discussion",
+        "mode": "typed",
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "turn_count": 2,
+        "retention_mode": "minimal"
+      }
+    },
+    {
+      "description": "conversation-session.retention_mode: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "session_id": "session_01J00000000000000000000006",
+        "project_id": "project_01J00000000000000000000001",
+        "title": "Opening discussion",
+        "mode": "typed",
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "turn_count": 2,
+        "audio_retained": false
+      }
+    },
+    {
+      "description": "conversation-session: reject unexpected property",
+      "instance": {
+        "schema_version": "1.0",
+        "session_id": "session_01J00000000000000000000006",
+        "project_id": "project_01J00000000000000000000001",
+        "title": "Opening discussion",
+        "mode": "typed",
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "turn_count": 2,
+        "audio_retained": false,
+        "retention_mode": "minimal",
+        "__unexpected": true
+      }
+    },
+    {
+      "description": "conversation-session.schema_version: reject value different from const",
+      "instance": {
+        "schema_version": "__INVALID_CONST__",
+        "session_id": "session_01J00000000000000000000006",
+        "project_id": "project_01J00000000000000000000001",
+        "title": "Opening discussion",
+        "mode": "typed",
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "turn_count": 2,
+        "audio_retained": false,
+        "retention_mode": "minimal"
+      }
+    },
+    {
+      "description": "conversation-session.session_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "session_id": "invalid-id",
+        "project_id": "project_01J00000000000000000000001",
+        "title": "Opening discussion",
+        "mode": "typed",
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "turn_count": 2,
+        "audio_retained": false,
+        "retention_mode": "minimal"
+      }
+    },
+    {
+      "description": "conversation-session.project_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "session_id": "session_01J00000000000000000000006",
+        "project_id": "invalid-id",
+        "title": "Opening discussion",
+        "mode": "typed",
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "turn_count": 2,
+        "audio_retained": false,
+        "retention_mode": "minimal"
+      }
+    },
+    {
+      "description": "conversation-session.mode: reject value outside enum",
+      "instance": {
+        "schema_version": "1.0",
+        "session_id": "session_01J00000000000000000000006",
+        "project_id": "project_01J00000000000000000000001",
+        "title": "Opening discussion",
+        "mode": "__INVALID_ENUM__",
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "turn_count": 2,
+        "audio_retained": false,
+        "retention_mode": "minimal"
+      }
+    },
+    {
+      "description": "conversation-session.started_at: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "session_id": "session_01J00000000000000000000006",
+        "project_id": "project_01J00000000000000000000001",
+        "title": "Opening discussion",
+        "mode": "typed",
+        "started_at": "not-a-timestamp",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "turn_count": 2,
+        "audio_retained": false,
+        "retention_mode": "minimal"
+      }
+    },
+    {
+      "description": "conversation-session.ended_at: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "session_id": "session_01J00000000000000000000006",
+        "project_id": "project_01J00000000000000000000001",
+        "title": "Opening discussion",
+        "mode": "typed",
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "not-a-timestamp",
+        "turn_count": 2,
+        "audio_retained": false,
+        "retention_mode": "minimal"
+      }
+    },
+    {
+      "description": "conversation-session.turn_count: reject value below minimum",
+      "instance": {
+        "schema_version": "1.0",
+        "session_id": "session_01J00000000000000000000006",
+        "project_id": "project_01J00000000000000000000001",
+        "title": "Opening discussion",
+        "mode": "typed",
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "turn_count": -1,
+        "audio_retained": false,
+        "retention_mode": "minimal"
+      }
+    },
+    {
+      "description": "conversation-session.audio_retained: reject value different from const",
+      "instance": {
+        "schema_version": "1.0",
+        "session_id": "session_01J00000000000000000000006",
+        "project_id": "project_01J00000000000000000000001",
+        "title": "Opening discussion",
+        "mode": "typed",
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "turn_count": 2,
+        "audio_retained": true,
+        "retention_mode": "minimal"
+      }
+    },
+    {
+      "description": "conversation-session.retention_mode: reject value outside enum",
+      "instance": {
+        "schema_version": "1.0",
+        "session_id": "session_01J00000000000000000000006",
+        "project_id": "project_01J00000000000000000000001",
+        "title": "Opening discussion",
+        "mode": "typed",
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "turn_count": 2,
+        "audio_retained": false,
+        "retention_mode": "__INVALID_ENUM__"
+      }
+    }
+  ]
+}

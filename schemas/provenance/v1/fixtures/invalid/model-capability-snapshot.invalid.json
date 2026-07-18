@@ -1,0 +1,264 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/model-capability-snapshot.schema.json",
+  "cases": [
+    {
+      "description": "model-capability-snapshot.schema_version: reject missing required property",
+      "instance": {
+        "snapshot_id": "record_01J00000000000000000000005",
+        "provider_id": "ollama",
+        "model_id": "llama3.2",
+        "capabilities": {
+          "streaming": true,
+          "structured_output": false,
+          "tools": false,
+          "vision": false
+        },
+        "observed_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "model-capability-snapshot.snapshot_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "provider_id": "ollama",
+        "model_id": "llama3.2",
+        "capabilities": {
+          "streaming": true,
+          "structured_output": false,
+          "tools": false,
+          "vision": false
+        },
+        "observed_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "model-capability-snapshot.provider_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "snapshot_id": "record_01J00000000000000000000005",
+        "model_id": "llama3.2",
+        "capabilities": {
+          "streaming": true,
+          "structured_output": false,
+          "tools": false,
+          "vision": false
+        },
+        "observed_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "model-capability-snapshot.model_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "snapshot_id": "record_01J00000000000000000000005",
+        "provider_id": "ollama",
+        "capabilities": {
+          "streaming": true,
+          "structured_output": false,
+          "tools": false,
+          "vision": false
+        },
+        "observed_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "model-capability-snapshot.capabilities: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "snapshot_id": "record_01J00000000000000000000005",
+        "provider_id": "ollama",
+        "model_id": "llama3.2",
+        "observed_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "model-capability-snapshot.observed_at: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "snapshot_id": "record_01J00000000000000000000005",
+        "provider_id": "ollama",
+        "model_id": "llama3.2",
+        "capabilities": {
+          "streaming": true,
+          "structured_output": false,
+          "tools": false,
+          "vision": false
+        }
+      }
+    },
+    {
+      "description": "model-capability-snapshot: reject unexpected property",
+      "instance": {
+        "schema_version": "1.0",
+        "snapshot_id": "record_01J00000000000000000000005",
+        "provider_id": "ollama",
+        "model_id": "llama3.2",
+        "capabilities": {
+          "streaming": true,
+          "structured_output": false,
+          "tools": false,
+          "vision": false
+        },
+        "observed_at": "2026-07-17T18:42:10.123Z",
+        "__unexpected": true
+      }
+    },
+    {
+      "description": "model-capability-snapshot.schema_version: reject value different from const",
+      "instance": {
+        "schema_version": "__INVALID_CONST__",
+        "snapshot_id": "record_01J00000000000000000000005",
+        "provider_id": "ollama",
+        "model_id": "llama3.2",
+        "capabilities": {
+          "streaming": true,
+          "structured_output": false,
+          "tools": false,
+          "vision": false
+        },
+        "observed_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "model-capability-snapshot.snapshot_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "snapshot_id": "invalid-id",
+        "provider_id": "ollama",
+        "model_id": "llama3.2",
+        "capabilities": {
+          "streaming": true,
+          "structured_output": false,
+          "tools": false,
+          "vision": false
+        },
+        "observed_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "model-capability-snapshot.provider_id: reject string below minLength",
+      "instance": {
+        "schema_version": "1.0",
+        "snapshot_id": "record_01J00000000000000000000005",
+        "provider_id": "",
+        "model_id": "llama3.2",
+        "capabilities": {
+          "streaming": true,
+          "structured_output": false,
+          "tools": false,
+          "vision": false
+        },
+        "observed_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "model-capability-snapshot.model_id: reject string below minLength",
+      "instance": {
+        "schema_version": "1.0",
+        "snapshot_id": "record_01J00000000000000000000005",
+        "provider_id": "ollama",
+        "model_id": "",
+        "capabilities": {
+          "streaming": true,
+          "structured_output": false,
+          "tools": false,
+          "vision": false
+        },
+        "observed_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "model-capability-snapshot.capabilities.streaming: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "snapshot_id": "record_01J00000000000000000000005",
+        "provider_id": "ollama",
+        "model_id": "llama3.2",
+        "capabilities": {
+          "structured_output": false,
+          "tools": false,
+          "vision": false
+        },
+        "observed_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "model-capability-snapshot.capabilities.structured_output: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "snapshot_id": "record_01J00000000000000000000005",
+        "provider_id": "ollama",
+        "model_id": "llama3.2",
+        "capabilities": {
+          "streaming": true,
+          "tools": false,
+          "vision": false
+        },
+        "observed_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "model-capability-snapshot.capabilities.tools: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "snapshot_id": "record_01J00000000000000000000005",
+        "provider_id": "ollama",
+        "model_id": "llama3.2",
+        "capabilities": {
+          "streaming": true,
+          "structured_output": false,
+          "vision": false
+        },
+        "observed_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "model-capability-snapshot.capabilities.vision: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "snapshot_id": "record_01J00000000000000000000005",
+        "provider_id": "ollama",
+        "model_id": "llama3.2",
+        "capabilities": {
+          "streaming": true,
+          "structured_output": false,
+          "tools": false
+        },
+        "observed_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "model-capability-snapshot.capabilities: reject unexpected property",
+      "instance": {
+        "schema_version": "1.0",
+        "snapshot_id": "record_01J00000000000000000000005",
+        "provider_id": "ollama",
+        "model_id": "llama3.2",
+        "capabilities": {
+          "streaming": true,
+          "structured_output": false,
+          "tools": false,
+          "vision": false,
+          "__unexpected": true
+        },
+        "observed_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "model-capability-snapshot.observed_at: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "snapshot_id": "record_01J00000000000000000000005",
+        "provider_id": "ollama",
+        "model_id": "llama3.2",
+        "capabilities": {
+          "streaming": true,
+          "structured_output": false,
+          "tools": false,
+          "vision": false
+        },
+        "observed_at": "not-a-timestamp"
+      }
+    }
+  ]
+}

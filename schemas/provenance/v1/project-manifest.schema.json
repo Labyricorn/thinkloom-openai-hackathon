@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://thinkloom.app/schemas/provenance/1.0/project-manifest.schema.json",
+  "title": "Project manifest",
+  "description": "Canonical identity and lifecycle metadata for a 1.0 project.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "application_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "project_id": {
+      "type": "string",
+      "pattern": "^project_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "description": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+    },
+    "current_phase": {
+      "enum": [
+        "ideation",
+        "drafting",
+        "finalization"
+      ]
+    },
+    "publication_status": {
+      "enum": [
+        "working",
+        "finalized",
+        "published"
+      ]
+    },
+    "provenance_policy_id": {
+      "type": "string",
+      "pattern": "^policy_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "audio_retained": {
+      "const": false
+    }
+  },
+  "required": [
+    "schema_version",
+    "application_version",
+    "project_id",
+    "title",
+    "created_at",
+    "updated_at",
+    "current_phase",
+    "publication_status",
+    "provenance_policy_id",
+    "audio_retained"
+  ],
+  "additionalProperties": false,
+  "examples": [
+    {
+      "schema_version": "1.0",
+      "application_version": "0.3.0",
+      "project_id": "project_01J00000000000000000000001",
+      "title": "The Attention Commons",
+      "created_at": "2026-07-17T18:42:10.123Z",
+      "updated_at": "2026-07-17T18:43:11.456Z",
+      "current_phase": "ideation",
+      "publication_status": "working",
+      "provenance_policy_id": "policy_01J0000000000000000000000H",
+      "audio_retained": false
+    }
+  ]
+}

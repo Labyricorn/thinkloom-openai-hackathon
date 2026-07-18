@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://thinkloom.app/schemas/provenance/1.0/ledger-segment-manifest.schema.json",
+  "title": "Ledger segment manifest",
+  "description": "Immutable seal for one ledger segment.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "project_id": {
+      "type": "string",
+      "pattern": "^project_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "segment_number": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "previous_segment_file_hash": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "first_event_hash": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "final_event_hash": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "first_event_sequence": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "final_event_sequence": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "event_count": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "byte_length": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "segment_file_hash": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "sealed_at": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+    }
+  },
+  "required": [
+    "schema_version",
+    "project_id",
+    "segment_number",
+    "previous_segment_file_hash",
+    "first_event_hash",
+    "final_event_hash",
+    "first_event_sequence",
+    "final_event_sequence",
+    "event_count",
+    "byte_length",
+    "segment_file_hash",
+    "sealed_at"
+  ],
+  "additionalProperties": false,
+  "examples": [
+    {
+      "schema_version": "1.0",
+      "project_id": "project_01J00000000000000000000001",
+      "segment_number": 1,
+      "previous_segment_file_hash": null,
+      "first_event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+      "final_event_hash": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+      "first_event_sequence": 1,
+      "final_event_sequence": 2,
+      "event_count": 2,
+      "byte_length": 1024,
+      "segment_file_hash": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+      "sealed_at": "2026-07-17T18:42:10.123Z"
+    }
+  ]
+}

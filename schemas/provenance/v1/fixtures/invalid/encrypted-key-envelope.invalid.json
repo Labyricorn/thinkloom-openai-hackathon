@@ -1,0 +1,296 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/encrypted-key-envelope.schema.json",
+  "cases": [
+    {
+      "description": "encrypted-key-envelope.schema_version: reject missing required property",
+      "instance": {
+        "envelope_id": "record_01J00000000000000000000005",
+        "key_id": "key_01J0000000000000000000000G",
+        "envelope_type": "device",
+        "algorithm": "xchacha20-poly1305",
+        "key_derivation": null,
+        "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "wrapped_key": "d3JhcHBlZC1wcm9qZWN0LWtleQ==",
+        "ciphertext_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "encrypted-key-envelope.envelope_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "key_id": "key_01J0000000000000000000000G",
+        "envelope_type": "device",
+        "algorithm": "xchacha20-poly1305",
+        "key_derivation": null,
+        "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "wrapped_key": "d3JhcHBlZC1wcm9qZWN0LWtleQ==",
+        "ciphertext_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "encrypted-key-envelope.key_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "envelope_id": "record_01J00000000000000000000005",
+        "envelope_type": "device",
+        "algorithm": "xchacha20-poly1305",
+        "key_derivation": null,
+        "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "wrapped_key": "d3JhcHBlZC1wcm9qZWN0LWtleQ==",
+        "ciphertext_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "encrypted-key-envelope.envelope_type: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "envelope_id": "record_01J00000000000000000000005",
+        "key_id": "key_01J0000000000000000000000G",
+        "algorithm": "xchacha20-poly1305",
+        "key_derivation": null,
+        "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "wrapped_key": "d3JhcHBlZC1wcm9qZWN0LWtleQ==",
+        "ciphertext_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "encrypted-key-envelope.algorithm: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "envelope_id": "record_01J00000000000000000000005",
+        "key_id": "key_01J0000000000000000000000G",
+        "envelope_type": "device",
+        "key_derivation": null,
+        "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "wrapped_key": "d3JhcHBlZC1wcm9qZWN0LWtleQ==",
+        "ciphertext_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "encrypted-key-envelope.key_derivation: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "envelope_id": "record_01J00000000000000000000005",
+        "key_id": "key_01J0000000000000000000000G",
+        "envelope_type": "device",
+        "algorithm": "xchacha20-poly1305",
+        "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "wrapped_key": "d3JhcHBlZC1wcm9qZWN0LWtleQ==",
+        "ciphertext_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "encrypted-key-envelope.nonce: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "envelope_id": "record_01J00000000000000000000005",
+        "key_id": "key_01J0000000000000000000000G",
+        "envelope_type": "device",
+        "algorithm": "xchacha20-poly1305",
+        "key_derivation": null,
+        "wrapped_key": "d3JhcHBlZC1wcm9qZWN0LWtleQ==",
+        "ciphertext_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "encrypted-key-envelope.wrapped_key: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "envelope_id": "record_01J00000000000000000000005",
+        "key_id": "key_01J0000000000000000000000G",
+        "envelope_type": "device",
+        "algorithm": "xchacha20-poly1305",
+        "key_derivation": null,
+        "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "ciphertext_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "encrypted-key-envelope.ciphertext_sha256: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "envelope_id": "record_01J00000000000000000000005",
+        "key_id": "key_01J0000000000000000000000G",
+        "envelope_type": "device",
+        "algorithm": "xchacha20-poly1305",
+        "key_derivation": null,
+        "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "wrapped_key": "d3JhcHBlZC1wcm9qZWN0LWtleQ==",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "encrypted-key-envelope.created_at: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "envelope_id": "record_01J00000000000000000000005",
+        "key_id": "key_01J0000000000000000000000G",
+        "envelope_type": "device",
+        "algorithm": "xchacha20-poly1305",
+        "key_derivation": null,
+        "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "wrapped_key": "d3JhcHBlZC1wcm9qZWN0LWtleQ==",
+        "ciphertext_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    },
+    {
+      "description": "encrypted-key-envelope: reject unexpected property",
+      "instance": {
+        "schema_version": "1.0",
+        "envelope_id": "record_01J00000000000000000000005",
+        "key_id": "key_01J0000000000000000000000G",
+        "envelope_type": "device",
+        "algorithm": "xchacha20-poly1305",
+        "key_derivation": null,
+        "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "wrapped_key": "d3JhcHBlZC1wcm9qZWN0LWtleQ==",
+        "ciphertext_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-17T18:42:10.123Z",
+        "__unexpected": true
+      }
+    },
+    {
+      "description": "encrypted-key-envelope.schema_version: reject value different from const",
+      "instance": {
+        "schema_version": "__INVALID_CONST__",
+        "envelope_id": "record_01J00000000000000000000005",
+        "key_id": "key_01J0000000000000000000000G",
+        "envelope_type": "device",
+        "algorithm": "xchacha20-poly1305",
+        "key_derivation": null,
+        "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "wrapped_key": "d3JhcHBlZC1wcm9qZWN0LWtleQ==",
+        "ciphertext_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "encrypted-key-envelope.envelope_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "envelope_id": "invalid-id",
+        "key_id": "key_01J0000000000000000000000G",
+        "envelope_type": "device",
+        "algorithm": "xchacha20-poly1305",
+        "key_derivation": null,
+        "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "wrapped_key": "d3JhcHBlZC1wcm9qZWN0LWtleQ==",
+        "ciphertext_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "encrypted-key-envelope.key_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "envelope_id": "record_01J00000000000000000000005",
+        "key_id": "invalid-id",
+        "envelope_type": "device",
+        "algorithm": "xchacha20-poly1305",
+        "key_derivation": null,
+        "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "wrapped_key": "d3JhcHBlZC1wcm9qZWN0LWtleQ==",
+        "ciphertext_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "encrypted-key-envelope.envelope_type: reject value outside enum",
+      "instance": {
+        "schema_version": "1.0",
+        "envelope_id": "record_01J00000000000000000000005",
+        "key_id": "key_01J0000000000000000000000G",
+        "envelope_type": "__INVALID_ENUM__",
+        "algorithm": "xchacha20-poly1305",
+        "key_derivation": null,
+        "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "wrapped_key": "d3JhcHBlZC1wcm9qZWN0LWtleQ==",
+        "ciphertext_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "encrypted-key-envelope.algorithm: reject value outside enum",
+      "instance": {
+        "schema_version": "1.0",
+        "envelope_id": "record_01J00000000000000000000005",
+        "key_id": "key_01J0000000000000000000000G",
+        "envelope_type": "device",
+        "algorithm": "__INVALID_ENUM__",
+        "key_derivation": null,
+        "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "wrapped_key": "d3JhcHBlZC1wcm9qZWN0LWtleQ==",
+        "ciphertext_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "encrypted-key-envelope.nonce: reject string below minLength",
+      "instance": {
+        "schema_version": "1.0",
+        "envelope_id": "record_01J00000000000000000000005",
+        "key_id": "key_01J0000000000000000000000G",
+        "envelope_type": "device",
+        "algorithm": "xchacha20-poly1305",
+        "key_derivation": null,
+        "nonce": "",
+        "wrapped_key": "d3JhcHBlZC1wcm9qZWN0LWtleQ==",
+        "ciphertext_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "encrypted-key-envelope.wrapped_key: reject string below minLength",
+      "instance": {
+        "schema_version": "1.0",
+        "envelope_id": "record_01J00000000000000000000005",
+        "key_id": "key_01J0000000000000000000000G",
+        "envelope_type": "device",
+        "algorithm": "xchacha20-poly1305",
+        "key_derivation": null,
+        "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "wrapped_key": "",
+        "ciphertext_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "encrypted-key-envelope.ciphertext_sha256: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "envelope_id": "record_01J00000000000000000000005",
+        "key_id": "key_01J0000000000000000000000G",
+        "envelope_type": "device",
+        "algorithm": "xchacha20-poly1305",
+        "key_derivation": null,
+        "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "wrapped_key": "d3JhcHBlZC1wcm9qZWN0LWtleQ==",
+        "ciphertext_sha256": "sha256:INVALID",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "encrypted-key-envelope.created_at: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "envelope_id": "record_01J00000000000000000000005",
+        "key_id": "key_01J0000000000000000000000G",
+        "envelope_type": "device",
+        "algorithm": "xchacha20-poly1305",
+        "key_derivation": null,
+        "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "wrapped_key": "d3JhcHBlZC1wcm9qZWN0LWtleQ==",
+        "ciphertext_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "not-a-timestamp"
+      }
+    }
+  ]
+}

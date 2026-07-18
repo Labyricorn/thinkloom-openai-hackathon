@@ -11,7 +11,7 @@ This specification defines the authority, persistence, integrity, privacy, recov
 
 It supersedes the provenance-specific transaction order, single-ledger layout, mutable-record assumptions, live-database snapshot method, and release-binding sequence in the earlier MVP architecture and implementation plans. It does not supersede their product requirements, native Tauri boundary, preview-first generation model, user-control requirements, accessibility requirements, or prohibition on retained audio.
 
-The current Thinkloom 0.2.0 implementation is not represented as conforming to this specification. Conformance begins only after the Stage 2 schemas, fixtures, native implementation, and required fault-injection tests are complete.
+Thinkloom 0.3.0 includes the formal Stage 2 schemas and verification vectors, but its native writer is not represented as conforming to this specification. Full conformance begins only after the native implementation and required fault-injection tests are complete.
 
 ## 2. Normative language
 

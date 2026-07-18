@@ -1,0 +1,263 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/transcript-normalization.schema.json",
+  "cases": [
+    {
+      "description": "transcript-normalization.schema_version: reject missing required property",
+      "instance": {
+        "normalization_id": "normalization_01J0000000000000000000000K",
+        "turn_id": "turn_01J00000000000000000000007",
+        "revision_number": 1,
+        "normalized_text": "Attention shapes public life.",
+        "method": "application",
+        "source_correction_id": "correction_01J0000000000000000000000J",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "transcript-normalization.normalization_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "turn_id": "turn_01J00000000000000000000007",
+        "revision_number": 1,
+        "normalized_text": "Attention shapes public life.",
+        "method": "application",
+        "source_correction_id": "correction_01J0000000000000000000000J",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "transcript-normalization.turn_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "normalization_id": "normalization_01J0000000000000000000000K",
+        "revision_number": 1,
+        "normalized_text": "Attention shapes public life.",
+        "method": "application",
+        "source_correction_id": "correction_01J0000000000000000000000J",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "transcript-normalization.revision_number: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "normalization_id": "normalization_01J0000000000000000000000K",
+        "turn_id": "turn_01J00000000000000000000007",
+        "normalized_text": "Attention shapes public life.",
+        "method": "application",
+        "source_correction_id": "correction_01J0000000000000000000000J",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "transcript-normalization.normalized_text: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "normalization_id": "normalization_01J0000000000000000000000K",
+        "turn_id": "turn_01J00000000000000000000007",
+        "revision_number": 1,
+        "method": "application",
+        "source_correction_id": "correction_01J0000000000000000000000J",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "transcript-normalization.method: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "normalization_id": "normalization_01J0000000000000000000000K",
+        "turn_id": "turn_01J00000000000000000000007",
+        "revision_number": 1,
+        "normalized_text": "Attention shapes public life.",
+        "source_correction_id": "correction_01J0000000000000000000000J",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "transcript-normalization.source_correction_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "normalization_id": "normalization_01J0000000000000000000000K",
+        "turn_id": "turn_01J00000000000000000000007",
+        "revision_number": 1,
+        "normalized_text": "Attention shapes public life.",
+        "method": "application",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "transcript-normalization.created_at: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "normalization_id": "normalization_01J0000000000000000000000K",
+        "turn_id": "turn_01J00000000000000000000007",
+        "revision_number": 1,
+        "normalized_text": "Attention shapes public life.",
+        "method": "application",
+        "source_correction_id": "correction_01J0000000000000000000000J",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "transcript-normalization.event_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "normalization_id": "normalization_01J0000000000000000000000K",
+        "turn_id": "turn_01J00000000000000000000007",
+        "revision_number": 1,
+        "normalized_text": "Attention shapes public life.",
+        "method": "application",
+        "source_correction_id": "correction_01J0000000000000000000000J",
+        "created_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "transcript-normalization: reject unexpected property",
+      "instance": {
+        "schema_version": "1.0",
+        "normalization_id": "normalization_01J0000000000000000000000K",
+        "turn_id": "turn_01J00000000000000000000007",
+        "revision_number": 1,
+        "normalized_text": "Attention shapes public life.",
+        "method": "application",
+        "source_correction_id": "correction_01J0000000000000000000000J",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004",
+        "__unexpected": true
+      }
+    },
+    {
+      "description": "transcript-normalization.schema_version: reject value different from const",
+      "instance": {
+        "schema_version": "__INVALID_CONST__",
+        "normalization_id": "normalization_01J0000000000000000000000K",
+        "turn_id": "turn_01J00000000000000000000007",
+        "revision_number": 1,
+        "normalized_text": "Attention shapes public life.",
+        "method": "application",
+        "source_correction_id": "correction_01J0000000000000000000000J",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "transcript-normalization.normalization_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "normalization_id": "invalid-id",
+        "turn_id": "turn_01J00000000000000000000007",
+        "revision_number": 1,
+        "normalized_text": "Attention shapes public life.",
+        "method": "application",
+        "source_correction_id": "correction_01J0000000000000000000000J",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "transcript-normalization.turn_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "normalization_id": "normalization_01J0000000000000000000000K",
+        "turn_id": "invalid-id",
+        "revision_number": 1,
+        "normalized_text": "Attention shapes public life.",
+        "method": "application",
+        "source_correction_id": "correction_01J0000000000000000000000J",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "transcript-normalization.revision_number: reject value below minimum",
+      "instance": {
+        "schema_version": "1.0",
+        "normalization_id": "normalization_01J0000000000000000000000K",
+        "turn_id": "turn_01J00000000000000000000007",
+        "revision_number": 0,
+        "normalized_text": "Attention shapes public life.",
+        "method": "application",
+        "source_correction_id": "correction_01J0000000000000000000000J",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "transcript-normalization.normalized_text: reject string below minLength",
+      "instance": {
+        "schema_version": "1.0",
+        "normalization_id": "normalization_01J0000000000000000000000K",
+        "turn_id": "turn_01J00000000000000000000007",
+        "revision_number": 1,
+        "normalized_text": "",
+        "method": "application",
+        "source_correction_id": "correction_01J0000000000000000000000J",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "transcript-normalization.method: reject value outside enum",
+      "instance": {
+        "schema_version": "1.0",
+        "normalization_id": "normalization_01J0000000000000000000000K",
+        "turn_id": "turn_01J00000000000000000000007",
+        "revision_number": 1,
+        "normalized_text": "Attention shapes public life.",
+        "method": "__INVALID_ENUM__",
+        "source_correction_id": "correction_01J0000000000000000000000J",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "transcript-normalization.source_correction_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "normalization_id": "normalization_01J0000000000000000000000K",
+        "turn_id": "turn_01J00000000000000000000007",
+        "revision_number": 1,
+        "normalized_text": "Attention shapes public life.",
+        "method": "application",
+        "source_correction_id": "invalid-id",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "transcript-normalization.created_at: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "normalization_id": "normalization_01J0000000000000000000000K",
+        "turn_id": "turn_01J00000000000000000000007",
+        "revision_number": 1,
+        "normalized_text": "Attention shapes public life.",
+        "method": "application",
+        "source_correction_id": "correction_01J0000000000000000000000J",
+        "created_at": "not-a-timestamp",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "transcript-normalization.event_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "normalization_id": "normalization_01J0000000000000000000000K",
+        "turn_id": "turn_01J00000000000000000000007",
+        "revision_number": 1,
+        "normalized_text": "Attention shapes public life.",
+        "method": "application",
+        "source_correction_id": "correction_01J0000000000000000000000J",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "invalid-id"
+      }
+    }
+  ]
+}

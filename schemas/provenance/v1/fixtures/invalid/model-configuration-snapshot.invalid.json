@@ -1,0 +1,479 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/model-configuration-snapshot.schema.json",
+  "cases": [
+    {
+      "description": "model-configuration-snapshot.schema_version: reject missing required property",
+      "instance": {
+        "snapshot_id": "record_01J00000000000000000000005",
+        "provider_id": "ollama",
+        "model_id": "llama3.2",
+        "processing_mode": "local",
+        "endpoint_classification": "loopback",
+        "temperature_milli": 700,
+        "context_limit": 8192,
+        "maximum_output": 800,
+        "structured_output_mode": "none",
+        "tool_configuration": [],
+        "capability_snapshot_sha256": "sha256:8888888888888888888888888888888888888888888888888888888888888888",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "model-configuration-snapshot.snapshot_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "provider_id": "ollama",
+        "model_id": "llama3.2",
+        "processing_mode": "local",
+        "endpoint_classification": "loopback",
+        "temperature_milli": 700,
+        "context_limit": 8192,
+        "maximum_output": 800,
+        "structured_output_mode": "none",
+        "tool_configuration": [],
+        "capability_snapshot_sha256": "sha256:8888888888888888888888888888888888888888888888888888888888888888",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "model-configuration-snapshot.provider_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "snapshot_id": "record_01J00000000000000000000005",
+        "model_id": "llama3.2",
+        "processing_mode": "local",
+        "endpoint_classification": "loopback",
+        "temperature_milli": 700,
+        "context_limit": 8192,
+        "maximum_output": 800,
+        "structured_output_mode": "none",
+        "tool_configuration": [],
+        "capability_snapshot_sha256": "sha256:8888888888888888888888888888888888888888888888888888888888888888",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "model-configuration-snapshot.model_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "snapshot_id": "record_01J00000000000000000000005",
+        "provider_id": "ollama",
+        "processing_mode": "local",
+        "endpoint_classification": "loopback",
+        "temperature_milli": 700,
+        "context_limit": 8192,
+        "maximum_output": 800,
+        "structured_output_mode": "none",
+        "tool_configuration": [],
+        "capability_snapshot_sha256": "sha256:8888888888888888888888888888888888888888888888888888888888888888",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "model-configuration-snapshot.processing_mode: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "snapshot_id": "record_01J00000000000000000000005",
+        "provider_id": "ollama",
+        "model_id": "llama3.2",
+        "endpoint_classification": "loopback",
+        "temperature_milli": 700,
+        "context_limit": 8192,
+        "maximum_output": 800,
+        "structured_output_mode": "none",
+        "tool_configuration": [],
+        "capability_snapshot_sha256": "sha256:8888888888888888888888888888888888888888888888888888888888888888",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "model-configuration-snapshot.endpoint_classification: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "snapshot_id": "record_01J00000000000000000000005",
+        "provider_id": "ollama",
+        "model_id": "llama3.2",
+        "processing_mode": "local",
+        "temperature_milli": 700,
+        "context_limit": 8192,
+        "maximum_output": 800,
+        "structured_output_mode": "none",
+        "tool_configuration": [],
+        "capability_snapshot_sha256": "sha256:8888888888888888888888888888888888888888888888888888888888888888",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "model-configuration-snapshot.temperature_milli: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "snapshot_id": "record_01J00000000000000000000005",
+        "provider_id": "ollama",
+        "model_id": "llama3.2",
+        "processing_mode": "local",
+        "endpoint_classification": "loopback",
+        "context_limit": 8192,
+        "maximum_output": 800,
+        "structured_output_mode": "none",
+        "tool_configuration": [],
+        "capability_snapshot_sha256": "sha256:8888888888888888888888888888888888888888888888888888888888888888",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "model-configuration-snapshot.context_limit: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "snapshot_id": "record_01J00000000000000000000005",
+        "provider_id": "ollama",
+        "model_id": "llama3.2",
+        "processing_mode": "local",
+        "endpoint_classification": "loopback",
+        "temperature_milli": 700,
+        "maximum_output": 800,
+        "structured_output_mode": "none",
+        "tool_configuration": [],
+        "capability_snapshot_sha256": "sha256:8888888888888888888888888888888888888888888888888888888888888888",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "model-configuration-snapshot.maximum_output: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "snapshot_id": "record_01J00000000000000000000005",
+        "provider_id": "ollama",
+        "model_id": "llama3.2",
+        "processing_mode": "local",
+        "endpoint_classification": "loopback",
+        "temperature_milli": 700,
+        "context_limit": 8192,
+        "structured_output_mode": "none",
+        "tool_configuration": [],
+        "capability_snapshot_sha256": "sha256:8888888888888888888888888888888888888888888888888888888888888888",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "model-configuration-snapshot.structured_output_mode: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "snapshot_id": "record_01J00000000000000000000005",
+        "provider_id": "ollama",
+        "model_id": "llama3.2",
+        "processing_mode": "local",
+        "endpoint_classification": "loopback",
+        "temperature_milli": 700,
+        "context_limit": 8192,
+        "maximum_output": 800,
+        "tool_configuration": [],
+        "capability_snapshot_sha256": "sha256:8888888888888888888888888888888888888888888888888888888888888888",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "model-configuration-snapshot.tool_configuration: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "snapshot_id": "record_01J00000000000000000000005",
+        "provider_id": "ollama",
+        "model_id": "llama3.2",
+        "processing_mode": "local",
+        "endpoint_classification": "loopback",
+        "temperature_milli": 700,
+        "context_limit": 8192,
+        "maximum_output": 800,
+        "structured_output_mode": "none",
+        "capability_snapshot_sha256": "sha256:8888888888888888888888888888888888888888888888888888888888888888",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "model-configuration-snapshot.capability_snapshot_sha256: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "snapshot_id": "record_01J00000000000000000000005",
+        "provider_id": "ollama",
+        "model_id": "llama3.2",
+        "processing_mode": "local",
+        "endpoint_classification": "loopback",
+        "temperature_milli": 700,
+        "context_limit": 8192,
+        "maximum_output": 800,
+        "structured_output_mode": "none",
+        "tool_configuration": [],
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "model-configuration-snapshot.created_at: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "snapshot_id": "record_01J00000000000000000000005",
+        "provider_id": "ollama",
+        "model_id": "llama3.2",
+        "processing_mode": "local",
+        "endpoint_classification": "loopback",
+        "temperature_milli": 700,
+        "context_limit": 8192,
+        "maximum_output": 800,
+        "structured_output_mode": "none",
+        "tool_configuration": [],
+        "capability_snapshot_sha256": "sha256:8888888888888888888888888888888888888888888888888888888888888888"
+      }
+    },
+    {
+      "description": "model-configuration-snapshot: reject unexpected property",
+      "instance": {
+        "schema_version": "1.0",
+        "snapshot_id": "record_01J00000000000000000000005",
+        "provider_id": "ollama",
+        "model_id": "llama3.2",
+        "processing_mode": "local",
+        "endpoint_classification": "loopback",
+        "temperature_milli": 700,
+        "context_limit": 8192,
+        "maximum_output": 800,
+        "structured_output_mode": "none",
+        "tool_configuration": [],
+        "capability_snapshot_sha256": "sha256:8888888888888888888888888888888888888888888888888888888888888888",
+        "created_at": "2026-07-17T18:42:10.123Z",
+        "__unexpected": true
+      }
+    },
+    {
+      "description": "model-configuration-snapshot.schema_version: reject value different from const",
+      "instance": {
+        "schema_version": "__INVALID_CONST__",
+        "snapshot_id": "record_01J00000000000000000000005",
+        "provider_id": "ollama",
+        "model_id": "llama3.2",
+        "processing_mode": "local",
+        "endpoint_classification": "loopback",
+        "temperature_milli": 700,
+        "context_limit": 8192,
+        "maximum_output": 800,
+        "structured_output_mode": "none",
+        "tool_configuration": [],
+        "capability_snapshot_sha256": "sha256:8888888888888888888888888888888888888888888888888888888888888888",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "model-configuration-snapshot.snapshot_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "snapshot_id": "invalid-id",
+        "provider_id": "ollama",
+        "model_id": "llama3.2",
+        "processing_mode": "local",
+        "endpoint_classification": "loopback",
+        "temperature_milli": 700,
+        "context_limit": 8192,
+        "maximum_output": 800,
+        "structured_output_mode": "none",
+        "tool_configuration": [],
+        "capability_snapshot_sha256": "sha256:8888888888888888888888888888888888888888888888888888888888888888",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "model-configuration-snapshot.provider_id: reject string below minLength",
+      "instance": {
+        "schema_version": "1.0",
+        "snapshot_id": "record_01J00000000000000000000005",
+        "provider_id": "",
+        "model_id": "llama3.2",
+        "processing_mode": "local",
+        "endpoint_classification": "loopback",
+        "temperature_milli": 700,
+        "context_limit": 8192,
+        "maximum_output": 800,
+        "structured_output_mode": "none",
+        "tool_configuration": [],
+        "capability_snapshot_sha256": "sha256:8888888888888888888888888888888888888888888888888888888888888888",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "model-configuration-snapshot.model_id: reject string below minLength",
+      "instance": {
+        "schema_version": "1.0",
+        "snapshot_id": "record_01J00000000000000000000005",
+        "provider_id": "ollama",
+        "model_id": "",
+        "processing_mode": "local",
+        "endpoint_classification": "loopback",
+        "temperature_milli": 700,
+        "context_limit": 8192,
+        "maximum_output": 800,
+        "structured_output_mode": "none",
+        "tool_configuration": [],
+        "capability_snapshot_sha256": "sha256:8888888888888888888888888888888888888888888888888888888888888888",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "model-configuration-snapshot.processing_mode: reject value outside enum",
+      "instance": {
+        "schema_version": "1.0",
+        "snapshot_id": "record_01J00000000000000000000005",
+        "provider_id": "ollama",
+        "model_id": "llama3.2",
+        "processing_mode": "__INVALID_ENUM__",
+        "endpoint_classification": "loopback",
+        "temperature_milli": 700,
+        "context_limit": 8192,
+        "maximum_output": 800,
+        "structured_output_mode": "none",
+        "tool_configuration": [],
+        "capability_snapshot_sha256": "sha256:8888888888888888888888888888888888888888888888888888888888888888",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "model-configuration-snapshot.endpoint_classification: reject value outside enum",
+      "instance": {
+        "schema_version": "1.0",
+        "snapshot_id": "record_01J00000000000000000000005",
+        "provider_id": "ollama",
+        "model_id": "llama3.2",
+        "processing_mode": "local",
+        "endpoint_classification": "__INVALID_ENUM__",
+        "temperature_milli": 700,
+        "context_limit": 8192,
+        "maximum_output": 800,
+        "structured_output_mode": "none",
+        "tool_configuration": [],
+        "capability_snapshot_sha256": "sha256:8888888888888888888888888888888888888888888888888888888888888888",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "model-configuration-snapshot.temperature_milli: reject value below minimum",
+      "instance": {
+        "schema_version": "1.0",
+        "snapshot_id": "record_01J00000000000000000000005",
+        "provider_id": "ollama",
+        "model_id": "llama3.2",
+        "processing_mode": "local",
+        "endpoint_classification": "loopback",
+        "temperature_milli": -1,
+        "context_limit": 8192,
+        "maximum_output": 800,
+        "structured_output_mode": "none",
+        "tool_configuration": [],
+        "capability_snapshot_sha256": "sha256:8888888888888888888888888888888888888888888888888888888888888888",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "model-configuration-snapshot.temperature_milli: reject value above maximum",
+      "instance": {
+        "schema_version": "1.0",
+        "snapshot_id": "record_01J00000000000000000000005",
+        "provider_id": "ollama",
+        "model_id": "llama3.2",
+        "processing_mode": "local",
+        "endpoint_classification": "loopback",
+        "temperature_milli": 2001,
+        "context_limit": 8192,
+        "maximum_output": 800,
+        "structured_output_mode": "none",
+        "tool_configuration": [],
+        "capability_snapshot_sha256": "sha256:8888888888888888888888888888888888888888888888888888888888888888",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "model-configuration-snapshot.context_limit: reject value below minimum",
+      "instance": {
+        "schema_version": "1.0",
+        "snapshot_id": "record_01J00000000000000000000005",
+        "provider_id": "ollama",
+        "model_id": "llama3.2",
+        "processing_mode": "local",
+        "endpoint_classification": "loopback",
+        "temperature_milli": 700,
+        "context_limit": 0,
+        "maximum_output": 800,
+        "structured_output_mode": "none",
+        "tool_configuration": [],
+        "capability_snapshot_sha256": "sha256:8888888888888888888888888888888888888888888888888888888888888888",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "model-configuration-snapshot.maximum_output: reject value below minimum",
+      "instance": {
+        "schema_version": "1.0",
+        "snapshot_id": "record_01J00000000000000000000005",
+        "provider_id": "ollama",
+        "model_id": "llama3.2",
+        "processing_mode": "local",
+        "endpoint_classification": "loopback",
+        "temperature_milli": 700,
+        "context_limit": 8192,
+        "maximum_output": 0,
+        "structured_output_mode": "none",
+        "tool_configuration": [],
+        "capability_snapshot_sha256": "sha256:8888888888888888888888888888888888888888888888888888888888888888",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "model-configuration-snapshot.structured_output_mode: reject value outside enum",
+      "instance": {
+        "schema_version": "1.0",
+        "snapshot_id": "record_01J00000000000000000000005",
+        "provider_id": "ollama",
+        "model_id": "llama3.2",
+        "processing_mode": "local",
+        "endpoint_classification": "loopback",
+        "temperature_milli": 700,
+        "context_limit": 8192,
+        "maximum_output": 800,
+        "structured_output_mode": "__INVALID_ENUM__",
+        "tool_configuration": [],
+        "capability_snapshot_sha256": "sha256:8888888888888888888888888888888888888888888888888888888888888888",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "model-configuration-snapshot.capability_snapshot_sha256: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "snapshot_id": "record_01J00000000000000000000005",
+        "provider_id": "ollama",
+        "model_id": "llama3.2",
+        "processing_mode": "local",
+        "endpoint_classification": "loopback",
+        "temperature_milli": 700,
+        "context_limit": 8192,
+        "maximum_output": 800,
+        "structured_output_mode": "none",
+        "tool_configuration": [],
+        "capability_snapshot_sha256": "sha256:INVALID",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "model-configuration-snapshot.created_at: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "snapshot_id": "record_01J00000000000000000000005",
+        "provider_id": "ollama",
+        "model_id": "llama3.2",
+        "processing_mode": "local",
+        "endpoint_classification": "loopback",
+        "temperature_milli": 700,
+        "context_limit": 8192,
+        "maximum_output": 800,
+        "structured_output_mode": "none",
+        "tool_configuration": [],
+        "capability_snapshot_sha256": "sha256:8888888888888888888888888888888888888888888888888888888888888888",
+        "created_at": "not-a-timestamp"
+      }
+    }
+  ]
+}

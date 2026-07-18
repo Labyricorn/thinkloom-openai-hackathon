@@ -1,0 +1,121 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/prompt-template-reference.schema.json",
+  "cases": [
+    {
+      "description": "prompt-template-reference.schema_version: reject missing required property",
+      "instance": {
+        "template_id": "template_01J0000000000000000000000F",
+        "version": 1,
+        "path": "records/prompt-templates/drafting/template.json",
+        "template_sha256": "sha256:7777777777777777777777777777777777777777777777777777777777777777"
+      }
+    },
+    {
+      "description": "prompt-template-reference.template_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "version": 1,
+        "path": "records/prompt-templates/drafting/template.json",
+        "template_sha256": "sha256:7777777777777777777777777777777777777777777777777777777777777777"
+      }
+    },
+    {
+      "description": "prompt-template-reference.version: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "template_id": "template_01J0000000000000000000000F",
+        "path": "records/prompt-templates/drafting/template.json",
+        "template_sha256": "sha256:7777777777777777777777777777777777777777777777777777777777777777"
+      }
+    },
+    {
+      "description": "prompt-template-reference.path: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "template_id": "template_01J0000000000000000000000F",
+        "version": 1,
+        "template_sha256": "sha256:7777777777777777777777777777777777777777777777777777777777777777"
+      }
+    },
+    {
+      "description": "prompt-template-reference.template_sha256: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "template_id": "template_01J0000000000000000000000F",
+        "version": 1,
+        "path": "records/prompt-templates/drafting/template.json"
+      }
+    },
+    {
+      "description": "prompt-template-reference: reject unexpected property",
+      "instance": {
+        "schema_version": "1.0",
+        "template_id": "template_01J0000000000000000000000F",
+        "version": 1,
+        "path": "records/prompt-templates/drafting/template.json",
+        "template_sha256": "sha256:7777777777777777777777777777777777777777777777777777777777777777",
+        "__unexpected": true
+      }
+    },
+    {
+      "description": "prompt-template-reference.schema_version: reject value different from const",
+      "instance": {
+        "schema_version": "__INVALID_CONST__",
+        "template_id": "template_01J0000000000000000000000F",
+        "version": 1,
+        "path": "records/prompt-templates/drafting/template.json",
+        "template_sha256": "sha256:7777777777777777777777777777777777777777777777777777777777777777"
+      }
+    },
+    {
+      "description": "prompt-template-reference.template_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "template_id": "invalid-id",
+        "version": 1,
+        "path": "records/prompt-templates/drafting/template.json",
+        "template_sha256": "sha256:7777777777777777777777777777777777777777777777777777777777777777"
+      }
+    },
+    {
+      "description": "prompt-template-reference.version: reject value below minimum",
+      "instance": {
+        "schema_version": "1.0",
+        "template_id": "template_01J0000000000000000000000F",
+        "version": 0,
+        "path": "records/prompt-templates/drafting/template.json",
+        "template_sha256": "sha256:7777777777777777777777777777777777777777777777777777777777777777"
+      }
+    },
+    {
+      "description": "prompt-template-reference.path: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "template_id": "template_01J0000000000000000000000F",
+        "version": 1,
+        "path": "../outside-project",
+        "template_sha256": "sha256:7777777777777777777777777777777777777777777777777777777777777777"
+      }
+    },
+    {
+      "description": "prompt-template-reference.path: reject string below minLength",
+      "instance": {
+        "schema_version": "1.0",
+        "template_id": "template_01J0000000000000000000000F",
+        "version": 1,
+        "path": "",
+        "template_sha256": "sha256:7777777777777777777777777777777777777777777777777777777777777777"
+      }
+    },
+    {
+      "description": "prompt-template-reference.template_sha256: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "template_id": "template_01J0000000000000000000000F",
+        "version": 1,
+        "path": "records/prompt-templates/drafting/template.json",
+        "template_sha256": "sha256:INVALID"
+      }
+    }
+  ]
+}

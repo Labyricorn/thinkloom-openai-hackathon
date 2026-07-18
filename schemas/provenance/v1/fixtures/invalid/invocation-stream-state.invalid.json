@@ -1,0 +1,191 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/invocation-stream-state.schema.json",
+  "cases": [
+    {
+      "description": "invocation-stream-state.schema_version: reject missing required property",
+      "instance": {
+        "stream_id": "stream_01J0000000000000000000000Q",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "state": "STREAMING",
+        "bytes_received": 512,
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "updated_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "invocation-stream-state.stream_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "state": "STREAMING",
+        "bytes_received": 512,
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "updated_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "invocation-stream-state.invocation_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "stream_id": "stream_01J0000000000000000000000Q",
+        "state": "STREAMING",
+        "bytes_received": 512,
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "updated_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "invocation-stream-state.state: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "stream_id": "stream_01J0000000000000000000000Q",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "bytes_received": 512,
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "updated_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "invocation-stream-state.bytes_received: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "stream_id": "stream_01J0000000000000000000000Q",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "state": "STREAMING",
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "updated_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "invocation-stream-state.started_at: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "stream_id": "stream_01J0000000000000000000000Q",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "state": "STREAMING",
+        "bytes_received": 512,
+        "updated_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "invocation-stream-state.updated_at: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "stream_id": "stream_01J0000000000000000000000Q",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "state": "STREAMING",
+        "bytes_received": 512,
+        "started_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "invocation-stream-state: reject unexpected property",
+      "instance": {
+        "schema_version": "1.0",
+        "stream_id": "stream_01J0000000000000000000000Q",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "state": "STREAMING",
+        "bytes_received": 512,
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "updated_at": "2026-07-17T18:43:11.456Z",
+        "__unexpected": true
+      }
+    },
+    {
+      "description": "invocation-stream-state.schema_version: reject value different from const",
+      "instance": {
+        "schema_version": "__INVALID_CONST__",
+        "stream_id": "stream_01J0000000000000000000000Q",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "state": "STREAMING",
+        "bytes_received": 512,
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "updated_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "invocation-stream-state.stream_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "stream_id": "invalid-id",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "state": "STREAMING",
+        "bytes_received": 512,
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "updated_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "invocation-stream-state.invocation_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "stream_id": "stream_01J0000000000000000000000Q",
+        "invocation_id": "invalid-id",
+        "state": "STREAMING",
+        "bytes_received": 512,
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "updated_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "invocation-stream-state.state: reject value outside enum",
+      "instance": {
+        "schema_version": "1.0",
+        "stream_id": "stream_01J0000000000000000000000Q",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "state": "__INVALID_ENUM__",
+        "bytes_received": 512,
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "updated_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "invocation-stream-state.bytes_received: reject value below minimum",
+      "instance": {
+        "schema_version": "1.0",
+        "stream_id": "stream_01J0000000000000000000000Q",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "state": "STREAMING",
+        "bytes_received": -1,
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "updated_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "invocation-stream-state.bytes_received: reject value above maximum",
+      "instance": {
+        "schema_version": "1.0",
+        "stream_id": "stream_01J0000000000000000000000Q",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "state": "STREAMING",
+        "bytes_received": 67108865,
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "updated_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "invocation-stream-state.started_at: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "stream_id": "stream_01J0000000000000000000000Q",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "state": "STREAMING",
+        "bytes_received": 512,
+        "started_at": "not-a-timestamp",
+        "updated_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "invocation-stream-state.updated_at: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "stream_id": "stream_01J0000000000000000000000Q",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "state": "STREAMING",
+        "bytes_received": 512,
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "updated_at": "not-a-timestamp"
+      }
+    }
+  ]
+}

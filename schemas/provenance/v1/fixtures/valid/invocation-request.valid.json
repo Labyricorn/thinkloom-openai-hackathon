@@ -1,0 +1,62 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/invocation-request.schema.json",
+  "description": "Valid Invocation request example.",
+  "instance": {
+    "schema_version": "1.0",
+    "invocation_id": "invocation_01J00000000000000000000008",
+    "project_id": "project_01J00000000000000000000001",
+    "purpose": "draft_from_selected_ideas",
+    "initiated_by_event_id": "event_01J00000000000000000000003",
+    "retention_mode": "full_private",
+    "provider": {
+      "provider_id": "ollama",
+      "model_id": "llama3.2",
+      "processing_mode": "local"
+    },
+    "model_configuration_sha256": "sha256:8888888888888888888888888888888888888888888888888888888888888888",
+    "prompt_template": {
+      "schema_version": "1.0",
+      "template_id": "template_01J0000000000000000000000F",
+      "version": 1,
+      "path": "records/prompt-templates/drafting/template.json",
+      "template_sha256": "sha256:7777777777777777777777777777777777777777777777777777777777777777"
+    },
+    "messages": [
+      {
+        "role": "user",
+        "content": "Use the selected ideas to draft a passage."
+      }
+    ],
+    "context_references": [
+      {
+        "schema_version": "1.0",
+        "record_id": "record_01J00000000000000000000005",
+        "record_type": "manuscript_revision",
+        "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+        "path": "manuscript/revisions/revision.json",
+        "revision_id": "revision_01J0000000000000000000000A",
+        "range": {
+          "schema_version": "1.0",
+          "document_revision_id": "revision_01J0000000000000000000000A",
+          "coordinate_system": "utf8_byte",
+          "start": 0,
+          "end": 12,
+          "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+          "text_fragment_id": "fragment_01J0000000000000000000000C"
+        }
+      }
+    ],
+    "manuscript_revision_id": "revision_01J0000000000000000000000A",
+    "idea_revision_ids": [
+      "revision_01J0000000000000000000000B"
+    ],
+    "conversation_head": "turn_01J00000000000000000000007",
+    "submitted_at": "2026-07-17T18:42:10.123Z",
+    "redactions": [
+      {
+        "category": "personal_identifier",
+        "replacement": "[redacted]"
+      }
+    ]
+  }
+}

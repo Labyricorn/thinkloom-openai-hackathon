@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://thinkloom.app/schemas/provenance/1.0/transcript-turn.schema.json",
+  "title": "Transcript turn",
+  "description": "Immutable retained conversation turn permitted by project policy.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "turn_id": {
+      "type": "string",
+      "pattern": "^turn_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "session_id": {
+      "type": "string",
+      "pattern": "^session_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "speaker": {
+      "enum": [
+        "user",
+        "assistant"
+      ]
+    },
+    "input_mode": {
+      "enum": [
+        "typed",
+        "voice"
+      ]
+    },
+    "retained_text": {
+      "type": "string",
+      "minLength": 1
+    },
+    "raw_transcript": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+    },
+    "ended_at": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+    },
+    "audio_retained": {
+      "const": false
+    },
+    "invocation_id": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^invocation_[0-9A-HJKMNP-TV-Z]{26}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "event_id": {
+      "type": "string",
+      "pattern": "^event_[0-9A-HJKMNP-TV-Z]{26}$"
+    }
+  },
+  "required": [
+    "schema_version",
+    "turn_id",
+    "session_id",
+    "speaker",
+    "input_mode",
+    "retained_text",
+    "raw_transcript",
+    "started_at",
+    "ended_at",
+    "audio_retained",
+    "invocation_id",
+    "event_id"
+  ],
+  "additionalProperties": false,
+  "examples": [
+    {
+      "schema_version": "1.0",
+      "turn_id": "turn_01J00000000000000000000007",
+      "session_id": "session_01J00000000000000000000006",
+      "speaker": "user",
+      "input_mode": "typed",
+      "retained_text": "Attention shapes public life.",
+      "raw_transcript": null,
+      "started_at": "2026-07-17T18:42:10.123Z",
+      "ended_at": "2026-07-17T18:43:11.456Z",
+      "audio_retained": false,
+      "invocation_id": null,
+      "event_id": "event_01J00000000000000000000003"
+    }
+  ]
+}

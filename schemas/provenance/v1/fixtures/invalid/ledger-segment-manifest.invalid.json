@@ -1,0 +1,402 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/ledger-segment-manifest.schema.json",
+  "cases": [
+    {
+      "description": "ledger-segment-manifest.schema_version: reject missing required property",
+      "instance": {
+        "project_id": "project_01J00000000000000000000001",
+        "segment_number": 1,
+        "previous_segment_file_hash": null,
+        "first_event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "final_event_hash": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "first_event_sequence": 1,
+        "final_event_sequence": 2,
+        "event_count": 2,
+        "byte_length": 1024,
+        "segment_file_hash": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "sealed_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "ledger-segment-manifest.project_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "segment_number": 1,
+        "previous_segment_file_hash": null,
+        "first_event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "final_event_hash": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "first_event_sequence": 1,
+        "final_event_sequence": 2,
+        "event_count": 2,
+        "byte_length": 1024,
+        "segment_file_hash": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "sealed_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "ledger-segment-manifest.segment_number: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "previous_segment_file_hash": null,
+        "first_event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "final_event_hash": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "first_event_sequence": 1,
+        "final_event_sequence": 2,
+        "event_count": 2,
+        "byte_length": 1024,
+        "segment_file_hash": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "sealed_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "ledger-segment-manifest.previous_segment_file_hash: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "segment_number": 1,
+        "first_event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "final_event_hash": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "first_event_sequence": 1,
+        "final_event_sequence": 2,
+        "event_count": 2,
+        "byte_length": 1024,
+        "segment_file_hash": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "sealed_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "ledger-segment-manifest.first_event_hash: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "segment_number": 1,
+        "previous_segment_file_hash": null,
+        "final_event_hash": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "first_event_sequence": 1,
+        "final_event_sequence": 2,
+        "event_count": 2,
+        "byte_length": 1024,
+        "segment_file_hash": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "sealed_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "ledger-segment-manifest.final_event_hash: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "segment_number": 1,
+        "previous_segment_file_hash": null,
+        "first_event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "first_event_sequence": 1,
+        "final_event_sequence": 2,
+        "event_count": 2,
+        "byte_length": 1024,
+        "segment_file_hash": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "sealed_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "ledger-segment-manifest.first_event_sequence: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "segment_number": 1,
+        "previous_segment_file_hash": null,
+        "first_event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "final_event_hash": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "final_event_sequence": 2,
+        "event_count": 2,
+        "byte_length": 1024,
+        "segment_file_hash": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "sealed_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "ledger-segment-manifest.final_event_sequence: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "segment_number": 1,
+        "previous_segment_file_hash": null,
+        "first_event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "final_event_hash": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "first_event_sequence": 1,
+        "event_count": 2,
+        "byte_length": 1024,
+        "segment_file_hash": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "sealed_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "ledger-segment-manifest.event_count: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "segment_number": 1,
+        "previous_segment_file_hash": null,
+        "first_event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "final_event_hash": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "first_event_sequence": 1,
+        "final_event_sequence": 2,
+        "byte_length": 1024,
+        "segment_file_hash": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "sealed_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "ledger-segment-manifest.byte_length: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "segment_number": 1,
+        "previous_segment_file_hash": null,
+        "first_event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "final_event_hash": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "first_event_sequence": 1,
+        "final_event_sequence": 2,
+        "event_count": 2,
+        "segment_file_hash": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "sealed_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "ledger-segment-manifest.segment_file_hash: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "segment_number": 1,
+        "previous_segment_file_hash": null,
+        "first_event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "final_event_hash": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "first_event_sequence": 1,
+        "final_event_sequence": 2,
+        "event_count": 2,
+        "byte_length": 1024,
+        "sealed_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "ledger-segment-manifest.sealed_at: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "segment_number": 1,
+        "previous_segment_file_hash": null,
+        "first_event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "final_event_hash": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "first_event_sequence": 1,
+        "final_event_sequence": 2,
+        "event_count": 2,
+        "byte_length": 1024,
+        "segment_file_hash": "sha256:6666666666666666666666666666666666666666666666666666666666666666"
+      }
+    },
+    {
+      "description": "ledger-segment-manifest: reject unexpected property",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "segment_number": 1,
+        "previous_segment_file_hash": null,
+        "first_event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "final_event_hash": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "first_event_sequence": 1,
+        "final_event_sequence": 2,
+        "event_count": 2,
+        "byte_length": 1024,
+        "segment_file_hash": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "sealed_at": "2026-07-17T18:42:10.123Z",
+        "__unexpected": true
+      }
+    },
+    {
+      "description": "ledger-segment-manifest.schema_version: reject value different from const",
+      "instance": {
+        "schema_version": "__INVALID_CONST__",
+        "project_id": "project_01J00000000000000000000001",
+        "segment_number": 1,
+        "previous_segment_file_hash": null,
+        "first_event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "final_event_hash": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "first_event_sequence": 1,
+        "final_event_sequence": 2,
+        "event_count": 2,
+        "byte_length": 1024,
+        "segment_file_hash": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "sealed_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "ledger-segment-manifest.project_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "invalid-id",
+        "segment_number": 1,
+        "previous_segment_file_hash": null,
+        "first_event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "final_event_hash": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "first_event_sequence": 1,
+        "final_event_sequence": 2,
+        "event_count": 2,
+        "byte_length": 1024,
+        "segment_file_hash": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "sealed_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "ledger-segment-manifest.segment_number: reject value below minimum",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "segment_number": 0,
+        "previous_segment_file_hash": null,
+        "first_event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "final_event_hash": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "first_event_sequence": 1,
+        "final_event_sequence": 2,
+        "event_count": 2,
+        "byte_length": 1024,
+        "segment_file_hash": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "sealed_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "ledger-segment-manifest.first_event_hash: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "segment_number": 1,
+        "previous_segment_file_hash": null,
+        "first_event_hash": "sha256:INVALID",
+        "final_event_hash": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "first_event_sequence": 1,
+        "final_event_sequence": 2,
+        "event_count": 2,
+        "byte_length": 1024,
+        "segment_file_hash": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "sealed_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "ledger-segment-manifest.final_event_hash: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "segment_number": 1,
+        "previous_segment_file_hash": null,
+        "first_event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "final_event_hash": "sha256:INVALID",
+        "first_event_sequence": 1,
+        "final_event_sequence": 2,
+        "event_count": 2,
+        "byte_length": 1024,
+        "segment_file_hash": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "sealed_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "ledger-segment-manifest.first_event_sequence: reject value below minimum",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "segment_number": 1,
+        "previous_segment_file_hash": null,
+        "first_event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "final_event_hash": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "first_event_sequence": 0,
+        "final_event_sequence": 2,
+        "event_count": 2,
+        "byte_length": 1024,
+        "segment_file_hash": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "sealed_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "ledger-segment-manifest.final_event_sequence: reject value below minimum",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "segment_number": 1,
+        "previous_segment_file_hash": null,
+        "first_event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "final_event_hash": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "first_event_sequence": 1,
+        "final_event_sequence": 0,
+        "event_count": 2,
+        "byte_length": 1024,
+        "segment_file_hash": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "sealed_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "ledger-segment-manifest.event_count: reject value below minimum",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "segment_number": 1,
+        "previous_segment_file_hash": null,
+        "first_event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "final_event_hash": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "first_event_sequence": 1,
+        "final_event_sequence": 2,
+        "event_count": 0,
+        "byte_length": 1024,
+        "segment_file_hash": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "sealed_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "ledger-segment-manifest.byte_length: reject value below minimum",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "segment_number": 1,
+        "previous_segment_file_hash": null,
+        "first_event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "final_event_hash": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "first_event_sequence": 1,
+        "final_event_sequence": 2,
+        "event_count": 2,
+        "byte_length": 0,
+        "segment_file_hash": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "sealed_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "ledger-segment-manifest.segment_file_hash: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "segment_number": 1,
+        "previous_segment_file_hash": null,
+        "first_event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "final_event_hash": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "first_event_sequence": 1,
+        "final_event_sequence": 2,
+        "event_count": 2,
+        "byte_length": 1024,
+        "segment_file_hash": "sha256:INVALID",
+        "sealed_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "ledger-segment-manifest.sealed_at: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "segment_number": 1,
+        "previous_segment_file_hash": null,
+        "first_event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "final_event_hash": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "first_event_sequence": 1,
+        "final_event_sequence": 2,
+        "event_count": 2,
+        "byte_length": 1024,
+        "segment_file_hash": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "sealed_at": "not-a-timestamp"
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/invocation-failure.schema.json",
+  "description": "Valid Invocation failure example.",
+  "instance": {
+    "schema_version": "1.0",
+    "failure_id": "failure_01J0000000000000000000000P",
+    "invocation_id": "invocation_01J00000000000000000000008",
+    "code": "PROVIDER_TIMEOUT",
+    "category": "provider",
+    "recoverable": true,
+    "bounded_summary": "The provider did not respond within the configured timeout.",
+    "partial_output_preserved": false,
+    "occurred_at": "2026-07-17T18:43:11.456Z"
+  }
+}

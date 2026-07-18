@@ -1,0 +1,101 @@
+{
+  "vector_version": "1.0",
+  "plaintext_identity_fields": [
+    "schema_version",
+    "record_id",
+    "record_type",
+    "payload"
+  ],
+  "plaintext_identity": {
+    "schema_version": "1.0",
+    "record_id": "record_01J00000000000000000000005",
+    "record_type": "invocation_request",
+    "payload": {
+      "purpose": "draft_from_selected_ideas"
+    }
+  },
+  "canonical_plaintext_identity": "{\"payload\":{\"purpose\":\"draft_from_selected_ideas\"},\"record_id\":\"record_01J00000000000000000000005\",\"record_type\":\"invocation_request\",\"schema_version\":\"1.0\"}",
+  "plaintext_sha256": "sha256:97154eddff15ab6607181e55945547fdbbc5bde02b1e5123eade7a69509f00c5",
+  "device_key_envelope": {
+    "schema_version": "1.0",
+    "envelope_id": "record_01J00000000000000000000005",
+    "key_id": "key_01J0000000000000000000000G",
+    "envelope_type": "device",
+    "algorithm": "xchacha20-poly1305",
+    "key_derivation": null,
+    "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "wrapped_key": "d3JhcHBlZC1wcm9qZWN0LWtleQ==",
+    "ciphertext_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "created_at": "2026-07-17T18:42:10.123Z"
+  },
+  "recovery_key_envelope": {
+    "schema_version": "1.0",
+    "envelope_id": "record_01J0000000000000000000000S",
+    "key_id": "key_01J0000000000000000000000G",
+    "envelope_type": "recovery",
+    "algorithm": "xchacha20-poly1305",
+    "key_derivation": {
+      "algorithm": "argon2id",
+      "memory_kib": 65536,
+      "iterations": 3,
+      "parallelism": 1,
+      "salt": "c2FsdC1mb3ItdGhpbmtsb29t"
+    },
+    "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "wrapped_key": "d3JhcHBlZC1wcm9qZWN0LWtleQ==",
+    "ciphertext_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "created_at": "2026-07-17T18:42:10.123Z"
+  },
+  "project_key_manifest": {
+    "schema_version": "1.0",
+    "project_id": "project_01J00000000000000000000001",
+    "key_id": "key_01J0000000000000000000000G",
+    "algorithm": "xchacha20-poly1305",
+    "device_envelope_path": "provenance/keys/device-envelope.json",
+    "recovery_envelope_path": "provenance/keys/recovery-envelope.json",
+    "recovery_verified_at": "2026-07-17T18:42:10.123Z",
+    "created_at": "2026-07-17T18:42:10.123Z"
+  },
+  "initial_envelope": {
+    "schema_version": "1.0",
+    "project_id": "project_01J00000000000000000000001",
+    "record_id": "record_01J00000000000000000000005",
+    "record_type": "invocation_request",
+    "protection": "protected",
+    "plaintext_sha256": "sha256:97154eddff15ab6607181e55945547fdbbc5bde02b1e5123eade7a69509f00c5",
+    "payload": null,
+    "encryption": {
+      "algorithm": "xchacha20-poly1305",
+      "key_id": "key_01J0000000000000000000000G",
+      "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "ciphertext": "ZW5jcnlwdGVkLXJlY29yZA==",
+      "ciphertext_sha256": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    }
+  },
+  "rotated_envelope": {
+    "schema_version": "1.0",
+    "project_id": "project_01J00000000000000000000001",
+    "record_id": "record_01J00000000000000000000005",
+    "record_type": "invocation_request",
+    "protection": "protected",
+    "plaintext_sha256": "sha256:97154eddff15ab6607181e55945547fdbbc5bde02b1e5123eade7a69509f00c5",
+    "payload": null,
+    "encryption": {
+      "algorithm": "xchacha20-poly1305",
+      "key_id": "key_01J0000000000000000000000V",
+      "nonce": "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+      "ciphertext": "cm90YXRlZC1jaXBoZXJ0ZXh0",
+      "ciphertext_sha256": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+    }
+  },
+  "invariant": "Key rotation changes encryption metadata and ciphertext but preserves record_id and plaintext_sha256.",
+  "excluded_from_plaintext_identity": [
+    "project_id",
+    "protection",
+    "plaintext_sha256",
+    "encryption",
+    "path",
+    "nonce",
+    "ciphertext"
+  ]
+}

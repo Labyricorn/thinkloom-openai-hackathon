@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://thinkloom.app/schemas/provenance/1.0/chain-head.schema.json",
+  "title": "Chain head",
+  "description": "Durable pointer to the last committed provenance event.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "project_id": {
+      "type": "string",
+      "pattern": "^project_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "active_segment_number": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "event_id": {
+      "type": "string",
+      "pattern": "^event_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "event_sequence": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "event_hash": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+    }
+  },
+  "required": [
+    "schema_version",
+    "project_id",
+    "active_segment_number",
+    "event_id",
+    "event_sequence",
+    "event_hash",
+    "updated_at"
+  ],
+  "additionalProperties": false,
+  "examples": [
+    {
+      "schema_version": "1.0",
+      "project_id": "project_01J00000000000000000000001",
+      "active_segment_number": 1,
+      "event_id": "event_01J00000000000000000000003",
+      "event_sequence": 1,
+      "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+      "updated_at": "2026-07-17T18:42:10.123Z"
+    }
+  ]
+}

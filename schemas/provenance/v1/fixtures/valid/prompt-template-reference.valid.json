@@ -1,0 +1,11 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/prompt-template-reference.schema.json",
+  "description": "Valid Prompt template reference example.",
+  "instance": {
+    "schema_version": "1.0",
+    "template_id": "template_01J0000000000000000000000F",
+    "version": 1,
+    "path": "records/prompt-templates/drafting/template.json",
+    "template_sha256": "sha256:7777777777777777777777777777777777777777777777777777777777777777"
+  }
+}

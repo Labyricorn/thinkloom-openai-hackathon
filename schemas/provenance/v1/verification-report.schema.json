@@ -1,0 +1,171 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://thinkloom.app/schemas/provenance/1.0/verification-report.schema.json",
+  "title": "Verification report",
+  "description": "Authoritative native verification result rendered by the UI.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "verification_id": {
+      "type": "string",
+      "pattern": "^record_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "project_id": {
+      "type": "string",
+      "pattern": "^project_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "status": {
+      "enum": [
+        "VERIFIED",
+        "VERIFIED_WITH_WARNINGS",
+        "INCOMPLETE",
+        "FAILED",
+        "UNSAFE"
+      ]
+    },
+    "verified_through_event_id": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^event_[0-9A-HJKMNP-TV-Z]{26}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "verified_chain_head": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "checked_segments": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "checked_events": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "checked_records": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "severity": {
+            "enum": [
+              "INFO",
+              "WARNING",
+              "ERROR",
+              "CRITICAL"
+            ]
+          },
+          "code": {
+            "type": "string",
+            "pattern": "^[A-Z][A-Z0-9_]+$"
+          },
+          "message": {
+            "type": "string",
+            "minLength": 1
+          },
+          "authoritative_evidence_affected": {
+            "type": "boolean"
+          },
+          "path": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "^(?!/)(?![A-Za-z]:)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(?:/|$))[^\\u0000-\\u001f]+$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "event_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^event_[0-9A-HJKMNP-TV-Z]{26}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "severity",
+          "code",
+          "message",
+          "authoritative_evidence_affected",
+          "path",
+          "event_id"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "verifier_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+    }
+  },
+  "required": [
+    "schema_version",
+    "verification_id",
+    "project_id",
+    "status",
+    "verified_through_event_id",
+    "verified_chain_head",
+    "checked_segments",
+    "checked_events",
+    "checked_records",
+    "findings",
+    "verifier_version",
+    "completed_at"
+  ],
+  "additionalProperties": false,
+  "examples": [
+    {
+      "schema_version": "1.0",
+      "verification_id": "record_01J00000000000000000000005",
+      "project_id": "project_01J00000000000000000000001",
+      "status": "VERIFIED_WITH_WARNINGS",
+      "verified_through_event_id": "event_01J00000000000000000000003",
+      "verified_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+      "checked_segments": 1,
+      "checked_events": 1,
+      "checked_records": 4,
+      "findings": [
+        {
+          "severity": "WARNING",
+          "code": "INDEX_STALE",
+          "message": "Contribution index is stale.",
+          "authoritative_evidence_affected": false,
+          "path": "provenance/indexes/contribution-graph.json",
+          "event_id": null
+        }
+      ],
+      "verifier_version": "1.0.0",
+      "completed_at": "2026-07-17T18:43:11.456Z"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/transcript-turn.schema.json",
+  "description": "Valid Transcript turn example.",
+  "instance": {
+    "schema_version": "1.0",
+    "turn_id": "turn_01J00000000000000000000007",
+    "session_id": "session_01J00000000000000000000006",
+    "speaker": "user",
+    "input_mode": "typed",
+    "retained_text": "Attention shapes public life.",
+    "raw_transcript": null,
+    "started_at": "2026-07-17T18:42:10.123Z",
+    "ended_at": "2026-07-17T18:43:11.456Z",
+    "audio_retained": false,
+    "invocation_id": null,
+    "event_id": "event_01J00000000000000000000003"
+  }
+}

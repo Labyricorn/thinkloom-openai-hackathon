@@ -1,0 +1,132 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/invocation-state.schema.json",
+  "cases": [
+    {
+      "description": "invocation-state.schema_version: reject missing required property",
+      "instance": {
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "state": "REQUEST_RECORDED",
+        "state_sequence": 2,
+        "updated_at": "2026-07-17T18:42:10.123Z",
+        "failure_id": null
+      }
+    },
+    {
+      "description": "invocation-state.invocation_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "state": "REQUEST_RECORDED",
+        "state_sequence": 2,
+        "updated_at": "2026-07-17T18:42:10.123Z",
+        "failure_id": null
+      }
+    },
+    {
+      "description": "invocation-state.state: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "state_sequence": 2,
+        "updated_at": "2026-07-17T18:42:10.123Z",
+        "failure_id": null
+      }
+    },
+    {
+      "description": "invocation-state.state_sequence: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "state": "REQUEST_RECORDED",
+        "updated_at": "2026-07-17T18:42:10.123Z",
+        "failure_id": null
+      }
+    },
+    {
+      "description": "invocation-state.updated_at: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "state": "REQUEST_RECORDED",
+        "state_sequence": 2,
+        "failure_id": null
+      }
+    },
+    {
+      "description": "invocation-state.failure_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "state": "REQUEST_RECORDED",
+        "state_sequence": 2,
+        "updated_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "invocation-state: reject unexpected property",
+      "instance": {
+        "schema_version": "1.0",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "state": "REQUEST_RECORDED",
+        "state_sequence": 2,
+        "updated_at": "2026-07-17T18:42:10.123Z",
+        "failure_id": null,
+        "__unexpected": true
+      }
+    },
+    {
+      "description": "invocation-state.schema_version: reject value different from const",
+      "instance": {
+        "schema_version": "__INVALID_CONST__",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "state": "REQUEST_RECORDED",
+        "state_sequence": 2,
+        "updated_at": "2026-07-17T18:42:10.123Z",
+        "failure_id": null
+      }
+    },
+    {
+      "description": "invocation-state.invocation_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "invocation_id": "invalid-id",
+        "state": "REQUEST_RECORDED",
+        "state_sequence": 2,
+        "updated_at": "2026-07-17T18:42:10.123Z",
+        "failure_id": null
+      }
+    },
+    {
+      "description": "invocation-state.state: reject value outside enum",
+      "instance": {
+        "schema_version": "1.0",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "state": "__INVALID_ENUM__",
+        "state_sequence": 2,
+        "updated_at": "2026-07-17T18:42:10.123Z",
+        "failure_id": null
+      }
+    },
+    {
+      "description": "invocation-state.state_sequence: reject value below minimum",
+      "instance": {
+        "schema_version": "1.0",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "state": "REQUEST_RECORDED",
+        "state_sequence": 0,
+        "updated_at": "2026-07-17T18:42:10.123Z",
+        "failure_id": null
+      }
+    },
+    {
+      "description": "invocation-state.updated_at: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "state": "REQUEST_RECORDED",
+        "state_sequence": 2,
+        "updated_at": "not-a-timestamp",
+        "failure_id": null
+      }
+    }
+  ]
+}

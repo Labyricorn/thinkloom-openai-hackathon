@@ -1,0 +1,220 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://thinkloom.app/schemas/provenance/1.0/provenance-event.schema.json",
+  "title": "Provenance event",
+  "description": "Canonical chronological action with content references and SHA-256 chain linkage.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "event_id": {
+      "type": "string",
+      "pattern": "^event_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "event_sequence": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "client_action_id": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 200
+    },
+    "project_id": {
+      "type": "string",
+      "pattern": "^project_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+    },
+    "event_type": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9_]+$"
+    },
+    "actor": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [
+            "user",
+            "assistant",
+            "system"
+          ]
+        },
+        "actor_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "type",
+        "actor_id"
+      ],
+      "additionalProperties": false
+    },
+    "provider": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "provider_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "model_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "processing_mode": {
+              "enum": [
+                "local",
+                "cloud"
+              ]
+            }
+          },
+          "required": [
+            "provider_id",
+            "model_id",
+            "processing_mode"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "inputs": {
+      "type": "array",
+      "items": {
+        "$ref": "https://thinkloom.app/schemas/provenance/1.0/content-reference.schema.json"
+      }
+    },
+    "outputs": {
+      "type": "array",
+      "items": {
+        "$ref": "https://thinkloom.app/schemas/provenance/1.0/content-reference.schema.json"
+      }
+    },
+    "relationships": {
+      "type": "object",
+      "properties": {
+        "parent_event_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^event_[0-9A-HJKMNP-TV-Z]{26}$"
+          },
+          "uniqueItems": true
+        },
+        "invocation_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^invocation_[0-9A-HJKMNP-TV-Z]{26}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "parent_event_ids",
+        "invocation_id"
+      ],
+      "additionalProperties": false
+    },
+    "metadata": {
+      "type": "object"
+    },
+    "previous_event_hash": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "event_hash": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    }
+  },
+  "required": [
+    "schema_version",
+    "event_id",
+    "event_sequence",
+    "client_action_id",
+    "project_id",
+    "timestamp",
+    "event_type",
+    "actor",
+    "provider",
+    "inputs",
+    "outputs",
+    "relationships",
+    "metadata",
+    "previous_event_hash",
+    "event_hash"
+  ],
+  "additionalProperties": false,
+  "examples": [
+    {
+      "schema_version": "1.0",
+      "event_id": "event_01J00000000000000000000003",
+      "event_sequence": 1,
+      "client_action_id": "client-action-0001",
+      "project_id": "project_01J00000000000000000000001",
+      "timestamp": "2026-07-17T18:42:10.123Z",
+      "event_type": "PROJECT_CREATED",
+      "actor": {
+        "type": "user",
+        "actor_id": null
+      },
+      "provider": null,
+      "inputs": [],
+      "outputs": [
+        {
+          "schema_version": "1.0",
+          "record_id": "record_01J00000000000000000000005",
+          "record_type": "manuscript_revision",
+          "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+          "path": "manuscript/revisions/revision.json",
+          "revision_id": "revision_01J0000000000000000000000A",
+          "range": {
+            "schema_version": "1.0",
+            "document_revision_id": "revision_01J0000000000000000000000A",
+            "coordinate_system": "utf8_byte",
+            "start": 0,
+            "end": 12,
+            "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+            "text_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        }
+      ],
+      "relationships": {
+        "parent_event_ids": [],
+        "invocation_id": null
+      },
+      "metadata": {
+        "summary": "Created project"
+      },
+      "previous_event_hash": null,
+      "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+    }
+  ]
+}

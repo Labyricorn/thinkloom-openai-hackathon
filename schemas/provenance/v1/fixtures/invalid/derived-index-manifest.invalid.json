@@ -1,0 +1,329 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/derived-index-manifest.schema.json",
+  "cases": [
+    {
+      "description": "derived-index-manifest.schema_version: reject missing required property",
+      "instance": {
+        "index_type": "contribution_graph",
+        "source_chain_head": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "source_event_count": 42,
+        "generator": {
+          "name": "thinkloom-indexer",
+          "version": "1.0.0",
+          "configuration_sha256": "sha256:0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "generated_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "derived-index-manifest.index_type: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "source_chain_head": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "source_event_count": 42,
+        "generator": {
+          "name": "thinkloom-indexer",
+          "version": "1.0.0",
+          "configuration_sha256": "sha256:0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "generated_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "derived-index-manifest.source_chain_head: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "index_type": "contribution_graph",
+        "source_event_count": 42,
+        "generator": {
+          "name": "thinkloom-indexer",
+          "version": "1.0.0",
+          "configuration_sha256": "sha256:0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "generated_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "derived-index-manifest.source_event_count: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "index_type": "contribution_graph",
+        "source_chain_head": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "generator": {
+          "name": "thinkloom-indexer",
+          "version": "1.0.0",
+          "configuration_sha256": "sha256:0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "generated_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "derived-index-manifest.generator: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "index_type": "contribution_graph",
+        "source_chain_head": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "source_event_count": 42,
+        "content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "generated_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "derived-index-manifest.content_sha256: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "index_type": "contribution_graph",
+        "source_chain_head": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "source_event_count": 42,
+        "generator": {
+          "name": "thinkloom-indexer",
+          "version": "1.0.0",
+          "configuration_sha256": "sha256:0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "generated_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "derived-index-manifest.generated_at: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "index_type": "contribution_graph",
+        "source_chain_head": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "source_event_count": 42,
+        "generator": {
+          "name": "thinkloom-indexer",
+          "version": "1.0.0",
+          "configuration_sha256": "sha256:0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111"
+      }
+    },
+    {
+      "description": "derived-index-manifest: reject unexpected property",
+      "instance": {
+        "schema_version": "1.0",
+        "index_type": "contribution_graph",
+        "source_chain_head": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "source_event_count": 42,
+        "generator": {
+          "name": "thinkloom-indexer",
+          "version": "1.0.0",
+          "configuration_sha256": "sha256:0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "generated_at": "2026-07-17T18:42:10.123Z",
+        "__unexpected": true
+      }
+    },
+    {
+      "description": "derived-index-manifest.schema_version: reject value different from const",
+      "instance": {
+        "schema_version": "__INVALID_CONST__",
+        "index_type": "contribution_graph",
+        "source_chain_head": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "source_event_count": 42,
+        "generator": {
+          "name": "thinkloom-indexer",
+          "version": "1.0.0",
+          "configuration_sha256": "sha256:0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "generated_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "derived-index-manifest.index_type: reject value outside enum",
+      "instance": {
+        "schema_version": "1.0",
+        "index_type": "__INVALID_ENUM__",
+        "source_chain_head": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "source_event_count": 42,
+        "generator": {
+          "name": "thinkloom-indexer",
+          "version": "1.0.0",
+          "configuration_sha256": "sha256:0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "generated_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "derived-index-manifest.source_chain_head: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "index_type": "contribution_graph",
+        "source_chain_head": "sha256:INVALID",
+        "source_event_count": 42,
+        "generator": {
+          "name": "thinkloom-indexer",
+          "version": "1.0.0",
+          "configuration_sha256": "sha256:0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "generated_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "derived-index-manifest.source_event_count: reject value below minimum",
+      "instance": {
+        "schema_version": "1.0",
+        "index_type": "contribution_graph",
+        "source_chain_head": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "source_event_count": -1,
+        "generator": {
+          "name": "thinkloom-indexer",
+          "version": "1.0.0",
+          "configuration_sha256": "sha256:0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "generated_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "derived-index-manifest.generator.name: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "index_type": "contribution_graph",
+        "source_chain_head": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "source_event_count": 42,
+        "generator": {
+          "version": "1.0.0",
+          "configuration_sha256": "sha256:0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "generated_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "derived-index-manifest.generator.version: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "index_type": "contribution_graph",
+        "source_chain_head": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "source_event_count": 42,
+        "generator": {
+          "name": "thinkloom-indexer",
+          "configuration_sha256": "sha256:0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "generated_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "derived-index-manifest.generator.configuration_sha256: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "index_type": "contribution_graph",
+        "source_chain_head": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "source_event_count": 42,
+        "generator": {
+          "name": "thinkloom-indexer",
+          "version": "1.0.0"
+        },
+        "content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "generated_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "derived-index-manifest.generator: reject unexpected property",
+      "instance": {
+        "schema_version": "1.0",
+        "index_type": "contribution_graph",
+        "source_chain_head": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "source_event_count": 42,
+        "generator": {
+          "name": "thinkloom-indexer",
+          "version": "1.0.0",
+          "configuration_sha256": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+          "__unexpected": true
+        },
+        "content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "generated_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "derived-index-manifest.generator.name: reject string below minLength",
+      "instance": {
+        "schema_version": "1.0",
+        "index_type": "contribution_graph",
+        "source_chain_head": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "source_event_count": 42,
+        "generator": {
+          "name": "",
+          "version": "1.0.0",
+          "configuration_sha256": "sha256:0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "generated_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "derived-index-manifest.generator.version: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "index_type": "contribution_graph",
+        "source_chain_head": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "source_event_count": 42,
+        "generator": {
+          "name": "thinkloom-indexer",
+          "version": " invalid!",
+          "configuration_sha256": "sha256:0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "generated_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "derived-index-manifest.generator.configuration_sha256: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "index_type": "contribution_graph",
+        "source_chain_head": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "source_event_count": 42,
+        "generator": {
+          "name": "thinkloom-indexer",
+          "version": "1.0.0",
+          "configuration_sha256": "sha256:INVALID"
+        },
+        "content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "generated_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "derived-index-manifest.content_sha256: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "index_type": "contribution_graph",
+        "source_chain_head": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "source_event_count": 42,
+        "generator": {
+          "name": "thinkloom-indexer",
+          "version": "1.0.0",
+          "configuration_sha256": "sha256:0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "content_sha256": "sha256:INVALID",
+        "generated_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "derived-index-manifest.generated_at: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "index_type": "contribution_graph",
+        "source_chain_head": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "source_event_count": 42,
+        "generator": {
+          "name": "thinkloom-indexer",
+          "version": "1.0.0",
+          "configuration_sha256": "sha256:0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "generated_at": "not-a-timestamp"
+      }
+    }
+  ]
+}

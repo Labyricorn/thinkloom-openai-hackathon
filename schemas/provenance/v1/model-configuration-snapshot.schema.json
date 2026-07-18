@@ -1,0 +1,130 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://thinkloom.app/schemas/provenance/1.0/model-configuration-snapshot.schema.json",
+  "title": "Model configuration snapshot",
+  "description": "Effective credential-free model settings used by one invocation.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "snapshot_id": {
+      "type": "string",
+      "pattern": "^record_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "provider_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "model_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "processing_mode": {
+      "enum": [
+        "local",
+        "cloud"
+      ]
+    },
+    "endpoint_classification": {
+      "enum": [
+        "loopback",
+        "private_network",
+        "public_cloud",
+        "custom"
+      ]
+    },
+    "temperature_milli": {
+      "anyOf": [
+        {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2000
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "context_limit": {
+      "anyOf": [
+        {
+          "type": "integer",
+          "minimum": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "maximum_output": {
+      "anyOf": [
+        {
+          "type": "integer",
+          "minimum": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "structured_output_mode": {
+      "enum": [
+        "none",
+        "json",
+        "json_schema",
+        "provider_native"
+      ]
+    },
+    "tool_configuration": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "capability_snapshot_sha256": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+    }
+  },
+  "required": [
+    "schema_version",
+    "snapshot_id",
+    "provider_id",
+    "model_id",
+    "processing_mode",
+    "endpoint_classification",
+    "temperature_milli",
+    "context_limit",
+    "maximum_output",
+    "structured_output_mode",
+    "tool_configuration",
+    "capability_snapshot_sha256",
+    "created_at"
+  ],
+  "additionalProperties": false,
+  "examples": [
+    {
+      "schema_version": "1.0",
+      "snapshot_id": "record_01J00000000000000000000005",
+      "provider_id": "ollama",
+      "model_id": "llama3.2",
+      "processing_mode": "local",
+      "endpoint_classification": "loopback",
+      "temperature_milli": 700,
+      "context_limit": 8192,
+      "maximum_output": 800,
+      "structured_output_mode": "none",
+      "tool_configuration": [],
+      "capability_snapshot_sha256": "sha256:8888888888888888888888888888888888888888888888888888888888888888",
+      "created_at": "2026-07-17T18:42:10.123Z"
+    }
+  ]
+}

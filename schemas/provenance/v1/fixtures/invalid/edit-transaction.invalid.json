@@ -1,0 +1,689 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/edit-transaction.schema.json",
+  "cases": [
+    {
+      "description": "edit-transaction.schema_version: reject missing required property",
+      "instance": {
+        "transaction_id": "transaction_01J0000000000000000000000N",
+        "project_id": "project_01J00000000000000000000001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "operations": [
+          {
+            "operation_type": "insert",
+            "source_range": null,
+            "destination_position": 0,
+            "inserted_text_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+            "result_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "preimage_sha256": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "result_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+      }
+    },
+    {
+      "description": "edit-transaction.transaction_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "operations": [
+          {
+            "operation_type": "insert",
+            "source_range": null,
+            "destination_position": 0,
+            "inserted_text_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+            "result_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "preimage_sha256": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "result_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+      }
+    },
+    {
+      "description": "edit-transaction.project_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "transaction_id": "transaction_01J0000000000000000000000N",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "operations": [
+          {
+            "operation_type": "insert",
+            "source_range": null,
+            "destination_position": 0,
+            "inserted_text_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+            "result_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "preimage_sha256": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "result_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+      }
+    },
+    {
+      "description": "edit-transaction.base_revision_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "transaction_id": "transaction_01J0000000000000000000000N",
+        "project_id": "project_01J00000000000000000000001",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "operations": [
+          {
+            "operation_type": "insert",
+            "source_range": null,
+            "destination_position": 0,
+            "inserted_text_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+            "result_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "preimage_sha256": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "result_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+      }
+    },
+    {
+      "description": "edit-transaction.result_revision_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "transaction_id": "transaction_01J0000000000000000000000N",
+        "project_id": "project_01J00000000000000000000001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "operations": [
+          {
+            "operation_type": "insert",
+            "source_range": null,
+            "destination_position": 0,
+            "inserted_text_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+            "result_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "preimage_sha256": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "result_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+      }
+    },
+    {
+      "description": "edit-transaction.started_at: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "transaction_id": "transaction_01J0000000000000000000000N",
+        "project_id": "project_01J00000000000000000000001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "operations": [
+          {
+            "operation_type": "insert",
+            "source_range": null,
+            "destination_position": 0,
+            "inserted_text_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+            "result_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "preimage_sha256": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "result_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+      }
+    },
+    {
+      "description": "edit-transaction.ended_at: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "transaction_id": "transaction_01J0000000000000000000000N",
+        "project_id": "project_01J00000000000000000000001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "operations": [
+          {
+            "operation_type": "insert",
+            "source_range": null,
+            "destination_position": 0,
+            "inserted_text_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+            "result_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "preimage_sha256": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "result_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+      }
+    },
+    {
+      "description": "edit-transaction.operations: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "transaction_id": "transaction_01J0000000000000000000000N",
+        "project_id": "project_01J00000000000000000000001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "preimage_sha256": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "result_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+      }
+    },
+    {
+      "description": "edit-transaction.preimage_sha256: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "transaction_id": "transaction_01J0000000000000000000000N",
+        "project_id": "project_01J00000000000000000000001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "operations": [
+          {
+            "operation_type": "insert",
+            "source_range": null,
+            "destination_position": 0,
+            "inserted_text_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+            "result_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "result_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+      }
+    },
+    {
+      "description": "edit-transaction.result_sha256: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "transaction_id": "transaction_01J0000000000000000000000N",
+        "project_id": "project_01J00000000000000000000001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "operations": [
+          {
+            "operation_type": "insert",
+            "source_range": null,
+            "destination_position": 0,
+            "inserted_text_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+            "result_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "preimage_sha256": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+      }
+    },
+    {
+      "description": "edit-transaction: reject unexpected property",
+      "instance": {
+        "schema_version": "1.0",
+        "transaction_id": "transaction_01J0000000000000000000000N",
+        "project_id": "project_01J00000000000000000000001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "operations": [
+          {
+            "operation_type": "insert",
+            "source_range": null,
+            "destination_position": 0,
+            "inserted_text_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+            "result_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "preimage_sha256": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "result_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "__unexpected": true
+      }
+    },
+    {
+      "description": "edit-transaction.schema_version: reject value different from const",
+      "instance": {
+        "schema_version": "__INVALID_CONST__",
+        "transaction_id": "transaction_01J0000000000000000000000N",
+        "project_id": "project_01J00000000000000000000001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "operations": [
+          {
+            "operation_type": "insert",
+            "source_range": null,
+            "destination_position": 0,
+            "inserted_text_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+            "result_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "preimage_sha256": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "result_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+      }
+    },
+    {
+      "description": "edit-transaction.transaction_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "transaction_id": "invalid-id",
+        "project_id": "project_01J00000000000000000000001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "operations": [
+          {
+            "operation_type": "insert",
+            "source_range": null,
+            "destination_position": 0,
+            "inserted_text_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+            "result_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "preimage_sha256": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "result_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+      }
+    },
+    {
+      "description": "edit-transaction.project_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "transaction_id": "transaction_01J0000000000000000000000N",
+        "project_id": "invalid-id",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "operations": [
+          {
+            "operation_type": "insert",
+            "source_range": null,
+            "destination_position": 0,
+            "inserted_text_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+            "result_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "preimage_sha256": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "result_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+      }
+    },
+    {
+      "description": "edit-transaction.base_revision_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "transaction_id": "transaction_01J0000000000000000000000N",
+        "project_id": "project_01J00000000000000000000001",
+        "base_revision_id": "invalid-id",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "operations": [
+          {
+            "operation_type": "insert",
+            "source_range": null,
+            "destination_position": 0,
+            "inserted_text_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+            "result_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "preimage_sha256": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "result_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+      }
+    },
+    {
+      "description": "edit-transaction.result_revision_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "transaction_id": "transaction_01J0000000000000000000000N",
+        "project_id": "project_01J00000000000000000000001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "invalid-id",
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "operations": [
+          {
+            "operation_type": "insert",
+            "source_range": null,
+            "destination_position": 0,
+            "inserted_text_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+            "result_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "preimage_sha256": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "result_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+      }
+    },
+    {
+      "description": "edit-transaction.started_at: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "transaction_id": "transaction_01J0000000000000000000000N",
+        "project_id": "project_01J00000000000000000000001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "started_at": "not-a-timestamp",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "operations": [
+          {
+            "operation_type": "insert",
+            "source_range": null,
+            "destination_position": 0,
+            "inserted_text_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+            "result_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "preimage_sha256": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "result_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+      }
+    },
+    {
+      "description": "edit-transaction.ended_at: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "transaction_id": "transaction_01J0000000000000000000000N",
+        "project_id": "project_01J00000000000000000000001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "not-a-timestamp",
+        "operations": [
+          {
+            "operation_type": "insert",
+            "source_range": null,
+            "destination_position": 0,
+            "inserted_text_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+            "result_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "preimage_sha256": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "result_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+      }
+    },
+    {
+      "description": "edit-transaction.operations: reject array below minItems",
+      "instance": {
+        "schema_version": "1.0",
+        "transaction_id": "transaction_01J0000000000000000000000N",
+        "project_id": "project_01J00000000000000000000001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "operations": [],
+        "preimage_sha256": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "result_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+      }
+    },
+    {
+      "description": "edit-transaction.operations[0].operation_type: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "transaction_id": "transaction_01J0000000000000000000000N",
+        "project_id": "project_01J00000000000000000000001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "operations": [
+          {
+            "source_range": null,
+            "destination_position": 0,
+            "inserted_text_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+            "result_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "preimage_sha256": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "result_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+      }
+    },
+    {
+      "description": "edit-transaction.operations[0].source_range: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "transaction_id": "transaction_01J0000000000000000000000N",
+        "project_id": "project_01J00000000000000000000001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "operations": [
+          {
+            "operation_type": "insert",
+            "destination_position": 0,
+            "inserted_text_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+            "result_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "preimage_sha256": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "result_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+      }
+    },
+    {
+      "description": "edit-transaction.operations[0].destination_position: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "transaction_id": "transaction_01J0000000000000000000000N",
+        "project_id": "project_01J00000000000000000000001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "operations": [
+          {
+            "operation_type": "insert",
+            "source_range": null,
+            "inserted_text_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+            "result_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "preimage_sha256": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "result_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+      }
+    },
+    {
+      "description": "edit-transaction.operations[0].inserted_text_sha256: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "transaction_id": "transaction_01J0000000000000000000000N",
+        "project_id": "project_01J00000000000000000000001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "operations": [
+          {
+            "operation_type": "insert",
+            "source_range": null,
+            "destination_position": 0,
+            "result_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "preimage_sha256": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "result_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+      }
+    },
+    {
+      "description": "edit-transaction.operations[0].result_fragment_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "transaction_id": "transaction_01J0000000000000000000000N",
+        "project_id": "project_01J00000000000000000000001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "operations": [
+          {
+            "operation_type": "insert",
+            "source_range": null,
+            "destination_position": 0,
+            "inserted_text_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+          }
+        ],
+        "preimage_sha256": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "result_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+      }
+    },
+    {
+      "description": "edit-transaction.operations[0]: reject unexpected property",
+      "instance": {
+        "schema_version": "1.0",
+        "transaction_id": "transaction_01J0000000000000000000000N",
+        "project_id": "project_01J00000000000000000000001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "operations": [
+          {
+            "operation_type": "insert",
+            "source_range": null,
+            "destination_position": 0,
+            "inserted_text_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+            "result_fragment_id": "fragment_01J0000000000000000000000C",
+            "__unexpected": true
+          }
+        ],
+        "preimage_sha256": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "result_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+      }
+    },
+    {
+      "description": "edit-transaction.operations[0].operation_type: reject value outside enum",
+      "instance": {
+        "schema_version": "1.0",
+        "transaction_id": "transaction_01J0000000000000000000000N",
+        "project_id": "project_01J00000000000000000000001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "operations": [
+          {
+            "operation_type": "__INVALID_ENUM__",
+            "source_range": null,
+            "destination_position": 0,
+            "inserted_text_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+            "result_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "preimage_sha256": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "result_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+      }
+    },
+    {
+      "description": "edit-transaction.operations[0].destination_position: reject value below minimum",
+      "instance": {
+        "schema_version": "1.0",
+        "transaction_id": "transaction_01J0000000000000000000000N",
+        "project_id": "project_01J00000000000000000000001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "operations": [
+          {
+            "operation_type": "insert",
+            "source_range": null,
+            "destination_position": -1,
+            "inserted_text_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+            "result_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "preimage_sha256": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "result_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+      }
+    },
+    {
+      "description": "edit-transaction.operations[0].inserted_text_sha256: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "transaction_id": "transaction_01J0000000000000000000000N",
+        "project_id": "project_01J00000000000000000000001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "operations": [
+          {
+            "operation_type": "insert",
+            "source_range": null,
+            "destination_position": 0,
+            "inserted_text_sha256": "sha256:INVALID",
+            "result_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "preimage_sha256": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "result_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+      }
+    },
+    {
+      "description": "edit-transaction.operations[0].result_fragment_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "transaction_id": "transaction_01J0000000000000000000000N",
+        "project_id": "project_01J00000000000000000000001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "operations": [
+          {
+            "operation_type": "insert",
+            "source_range": null,
+            "destination_position": 0,
+            "inserted_text_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+            "result_fragment_id": "invalid-id"
+          }
+        ],
+        "preimage_sha256": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "result_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+      }
+    },
+    {
+      "description": "edit-transaction.preimage_sha256: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "transaction_id": "transaction_01J0000000000000000000000N",
+        "project_id": "project_01J00000000000000000000001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "operations": [
+          {
+            "operation_type": "insert",
+            "source_range": null,
+            "destination_position": 0,
+            "inserted_text_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+            "result_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "preimage_sha256": "sha256:INVALID",
+        "result_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+      }
+    },
+    {
+      "description": "edit-transaction.result_sha256: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "transaction_id": "transaction_01J0000000000000000000000N",
+        "project_id": "project_01J00000000000000000000001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "operations": [
+          {
+            "operation_type": "insert",
+            "source_range": null,
+            "destination_position": 0,
+            "inserted_text_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+            "result_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "preimage_sha256": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "result_sha256": "sha256:INVALID"
+      }
+    }
+  ]
+}

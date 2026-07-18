@@ -1,0 +1,524 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/record-envelope.schema.json",
+  "cases": [
+    {
+      "description": "record-envelope.schema_version: reject missing required property",
+      "instance": {
+        "project_id": "project_01J00000000000000000000001",
+        "record_id": "record_01J00000000000000000000005",
+        "record_type": "invocation_request",
+        "protection": "protected",
+        "plaintext_sha256": "sha256:97154eddff15ab6607181e55945547fdbbc5bde02b1e5123eade7a69509f00c5",
+        "payload": null,
+        "encryption": {
+          "algorithm": "xchacha20-poly1305",
+          "key_id": "key_01J0000000000000000000000G",
+          "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "ciphertext": "ZW5jcnlwdGVkLXJlY29yZA==",
+          "ciphertext_sha256": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        }
+      }
+    },
+    {
+      "description": "record-envelope.project_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "record_id": "record_01J00000000000000000000005",
+        "record_type": "invocation_request",
+        "protection": "protected",
+        "plaintext_sha256": "sha256:97154eddff15ab6607181e55945547fdbbc5bde02b1e5123eade7a69509f00c5",
+        "payload": null,
+        "encryption": {
+          "algorithm": "xchacha20-poly1305",
+          "key_id": "key_01J0000000000000000000000G",
+          "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "ciphertext": "ZW5jcnlwdGVkLXJlY29yZA==",
+          "ciphertext_sha256": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        }
+      }
+    },
+    {
+      "description": "record-envelope.record_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "record_type": "invocation_request",
+        "protection": "protected",
+        "plaintext_sha256": "sha256:97154eddff15ab6607181e55945547fdbbc5bde02b1e5123eade7a69509f00c5",
+        "payload": null,
+        "encryption": {
+          "algorithm": "xchacha20-poly1305",
+          "key_id": "key_01J0000000000000000000000G",
+          "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "ciphertext": "ZW5jcnlwdGVkLXJlY29yZA==",
+          "ciphertext_sha256": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        }
+      }
+    },
+    {
+      "description": "record-envelope.record_type: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "record_id": "record_01J00000000000000000000005",
+        "protection": "protected",
+        "plaintext_sha256": "sha256:97154eddff15ab6607181e55945547fdbbc5bde02b1e5123eade7a69509f00c5",
+        "payload": null,
+        "encryption": {
+          "algorithm": "xchacha20-poly1305",
+          "key_id": "key_01J0000000000000000000000G",
+          "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "ciphertext": "ZW5jcnlwdGVkLXJlY29yZA==",
+          "ciphertext_sha256": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        }
+      }
+    },
+    {
+      "description": "record-envelope.protection: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "record_id": "record_01J00000000000000000000005",
+        "record_type": "invocation_request",
+        "plaintext_sha256": "sha256:97154eddff15ab6607181e55945547fdbbc5bde02b1e5123eade7a69509f00c5",
+        "payload": null,
+        "encryption": {
+          "algorithm": "xchacha20-poly1305",
+          "key_id": "key_01J0000000000000000000000G",
+          "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "ciphertext": "ZW5jcnlwdGVkLXJlY29yZA==",
+          "ciphertext_sha256": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        }
+      }
+    },
+    {
+      "description": "record-envelope.plaintext_sha256: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "record_id": "record_01J00000000000000000000005",
+        "record_type": "invocation_request",
+        "protection": "protected",
+        "payload": null,
+        "encryption": {
+          "algorithm": "xchacha20-poly1305",
+          "key_id": "key_01J0000000000000000000000G",
+          "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "ciphertext": "ZW5jcnlwdGVkLXJlY29yZA==",
+          "ciphertext_sha256": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        }
+      }
+    },
+    {
+      "description": "record-envelope.payload: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "record_id": "record_01J00000000000000000000005",
+        "record_type": "invocation_request",
+        "protection": "protected",
+        "plaintext_sha256": "sha256:97154eddff15ab6607181e55945547fdbbc5bde02b1e5123eade7a69509f00c5",
+        "encryption": {
+          "algorithm": "xchacha20-poly1305",
+          "key_id": "key_01J0000000000000000000000G",
+          "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "ciphertext": "ZW5jcnlwdGVkLXJlY29yZA==",
+          "ciphertext_sha256": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        }
+      }
+    },
+    {
+      "description": "record-envelope.encryption: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "record_id": "record_01J00000000000000000000005",
+        "record_type": "invocation_request",
+        "protection": "protected",
+        "plaintext_sha256": "sha256:97154eddff15ab6607181e55945547fdbbc5bde02b1e5123eade7a69509f00c5",
+        "payload": null
+      }
+    },
+    {
+      "description": "record-envelope: reject unexpected property",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "record_id": "record_01J00000000000000000000005",
+        "record_type": "invocation_request",
+        "protection": "protected",
+        "plaintext_sha256": "sha256:97154eddff15ab6607181e55945547fdbbc5bde02b1e5123eade7a69509f00c5",
+        "payload": null,
+        "encryption": {
+          "algorithm": "xchacha20-poly1305",
+          "key_id": "key_01J0000000000000000000000G",
+          "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "ciphertext": "ZW5jcnlwdGVkLXJlY29yZA==",
+          "ciphertext_sha256": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        },
+        "__unexpected": true
+      }
+    },
+    {
+      "description": "record-envelope.schema_version: reject value different from const",
+      "instance": {
+        "schema_version": "__INVALID_CONST__",
+        "project_id": "project_01J00000000000000000000001",
+        "record_id": "record_01J00000000000000000000005",
+        "record_type": "invocation_request",
+        "protection": "protected",
+        "plaintext_sha256": "sha256:97154eddff15ab6607181e55945547fdbbc5bde02b1e5123eade7a69509f00c5",
+        "payload": null,
+        "encryption": {
+          "algorithm": "xchacha20-poly1305",
+          "key_id": "key_01J0000000000000000000000G",
+          "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "ciphertext": "ZW5jcnlwdGVkLXJlY29yZA==",
+          "ciphertext_sha256": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        }
+      }
+    },
+    {
+      "description": "record-envelope.project_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "invalid-id",
+        "record_id": "record_01J00000000000000000000005",
+        "record_type": "invocation_request",
+        "protection": "protected",
+        "plaintext_sha256": "sha256:97154eddff15ab6607181e55945547fdbbc5bde02b1e5123eade7a69509f00c5",
+        "payload": null,
+        "encryption": {
+          "algorithm": "xchacha20-poly1305",
+          "key_id": "key_01J0000000000000000000000G",
+          "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "ciphertext": "ZW5jcnlwdGVkLXJlY29yZA==",
+          "ciphertext_sha256": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        }
+      }
+    },
+    {
+      "description": "record-envelope.record_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "record_id": "invalid-id",
+        "record_type": "invocation_request",
+        "protection": "protected",
+        "plaintext_sha256": "sha256:97154eddff15ab6607181e55945547fdbbc5bde02b1e5123eade7a69509f00c5",
+        "payload": null,
+        "encryption": {
+          "algorithm": "xchacha20-poly1305",
+          "key_id": "key_01J0000000000000000000000G",
+          "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "ciphertext": "ZW5jcnlwdGVkLXJlY29yZA==",
+          "ciphertext_sha256": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        }
+      }
+    },
+    {
+      "description": "record-envelope.record_type: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "record_id": "record_01J00000000000000000000005",
+        "record_type": " invalid!",
+        "protection": "protected",
+        "plaintext_sha256": "sha256:97154eddff15ab6607181e55945547fdbbc5bde02b1e5123eade7a69509f00c5",
+        "payload": null,
+        "encryption": {
+          "algorithm": "xchacha20-poly1305",
+          "key_id": "key_01J0000000000000000000000G",
+          "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "ciphertext": "ZW5jcnlwdGVkLXJlY29yZA==",
+          "ciphertext_sha256": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        }
+      }
+    },
+    {
+      "description": "record-envelope.protection: reject value outside enum",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "record_id": "record_01J00000000000000000000005",
+        "record_type": "invocation_request",
+        "protection": "__INVALID_ENUM__",
+        "plaintext_sha256": "sha256:97154eddff15ab6607181e55945547fdbbc5bde02b1e5123eade7a69509f00c5",
+        "payload": null,
+        "encryption": {
+          "algorithm": "xchacha20-poly1305",
+          "key_id": "key_01J0000000000000000000000G",
+          "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "ciphertext": "ZW5jcnlwdGVkLXJlY29yZA==",
+          "ciphertext_sha256": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        }
+      }
+    },
+    {
+      "description": "record-envelope.plaintext_sha256: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "record_id": "record_01J00000000000000000000005",
+        "record_type": "invocation_request",
+        "protection": "protected",
+        "plaintext_sha256": "sha256:INVALID",
+        "payload": null,
+        "encryption": {
+          "algorithm": "xchacha20-poly1305",
+          "key_id": "key_01J0000000000000000000000G",
+          "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "ciphertext": "ZW5jcnlwdGVkLXJlY29yZA==",
+          "ciphertext_sha256": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        }
+      }
+    },
+    {
+      "description": "record-envelope.encryption.algorithm: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "record_id": "record_01J00000000000000000000005",
+        "record_type": "invocation_request",
+        "protection": "protected",
+        "plaintext_sha256": "sha256:97154eddff15ab6607181e55945547fdbbc5bde02b1e5123eade7a69509f00c5",
+        "payload": null,
+        "encryption": {
+          "key_id": "key_01J0000000000000000000000G",
+          "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "ciphertext": "ZW5jcnlwdGVkLXJlY29yZA==",
+          "ciphertext_sha256": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        }
+      }
+    },
+    {
+      "description": "record-envelope.encryption.key_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "record_id": "record_01J00000000000000000000005",
+        "record_type": "invocation_request",
+        "protection": "protected",
+        "plaintext_sha256": "sha256:97154eddff15ab6607181e55945547fdbbc5bde02b1e5123eade7a69509f00c5",
+        "payload": null,
+        "encryption": {
+          "algorithm": "xchacha20-poly1305",
+          "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "ciphertext": "ZW5jcnlwdGVkLXJlY29yZA==",
+          "ciphertext_sha256": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        }
+      }
+    },
+    {
+      "description": "record-envelope.encryption.nonce: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "record_id": "record_01J00000000000000000000005",
+        "record_type": "invocation_request",
+        "protection": "protected",
+        "plaintext_sha256": "sha256:97154eddff15ab6607181e55945547fdbbc5bde02b1e5123eade7a69509f00c5",
+        "payload": null,
+        "encryption": {
+          "algorithm": "xchacha20-poly1305",
+          "key_id": "key_01J0000000000000000000000G",
+          "ciphertext": "ZW5jcnlwdGVkLXJlY29yZA==",
+          "ciphertext_sha256": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        }
+      }
+    },
+    {
+      "description": "record-envelope.encryption.ciphertext: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "record_id": "record_01J00000000000000000000005",
+        "record_type": "invocation_request",
+        "protection": "protected",
+        "plaintext_sha256": "sha256:97154eddff15ab6607181e55945547fdbbc5bde02b1e5123eade7a69509f00c5",
+        "payload": null,
+        "encryption": {
+          "algorithm": "xchacha20-poly1305",
+          "key_id": "key_01J0000000000000000000000G",
+          "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "ciphertext_sha256": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        }
+      }
+    },
+    {
+      "description": "record-envelope.encryption.ciphertext_sha256: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "record_id": "record_01J00000000000000000000005",
+        "record_type": "invocation_request",
+        "protection": "protected",
+        "plaintext_sha256": "sha256:97154eddff15ab6607181e55945547fdbbc5bde02b1e5123eade7a69509f00c5",
+        "payload": null,
+        "encryption": {
+          "algorithm": "xchacha20-poly1305",
+          "key_id": "key_01J0000000000000000000000G",
+          "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "ciphertext": "ZW5jcnlwdGVkLXJlY29yZA=="
+        }
+      }
+    },
+    {
+      "description": "record-envelope.encryption: reject unexpected property",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "record_id": "record_01J00000000000000000000005",
+        "record_type": "invocation_request",
+        "protection": "protected",
+        "plaintext_sha256": "sha256:97154eddff15ab6607181e55945547fdbbc5bde02b1e5123eade7a69509f00c5",
+        "payload": null,
+        "encryption": {
+          "algorithm": "xchacha20-poly1305",
+          "key_id": "key_01J0000000000000000000000G",
+          "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "ciphertext": "ZW5jcnlwdGVkLXJlY29yZA==",
+          "ciphertext_sha256": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "__unexpected": true
+        }
+      }
+    },
+    {
+      "description": "record-envelope.encryption.algorithm: reject value different from const",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "record_id": "record_01J00000000000000000000005",
+        "record_type": "invocation_request",
+        "protection": "protected",
+        "plaintext_sha256": "sha256:97154eddff15ab6607181e55945547fdbbc5bde02b1e5123eade7a69509f00c5",
+        "payload": null,
+        "encryption": {
+          "algorithm": "__INVALID_CONST__",
+          "key_id": "key_01J0000000000000000000000G",
+          "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "ciphertext": "ZW5jcnlwdGVkLXJlY29yZA==",
+          "ciphertext_sha256": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        }
+      }
+    },
+    {
+      "description": "record-envelope.encryption.key_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "record_id": "record_01J00000000000000000000005",
+        "record_type": "invocation_request",
+        "protection": "protected",
+        "plaintext_sha256": "sha256:97154eddff15ab6607181e55945547fdbbc5bde02b1e5123eade7a69509f00c5",
+        "payload": null,
+        "encryption": {
+          "algorithm": "xchacha20-poly1305",
+          "key_id": "invalid-id",
+          "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "ciphertext": "ZW5jcnlwdGVkLXJlY29yZA==",
+          "ciphertext_sha256": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        }
+      }
+    },
+    {
+      "description": "record-envelope.encryption.nonce: reject string below minLength",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "record_id": "record_01J00000000000000000000005",
+        "record_type": "invocation_request",
+        "protection": "protected",
+        "plaintext_sha256": "sha256:97154eddff15ab6607181e55945547fdbbc5bde02b1e5123eade7a69509f00c5",
+        "payload": null,
+        "encryption": {
+          "algorithm": "xchacha20-poly1305",
+          "key_id": "key_01J0000000000000000000000G",
+          "nonce": "",
+          "ciphertext": "ZW5jcnlwdGVkLXJlY29yZA==",
+          "ciphertext_sha256": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        }
+      }
+    },
+    {
+      "description": "record-envelope.encryption.ciphertext: reject string below minLength",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "record_id": "record_01J00000000000000000000005",
+        "record_type": "invocation_request",
+        "protection": "protected",
+        "plaintext_sha256": "sha256:97154eddff15ab6607181e55945547fdbbc5bde02b1e5123eade7a69509f00c5",
+        "payload": null,
+        "encryption": {
+          "algorithm": "xchacha20-poly1305",
+          "key_id": "key_01J0000000000000000000000G",
+          "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "ciphertext": "",
+          "ciphertext_sha256": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        }
+      }
+    },
+    {
+      "description": "record-envelope.encryption.ciphertext_sha256: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "record_id": "record_01J00000000000000000000005",
+        "record_type": "invocation_request",
+        "protection": "protected",
+        "plaintext_sha256": "sha256:97154eddff15ab6607181e55945547fdbbc5bde02b1e5123eade7a69509f00c5",
+        "payload": null,
+        "encryption": {
+          "algorithm": "xchacha20-poly1305",
+          "key_id": "key_01J0000000000000000000000G",
+          "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "ciphertext": "ZW5jcnlwdGVkLXJlY29yZA==",
+          "ciphertext_sha256": "sha256:INVALID"
+        }
+      }
+    },
+    {
+      "description": "record-envelope: protected payload must not remain plaintext",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "record_id": "record_01J00000000000000000000005",
+        "record_type": "invocation_request",
+        "protection": "protected",
+        "plaintext_sha256": "sha256:97154eddff15ab6607181e55945547fdbbc5bde02b1e5123eade7a69509f00c5",
+        "payload": {
+          "leaked": true
+        },
+        "encryption": {
+          "algorithm": "xchacha20-poly1305",
+          "key_id": "key_01J0000000000000000000000G",
+          "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "ciphertext": "ZW5jcnlwdGVkLXJlY29yZA==",
+          "ciphertext_sha256": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        }
+      }
+    },
+    {
+      "description": "record-envelope: unprotected payload requires null encryption",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "record_id": "record_01J00000000000000000000005",
+        "record_type": "invocation_request",
+        "protection": "none",
+        "plaintext_sha256": "sha256:97154eddff15ab6607181e55945547fdbbc5bde02b1e5123eade7a69509f00c5",
+        "payload": {
+          "retained": true
+        },
+        "encryption": {
+          "algorithm": "xchacha20-poly1305",
+          "key_id": "key_01J0000000000000000000000G",
+          "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "ciphertext": "ZW5jcnlwdGVkLXJlY29yZA==",
+          "ciphertext_sha256": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        }
+      }
+    }
+  ]
+}

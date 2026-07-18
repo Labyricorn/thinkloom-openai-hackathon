@@ -1,0 +1,137 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://thinkloom.app/schemas/provenance/1.0/sanitized-export-manifest.schema.json",
+  "title": "Sanitized export manifest",
+  "description": "Disclosure and file inventory for a non-mutating sanitized evidence export.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "export_id": {
+      "type": "string",
+      "pattern": "^record_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "project_id": {
+      "type": "string",
+      "pattern": "^project_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "source_chain_head": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "profile": {
+      "const": "sanitized"
+    },
+    "omission_rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "category": {
+            "enum": [
+              "private_conversation",
+              "rejected_output",
+              "provider_detail",
+              "personal_identifier",
+              "internal_path",
+              "source_body",
+              "other"
+            ]
+          },
+          "action": {
+            "enum": [
+              "exclude",
+              "redact",
+              "summarize"
+            ]
+          },
+          "count": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "category",
+          "action",
+          "count"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "rules_sha256": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(?!/)(?![A-Za-z]:)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(?:/|$))[^\\u0000-\\u001f]+$"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^sha256:[a-f0-9]{64}$"
+          },
+          "size": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "path",
+          "sha256",
+          "size"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+    }
+  },
+  "required": [
+    "schema_version",
+    "export_id",
+    "project_id",
+    "source_chain_head",
+    "profile",
+    "omission_rules",
+    "rules_sha256",
+    "files",
+    "created_at"
+  ],
+  "additionalProperties": false,
+  "examples": [
+    {
+      "schema_version": "1.0",
+      "export_id": "record_01J00000000000000000000005",
+      "project_id": "project_01J00000000000000000000001",
+      "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+      "profile": "sanitized",
+      "omission_rules": [
+        {
+          "category": "private_conversation",
+          "action": "exclude",
+          "count": 2
+        }
+      ],
+      "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+      "files": [
+        {
+          "path": "final-manuscript.md",
+          "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+          "size": 1024
+        }
+      ],
+      "created_at": "2026-07-17T18:43:11.456Z"
+    }
+  ]
+}

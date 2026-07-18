@@ -1,0 +1,17 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/model-capability-snapshot.schema.json",
+  "description": "Valid Model capability snapshot example.",
+  "instance": {
+    "schema_version": "1.0",
+    "snapshot_id": "record_01J00000000000000000000005",
+    "provider_id": "ollama",
+    "model_id": "llama3.2",
+    "capabilities": {
+      "streaming": true,
+      "structured_output": false,
+      "tools": false,
+      "vision": false
+    },
+    "observed_at": "2026-07-17T18:42:10.123Z"
+  }
+}

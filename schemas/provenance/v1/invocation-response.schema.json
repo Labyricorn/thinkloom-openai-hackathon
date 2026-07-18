@@ -1,0 +1,171 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://thinkloom.app/schemas/provenance/1.0/invocation-response.schema.json",
+  "title": "Invocation response",
+  "description": "Immutable response evidence filtered according to retention policy.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "record_id": {
+      "type": "string",
+      "pattern": "^record_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "invocation_id": {
+      "type": "string",
+      "pattern": "^invocation_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "retention_mode": {
+      "enum": [
+        "minimal",
+        "full_private"
+      ]
+    },
+    "content_type": {
+      "enum": [
+        "conversation_reply",
+        "idea_suggestion",
+        "draft_preview",
+        "editorial_preview",
+        "structured_result",
+        "other"
+      ]
+    },
+    "retained_text": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "finish_reason": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "usage": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "input_tokens": {
+              "anyOf": [
+                {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "output_tokens": {
+              "anyOf": [
+                {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "input_tokens",
+            "output_tokens"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "provider_metadata": {
+      "anyOf": [
+        {
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "validation": {
+      "type": "object",
+      "properties": {
+        "schema_valid": {
+          "type": "boolean"
+        },
+        "repair_attempted": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "schema_valid",
+        "repair_attempted"
+      ],
+      "additionalProperties": false
+    },
+    "content_sha256": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+    }
+  },
+  "required": [
+    "schema_version",
+    "record_id",
+    "invocation_id",
+    "retention_mode",
+    "content_type",
+    "retained_text",
+    "finish_reason",
+    "usage",
+    "provider_metadata",
+    "validation",
+    "content_sha256",
+    "created_at"
+  ],
+  "additionalProperties": false,
+  "examples": [
+    {
+      "schema_version": "1.0",
+      "record_id": "record_01J00000000000000000000005",
+      "invocation_id": "invocation_01J00000000000000000000008",
+      "retention_mode": "full_private",
+      "content_type": "draft_preview",
+      "retained_text": "Attention is personal in experience and public in consequence.",
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 120,
+        "output_tokens": 14
+      },
+      "provider_metadata": {
+        "request_id": "local-0001",
+        "load_duration_milliseconds": 120
+      },
+      "validation": {
+        "schema_valid": true,
+        "repair_attempted": false
+      },
+      "content_sha256": "sha256:9999999999999999999999999999999999999999999999999999999999999999",
+      "created_at": "2026-07-17T18:43:11.456Z"
+    }
+  ]
+}

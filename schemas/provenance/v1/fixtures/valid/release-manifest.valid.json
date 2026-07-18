@@ -1,0 +1,33 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/release-manifest.schema.json",
+  "description": "Valid Release manifest example.",
+  "instance": {
+    "schema_version": "1.0",
+    "application_version": "0.3.0",
+    "release_id": "release_01J0000000000000000000000E",
+    "project_id": "project_01J00000000000000000000001",
+    "version": "1.0.0",
+    "created_at": "2026-07-17T18:43:11.456Z",
+    "source_commit": "0123456789abcdef0123456789abcdef01234567",
+    "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+    "source_manuscript": {
+      "path": "manuscript/final-manuscript.md",
+      "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+    },
+    "sanitized": false,
+    "files": [
+      {
+        "path": "manuscript/final-manuscript.md",
+        "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "size": 1024
+      },
+      {
+        "path": "evidence/creative-process-report.md",
+        "sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "size": 512
+      }
+    ],
+    "release_files_merkle_root": "sha256:b773ac929d720839a617ec0f9d6e39ad5401fa7795e21f799302658de8db9cda",
+    "merkle_algorithm": "thinkloom-release-merkle-v1"
+  }
+}

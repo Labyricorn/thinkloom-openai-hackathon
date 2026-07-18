@@ -1,0 +1,19 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/model-configuration-snapshot.schema.json",
+  "description": "Valid Model configuration snapshot example.",
+  "instance": {
+    "schema_version": "1.0",
+    "snapshot_id": "record_01J00000000000000000000005",
+    "provider_id": "ollama",
+    "model_id": "llama3.2",
+    "processing_mode": "local",
+    "endpoint_classification": "loopback",
+    "temperature_milli": 700,
+    "context_limit": 8192,
+    "maximum_output": 800,
+    "structured_output_mode": "none",
+    "tool_configuration": [],
+    "capability_snapshot_sha256": "sha256:8888888888888888888888888888888888888888888888888888888888888888",
+    "created_at": "2026-07-17T18:42:10.123Z"
+  }
+}

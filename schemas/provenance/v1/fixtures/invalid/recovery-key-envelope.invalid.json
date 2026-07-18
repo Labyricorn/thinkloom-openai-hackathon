@@ -1,0 +1,652 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/recovery-key-envelope.schema.json",
+  "cases": [
+    {
+      "description": "recovery-key-envelope.schema_version: reject missing required property",
+      "instance": {
+        "envelope_id": "record_01J0000000000000000000000S",
+        "key_id": "key_01J0000000000000000000000G",
+        "envelope_type": "recovery",
+        "algorithm": "xchacha20-poly1305",
+        "key_derivation": {
+          "algorithm": "argon2id",
+          "memory_kib": 65536,
+          "iterations": 3,
+          "parallelism": 1,
+          "salt": "c2FsdC1mb3ItdGhpbmtsb29t"
+        },
+        "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "wrapped_key": "d3JhcHBlZC1wcm9qZWN0LWtleQ==",
+        "ciphertext_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "recovery-key-envelope.envelope_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "key_id": "key_01J0000000000000000000000G",
+        "envelope_type": "recovery",
+        "algorithm": "xchacha20-poly1305",
+        "key_derivation": {
+          "algorithm": "argon2id",
+          "memory_kib": 65536,
+          "iterations": 3,
+          "parallelism": 1,
+          "salt": "c2FsdC1mb3ItdGhpbmtsb29t"
+        },
+        "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "wrapped_key": "d3JhcHBlZC1wcm9qZWN0LWtleQ==",
+        "ciphertext_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "recovery-key-envelope.key_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "envelope_id": "record_01J0000000000000000000000S",
+        "envelope_type": "recovery",
+        "algorithm": "xchacha20-poly1305",
+        "key_derivation": {
+          "algorithm": "argon2id",
+          "memory_kib": 65536,
+          "iterations": 3,
+          "parallelism": 1,
+          "salt": "c2FsdC1mb3ItdGhpbmtsb29t"
+        },
+        "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "wrapped_key": "d3JhcHBlZC1wcm9qZWN0LWtleQ==",
+        "ciphertext_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "recovery-key-envelope.envelope_type: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "envelope_id": "record_01J0000000000000000000000S",
+        "key_id": "key_01J0000000000000000000000G",
+        "algorithm": "xchacha20-poly1305",
+        "key_derivation": {
+          "algorithm": "argon2id",
+          "memory_kib": 65536,
+          "iterations": 3,
+          "parallelism": 1,
+          "salt": "c2FsdC1mb3ItdGhpbmtsb29t"
+        },
+        "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "wrapped_key": "d3JhcHBlZC1wcm9qZWN0LWtleQ==",
+        "ciphertext_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "recovery-key-envelope.algorithm: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "envelope_id": "record_01J0000000000000000000000S",
+        "key_id": "key_01J0000000000000000000000G",
+        "envelope_type": "recovery",
+        "key_derivation": {
+          "algorithm": "argon2id",
+          "memory_kib": 65536,
+          "iterations": 3,
+          "parallelism": 1,
+          "salt": "c2FsdC1mb3ItdGhpbmtsb29t"
+        },
+        "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "wrapped_key": "d3JhcHBlZC1wcm9qZWN0LWtleQ==",
+        "ciphertext_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "recovery-key-envelope.key_derivation: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "envelope_id": "record_01J0000000000000000000000S",
+        "key_id": "key_01J0000000000000000000000G",
+        "envelope_type": "recovery",
+        "algorithm": "xchacha20-poly1305",
+        "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "wrapped_key": "d3JhcHBlZC1wcm9qZWN0LWtleQ==",
+        "ciphertext_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "recovery-key-envelope.nonce: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "envelope_id": "record_01J0000000000000000000000S",
+        "key_id": "key_01J0000000000000000000000G",
+        "envelope_type": "recovery",
+        "algorithm": "xchacha20-poly1305",
+        "key_derivation": {
+          "algorithm": "argon2id",
+          "memory_kib": 65536,
+          "iterations": 3,
+          "parallelism": 1,
+          "salt": "c2FsdC1mb3ItdGhpbmtsb29t"
+        },
+        "wrapped_key": "d3JhcHBlZC1wcm9qZWN0LWtleQ==",
+        "ciphertext_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "recovery-key-envelope.wrapped_key: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "envelope_id": "record_01J0000000000000000000000S",
+        "key_id": "key_01J0000000000000000000000G",
+        "envelope_type": "recovery",
+        "algorithm": "xchacha20-poly1305",
+        "key_derivation": {
+          "algorithm": "argon2id",
+          "memory_kib": 65536,
+          "iterations": 3,
+          "parallelism": 1,
+          "salt": "c2FsdC1mb3ItdGhpbmtsb29t"
+        },
+        "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "ciphertext_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "recovery-key-envelope.ciphertext_sha256: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "envelope_id": "record_01J0000000000000000000000S",
+        "key_id": "key_01J0000000000000000000000G",
+        "envelope_type": "recovery",
+        "algorithm": "xchacha20-poly1305",
+        "key_derivation": {
+          "algorithm": "argon2id",
+          "memory_kib": 65536,
+          "iterations": 3,
+          "parallelism": 1,
+          "salt": "c2FsdC1mb3ItdGhpbmtsb29t"
+        },
+        "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "wrapped_key": "d3JhcHBlZC1wcm9qZWN0LWtleQ==",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "recovery-key-envelope.created_at: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "envelope_id": "record_01J0000000000000000000000S",
+        "key_id": "key_01J0000000000000000000000G",
+        "envelope_type": "recovery",
+        "algorithm": "xchacha20-poly1305",
+        "key_derivation": {
+          "algorithm": "argon2id",
+          "memory_kib": 65536,
+          "iterations": 3,
+          "parallelism": 1,
+          "salt": "c2FsdC1mb3ItdGhpbmtsb29t"
+        },
+        "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "wrapped_key": "d3JhcHBlZC1wcm9qZWN0LWtleQ==",
+        "ciphertext_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    },
+    {
+      "description": "recovery-key-envelope: reject unexpected property",
+      "instance": {
+        "schema_version": "1.0",
+        "envelope_id": "record_01J0000000000000000000000S",
+        "key_id": "key_01J0000000000000000000000G",
+        "envelope_type": "recovery",
+        "algorithm": "xchacha20-poly1305",
+        "key_derivation": {
+          "algorithm": "argon2id",
+          "memory_kib": 65536,
+          "iterations": 3,
+          "parallelism": 1,
+          "salt": "c2FsdC1mb3ItdGhpbmtsb29t"
+        },
+        "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "wrapped_key": "d3JhcHBlZC1wcm9qZWN0LWtleQ==",
+        "ciphertext_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-17T18:42:10.123Z",
+        "__unexpected": true
+      }
+    },
+    {
+      "description": "recovery-key-envelope.schema_version: reject value different from const",
+      "instance": {
+        "schema_version": "__INVALID_CONST__",
+        "envelope_id": "record_01J0000000000000000000000S",
+        "key_id": "key_01J0000000000000000000000G",
+        "envelope_type": "recovery",
+        "algorithm": "xchacha20-poly1305",
+        "key_derivation": {
+          "algorithm": "argon2id",
+          "memory_kib": 65536,
+          "iterations": 3,
+          "parallelism": 1,
+          "salt": "c2FsdC1mb3ItdGhpbmtsb29t"
+        },
+        "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "wrapped_key": "d3JhcHBlZC1wcm9qZWN0LWtleQ==",
+        "ciphertext_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "recovery-key-envelope.envelope_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "envelope_id": "invalid-id",
+        "key_id": "key_01J0000000000000000000000G",
+        "envelope_type": "recovery",
+        "algorithm": "xchacha20-poly1305",
+        "key_derivation": {
+          "algorithm": "argon2id",
+          "memory_kib": 65536,
+          "iterations": 3,
+          "parallelism": 1,
+          "salt": "c2FsdC1mb3ItdGhpbmtsb29t"
+        },
+        "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "wrapped_key": "d3JhcHBlZC1wcm9qZWN0LWtleQ==",
+        "ciphertext_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "recovery-key-envelope.key_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "envelope_id": "record_01J0000000000000000000000S",
+        "key_id": "invalid-id",
+        "envelope_type": "recovery",
+        "algorithm": "xchacha20-poly1305",
+        "key_derivation": {
+          "algorithm": "argon2id",
+          "memory_kib": 65536,
+          "iterations": 3,
+          "parallelism": 1,
+          "salt": "c2FsdC1mb3ItdGhpbmtsb29t"
+        },
+        "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "wrapped_key": "d3JhcHBlZC1wcm9qZWN0LWtleQ==",
+        "ciphertext_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "recovery-key-envelope.envelope_type: reject value different from const",
+      "instance": {
+        "schema_version": "1.0",
+        "envelope_id": "record_01J0000000000000000000000S",
+        "key_id": "key_01J0000000000000000000000G",
+        "envelope_type": "__INVALID_CONST__",
+        "algorithm": "xchacha20-poly1305",
+        "key_derivation": {
+          "algorithm": "argon2id",
+          "memory_kib": 65536,
+          "iterations": 3,
+          "parallelism": 1,
+          "salt": "c2FsdC1mb3ItdGhpbmtsb29t"
+        },
+        "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "wrapped_key": "d3JhcHBlZC1wcm9qZWN0LWtleQ==",
+        "ciphertext_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "recovery-key-envelope.algorithm: reject value outside enum",
+      "instance": {
+        "schema_version": "1.0",
+        "envelope_id": "record_01J0000000000000000000000S",
+        "key_id": "key_01J0000000000000000000000G",
+        "envelope_type": "recovery",
+        "algorithm": "__INVALID_ENUM__",
+        "key_derivation": {
+          "algorithm": "argon2id",
+          "memory_kib": 65536,
+          "iterations": 3,
+          "parallelism": 1,
+          "salt": "c2FsdC1mb3ItdGhpbmtsb29t"
+        },
+        "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "wrapped_key": "d3JhcHBlZC1wcm9qZWN0LWtleQ==",
+        "ciphertext_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "recovery-key-envelope.key_derivation.algorithm: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "envelope_id": "record_01J0000000000000000000000S",
+        "key_id": "key_01J0000000000000000000000G",
+        "envelope_type": "recovery",
+        "algorithm": "xchacha20-poly1305",
+        "key_derivation": {
+          "memory_kib": 65536,
+          "iterations": 3,
+          "parallelism": 1,
+          "salt": "c2FsdC1mb3ItdGhpbmtsb29t"
+        },
+        "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "wrapped_key": "d3JhcHBlZC1wcm9qZWN0LWtleQ==",
+        "ciphertext_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "recovery-key-envelope.key_derivation.memory_kib: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "envelope_id": "record_01J0000000000000000000000S",
+        "key_id": "key_01J0000000000000000000000G",
+        "envelope_type": "recovery",
+        "algorithm": "xchacha20-poly1305",
+        "key_derivation": {
+          "algorithm": "argon2id",
+          "iterations": 3,
+          "parallelism": 1,
+          "salt": "c2FsdC1mb3ItdGhpbmtsb29t"
+        },
+        "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "wrapped_key": "d3JhcHBlZC1wcm9qZWN0LWtleQ==",
+        "ciphertext_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "recovery-key-envelope.key_derivation.iterations: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "envelope_id": "record_01J0000000000000000000000S",
+        "key_id": "key_01J0000000000000000000000G",
+        "envelope_type": "recovery",
+        "algorithm": "xchacha20-poly1305",
+        "key_derivation": {
+          "algorithm": "argon2id",
+          "memory_kib": 65536,
+          "parallelism": 1,
+          "salt": "c2FsdC1mb3ItdGhpbmtsb29t"
+        },
+        "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "wrapped_key": "d3JhcHBlZC1wcm9qZWN0LWtleQ==",
+        "ciphertext_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "recovery-key-envelope.key_derivation.parallelism: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "envelope_id": "record_01J0000000000000000000000S",
+        "key_id": "key_01J0000000000000000000000G",
+        "envelope_type": "recovery",
+        "algorithm": "xchacha20-poly1305",
+        "key_derivation": {
+          "algorithm": "argon2id",
+          "memory_kib": 65536,
+          "iterations": 3,
+          "salt": "c2FsdC1mb3ItdGhpbmtsb29t"
+        },
+        "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "wrapped_key": "d3JhcHBlZC1wcm9qZWN0LWtleQ==",
+        "ciphertext_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "recovery-key-envelope.key_derivation.salt: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "envelope_id": "record_01J0000000000000000000000S",
+        "key_id": "key_01J0000000000000000000000G",
+        "envelope_type": "recovery",
+        "algorithm": "xchacha20-poly1305",
+        "key_derivation": {
+          "algorithm": "argon2id",
+          "memory_kib": 65536,
+          "iterations": 3,
+          "parallelism": 1
+        },
+        "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "wrapped_key": "d3JhcHBlZC1wcm9qZWN0LWtleQ==",
+        "ciphertext_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "recovery-key-envelope.key_derivation: reject unexpected property",
+      "instance": {
+        "schema_version": "1.0",
+        "envelope_id": "record_01J0000000000000000000000S",
+        "key_id": "key_01J0000000000000000000000G",
+        "envelope_type": "recovery",
+        "algorithm": "xchacha20-poly1305",
+        "key_derivation": {
+          "algorithm": "argon2id",
+          "memory_kib": 65536,
+          "iterations": 3,
+          "parallelism": 1,
+          "salt": "c2FsdC1mb3ItdGhpbmtsb29t",
+          "__unexpected": true
+        },
+        "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "wrapped_key": "d3JhcHBlZC1wcm9qZWN0LWtleQ==",
+        "ciphertext_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "recovery-key-envelope.key_derivation.algorithm: reject value different from const",
+      "instance": {
+        "schema_version": "1.0",
+        "envelope_id": "record_01J0000000000000000000000S",
+        "key_id": "key_01J0000000000000000000000G",
+        "envelope_type": "recovery",
+        "algorithm": "xchacha20-poly1305",
+        "key_derivation": {
+          "algorithm": "__INVALID_CONST__",
+          "memory_kib": 65536,
+          "iterations": 3,
+          "parallelism": 1,
+          "salt": "c2FsdC1mb3ItdGhpbmtsb29t"
+        },
+        "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "wrapped_key": "d3JhcHBlZC1wcm9qZWN0LWtleQ==",
+        "ciphertext_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "recovery-key-envelope.key_derivation.memory_kib: reject value below minimum",
+      "instance": {
+        "schema_version": "1.0",
+        "envelope_id": "record_01J0000000000000000000000S",
+        "key_id": "key_01J0000000000000000000000G",
+        "envelope_type": "recovery",
+        "algorithm": "xchacha20-poly1305",
+        "key_derivation": {
+          "algorithm": "argon2id",
+          "memory_kib": 65535,
+          "iterations": 3,
+          "parallelism": 1,
+          "salt": "c2FsdC1mb3ItdGhpbmtsb29t"
+        },
+        "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "wrapped_key": "d3JhcHBlZC1wcm9qZWN0LWtleQ==",
+        "ciphertext_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "recovery-key-envelope.key_derivation.iterations: reject value below minimum",
+      "instance": {
+        "schema_version": "1.0",
+        "envelope_id": "record_01J0000000000000000000000S",
+        "key_id": "key_01J0000000000000000000000G",
+        "envelope_type": "recovery",
+        "algorithm": "xchacha20-poly1305",
+        "key_derivation": {
+          "algorithm": "argon2id",
+          "memory_kib": 65536,
+          "iterations": 0,
+          "parallelism": 1,
+          "salt": "c2FsdC1mb3ItdGhpbmtsb29t"
+        },
+        "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "wrapped_key": "d3JhcHBlZC1wcm9qZWN0LWtleQ==",
+        "ciphertext_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "recovery-key-envelope.key_derivation.parallelism: reject value below minimum",
+      "instance": {
+        "schema_version": "1.0",
+        "envelope_id": "record_01J0000000000000000000000S",
+        "key_id": "key_01J0000000000000000000000G",
+        "envelope_type": "recovery",
+        "algorithm": "xchacha20-poly1305",
+        "key_derivation": {
+          "algorithm": "argon2id",
+          "memory_kib": 65536,
+          "iterations": 3,
+          "parallelism": 0,
+          "salt": "c2FsdC1mb3ItdGhpbmtsb29t"
+        },
+        "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "wrapped_key": "d3JhcHBlZC1wcm9qZWN0LWtleQ==",
+        "ciphertext_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "recovery-key-envelope.key_derivation.salt: reject string below minLength",
+      "instance": {
+        "schema_version": "1.0",
+        "envelope_id": "record_01J0000000000000000000000S",
+        "key_id": "key_01J0000000000000000000000G",
+        "envelope_type": "recovery",
+        "algorithm": "xchacha20-poly1305",
+        "key_derivation": {
+          "algorithm": "argon2id",
+          "memory_kib": 65536,
+          "iterations": 3,
+          "parallelism": 1,
+          "salt": ""
+        },
+        "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "wrapped_key": "d3JhcHBlZC1wcm9qZWN0LWtleQ==",
+        "ciphertext_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "recovery-key-envelope.nonce: reject string below minLength",
+      "instance": {
+        "schema_version": "1.0",
+        "envelope_id": "record_01J0000000000000000000000S",
+        "key_id": "key_01J0000000000000000000000G",
+        "envelope_type": "recovery",
+        "algorithm": "xchacha20-poly1305",
+        "key_derivation": {
+          "algorithm": "argon2id",
+          "memory_kib": 65536,
+          "iterations": 3,
+          "parallelism": 1,
+          "salt": "c2FsdC1mb3ItdGhpbmtsb29t"
+        },
+        "nonce": "",
+        "wrapped_key": "d3JhcHBlZC1wcm9qZWN0LWtleQ==",
+        "ciphertext_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "recovery-key-envelope.wrapped_key: reject string below minLength",
+      "instance": {
+        "schema_version": "1.0",
+        "envelope_id": "record_01J0000000000000000000000S",
+        "key_id": "key_01J0000000000000000000000G",
+        "envelope_type": "recovery",
+        "algorithm": "xchacha20-poly1305",
+        "key_derivation": {
+          "algorithm": "argon2id",
+          "memory_kib": 65536,
+          "iterations": 3,
+          "parallelism": 1,
+          "salt": "c2FsdC1mb3ItdGhpbmtsb29t"
+        },
+        "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "wrapped_key": "",
+        "ciphertext_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "recovery-key-envelope.ciphertext_sha256: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "envelope_id": "record_01J0000000000000000000000S",
+        "key_id": "key_01J0000000000000000000000G",
+        "envelope_type": "recovery",
+        "algorithm": "xchacha20-poly1305",
+        "key_derivation": {
+          "algorithm": "argon2id",
+          "memory_kib": 65536,
+          "iterations": 3,
+          "parallelism": 1,
+          "salt": "c2FsdC1mb3ItdGhpbmtsb29t"
+        },
+        "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "wrapped_key": "d3JhcHBlZC1wcm9qZWN0LWtleQ==",
+        "ciphertext_sha256": "sha256:INVALID",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "recovery-key-envelope.created_at: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "envelope_id": "record_01J0000000000000000000000S",
+        "key_id": "key_01J0000000000000000000000G",
+        "envelope_type": "recovery",
+        "algorithm": "xchacha20-poly1305",
+        "key_derivation": {
+          "algorithm": "argon2id",
+          "memory_kib": 65536,
+          "iterations": 3,
+          "parallelism": 1,
+          "salt": "c2FsdC1mb3ItdGhpbmtsb29t"
+        },
+        "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "wrapped_key": "d3JhcHBlZC1wcm9qZWN0LWtleQ==",
+        "ciphertext_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "not-a-timestamp"
+      }
+    },
+    {
+      "description": "recovery-key-envelope: recovery derivation is mandatory",
+      "instance": {
+        "schema_version": "1.0",
+        "envelope_id": "record_01J0000000000000000000000S",
+        "key_id": "key_01J0000000000000000000000G",
+        "envelope_type": "recovery",
+        "algorithm": "xchacha20-poly1305",
+        "key_derivation": null,
+        "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "wrapped_key": "d3JhcHBlZC1wcm9qZWN0LWtleQ==",
+        "ciphertext_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    }
+  ]
+}

@@ -1,0 +1,833 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/sanitized-export-manifest.schema.json",
+  "cases": [
+    {
+      "description": "sanitized-export-manifest.schema_version: reject missing required property",
+      "instance": {
+        "export_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "profile": "sanitized",
+        "omission_rules": [
+          {
+            "category": "private_conversation",
+            "action": "exclude",
+            "count": 2
+          }
+        ],
+        "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "files": [
+          {
+            "path": "final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          }
+        ],
+        "created_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "sanitized-export-manifest.export_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "profile": "sanitized",
+        "omission_rules": [
+          {
+            "category": "private_conversation",
+            "action": "exclude",
+            "count": 2
+          }
+        ],
+        "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "files": [
+          {
+            "path": "final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          }
+        ],
+        "created_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "sanitized-export-manifest.project_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "export_id": "record_01J00000000000000000000005",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "profile": "sanitized",
+        "omission_rules": [
+          {
+            "category": "private_conversation",
+            "action": "exclude",
+            "count": 2
+          }
+        ],
+        "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "files": [
+          {
+            "path": "final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          }
+        ],
+        "created_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "sanitized-export-manifest.source_chain_head: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "export_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "profile": "sanitized",
+        "omission_rules": [
+          {
+            "category": "private_conversation",
+            "action": "exclude",
+            "count": 2
+          }
+        ],
+        "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "files": [
+          {
+            "path": "final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          }
+        ],
+        "created_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "sanitized-export-manifest.profile: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "export_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "omission_rules": [
+          {
+            "category": "private_conversation",
+            "action": "exclude",
+            "count": 2
+          }
+        ],
+        "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "files": [
+          {
+            "path": "final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          }
+        ],
+        "created_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "sanitized-export-manifest.omission_rules: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "export_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "profile": "sanitized",
+        "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "files": [
+          {
+            "path": "final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          }
+        ],
+        "created_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "sanitized-export-manifest.rules_sha256: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "export_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "profile": "sanitized",
+        "omission_rules": [
+          {
+            "category": "private_conversation",
+            "action": "exclude",
+            "count": 2
+          }
+        ],
+        "files": [
+          {
+            "path": "final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          }
+        ],
+        "created_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "sanitized-export-manifest.files: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "export_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "profile": "sanitized",
+        "omission_rules": [
+          {
+            "category": "private_conversation",
+            "action": "exclude",
+            "count": 2
+          }
+        ],
+        "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "created_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "sanitized-export-manifest.created_at: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "export_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "profile": "sanitized",
+        "omission_rules": [
+          {
+            "category": "private_conversation",
+            "action": "exclude",
+            "count": 2
+          }
+        ],
+        "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "files": [
+          {
+            "path": "final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          }
+        ]
+      }
+    },
+    {
+      "description": "sanitized-export-manifest: reject unexpected property",
+      "instance": {
+        "schema_version": "1.0",
+        "export_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "profile": "sanitized",
+        "omission_rules": [
+          {
+            "category": "private_conversation",
+            "action": "exclude",
+            "count": 2
+          }
+        ],
+        "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "files": [
+          {
+            "path": "final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          }
+        ],
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "__unexpected": true
+      }
+    },
+    {
+      "description": "sanitized-export-manifest.schema_version: reject value different from const",
+      "instance": {
+        "schema_version": "__INVALID_CONST__",
+        "export_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "profile": "sanitized",
+        "omission_rules": [
+          {
+            "category": "private_conversation",
+            "action": "exclude",
+            "count": 2
+          }
+        ],
+        "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "files": [
+          {
+            "path": "final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          }
+        ],
+        "created_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "sanitized-export-manifest.export_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "export_id": "invalid-id",
+        "project_id": "project_01J00000000000000000000001",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "profile": "sanitized",
+        "omission_rules": [
+          {
+            "category": "private_conversation",
+            "action": "exclude",
+            "count": 2
+          }
+        ],
+        "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "files": [
+          {
+            "path": "final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          }
+        ],
+        "created_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "sanitized-export-manifest.project_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "export_id": "record_01J00000000000000000000005",
+        "project_id": "invalid-id",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "profile": "sanitized",
+        "omission_rules": [
+          {
+            "category": "private_conversation",
+            "action": "exclude",
+            "count": 2
+          }
+        ],
+        "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "files": [
+          {
+            "path": "final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          }
+        ],
+        "created_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "sanitized-export-manifest.source_chain_head: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "export_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "source_chain_head": "sha256:INVALID",
+        "profile": "sanitized",
+        "omission_rules": [
+          {
+            "category": "private_conversation",
+            "action": "exclude",
+            "count": 2
+          }
+        ],
+        "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "files": [
+          {
+            "path": "final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          }
+        ],
+        "created_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "sanitized-export-manifest.profile: reject value different from const",
+      "instance": {
+        "schema_version": "1.0",
+        "export_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "profile": "__INVALID_CONST__",
+        "omission_rules": [
+          {
+            "category": "private_conversation",
+            "action": "exclude",
+            "count": 2
+          }
+        ],
+        "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "files": [
+          {
+            "path": "final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          }
+        ],
+        "created_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "sanitized-export-manifest.omission_rules[0].category: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "export_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "profile": "sanitized",
+        "omission_rules": [
+          {
+            "action": "exclude",
+            "count": 2
+          }
+        ],
+        "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "files": [
+          {
+            "path": "final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          }
+        ],
+        "created_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "sanitized-export-manifest.omission_rules[0].action: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "export_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "profile": "sanitized",
+        "omission_rules": [
+          {
+            "category": "private_conversation",
+            "count": 2
+          }
+        ],
+        "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "files": [
+          {
+            "path": "final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          }
+        ],
+        "created_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "sanitized-export-manifest.omission_rules[0].count: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "export_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "profile": "sanitized",
+        "omission_rules": [
+          {
+            "category": "private_conversation",
+            "action": "exclude"
+          }
+        ],
+        "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "files": [
+          {
+            "path": "final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          }
+        ],
+        "created_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "sanitized-export-manifest.omission_rules[0]: reject unexpected property",
+      "instance": {
+        "schema_version": "1.0",
+        "export_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "profile": "sanitized",
+        "omission_rules": [
+          {
+            "category": "private_conversation",
+            "action": "exclude",
+            "count": 2,
+            "__unexpected": true
+          }
+        ],
+        "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "files": [
+          {
+            "path": "final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          }
+        ],
+        "created_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "sanitized-export-manifest.omission_rules[0].category: reject value outside enum",
+      "instance": {
+        "schema_version": "1.0",
+        "export_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "profile": "sanitized",
+        "omission_rules": [
+          {
+            "category": "__INVALID_ENUM__",
+            "action": "exclude",
+            "count": 2
+          }
+        ],
+        "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "files": [
+          {
+            "path": "final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          }
+        ],
+        "created_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "sanitized-export-manifest.omission_rules[0].action: reject value outside enum",
+      "instance": {
+        "schema_version": "1.0",
+        "export_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "profile": "sanitized",
+        "omission_rules": [
+          {
+            "category": "private_conversation",
+            "action": "__INVALID_ENUM__",
+            "count": 2
+          }
+        ],
+        "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "files": [
+          {
+            "path": "final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          }
+        ],
+        "created_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "sanitized-export-manifest.omission_rules[0].count: reject value below minimum",
+      "instance": {
+        "schema_version": "1.0",
+        "export_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "profile": "sanitized",
+        "omission_rules": [
+          {
+            "category": "private_conversation",
+            "action": "exclude",
+            "count": -1
+          }
+        ],
+        "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "files": [
+          {
+            "path": "final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          }
+        ],
+        "created_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "sanitized-export-manifest.rules_sha256: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "export_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "profile": "sanitized",
+        "omission_rules": [
+          {
+            "category": "private_conversation",
+            "action": "exclude",
+            "count": 2
+          }
+        ],
+        "rules_sha256": "sha256:INVALID",
+        "files": [
+          {
+            "path": "final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          }
+        ],
+        "created_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "sanitized-export-manifest.files: reject array below minItems",
+      "instance": {
+        "schema_version": "1.0",
+        "export_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "profile": "sanitized",
+        "omission_rules": [
+          {
+            "category": "private_conversation",
+            "action": "exclude",
+            "count": 2
+          }
+        ],
+        "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "files": [],
+        "created_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "sanitized-export-manifest.files[0].path: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "export_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "profile": "sanitized",
+        "omission_rules": [
+          {
+            "category": "private_conversation",
+            "action": "exclude",
+            "count": 2
+          }
+        ],
+        "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "files": [
+          {
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          }
+        ],
+        "created_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "sanitized-export-manifest.files[0].sha256: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "export_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "profile": "sanitized",
+        "omission_rules": [
+          {
+            "category": "private_conversation",
+            "action": "exclude",
+            "count": 2
+          }
+        ],
+        "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "files": [
+          {
+            "path": "final-manuscript.md",
+            "size": 1024
+          }
+        ],
+        "created_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "sanitized-export-manifest.files[0].size: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "export_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "profile": "sanitized",
+        "omission_rules": [
+          {
+            "category": "private_conversation",
+            "action": "exclude",
+            "count": 2
+          }
+        ],
+        "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "files": [
+          {
+            "path": "final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+          }
+        ],
+        "created_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "sanitized-export-manifest.files[0]: reject unexpected property",
+      "instance": {
+        "schema_version": "1.0",
+        "export_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "profile": "sanitized",
+        "omission_rules": [
+          {
+            "category": "private_conversation",
+            "action": "exclude",
+            "count": 2
+          }
+        ],
+        "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "files": [
+          {
+            "path": "final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024,
+            "__unexpected": true
+          }
+        ],
+        "created_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "sanitized-export-manifest.files[0].path: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "export_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "profile": "sanitized",
+        "omission_rules": [
+          {
+            "category": "private_conversation",
+            "action": "exclude",
+            "count": 2
+          }
+        ],
+        "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "files": [
+          {
+            "path": "../outside-project",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          }
+        ],
+        "created_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "sanitized-export-manifest.files[0].path: reject string below minLength",
+      "instance": {
+        "schema_version": "1.0",
+        "export_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "profile": "sanitized",
+        "omission_rules": [
+          {
+            "category": "private_conversation",
+            "action": "exclude",
+            "count": 2
+          }
+        ],
+        "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "files": [
+          {
+            "path": "",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          }
+        ],
+        "created_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "sanitized-export-manifest.files[0].sha256: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "export_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "profile": "sanitized",
+        "omission_rules": [
+          {
+            "category": "private_conversation",
+            "action": "exclude",
+            "count": 2
+          }
+        ],
+        "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "files": [
+          {
+            "path": "final-manuscript.md",
+            "sha256": "sha256:INVALID",
+            "size": 1024
+          }
+        ],
+        "created_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "sanitized-export-manifest.files[0].size: reject value below minimum",
+      "instance": {
+        "schema_version": "1.0",
+        "export_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "profile": "sanitized",
+        "omission_rules": [
+          {
+            "category": "private_conversation",
+            "action": "exclude",
+            "count": 2
+          }
+        ],
+        "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "files": [
+          {
+            "path": "final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": -1
+          }
+        ],
+        "created_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "sanitized-export-manifest.created_at: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "export_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "profile": "sanitized",
+        "omission_rules": [
+          {
+            "category": "private_conversation",
+            "action": "exclude",
+            "count": 2
+          }
+        ],
+        "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "files": [
+          {
+            "path": "final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          }
+        ],
+        "created_at": "not-a-timestamp"
+      }
+    }
+  ]
+}

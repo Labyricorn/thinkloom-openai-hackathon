@@ -1,0 +1,32 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/disposition-revision.schema.json",
+  "description": "Valid Invocation disposition revision example.",
+  "instance": {
+    "schema_version": "1.0",
+    "disposition_id": "disposition_01J0000000000000000000000M",
+    "invocation_id": "invocation_01J00000000000000000000008",
+    "revision_number": 1,
+    "status": "partially_accepted",
+    "accepted_ranges": [
+      {
+        "schema_version": "1.0",
+        "document_revision_id": "revision_01J0000000000000000000000A",
+        "coordinate_system": "utf8_byte",
+        "start": 0,
+        "end": 12,
+        "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "text_fragment_id": "fragment_01J0000000000000000000000C"
+      }
+    ],
+    "rejected_ranges": [],
+    "destination": {
+      "revision_id": "revision_01J0000000000000000000000B",
+      "path": "manuscript/revisions/revision.md",
+      "operation": "insert",
+      "position": 0
+    },
+    "stale_context_resolution": "revalidated",
+    "decided_at": "2026-07-17T18:43:11.456Z",
+    "event_id": "event_01J00000000000000000000004"
+  }
+}

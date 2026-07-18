@@ -1,0 +1,249 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/invocation-failure.schema.json",
+  "cases": [
+    {
+      "description": "invocation-failure.schema_version: reject missing required property",
+      "instance": {
+        "failure_id": "failure_01J0000000000000000000000P",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "code": "PROVIDER_TIMEOUT",
+        "category": "provider",
+        "recoverable": true,
+        "bounded_summary": "The provider did not respond within the configured timeout.",
+        "partial_output_preserved": false,
+        "occurred_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "invocation-failure.failure_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "code": "PROVIDER_TIMEOUT",
+        "category": "provider",
+        "recoverable": true,
+        "bounded_summary": "The provider did not respond within the configured timeout.",
+        "partial_output_preserved": false,
+        "occurred_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "invocation-failure.invocation_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "failure_id": "failure_01J0000000000000000000000P",
+        "code": "PROVIDER_TIMEOUT",
+        "category": "provider",
+        "recoverable": true,
+        "bounded_summary": "The provider did not respond within the configured timeout.",
+        "partial_output_preserved": false,
+        "occurred_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "invocation-failure.code: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "failure_id": "failure_01J0000000000000000000000P",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "category": "provider",
+        "recoverable": true,
+        "bounded_summary": "The provider did not respond within the configured timeout.",
+        "partial_output_preserved": false,
+        "occurred_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "invocation-failure.category: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "failure_id": "failure_01J0000000000000000000000P",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "code": "PROVIDER_TIMEOUT",
+        "recoverable": true,
+        "bounded_summary": "The provider did not respond within the configured timeout.",
+        "partial_output_preserved": false,
+        "occurred_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "invocation-failure.recoverable: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "failure_id": "failure_01J0000000000000000000000P",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "code": "PROVIDER_TIMEOUT",
+        "category": "provider",
+        "bounded_summary": "The provider did not respond within the configured timeout.",
+        "partial_output_preserved": false,
+        "occurred_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "invocation-failure.bounded_summary: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "failure_id": "failure_01J0000000000000000000000P",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "code": "PROVIDER_TIMEOUT",
+        "category": "provider",
+        "recoverable": true,
+        "partial_output_preserved": false,
+        "occurred_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "invocation-failure.partial_output_preserved: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "failure_id": "failure_01J0000000000000000000000P",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "code": "PROVIDER_TIMEOUT",
+        "category": "provider",
+        "recoverable": true,
+        "bounded_summary": "The provider did not respond within the configured timeout.",
+        "occurred_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "invocation-failure.occurred_at: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "failure_id": "failure_01J0000000000000000000000P",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "code": "PROVIDER_TIMEOUT",
+        "category": "provider",
+        "recoverable": true,
+        "bounded_summary": "The provider did not respond within the configured timeout.",
+        "partial_output_preserved": false
+      }
+    },
+    {
+      "description": "invocation-failure: reject unexpected property",
+      "instance": {
+        "schema_version": "1.0",
+        "failure_id": "failure_01J0000000000000000000000P",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "code": "PROVIDER_TIMEOUT",
+        "category": "provider",
+        "recoverable": true,
+        "bounded_summary": "The provider did not respond within the configured timeout.",
+        "partial_output_preserved": false,
+        "occurred_at": "2026-07-17T18:43:11.456Z",
+        "__unexpected": true
+      }
+    },
+    {
+      "description": "invocation-failure.schema_version: reject value different from const",
+      "instance": {
+        "schema_version": "__INVALID_CONST__",
+        "failure_id": "failure_01J0000000000000000000000P",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "code": "PROVIDER_TIMEOUT",
+        "category": "provider",
+        "recoverable": true,
+        "bounded_summary": "The provider did not respond within the configured timeout.",
+        "partial_output_preserved": false,
+        "occurred_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "invocation-failure.failure_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "failure_id": "invalid-id",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "code": "PROVIDER_TIMEOUT",
+        "category": "provider",
+        "recoverable": true,
+        "bounded_summary": "The provider did not respond within the configured timeout.",
+        "partial_output_preserved": false,
+        "occurred_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "invocation-failure.invocation_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "failure_id": "failure_01J0000000000000000000000P",
+        "invocation_id": "invalid-id",
+        "code": "PROVIDER_TIMEOUT",
+        "category": "provider",
+        "recoverable": true,
+        "bounded_summary": "The provider did not respond within the configured timeout.",
+        "partial_output_preserved": false,
+        "occurred_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "invocation-failure.code: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "failure_id": "failure_01J0000000000000000000000P",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "code": " invalid!",
+        "category": "provider",
+        "recoverable": true,
+        "bounded_summary": "The provider did not respond within the configured timeout.",
+        "partial_output_preserved": false,
+        "occurred_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "invocation-failure.category: reject value outside enum",
+      "instance": {
+        "schema_version": "1.0",
+        "failure_id": "failure_01J0000000000000000000000P",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "code": "PROVIDER_TIMEOUT",
+        "category": "__INVALID_ENUM__",
+        "recoverable": true,
+        "bounded_summary": "The provider did not respond within the configured timeout.",
+        "partial_output_preserved": false,
+        "occurred_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "invocation-failure.bounded_summary: reject string below minLength",
+      "instance": {
+        "schema_version": "1.0",
+        "failure_id": "failure_01J0000000000000000000000P",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "code": "PROVIDER_TIMEOUT",
+        "category": "provider",
+        "recoverable": true,
+        "bounded_summary": "",
+        "partial_output_preserved": false,
+        "occurred_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "invocation-failure.bounded_summary: reject string above maxLength",
+      "instance": {
+        "schema_version": "1.0",
+        "failure_id": "failure_01J0000000000000000000000P",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "code": "PROVIDER_TIMEOUT",
+        "category": "provider",
+        "recoverable": true,
+        "bounded_summary": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "partial_output_preserved": false,
+        "occurred_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "invocation-failure.occurred_at: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "failure_id": "failure_01J0000000000000000000000P",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "code": "PROVIDER_TIMEOUT",
+        "category": "provider",
+        "recoverable": true,
+        "bounded_summary": "The provider did not respond within the configured timeout.",
+        "partial_output_preserved": false,
+        "occurred_at": "not-a-timestamp"
+      }
+    }
+  ]
+}

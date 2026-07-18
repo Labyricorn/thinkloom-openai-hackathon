@@ -1,0 +1,59 @@
+{
+  "vector_version": "1.0",
+  "input_orders": [
+    [
+      {
+        "from": "idea_01J00000000000000000000009",
+        "to": "revision_01J0000000000000000000000B",
+        "relation": "influenced"
+      },
+      {
+        "from": "turn_01J00000000000000000000007",
+        "to": "idea_01J00000000000000000000009",
+        "relation": "suggested"
+      }
+    ],
+    [
+      {
+        "from": "turn_01J00000000000000000000007",
+        "to": "idea_01J00000000000000000000009",
+        "relation": "suggested"
+      },
+      {
+        "from": "idea_01J00000000000000000000009",
+        "to": "revision_01J0000000000000000000000B",
+        "relation": "influenced"
+      }
+    ]
+  ],
+  "deterministic_content": [
+    {
+      "from": "idea_01J00000000000000000000009",
+      "to": "revision_01J0000000000000000000000B",
+      "relation": "influenced"
+    },
+    {
+      "from": "turn_01J00000000000000000000007",
+      "to": "idea_01J00000000000000000000009",
+      "relation": "suggested"
+    }
+  ],
+  "configuration": {
+    "sort": "canonical-json-code-unit",
+    "graph_version": 1
+  },
+  "manifest": {
+    "schema_version": "1.0",
+    "index_type": "contribution_graph",
+    "source_chain_head": "sha256:51935af27a4c989a014d975eab929f41fccafadedfbf1baafa15e3ce2a27a66d",
+    "source_event_count": 3,
+    "generator": {
+      "name": "thinkloom-indexer",
+      "version": "1.0.0",
+      "configuration_sha256": "sha256:730664bcc17657f08ea3a55a96513b183fe957d598f8b00cea3ff981a099890d"
+    },
+    "content_sha256": "sha256:70ce92437e823653cb88cdc3ed8adaeb7bc48172ad526758720238149d6dcb79",
+    "generated_at": "2026-07-17T18:42:10.123Z"
+  },
+  "determinism_rule": "Input order does not affect canonical derived content; volatile generation metadata is outside content_sha256."
+}

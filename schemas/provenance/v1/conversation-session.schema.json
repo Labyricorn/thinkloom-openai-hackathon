@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://thinkloom.app/schemas/provenance/1.0/conversation-session.schema.json",
+  "title": "Conversation session",
+  "description": "Canonical conversation-session metadata without audio retention.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "session_id": {
+      "type": "string",
+      "pattern": "^session_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "project_id": {
+      "type": "string",
+      "pattern": "^project_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "title": {
+      "type": "string"
+    },
+    "mode": {
+      "enum": [
+        "typed",
+        "voice",
+        "mixed"
+      ]
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+    },
+    "ended_at": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "turn_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "audio_retained": {
+      "const": false
+    },
+    "retention_mode": {
+      "enum": [
+        "minimal",
+        "full_private"
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "session_id",
+    "project_id",
+    "title",
+    "mode",
+    "started_at",
+    "ended_at",
+    "turn_count",
+    "audio_retained",
+    "retention_mode"
+  ],
+  "additionalProperties": false,
+  "examples": [
+    {
+      "schema_version": "1.0",
+      "session_id": "session_01J00000000000000000000006",
+      "project_id": "project_01J00000000000000000000001",
+      "title": "Opening discussion",
+      "mode": "typed",
+      "started_at": "2026-07-17T18:42:10.123Z",
+      "ended_at": "2026-07-17T18:43:11.456Z",
+      "turn_count": 2,
+      "audio_retained": false,
+      "retention_mode": "minimal"
+    }
+  ]
+}

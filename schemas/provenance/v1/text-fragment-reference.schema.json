@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://thinkloom.app/schemas/provenance/1.0/text-fragment-reference.schema.json",
+  "title": "Text fragment reference",
+  "description": "Stable revision-bound text range with an explicit coordinate system.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "document_revision_id": {
+      "type": "string",
+      "pattern": "^revision_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "coordinate_system": {
+      "enum": [
+        "utf8_byte",
+        "unicode_scalar",
+        "utf16_code_unit",
+        "editor_position"
+      ]
+    },
+    "start": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "end": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "preimage_sha256": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "text_fragment_id": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^fragment_[0-9A-HJKMNP-TV-Z]{26}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "document_revision_id",
+    "coordinate_system",
+    "start",
+    "end",
+    "preimage_sha256",
+    "text_fragment_id"
+  ],
+  "additionalProperties": false,
+  "examples": [
+    {
+      "schema_version": "1.0",
+      "document_revision_id": "revision_01J0000000000000000000000A",
+      "coordinate_system": "utf8_byte",
+      "start": 0,
+      "end": 12,
+      "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+      "text_fragment_id": "fragment_01J0000000000000000000000C"
+    }
+  ]
+}

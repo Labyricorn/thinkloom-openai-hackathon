@@ -1,0 +1,461 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/write-intent.schema.json",
+  "cases": [
+    {
+      "description": "write-intent.schema_version: reject missing required property",
+      "instance": {
+        "intent_id": "intent_01J00000000000000000000002",
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_type": "IDEA_ACCEPTED",
+        "phase": "PREPARED",
+        "event_id": null,
+        "event_sequence": null,
+        "staged_path": ".app/temp/intents/intent.json",
+        "command_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "result": null,
+        "created_at": "2026-07-17T18:42:10.123Z",
+        "updated_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "write-intent.intent_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_type": "IDEA_ACCEPTED",
+        "phase": "PREPARED",
+        "event_id": null,
+        "event_sequence": null,
+        "staged_path": ".app/temp/intents/intent.json",
+        "command_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "result": null,
+        "created_at": "2026-07-17T18:42:10.123Z",
+        "updated_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "write-intent.client_action_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "intent_id": "intent_01J00000000000000000000002",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_type": "IDEA_ACCEPTED",
+        "phase": "PREPARED",
+        "event_id": null,
+        "event_sequence": null,
+        "staged_path": ".app/temp/intents/intent.json",
+        "command_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "result": null,
+        "created_at": "2026-07-17T18:42:10.123Z",
+        "updated_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "write-intent.project_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "intent_id": "intent_01J00000000000000000000002",
+        "client_action_id": "client-action-0001",
+        "operation_type": "IDEA_ACCEPTED",
+        "phase": "PREPARED",
+        "event_id": null,
+        "event_sequence": null,
+        "staged_path": ".app/temp/intents/intent.json",
+        "command_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "result": null,
+        "created_at": "2026-07-17T18:42:10.123Z",
+        "updated_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "write-intent.operation_type: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "intent_id": "intent_01J00000000000000000000002",
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "phase": "PREPARED",
+        "event_id": null,
+        "event_sequence": null,
+        "staged_path": ".app/temp/intents/intent.json",
+        "command_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "result": null,
+        "created_at": "2026-07-17T18:42:10.123Z",
+        "updated_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "write-intent.phase: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "intent_id": "intent_01J00000000000000000000002",
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_type": "IDEA_ACCEPTED",
+        "event_id": null,
+        "event_sequence": null,
+        "staged_path": ".app/temp/intents/intent.json",
+        "command_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "result": null,
+        "created_at": "2026-07-17T18:42:10.123Z",
+        "updated_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "write-intent.event_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "intent_id": "intent_01J00000000000000000000002",
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_type": "IDEA_ACCEPTED",
+        "phase": "PREPARED",
+        "event_sequence": null,
+        "staged_path": ".app/temp/intents/intent.json",
+        "command_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "result": null,
+        "created_at": "2026-07-17T18:42:10.123Z",
+        "updated_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "write-intent.event_sequence: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "intent_id": "intent_01J00000000000000000000002",
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_type": "IDEA_ACCEPTED",
+        "phase": "PREPARED",
+        "event_id": null,
+        "staged_path": ".app/temp/intents/intent.json",
+        "command_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "result": null,
+        "created_at": "2026-07-17T18:42:10.123Z",
+        "updated_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "write-intent.staged_path: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "intent_id": "intent_01J00000000000000000000002",
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_type": "IDEA_ACCEPTED",
+        "phase": "PREPARED",
+        "event_id": null,
+        "event_sequence": null,
+        "command_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "result": null,
+        "created_at": "2026-07-17T18:42:10.123Z",
+        "updated_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "write-intent.command_sha256: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "intent_id": "intent_01J00000000000000000000002",
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_type": "IDEA_ACCEPTED",
+        "phase": "PREPARED",
+        "event_id": null,
+        "event_sequence": null,
+        "staged_path": ".app/temp/intents/intent.json",
+        "result": null,
+        "created_at": "2026-07-17T18:42:10.123Z",
+        "updated_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "write-intent.result: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "intent_id": "intent_01J00000000000000000000002",
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_type": "IDEA_ACCEPTED",
+        "phase": "PREPARED",
+        "event_id": null,
+        "event_sequence": null,
+        "staged_path": ".app/temp/intents/intent.json",
+        "command_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "created_at": "2026-07-17T18:42:10.123Z",
+        "updated_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "write-intent.created_at: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "intent_id": "intent_01J00000000000000000000002",
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_type": "IDEA_ACCEPTED",
+        "phase": "PREPARED",
+        "event_id": null,
+        "event_sequence": null,
+        "staged_path": ".app/temp/intents/intent.json",
+        "command_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "result": null,
+        "updated_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "write-intent.updated_at: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "intent_id": "intent_01J00000000000000000000002",
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_type": "IDEA_ACCEPTED",
+        "phase": "PREPARED",
+        "event_id": null,
+        "event_sequence": null,
+        "staged_path": ".app/temp/intents/intent.json",
+        "command_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "result": null,
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "write-intent: reject unexpected property",
+      "instance": {
+        "schema_version": "1.0",
+        "intent_id": "intent_01J00000000000000000000002",
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_type": "IDEA_ACCEPTED",
+        "phase": "PREPARED",
+        "event_id": null,
+        "event_sequence": null,
+        "staged_path": ".app/temp/intents/intent.json",
+        "command_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "result": null,
+        "created_at": "2026-07-17T18:42:10.123Z",
+        "updated_at": "2026-07-17T18:42:10.123Z",
+        "__unexpected": true
+      }
+    },
+    {
+      "description": "write-intent.schema_version: reject value different from const",
+      "instance": {
+        "schema_version": "__INVALID_CONST__",
+        "intent_id": "intent_01J00000000000000000000002",
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_type": "IDEA_ACCEPTED",
+        "phase": "PREPARED",
+        "event_id": null,
+        "event_sequence": null,
+        "staged_path": ".app/temp/intents/intent.json",
+        "command_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "result": null,
+        "created_at": "2026-07-17T18:42:10.123Z",
+        "updated_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "write-intent.intent_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "intent_id": "invalid-id",
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_type": "IDEA_ACCEPTED",
+        "phase": "PREPARED",
+        "event_id": null,
+        "event_sequence": null,
+        "staged_path": ".app/temp/intents/intent.json",
+        "command_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "result": null,
+        "created_at": "2026-07-17T18:42:10.123Z",
+        "updated_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "write-intent.client_action_id: reject string below minLength",
+      "instance": {
+        "schema_version": "1.0",
+        "intent_id": "intent_01J00000000000000000000002",
+        "client_action_id": "",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_type": "IDEA_ACCEPTED",
+        "phase": "PREPARED",
+        "event_id": null,
+        "event_sequence": null,
+        "staged_path": ".app/temp/intents/intent.json",
+        "command_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "result": null,
+        "created_at": "2026-07-17T18:42:10.123Z",
+        "updated_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "write-intent.client_action_id: reject string above maxLength",
+      "instance": {
+        "schema_version": "1.0",
+        "intent_id": "intent_01J00000000000000000000002",
+        "client_action_id": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_type": "IDEA_ACCEPTED",
+        "phase": "PREPARED",
+        "event_id": null,
+        "event_sequence": null,
+        "staged_path": ".app/temp/intents/intent.json",
+        "command_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "result": null,
+        "created_at": "2026-07-17T18:42:10.123Z",
+        "updated_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "write-intent.project_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "intent_id": "intent_01J00000000000000000000002",
+        "client_action_id": "client-action-0001",
+        "project_id": "invalid-id",
+        "operation_type": "IDEA_ACCEPTED",
+        "phase": "PREPARED",
+        "event_id": null,
+        "event_sequence": null,
+        "staged_path": ".app/temp/intents/intent.json",
+        "command_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "result": null,
+        "created_at": "2026-07-17T18:42:10.123Z",
+        "updated_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "write-intent.operation_type: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "intent_id": "intent_01J00000000000000000000002",
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_type": " invalid!",
+        "phase": "PREPARED",
+        "event_id": null,
+        "event_sequence": null,
+        "staged_path": ".app/temp/intents/intent.json",
+        "command_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "result": null,
+        "created_at": "2026-07-17T18:42:10.123Z",
+        "updated_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "write-intent.phase: reject value outside enum",
+      "instance": {
+        "schema_version": "1.0",
+        "intent_id": "intent_01J00000000000000000000002",
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_type": "IDEA_ACCEPTED",
+        "phase": "__INVALID_ENUM__",
+        "event_id": null,
+        "event_sequence": null,
+        "staged_path": ".app/temp/intents/intent.json",
+        "command_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "result": null,
+        "created_at": "2026-07-17T18:42:10.123Z",
+        "updated_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "write-intent.staged_path: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "intent_id": "intent_01J00000000000000000000002",
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_type": "IDEA_ACCEPTED",
+        "phase": "PREPARED",
+        "event_id": null,
+        "event_sequence": null,
+        "staged_path": "../outside-project",
+        "command_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "result": null,
+        "created_at": "2026-07-17T18:42:10.123Z",
+        "updated_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "write-intent.staged_path: reject string below minLength",
+      "instance": {
+        "schema_version": "1.0",
+        "intent_id": "intent_01J00000000000000000000002",
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_type": "IDEA_ACCEPTED",
+        "phase": "PREPARED",
+        "event_id": null,
+        "event_sequence": null,
+        "staged_path": "",
+        "command_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "result": null,
+        "created_at": "2026-07-17T18:42:10.123Z",
+        "updated_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "write-intent.command_sha256: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "intent_id": "intent_01J00000000000000000000002",
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_type": "IDEA_ACCEPTED",
+        "phase": "PREPARED",
+        "event_id": null,
+        "event_sequence": null,
+        "staged_path": ".app/temp/intents/intent.json",
+        "command_sha256": "sha256:INVALID",
+        "result": null,
+        "created_at": "2026-07-17T18:42:10.123Z",
+        "updated_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "write-intent.created_at: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "intent_id": "intent_01J00000000000000000000002",
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_type": "IDEA_ACCEPTED",
+        "phase": "PREPARED",
+        "event_id": null,
+        "event_sequence": null,
+        "staged_path": ".app/temp/intents/intent.json",
+        "command_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "result": null,
+        "created_at": "not-a-timestamp",
+        "updated_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "write-intent.updated_at: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "intent_id": "intent_01J00000000000000000000002",
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_type": "IDEA_ACCEPTED",
+        "phase": "PREPARED",
+        "event_id": null,
+        "event_sequence": null,
+        "staged_path": ".app/temp/intents/intent.json",
+        "command_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "result": null,
+        "created_at": "2026-07-17T18:42:10.123Z",
+        "updated_at": "not-a-timestamp"
+      }
+    }
+  ]
+}

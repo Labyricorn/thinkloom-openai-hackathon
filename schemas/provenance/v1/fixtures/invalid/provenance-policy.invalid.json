@@ -1,0 +1,179 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/provenance-policy.schema.json",
+  "cases": [
+    {
+      "description": "provenance-policy.schema_version: reject missing required property",
+      "instance": {
+        "policy_id": "policy_01J0000000000000000000000H",
+        "project_id": "project_01J00000000000000000000001",
+        "retention_mode": "minimal",
+        "encryption_mode": "none",
+        "default_export_profile": "sanitized",
+        "effective_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "provenance-policy.policy_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "retention_mode": "minimal",
+        "encryption_mode": "none",
+        "default_export_profile": "sanitized",
+        "effective_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "provenance-policy.project_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "policy_id": "policy_01J0000000000000000000000H",
+        "retention_mode": "minimal",
+        "encryption_mode": "none",
+        "default_export_profile": "sanitized",
+        "effective_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "provenance-policy.retention_mode: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "policy_id": "policy_01J0000000000000000000000H",
+        "project_id": "project_01J00000000000000000000001",
+        "encryption_mode": "none",
+        "default_export_profile": "sanitized",
+        "effective_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "provenance-policy.encryption_mode: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "policy_id": "policy_01J0000000000000000000000H",
+        "project_id": "project_01J00000000000000000000001",
+        "retention_mode": "minimal",
+        "default_export_profile": "sanitized",
+        "effective_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "provenance-policy.default_export_profile: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "policy_id": "policy_01J0000000000000000000000H",
+        "project_id": "project_01J00000000000000000000001",
+        "retention_mode": "minimal",
+        "encryption_mode": "none",
+        "effective_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "provenance-policy.effective_at: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "policy_id": "policy_01J0000000000000000000000H",
+        "project_id": "project_01J00000000000000000000001",
+        "retention_mode": "minimal",
+        "encryption_mode": "none",
+        "default_export_profile": "sanitized"
+      }
+    },
+    {
+      "description": "provenance-policy: reject unexpected property",
+      "instance": {
+        "schema_version": "1.0",
+        "policy_id": "policy_01J0000000000000000000000H",
+        "project_id": "project_01J00000000000000000000001",
+        "retention_mode": "minimal",
+        "encryption_mode": "none",
+        "default_export_profile": "sanitized",
+        "effective_at": "2026-07-17T18:42:10.123Z",
+        "__unexpected": true
+      }
+    },
+    {
+      "description": "provenance-policy.schema_version: reject value different from const",
+      "instance": {
+        "schema_version": "__INVALID_CONST__",
+        "policy_id": "policy_01J0000000000000000000000H",
+        "project_id": "project_01J00000000000000000000001",
+        "retention_mode": "minimal",
+        "encryption_mode": "none",
+        "default_export_profile": "sanitized",
+        "effective_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "provenance-policy.policy_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "policy_id": "invalid-id",
+        "project_id": "project_01J00000000000000000000001",
+        "retention_mode": "minimal",
+        "encryption_mode": "none",
+        "default_export_profile": "sanitized",
+        "effective_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "provenance-policy.project_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "policy_id": "policy_01J0000000000000000000000H",
+        "project_id": "invalid-id",
+        "retention_mode": "minimal",
+        "encryption_mode": "none",
+        "default_export_profile": "sanitized",
+        "effective_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "provenance-policy.retention_mode: reject value outside enum",
+      "instance": {
+        "schema_version": "1.0",
+        "policy_id": "policy_01J0000000000000000000000H",
+        "project_id": "project_01J00000000000000000000001",
+        "retention_mode": "__INVALID_ENUM__",
+        "encryption_mode": "none",
+        "default_export_profile": "sanitized",
+        "effective_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "provenance-policy.encryption_mode: reject value outside enum",
+      "instance": {
+        "schema_version": "1.0",
+        "policy_id": "policy_01J0000000000000000000000H",
+        "project_id": "project_01J00000000000000000000001",
+        "retention_mode": "minimal",
+        "encryption_mode": "__INVALID_ENUM__",
+        "default_export_profile": "sanitized",
+        "effective_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "provenance-policy.default_export_profile: reject value outside enum",
+      "instance": {
+        "schema_version": "1.0",
+        "policy_id": "policy_01J0000000000000000000000H",
+        "project_id": "project_01J00000000000000000000001",
+        "retention_mode": "minimal",
+        "encryption_mode": "none",
+        "default_export_profile": "__INVALID_ENUM__",
+        "effective_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "provenance-policy.effective_at: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "policy_id": "policy_01J0000000000000000000000H",
+        "project_id": "project_01J00000000000000000000001",
+        "retention_mode": "minimal",
+        "encryption_mode": "none",
+        "default_export_profile": "sanitized",
+        "effective_at": "not-a-timestamp"
+      }
+    }
+  ]
+}

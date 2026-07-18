@@ -1,0 +1,23 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/purge-manifest.schema.json",
+  "description": "Valid Emergency purge manifest example.",
+  "instance": {
+    "schema_version": "1.0",
+    "purge_id": "purge_01J0000000000000000000000R",
+    "project_id": "project_01J00000000000000000000001",
+    "requested_at": "2026-07-17T18:42:10.123Z",
+    "completed_at": "2026-07-17T18:43:11.456Z",
+    "reason": "Remove accidentally retained credential",
+    "superseded_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+    "new_chain_root": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+    "affected_record_ids": [
+      "record_01J00000000000000000000005"
+    ],
+    "affected_paths": [
+      "records/invocations/request.json"
+    ],
+    "git_history_rewritten": true,
+    "prior_copies_revocable": false,
+    "confirmation_phrase_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666"
+  }
+}

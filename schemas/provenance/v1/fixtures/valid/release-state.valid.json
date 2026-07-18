@@ -1,0 +1,15 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/release-state.schema.json",
+  "description": "Valid Release state example.",
+  "instance": {
+    "schema_version": "1.0",
+    "release_id": "release_01J0000000000000000000000E",
+    "project_id": "project_01J00000000000000000000001",
+    "state": "RELEASE_STAGED",
+    "state_sequence": 5,
+    "source_commit": "0123456789abcdef0123456789abcdef01234567",
+    "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+    "updated_at": "2026-07-17T18:43:11.456Z",
+    "failure": null
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "vector_version": "1.0",
+  "event_hash_identity": "Canonical event object excluding only event_hash; previous_event_hash remains included.",
+  "sequence_rule": "Committed event_sequence values begin at 1 and are contiguous with no reuse.",
+  "jsonl_rule": "Each canonical event is UTF-8 without BOM followed by exactly one LF byte (0x0A).",
+  "events": [
+    {
+      "schema_version": "1.0",
+      "event_id": "event_01J00000000000000000000003",
+      "event_sequence": 1,
+      "client_action_id": "client-action-0001",
+      "project_id": "project_01J00000000000000000000001",
+      "timestamp": "2026-07-17T18:42:10.123Z",
+      "event_type": "PROJECT_CREATED",
+      "actor": {
+        "type": "user",
+        "actor_id": null
+      },
+      "provider": null,
+      "inputs": [],
+      "outputs": [
+        {
+          "schema_version": "1.0",
+          "record_id": "record_01J00000000000000000000005",
+          "record_type": "manuscript_revision",
+          "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+          "path": "manuscript/revisions/revision.json",
+          "revision_id": "revision_01J0000000000000000000000A",
+          "range": {
+            "schema_version": "1.0",
+            "document_revision_id": "revision_01J0000000000000000000000A",
+            "coordinate_system": "utf8_byte",
+            "start": 0,
+            "end": 12,
+            "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+            "text_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        }
+      ],
+      "relationships": {
+        "parent_event_ids": [],
+        "invocation_id": null
+      },
+      "metadata": {
+        "summary": "Created project"
+      },
+      "previous_event_hash": null,
+      "event_hash": "sha256:3a087877f4878483805f517ef0ebd108476e31ed68162504da4fad12d6d9eff4"
+    },
+    {
+      "schema_version": "1.0",
+      "event_id": "event_01J00000000000000000000004",
+      "event_sequence": 2,
+      "client_action_id": "client-action-0001",
+      "project_id": "project_01J00000000000000000000001",
+      "timestamp": "2026-07-17T18:43:11.456Z",
+      "event_type": "IDEA_ACCEPTED",
+      "actor": {
+        "type": "user",
+        "actor_id": null
+      },
+      "provider": null,
+      "inputs": [],
+      "outputs": [
+        {
+          "schema_version": "1.0",
+          "record_id": "record_01J00000000000000000000005",
+          "record_type": "manuscript_revision",
+          "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+          "path": "manuscript/revisions/revision.json",
+          "revision_id": "revision_01J0000000000000000000000A",
+          "range": {
+            "schema_version": "1.0",
+            "document_revision_id": "revision_01J0000000000000000000000A",
+            "coordinate_system": "utf8_byte",
+            "start": 0,
+            "end": 12,
+            "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+            "text_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        }
+      ],
+      "relationships": {
+        "parent_event_ids": [],
+        "invocation_id": null
+      },
+      "metadata": {
+        "summary": "Created project"
+      },
+      "previous_event_hash": "sha256:3a087877f4878483805f517ef0ebd108476e31ed68162504da4fad12d6d9eff4",
+      "event_hash": "sha256:eb03e514fa6fcfcd291357668559b24387a84256fc39d6fb0621529003d0988e"
+    },
+    {
+      "schema_version": "1.0",
+      "event_id": "event_01J0000000000000000000000T",
+      "event_sequence": 3,
+      "client_action_id": "client-action-0001",
+      "project_id": "project_01J00000000000000000000001",
+      "timestamp": "2026-07-17T18:44:12.789Z",
+      "event_type": "MANUSCRIPT_EDITED",
+      "actor": {
+        "type": "user",
+        "actor_id": null
+      },
+      "provider": null,
+      "inputs": [],
+      "outputs": [
+        {
+          "schema_version": "1.0",
+          "record_id": "record_01J00000000000000000000005",
+          "record_type": "manuscript_revision",
+          "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+          "path": "manuscript/revisions/revision.json",
+          "revision_id": "revision_01J0000000000000000000000A",
+          "range": {
+            "schema_version": "1.0",
+            "document_revision_id": "revision_01J0000000000000000000000A",
+            "coordinate_system": "utf8_byte",
+            "start": 0,
+            "end": 12,
+            "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+            "text_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        }
+      ],
+      "relationships": {
+        "parent_event_ids": [],
+        "invocation_id": null
+      },
+      "metadata": {
+        "summary": "Created project"
+      },
+      "previous_event_hash": "sha256:eb03e514fa6fcfcd291357668559b24387a84256fc39d6fb0621529003d0988e",
+      "event_hash": "sha256:51935af27a4c989a014d975eab929f41fccafadedfbf1baafa15e3ce2a27a66d"
+    }
+  ],
+  "canonical_jsonl": "{\"actor\":{\"actor_id\":null,\"type\":\"user\"},\"client_action_id\":\"client-action-0001\",\"event_hash\":\"sha256:3a087877f4878483805f517ef0ebd108476e31ed68162504da4fad12d6d9eff4\",\"event_id\":\"event_01J00000000000000000000003\",\"event_sequence\":1,\"event_type\":\"PROJECT_CREATED\",\"inputs\":[],\"metadata\":{\"summary\":\"Created project\"},\"outputs\":[{\"path\":\"manuscript/revisions/revision.json\",\"range\":{\"coordinate_system\":\"utf8_byte\",\"document_revision_id\":\"revision_01J0000000000000000000000A\",\"end\":12,\"preimage_sha256\":\"sha256:1111111111111111111111111111111111111111111111111111111111111111\",\"schema_version\":\"1.0\",\"start\":0,\"text_fragment_id\":\"fragment_01J0000000000000000000000C\"},\"record_id\":\"record_01J00000000000000000000005\",\"record_type\":\"manuscript_revision\",\"revision_id\":\"revision_01J0000000000000000000000A\",\"schema_version\":\"1.0\",\"sha256\":\"sha256:2222222222222222222222222222222222222222222222222222222222222222\"}],\"previous_event_hash\":null,\"project_id\":\"project_01J00000000000000000000001\",\"provider\":null,\"relationships\":{\"invocation_id\":null,\"parent_event_ids\":[]},\"schema_version\":\"1.0\",\"timestamp\":\"2026-07-17T18:42:10.123Z\"}\n{\"actor\":{\"actor_id\":null,\"type\":\"user\"},\"client_action_id\":\"client-action-0001\",\"event_hash\":\"sha256:eb03e514fa6fcfcd291357668559b24387a84256fc39d6fb0621529003d0988e\",\"event_id\":\"event_01J00000000000000000000004\",\"event_sequence\":2,\"event_type\":\"IDEA_ACCEPTED\",\"inputs\":[],\"metadata\":{\"summary\":\"Created project\"},\"outputs\":[{\"path\":\"manuscript/revisions/revision.json\",\"range\":{\"coordinate_system\":\"utf8_byte\",\"document_revision_id\":\"revision_01J0000000000000000000000A\",\"end\":12,\"preimage_sha256\":\"sha256:1111111111111111111111111111111111111111111111111111111111111111\",\"schema_version\":\"1.0\",\"start\":0,\"text_fragment_id\":\"fragment_01J0000000000000000000000C\"},\"record_id\":\"record_01J00000000000000000000005\",\"record_type\":\"manuscript_revision\",\"revision_id\":\"revision_01J0000000000000000000000A\",\"schema_version\":\"1.0\",\"sha256\":\"sha256:2222222222222222222222222222222222222222222222222222222222222222\"}],\"previous_event_hash\":\"sha256:3a087877f4878483805f517ef0ebd108476e31ed68162504da4fad12d6d9eff4\",\"project_id\":\"project_01J00000000000000000000001\",\"provider\":null,\"relationships\":{\"invocation_id\":null,\"parent_event_ids\":[]},\"schema_version\":\"1.0\",\"timestamp\":\"2026-07-17T18:43:11.456Z\"}\n{\"actor\":{\"actor_id\":null,\"type\":\"user\"},\"client_action_id\":\"client-action-0001\",\"event_hash\":\"sha256:51935af27a4c989a014d975eab929f41fccafadedfbf1baafa15e3ce2a27a66d\",\"event_id\":\"event_01J0000000000000000000000T\",\"event_sequence\":3,\"event_type\":\"MANUSCRIPT_EDITED\",\"inputs\":[],\"metadata\":{\"summary\":\"Created project\"},\"outputs\":[{\"path\":\"manuscript/revisions/revision.json\",\"range\":{\"coordinate_system\":\"utf8_byte\",\"document_revision_id\":\"revision_01J0000000000000000000000A\",\"end\":12,\"preimage_sha256\":\"sha256:1111111111111111111111111111111111111111111111111111111111111111\",\"schema_version\":\"1.0\",\"start\":0,\"text_fragment_id\":\"fragment_01J0000000000000000000000C\"},\"record_id\":\"record_01J00000000000000000000005\",\"record_type\":\"manuscript_revision\",\"revision_id\":\"revision_01J0000000000000000000000A\",\"schema_version\":\"1.0\",\"sha256\":\"sha256:2222222222222222222222222222222222222222222222222222222222222222\"}],\"previous_event_hash\":\"sha256:eb03e514fa6fcfcd291357668559b24387a84256fc39d6fb0621529003d0988e\",\"project_id\":\"project_01J00000000000000000000001\",\"provider\":null,\"relationships\":{\"invocation_id\":null,\"parent_event_ids\":[]},\"schema_version\":\"1.0\",\"timestamp\":\"2026-07-17T18:44:12.789Z\"}\n",
+  "canonical_jsonl_sha256": "sha256:1ac3e55684b2a501777c01d9338bf8de10853d320ddfa0c0a030b846317888a2",
+  "rejected_boundary_variants": [
+    "CRLF line endings",
+    "missing final LF",
+    "blank records",
+    "UTF-8 BOM"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/text-fragment-reference.schema.json",
+  "description": "Valid Text fragment reference example.",
+  "instance": {
+    "schema_version": "1.0",
+    "document_revision_id": "revision_01J0000000000000000000000A",
+    "coordinate_system": "utf8_byte",
+    "start": 0,
+    "end": 12,
+    "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+    "text_fragment_id": "fragment_01J0000000000000000000000C"
+  }
+}

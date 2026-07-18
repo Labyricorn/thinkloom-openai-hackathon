@@ -1,0 +1,154 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://thinkloom.app/schemas/provenance/1.0/disposition-revision.schema.json",
+  "title": "Invocation disposition revision",
+  "description": "Immutable ordered record of user action on one model result.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "disposition_id": {
+      "type": "string",
+      "pattern": "^disposition_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "invocation_id": {
+      "type": "string",
+      "pattern": "^invocation_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "revision_number": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "status": {
+      "enum": [
+        "staged",
+        "accepted",
+        "partially_accepted",
+        "rejected",
+        "discarded"
+      ]
+    },
+    "accepted_ranges": {
+      "type": "array",
+      "items": {
+        "$ref": "https://thinkloom.app/schemas/provenance/1.0/text-fragment-reference.schema.json"
+      }
+    },
+    "rejected_ranges": {
+      "type": "array",
+      "items": {
+        "$ref": "https://thinkloom.app/schemas/provenance/1.0/text-fragment-reference.schema.json"
+      }
+    },
+    "destination": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "revision_id": {
+              "type": "string",
+              "pattern": "^revision_[0-9A-HJKMNP-TV-Z]{26}$"
+            },
+            "path": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?!/)(?![A-Za-z]:)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(?:/|$))[^\\u0000-\\u001f]+$"
+            },
+            "operation": {
+              "enum": [
+                "insert",
+                "replace",
+                "append",
+                "new_section"
+              ]
+            },
+            "position": {
+              "anyOf": [
+                {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "revision_id",
+            "path",
+            "operation",
+            "position"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "stale_context_resolution": {
+      "enum": [
+        "not_stale",
+        "revalidated",
+        "rebased",
+        "explicitly_confirmed",
+        "rejected"
+      ]
+    },
+    "decided_at": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+    },
+    "event_id": {
+      "type": "string",
+      "pattern": "^event_[0-9A-HJKMNP-TV-Z]{26}$"
+    }
+  },
+  "required": [
+    "schema_version",
+    "disposition_id",
+    "invocation_id",
+    "revision_number",
+    "status",
+    "accepted_ranges",
+    "rejected_ranges",
+    "destination",
+    "stale_context_resolution",
+    "decided_at",
+    "event_id"
+  ],
+  "additionalProperties": false,
+  "examples": [
+    {
+      "schema_version": "1.0",
+      "disposition_id": "disposition_01J0000000000000000000000M",
+      "invocation_id": "invocation_01J00000000000000000000008",
+      "revision_number": 1,
+      "status": "partially_accepted",
+      "accepted_ranges": [
+        {
+          "schema_version": "1.0",
+          "document_revision_id": "revision_01J0000000000000000000000A",
+          "coordinate_system": "utf8_byte",
+          "start": 0,
+          "end": 12,
+          "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+          "text_fragment_id": "fragment_01J0000000000000000000000C"
+        }
+      ],
+      "rejected_ranges": [],
+      "destination": {
+        "revision_id": "revision_01J0000000000000000000000B",
+        "path": "manuscript/revisions/revision.md",
+        "operation": "insert",
+        "position": 0
+      },
+      "stale_context_resolution": "revalidated",
+      "decided_at": "2026-07-17T18:43:11.456Z",
+      "event_id": "event_01J00000000000000000000004"
+    }
+  ]
+}

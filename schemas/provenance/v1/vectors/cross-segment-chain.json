@@ -1,0 +1,49 @@
+{
+  "vector_version": "1.0",
+  "segments": [
+    {
+      "jsonl": "{\"actor\":{\"actor_id\":null,\"type\":\"user\"},\"client_action_id\":\"client-action-0001\",\"event_hash\":\"sha256:3a087877f4878483805f517ef0ebd108476e31ed68162504da4fad12d6d9eff4\",\"event_id\":\"event_01J00000000000000000000003\",\"event_sequence\":1,\"event_type\":\"PROJECT_CREATED\",\"inputs\":[],\"metadata\":{\"summary\":\"Created project\"},\"outputs\":[{\"path\":\"manuscript/revisions/revision.json\",\"range\":{\"coordinate_system\":\"utf8_byte\",\"document_revision_id\":\"revision_01J0000000000000000000000A\",\"end\":12,\"preimage_sha256\":\"sha256:1111111111111111111111111111111111111111111111111111111111111111\",\"schema_version\":\"1.0\",\"start\":0,\"text_fragment_id\":\"fragment_01J0000000000000000000000C\"},\"record_id\":\"record_01J00000000000000000000005\",\"record_type\":\"manuscript_revision\",\"revision_id\":\"revision_01J0000000000000000000000A\",\"schema_version\":\"1.0\",\"sha256\":\"sha256:2222222222222222222222222222222222222222222222222222222222222222\"}],\"previous_event_hash\":null,\"project_id\":\"project_01J00000000000000000000001\",\"provider\":null,\"relationships\":{\"invocation_id\":null,\"parent_event_ids\":[]},\"schema_version\":\"1.0\",\"timestamp\":\"2026-07-17T18:42:10.123Z\"}\n{\"actor\":{\"actor_id\":null,\"type\":\"user\"},\"client_action_id\":\"client-action-0001\",\"event_hash\":\"sha256:eb03e514fa6fcfcd291357668559b24387a84256fc39d6fb0621529003d0988e\",\"event_id\":\"event_01J00000000000000000000004\",\"event_sequence\":2,\"event_type\":\"IDEA_ACCEPTED\",\"inputs\":[],\"metadata\":{\"summary\":\"Created project\"},\"outputs\":[{\"path\":\"manuscript/revisions/revision.json\",\"range\":{\"coordinate_system\":\"utf8_byte\",\"document_revision_id\":\"revision_01J0000000000000000000000A\",\"end\":12,\"preimage_sha256\":\"sha256:1111111111111111111111111111111111111111111111111111111111111111\",\"schema_version\":\"1.0\",\"start\":0,\"text_fragment_id\":\"fragment_01J0000000000000000000000C\"},\"record_id\":\"record_01J00000000000000000000005\",\"record_type\":\"manuscript_revision\",\"revision_id\":\"revision_01J0000000000000000000000A\",\"schema_version\":\"1.0\",\"sha256\":\"sha256:2222222222222222222222222222222222222222222222222222222222222222\"}],\"previous_event_hash\":\"sha256:3a087877f4878483805f517ef0ebd108476e31ed68162504da4fad12d6d9eff4\",\"project_id\":\"project_01J00000000000000000000001\",\"provider\":null,\"relationships\":{\"invocation_id\":null,\"parent_event_ids\":[]},\"schema_version\":\"1.0\",\"timestamp\":\"2026-07-17T18:43:11.456Z\"}\n",
+      "manifest": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "segment_number": 1,
+        "previous_segment_file_hash": null,
+        "first_event_hash": "sha256:3a087877f4878483805f517ef0ebd108476e31ed68162504da4fad12d6d9eff4",
+        "final_event_hash": "sha256:eb03e514fa6fcfcd291357668559b24387a84256fc39d6fb0621529003d0988e",
+        "first_event_sequence": 1,
+        "final_event_sequence": 2,
+        "event_count": 2,
+        "byte_length": 2323,
+        "segment_file_hash": "sha256:b37546669da485b3f5c8dad3c26b36ee8992ac8127e8f99d6a5ee8cdb1fa2d81",
+        "sealed_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "jsonl": "{\"actor\":{\"actor_id\":null,\"type\":\"user\"},\"client_action_id\":\"client-action-0001\",\"event_hash\":\"sha256:51935af27a4c989a014d975eab929f41fccafadedfbf1baafa15e3ce2a27a66d\",\"event_id\":\"event_01J0000000000000000000000T\",\"event_sequence\":3,\"event_type\":\"MANUSCRIPT_EDITED\",\"inputs\":[],\"metadata\":{\"summary\":\"Created project\"},\"outputs\":[{\"path\":\"manuscript/revisions/revision.json\",\"range\":{\"coordinate_system\":\"utf8_byte\",\"document_revision_id\":\"revision_01J0000000000000000000000A\",\"end\":12,\"preimage_sha256\":\"sha256:1111111111111111111111111111111111111111111111111111111111111111\",\"schema_version\":\"1.0\",\"start\":0,\"text_fragment_id\":\"fragment_01J0000000000000000000000C\"},\"record_id\":\"record_01J00000000000000000000005\",\"record_type\":\"manuscript_revision\",\"revision_id\":\"revision_01J0000000000000000000000A\",\"schema_version\":\"1.0\",\"sha256\":\"sha256:2222222222222222222222222222222222222222222222222222222222222222\"}],\"previous_event_hash\":\"sha256:eb03e514fa6fcfcd291357668559b24387a84256fc39d6fb0621529003d0988e\",\"project_id\":\"project_01J00000000000000000000001\",\"provider\":null,\"relationships\":{\"invocation_id\":null,\"parent_event_ids\":[]},\"schema_version\":\"1.0\",\"timestamp\":\"2026-07-17T18:44:12.789Z\"}\n",
+      "manifest": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "segment_number": 2,
+        "previous_segment_file_hash": "sha256:b37546669da485b3f5c8dad3c26b36ee8992ac8127e8f99d6a5ee8cdb1fa2d81",
+        "first_event_hash": "sha256:51935af27a4c989a014d975eab929f41fccafadedfbf1baafa15e3ce2a27a66d",
+        "final_event_hash": "sha256:51935af27a4c989a014d975eab929f41fccafadedfbf1baafa15e3ce2a27a66d",
+        "first_event_sequence": 3,
+        "final_event_sequence": 3,
+        "event_count": 1,
+        "byte_length": 1199,
+        "segment_file_hash": "sha256:194195fb37a089af86334695f45de5efce45eccc651c6257d63a9f3cc6a81b51",
+        "sealed_at": "2026-07-17T18:45:13.012Z"
+      }
+    }
+  ],
+  "chain_head": {
+    "schema_version": "1.0",
+    "project_id": "project_01J00000000000000000000001",
+    "active_segment_number": 2,
+    "event_id": "event_01J0000000000000000000000T",
+    "event_sequence": 3,
+    "event_hash": "sha256:51935af27a4c989a014d975eab929f41fccafadedfbf1baafa15e3ce2a27a66d",
+    "updated_at": "2026-07-17T18:45:13.012Z"
+  },
+  "cross_segment_rule": "A sealed segment names the prior segment file digest, and event hash linkage remains contiguous across the boundary."
+}

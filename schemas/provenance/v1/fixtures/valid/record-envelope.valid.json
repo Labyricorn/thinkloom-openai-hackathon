@@ -1,0 +1,20 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/record-envelope.schema.json",
+  "description": "Valid Authoritative record envelope example.",
+  "instance": {
+    "schema_version": "1.0",
+    "project_id": "project_01J00000000000000000000001",
+    "record_id": "record_01J00000000000000000000005",
+    "record_type": "invocation_request",
+    "protection": "protected",
+    "plaintext_sha256": "sha256:97154eddff15ab6607181e55945547fdbbc5bde02b1e5123eade7a69509f00c5",
+    "payload": null,
+    "encryption": {
+      "algorithm": "xchacha20-poly1305",
+      "key_id": "key_01J0000000000000000000000G",
+      "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "ciphertext": "ZW5jcnlwdGVkLXJlY29yZA==",
+      "ciphertext_sha256": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    }
+  }
+}

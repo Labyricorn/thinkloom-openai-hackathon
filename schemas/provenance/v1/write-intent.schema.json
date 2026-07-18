@@ -1,0 +1,130 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://thinkloom.app/schemas/provenance/1.0/write-intent.schema.json",
+  "title": "Cross-store write intent",
+  "description": "Rebuildable SQLite coordination record for a cross-store mutation.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "intent_id": {
+      "type": "string",
+      "pattern": "^intent_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "client_action_id": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 200
+    },
+    "project_id": {
+      "type": "string",
+      "pattern": "^project_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "operation_type": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9_]+$"
+    },
+    "phase": {
+      "enum": [
+        "PREPARED",
+        "RECORDS_DURABLE",
+        "LEDGER_APPENDED",
+        "CHAIN_HEAD_ADVANCED",
+        "SQLITE_APPLIED",
+        "COMPLETE",
+        "QUARANTINED",
+        "FAILED"
+      ]
+    },
+    "event_id": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^event_[0-9A-HJKMNP-TV-Z]{26}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "event_sequence": {
+      "anyOf": [
+        {
+          "type": "integer",
+          "minimum": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "staged_path": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?!/)(?![A-Za-z]:)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(?:/|$))[^\\u0000-\\u001f]+$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "command_sha256": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "result": {
+      "anyOf": [
+        {},
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+    }
+  },
+  "required": [
+    "schema_version",
+    "intent_id",
+    "client_action_id",
+    "project_id",
+    "operation_type",
+    "phase",
+    "event_id",
+    "event_sequence",
+    "staged_path",
+    "command_sha256",
+    "result",
+    "created_at",
+    "updated_at"
+  ],
+  "additionalProperties": false,
+  "examples": [
+    {
+      "schema_version": "1.0",
+      "intent_id": "intent_01J00000000000000000000002",
+      "client_action_id": "client-action-0001",
+      "project_id": "project_01J00000000000000000000001",
+      "operation_type": "IDEA_ACCEPTED",
+      "phase": "PREPARED",
+      "event_id": null,
+      "event_sequence": null,
+      "staged_path": ".app/temp/intents/intent.json",
+      "command_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+      "result": null,
+      "created_at": "2026-07-17T18:42:10.123Z",
+      "updated_at": "2026-07-17T18:42:10.123Z"
+    }
+  ]
+}

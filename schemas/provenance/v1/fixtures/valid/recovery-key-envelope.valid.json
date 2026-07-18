@@ -1,0 +1,22 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/recovery-key-envelope.schema.json",
+  "description": "Valid Recovery key envelope example.",
+  "instance": {
+    "schema_version": "1.0",
+    "envelope_id": "record_01J0000000000000000000000S",
+    "key_id": "key_01J0000000000000000000000G",
+    "envelope_type": "recovery",
+    "algorithm": "xchacha20-poly1305",
+    "key_derivation": {
+      "algorithm": "argon2id",
+      "memory_kib": 65536,
+      "iterations": 3,
+      "parallelism": 1,
+      "salt": "c2FsdC1mb3ItdGhpbmtsb29t"
+    },
+    "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "wrapped_key": "d3JhcHBlZC1wcm9qZWN0LWtleQ==",
+    "ciphertext_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "created_at": "2026-07-17T18:42:10.123Z"
+  }
+}

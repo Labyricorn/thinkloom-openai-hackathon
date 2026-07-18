@@ -1,0 +1,1366 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/disposition-revision.schema.json",
+  "cases": [
+    {
+      "description": "disposition-revision.schema_version: reject missing required property",
+      "instance": {
+        "disposition_id": "disposition_01J0000000000000000000000M",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "revision_number": 1,
+        "status": "partially_accepted",
+        "accepted_ranges": [
+          {
+            "schema_version": "1.0",
+            "document_revision_id": "revision_01J0000000000000000000000A",
+            "coordinate_system": "utf8_byte",
+            "start": 0,
+            "end": 12,
+            "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+            "text_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "rejected_ranges": [],
+        "destination": {
+          "revision_id": "revision_01J0000000000000000000000B",
+          "path": "manuscript/revisions/revision.md",
+          "operation": "insert",
+          "position": 0
+        },
+        "stale_context_resolution": "revalidated",
+        "decided_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "disposition-revision.disposition_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "revision_number": 1,
+        "status": "partially_accepted",
+        "accepted_ranges": [
+          {
+            "schema_version": "1.0",
+            "document_revision_id": "revision_01J0000000000000000000000A",
+            "coordinate_system": "utf8_byte",
+            "start": 0,
+            "end": 12,
+            "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+            "text_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "rejected_ranges": [],
+        "destination": {
+          "revision_id": "revision_01J0000000000000000000000B",
+          "path": "manuscript/revisions/revision.md",
+          "operation": "insert",
+          "position": 0
+        },
+        "stale_context_resolution": "revalidated",
+        "decided_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "disposition-revision.invocation_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "disposition_id": "disposition_01J0000000000000000000000M",
+        "revision_number": 1,
+        "status": "partially_accepted",
+        "accepted_ranges": [
+          {
+            "schema_version": "1.0",
+            "document_revision_id": "revision_01J0000000000000000000000A",
+            "coordinate_system": "utf8_byte",
+            "start": 0,
+            "end": 12,
+            "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+            "text_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "rejected_ranges": [],
+        "destination": {
+          "revision_id": "revision_01J0000000000000000000000B",
+          "path": "manuscript/revisions/revision.md",
+          "operation": "insert",
+          "position": 0
+        },
+        "stale_context_resolution": "revalidated",
+        "decided_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "disposition-revision.revision_number: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "disposition_id": "disposition_01J0000000000000000000000M",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "status": "partially_accepted",
+        "accepted_ranges": [
+          {
+            "schema_version": "1.0",
+            "document_revision_id": "revision_01J0000000000000000000000A",
+            "coordinate_system": "utf8_byte",
+            "start": 0,
+            "end": 12,
+            "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+            "text_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "rejected_ranges": [],
+        "destination": {
+          "revision_id": "revision_01J0000000000000000000000B",
+          "path": "manuscript/revisions/revision.md",
+          "operation": "insert",
+          "position": 0
+        },
+        "stale_context_resolution": "revalidated",
+        "decided_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "disposition-revision.status: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "disposition_id": "disposition_01J0000000000000000000000M",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "revision_number": 1,
+        "accepted_ranges": [
+          {
+            "schema_version": "1.0",
+            "document_revision_id": "revision_01J0000000000000000000000A",
+            "coordinate_system": "utf8_byte",
+            "start": 0,
+            "end": 12,
+            "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+            "text_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "rejected_ranges": [],
+        "destination": {
+          "revision_id": "revision_01J0000000000000000000000B",
+          "path": "manuscript/revisions/revision.md",
+          "operation": "insert",
+          "position": 0
+        },
+        "stale_context_resolution": "revalidated",
+        "decided_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "disposition-revision.accepted_ranges: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "disposition_id": "disposition_01J0000000000000000000000M",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "revision_number": 1,
+        "status": "partially_accepted",
+        "rejected_ranges": [],
+        "destination": {
+          "revision_id": "revision_01J0000000000000000000000B",
+          "path": "manuscript/revisions/revision.md",
+          "operation": "insert",
+          "position": 0
+        },
+        "stale_context_resolution": "revalidated",
+        "decided_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "disposition-revision.rejected_ranges: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "disposition_id": "disposition_01J0000000000000000000000M",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "revision_number": 1,
+        "status": "partially_accepted",
+        "accepted_ranges": [
+          {
+            "schema_version": "1.0",
+            "document_revision_id": "revision_01J0000000000000000000000A",
+            "coordinate_system": "utf8_byte",
+            "start": 0,
+            "end": 12,
+            "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+            "text_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "destination": {
+          "revision_id": "revision_01J0000000000000000000000B",
+          "path": "manuscript/revisions/revision.md",
+          "operation": "insert",
+          "position": 0
+        },
+        "stale_context_resolution": "revalidated",
+        "decided_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "disposition-revision.destination: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "disposition_id": "disposition_01J0000000000000000000000M",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "revision_number": 1,
+        "status": "partially_accepted",
+        "accepted_ranges": [
+          {
+            "schema_version": "1.0",
+            "document_revision_id": "revision_01J0000000000000000000000A",
+            "coordinate_system": "utf8_byte",
+            "start": 0,
+            "end": 12,
+            "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+            "text_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "rejected_ranges": [],
+        "stale_context_resolution": "revalidated",
+        "decided_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "disposition-revision.stale_context_resolution: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "disposition_id": "disposition_01J0000000000000000000000M",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "revision_number": 1,
+        "status": "partially_accepted",
+        "accepted_ranges": [
+          {
+            "schema_version": "1.0",
+            "document_revision_id": "revision_01J0000000000000000000000A",
+            "coordinate_system": "utf8_byte",
+            "start": 0,
+            "end": 12,
+            "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+            "text_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "rejected_ranges": [],
+        "destination": {
+          "revision_id": "revision_01J0000000000000000000000B",
+          "path": "manuscript/revisions/revision.md",
+          "operation": "insert",
+          "position": 0
+        },
+        "decided_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "disposition-revision.decided_at: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "disposition_id": "disposition_01J0000000000000000000000M",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "revision_number": 1,
+        "status": "partially_accepted",
+        "accepted_ranges": [
+          {
+            "schema_version": "1.0",
+            "document_revision_id": "revision_01J0000000000000000000000A",
+            "coordinate_system": "utf8_byte",
+            "start": 0,
+            "end": 12,
+            "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+            "text_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "rejected_ranges": [],
+        "destination": {
+          "revision_id": "revision_01J0000000000000000000000B",
+          "path": "manuscript/revisions/revision.md",
+          "operation": "insert",
+          "position": 0
+        },
+        "stale_context_resolution": "revalidated",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "disposition-revision.event_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "disposition_id": "disposition_01J0000000000000000000000M",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "revision_number": 1,
+        "status": "partially_accepted",
+        "accepted_ranges": [
+          {
+            "schema_version": "1.0",
+            "document_revision_id": "revision_01J0000000000000000000000A",
+            "coordinate_system": "utf8_byte",
+            "start": 0,
+            "end": 12,
+            "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+            "text_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "rejected_ranges": [],
+        "destination": {
+          "revision_id": "revision_01J0000000000000000000000B",
+          "path": "manuscript/revisions/revision.md",
+          "operation": "insert",
+          "position": 0
+        },
+        "stale_context_resolution": "revalidated",
+        "decided_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "disposition-revision: reject unexpected property",
+      "instance": {
+        "schema_version": "1.0",
+        "disposition_id": "disposition_01J0000000000000000000000M",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "revision_number": 1,
+        "status": "partially_accepted",
+        "accepted_ranges": [
+          {
+            "schema_version": "1.0",
+            "document_revision_id": "revision_01J0000000000000000000000A",
+            "coordinate_system": "utf8_byte",
+            "start": 0,
+            "end": 12,
+            "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+            "text_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "rejected_ranges": [],
+        "destination": {
+          "revision_id": "revision_01J0000000000000000000000B",
+          "path": "manuscript/revisions/revision.md",
+          "operation": "insert",
+          "position": 0
+        },
+        "stale_context_resolution": "revalidated",
+        "decided_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004",
+        "__unexpected": true
+      }
+    },
+    {
+      "description": "disposition-revision.schema_version: reject value different from const",
+      "instance": {
+        "schema_version": "__INVALID_CONST__",
+        "disposition_id": "disposition_01J0000000000000000000000M",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "revision_number": 1,
+        "status": "partially_accepted",
+        "accepted_ranges": [
+          {
+            "schema_version": "1.0",
+            "document_revision_id": "revision_01J0000000000000000000000A",
+            "coordinate_system": "utf8_byte",
+            "start": 0,
+            "end": 12,
+            "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+            "text_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "rejected_ranges": [],
+        "destination": {
+          "revision_id": "revision_01J0000000000000000000000B",
+          "path": "manuscript/revisions/revision.md",
+          "operation": "insert",
+          "position": 0
+        },
+        "stale_context_resolution": "revalidated",
+        "decided_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "disposition-revision.disposition_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "disposition_id": "invalid-id",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "revision_number": 1,
+        "status": "partially_accepted",
+        "accepted_ranges": [
+          {
+            "schema_version": "1.0",
+            "document_revision_id": "revision_01J0000000000000000000000A",
+            "coordinate_system": "utf8_byte",
+            "start": 0,
+            "end": 12,
+            "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+            "text_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "rejected_ranges": [],
+        "destination": {
+          "revision_id": "revision_01J0000000000000000000000B",
+          "path": "manuscript/revisions/revision.md",
+          "operation": "insert",
+          "position": 0
+        },
+        "stale_context_resolution": "revalidated",
+        "decided_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "disposition-revision.invocation_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "disposition_id": "disposition_01J0000000000000000000000M",
+        "invocation_id": "invalid-id",
+        "revision_number": 1,
+        "status": "partially_accepted",
+        "accepted_ranges": [
+          {
+            "schema_version": "1.0",
+            "document_revision_id": "revision_01J0000000000000000000000A",
+            "coordinate_system": "utf8_byte",
+            "start": 0,
+            "end": 12,
+            "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+            "text_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "rejected_ranges": [],
+        "destination": {
+          "revision_id": "revision_01J0000000000000000000000B",
+          "path": "manuscript/revisions/revision.md",
+          "operation": "insert",
+          "position": 0
+        },
+        "stale_context_resolution": "revalidated",
+        "decided_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "disposition-revision.revision_number: reject value below minimum",
+      "instance": {
+        "schema_version": "1.0",
+        "disposition_id": "disposition_01J0000000000000000000000M",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "revision_number": 0,
+        "status": "partially_accepted",
+        "accepted_ranges": [
+          {
+            "schema_version": "1.0",
+            "document_revision_id": "revision_01J0000000000000000000000A",
+            "coordinate_system": "utf8_byte",
+            "start": 0,
+            "end": 12,
+            "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+            "text_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "rejected_ranges": [],
+        "destination": {
+          "revision_id": "revision_01J0000000000000000000000B",
+          "path": "manuscript/revisions/revision.md",
+          "operation": "insert",
+          "position": 0
+        },
+        "stale_context_resolution": "revalidated",
+        "decided_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "disposition-revision.status: reject value outside enum",
+      "instance": {
+        "schema_version": "1.0",
+        "disposition_id": "disposition_01J0000000000000000000000M",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "revision_number": 1,
+        "status": "__INVALID_ENUM__",
+        "accepted_ranges": [
+          {
+            "schema_version": "1.0",
+            "document_revision_id": "revision_01J0000000000000000000000A",
+            "coordinate_system": "utf8_byte",
+            "start": 0,
+            "end": 12,
+            "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+            "text_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "rejected_ranges": [],
+        "destination": {
+          "revision_id": "revision_01J0000000000000000000000B",
+          "path": "manuscript/revisions/revision.md",
+          "operation": "insert",
+          "position": 0
+        },
+        "stale_context_resolution": "revalidated",
+        "decided_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "disposition-revision.accepted_ranges[0].schema_version: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "disposition_id": "disposition_01J0000000000000000000000M",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "revision_number": 1,
+        "status": "partially_accepted",
+        "accepted_ranges": [
+          {
+            "document_revision_id": "revision_01J0000000000000000000000A",
+            "coordinate_system": "utf8_byte",
+            "start": 0,
+            "end": 12,
+            "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+            "text_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "rejected_ranges": [],
+        "destination": {
+          "revision_id": "revision_01J0000000000000000000000B",
+          "path": "manuscript/revisions/revision.md",
+          "operation": "insert",
+          "position": 0
+        },
+        "stale_context_resolution": "revalidated",
+        "decided_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "disposition-revision.accepted_ranges[0].document_revision_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "disposition_id": "disposition_01J0000000000000000000000M",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "revision_number": 1,
+        "status": "partially_accepted",
+        "accepted_ranges": [
+          {
+            "schema_version": "1.0",
+            "coordinate_system": "utf8_byte",
+            "start": 0,
+            "end": 12,
+            "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+            "text_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "rejected_ranges": [],
+        "destination": {
+          "revision_id": "revision_01J0000000000000000000000B",
+          "path": "manuscript/revisions/revision.md",
+          "operation": "insert",
+          "position": 0
+        },
+        "stale_context_resolution": "revalidated",
+        "decided_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "disposition-revision.accepted_ranges[0].coordinate_system: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "disposition_id": "disposition_01J0000000000000000000000M",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "revision_number": 1,
+        "status": "partially_accepted",
+        "accepted_ranges": [
+          {
+            "schema_version": "1.0",
+            "document_revision_id": "revision_01J0000000000000000000000A",
+            "start": 0,
+            "end": 12,
+            "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+            "text_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "rejected_ranges": [],
+        "destination": {
+          "revision_id": "revision_01J0000000000000000000000B",
+          "path": "manuscript/revisions/revision.md",
+          "operation": "insert",
+          "position": 0
+        },
+        "stale_context_resolution": "revalidated",
+        "decided_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "disposition-revision.accepted_ranges[0].start: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "disposition_id": "disposition_01J0000000000000000000000M",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "revision_number": 1,
+        "status": "partially_accepted",
+        "accepted_ranges": [
+          {
+            "schema_version": "1.0",
+            "document_revision_id": "revision_01J0000000000000000000000A",
+            "coordinate_system": "utf8_byte",
+            "end": 12,
+            "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+            "text_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "rejected_ranges": [],
+        "destination": {
+          "revision_id": "revision_01J0000000000000000000000B",
+          "path": "manuscript/revisions/revision.md",
+          "operation": "insert",
+          "position": 0
+        },
+        "stale_context_resolution": "revalidated",
+        "decided_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "disposition-revision.accepted_ranges[0].end: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "disposition_id": "disposition_01J0000000000000000000000M",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "revision_number": 1,
+        "status": "partially_accepted",
+        "accepted_ranges": [
+          {
+            "schema_version": "1.0",
+            "document_revision_id": "revision_01J0000000000000000000000A",
+            "coordinate_system": "utf8_byte",
+            "start": 0,
+            "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+            "text_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "rejected_ranges": [],
+        "destination": {
+          "revision_id": "revision_01J0000000000000000000000B",
+          "path": "manuscript/revisions/revision.md",
+          "operation": "insert",
+          "position": 0
+        },
+        "stale_context_resolution": "revalidated",
+        "decided_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "disposition-revision.accepted_ranges[0].preimage_sha256: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "disposition_id": "disposition_01J0000000000000000000000M",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "revision_number": 1,
+        "status": "partially_accepted",
+        "accepted_ranges": [
+          {
+            "schema_version": "1.0",
+            "document_revision_id": "revision_01J0000000000000000000000A",
+            "coordinate_system": "utf8_byte",
+            "start": 0,
+            "end": 12,
+            "text_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "rejected_ranges": [],
+        "destination": {
+          "revision_id": "revision_01J0000000000000000000000B",
+          "path": "manuscript/revisions/revision.md",
+          "operation": "insert",
+          "position": 0
+        },
+        "stale_context_resolution": "revalidated",
+        "decided_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "disposition-revision.accepted_ranges[0].text_fragment_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "disposition_id": "disposition_01J0000000000000000000000M",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "revision_number": 1,
+        "status": "partially_accepted",
+        "accepted_ranges": [
+          {
+            "schema_version": "1.0",
+            "document_revision_id": "revision_01J0000000000000000000000A",
+            "coordinate_system": "utf8_byte",
+            "start": 0,
+            "end": 12,
+            "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111"
+          }
+        ],
+        "rejected_ranges": [],
+        "destination": {
+          "revision_id": "revision_01J0000000000000000000000B",
+          "path": "manuscript/revisions/revision.md",
+          "operation": "insert",
+          "position": 0
+        },
+        "stale_context_resolution": "revalidated",
+        "decided_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "disposition-revision.accepted_ranges[0]: reject unexpected property",
+      "instance": {
+        "schema_version": "1.0",
+        "disposition_id": "disposition_01J0000000000000000000000M",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "revision_number": 1,
+        "status": "partially_accepted",
+        "accepted_ranges": [
+          {
+            "schema_version": "1.0",
+            "document_revision_id": "revision_01J0000000000000000000000A",
+            "coordinate_system": "utf8_byte",
+            "start": 0,
+            "end": 12,
+            "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+            "text_fragment_id": "fragment_01J0000000000000000000000C",
+            "__unexpected": true
+          }
+        ],
+        "rejected_ranges": [],
+        "destination": {
+          "revision_id": "revision_01J0000000000000000000000B",
+          "path": "manuscript/revisions/revision.md",
+          "operation": "insert",
+          "position": 0
+        },
+        "stale_context_resolution": "revalidated",
+        "decided_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "disposition-revision.accepted_ranges[0].schema_version: reject value different from const",
+      "instance": {
+        "schema_version": "1.0",
+        "disposition_id": "disposition_01J0000000000000000000000M",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "revision_number": 1,
+        "status": "partially_accepted",
+        "accepted_ranges": [
+          {
+            "schema_version": "__INVALID_CONST__",
+            "document_revision_id": "revision_01J0000000000000000000000A",
+            "coordinate_system": "utf8_byte",
+            "start": 0,
+            "end": 12,
+            "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+            "text_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "rejected_ranges": [],
+        "destination": {
+          "revision_id": "revision_01J0000000000000000000000B",
+          "path": "manuscript/revisions/revision.md",
+          "operation": "insert",
+          "position": 0
+        },
+        "stale_context_resolution": "revalidated",
+        "decided_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "disposition-revision.accepted_ranges[0].document_revision_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "disposition_id": "disposition_01J0000000000000000000000M",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "revision_number": 1,
+        "status": "partially_accepted",
+        "accepted_ranges": [
+          {
+            "schema_version": "1.0",
+            "document_revision_id": "invalid-id",
+            "coordinate_system": "utf8_byte",
+            "start": 0,
+            "end": 12,
+            "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+            "text_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "rejected_ranges": [],
+        "destination": {
+          "revision_id": "revision_01J0000000000000000000000B",
+          "path": "manuscript/revisions/revision.md",
+          "operation": "insert",
+          "position": 0
+        },
+        "stale_context_resolution": "revalidated",
+        "decided_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "disposition-revision.accepted_ranges[0].coordinate_system: reject value outside enum",
+      "instance": {
+        "schema_version": "1.0",
+        "disposition_id": "disposition_01J0000000000000000000000M",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "revision_number": 1,
+        "status": "partially_accepted",
+        "accepted_ranges": [
+          {
+            "schema_version": "1.0",
+            "document_revision_id": "revision_01J0000000000000000000000A",
+            "coordinate_system": "__INVALID_ENUM__",
+            "start": 0,
+            "end": 12,
+            "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+            "text_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "rejected_ranges": [],
+        "destination": {
+          "revision_id": "revision_01J0000000000000000000000B",
+          "path": "manuscript/revisions/revision.md",
+          "operation": "insert",
+          "position": 0
+        },
+        "stale_context_resolution": "revalidated",
+        "decided_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "disposition-revision.accepted_ranges[0].start: reject value below minimum",
+      "instance": {
+        "schema_version": "1.0",
+        "disposition_id": "disposition_01J0000000000000000000000M",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "revision_number": 1,
+        "status": "partially_accepted",
+        "accepted_ranges": [
+          {
+            "schema_version": "1.0",
+            "document_revision_id": "revision_01J0000000000000000000000A",
+            "coordinate_system": "utf8_byte",
+            "start": -1,
+            "end": 12,
+            "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+            "text_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "rejected_ranges": [],
+        "destination": {
+          "revision_id": "revision_01J0000000000000000000000B",
+          "path": "manuscript/revisions/revision.md",
+          "operation": "insert",
+          "position": 0
+        },
+        "stale_context_resolution": "revalidated",
+        "decided_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "disposition-revision.accepted_ranges[0].end: reject value below minimum",
+      "instance": {
+        "schema_version": "1.0",
+        "disposition_id": "disposition_01J0000000000000000000000M",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "revision_number": 1,
+        "status": "partially_accepted",
+        "accepted_ranges": [
+          {
+            "schema_version": "1.0",
+            "document_revision_id": "revision_01J0000000000000000000000A",
+            "coordinate_system": "utf8_byte",
+            "start": 0,
+            "end": -1,
+            "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+            "text_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "rejected_ranges": [],
+        "destination": {
+          "revision_id": "revision_01J0000000000000000000000B",
+          "path": "manuscript/revisions/revision.md",
+          "operation": "insert",
+          "position": 0
+        },
+        "stale_context_resolution": "revalidated",
+        "decided_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "disposition-revision.accepted_ranges[0].preimage_sha256: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "disposition_id": "disposition_01J0000000000000000000000M",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "revision_number": 1,
+        "status": "partially_accepted",
+        "accepted_ranges": [
+          {
+            "schema_version": "1.0",
+            "document_revision_id": "revision_01J0000000000000000000000A",
+            "coordinate_system": "utf8_byte",
+            "start": 0,
+            "end": 12,
+            "preimage_sha256": "sha256:INVALID",
+            "text_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "rejected_ranges": [],
+        "destination": {
+          "revision_id": "revision_01J0000000000000000000000B",
+          "path": "manuscript/revisions/revision.md",
+          "operation": "insert",
+          "position": 0
+        },
+        "stale_context_resolution": "revalidated",
+        "decided_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "disposition-revision.accepted_ranges[0].text_fragment_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "disposition_id": "disposition_01J0000000000000000000000M",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "revision_number": 1,
+        "status": "partially_accepted",
+        "accepted_ranges": [
+          {
+            "schema_version": "1.0",
+            "document_revision_id": "revision_01J0000000000000000000000A",
+            "coordinate_system": "utf8_byte",
+            "start": 0,
+            "end": 12,
+            "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+            "text_fragment_id": "invalid-id"
+          }
+        ],
+        "rejected_ranges": [],
+        "destination": {
+          "revision_id": "revision_01J0000000000000000000000B",
+          "path": "manuscript/revisions/revision.md",
+          "operation": "insert",
+          "position": 0
+        },
+        "stale_context_resolution": "revalidated",
+        "decided_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "disposition-revision.destination.revision_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "disposition_id": "disposition_01J0000000000000000000000M",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "revision_number": 1,
+        "status": "partially_accepted",
+        "accepted_ranges": [
+          {
+            "schema_version": "1.0",
+            "document_revision_id": "revision_01J0000000000000000000000A",
+            "coordinate_system": "utf8_byte",
+            "start": 0,
+            "end": 12,
+            "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+            "text_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "rejected_ranges": [],
+        "destination": {
+          "path": "manuscript/revisions/revision.md",
+          "operation": "insert",
+          "position": 0
+        },
+        "stale_context_resolution": "revalidated",
+        "decided_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "disposition-revision.destination.path: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "disposition_id": "disposition_01J0000000000000000000000M",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "revision_number": 1,
+        "status": "partially_accepted",
+        "accepted_ranges": [
+          {
+            "schema_version": "1.0",
+            "document_revision_id": "revision_01J0000000000000000000000A",
+            "coordinate_system": "utf8_byte",
+            "start": 0,
+            "end": 12,
+            "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+            "text_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "rejected_ranges": [],
+        "destination": {
+          "revision_id": "revision_01J0000000000000000000000B",
+          "operation": "insert",
+          "position": 0
+        },
+        "stale_context_resolution": "revalidated",
+        "decided_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "disposition-revision.destination.operation: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "disposition_id": "disposition_01J0000000000000000000000M",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "revision_number": 1,
+        "status": "partially_accepted",
+        "accepted_ranges": [
+          {
+            "schema_version": "1.0",
+            "document_revision_id": "revision_01J0000000000000000000000A",
+            "coordinate_system": "utf8_byte",
+            "start": 0,
+            "end": 12,
+            "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+            "text_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "rejected_ranges": [],
+        "destination": {
+          "revision_id": "revision_01J0000000000000000000000B",
+          "path": "manuscript/revisions/revision.md",
+          "position": 0
+        },
+        "stale_context_resolution": "revalidated",
+        "decided_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "disposition-revision.destination.position: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "disposition_id": "disposition_01J0000000000000000000000M",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "revision_number": 1,
+        "status": "partially_accepted",
+        "accepted_ranges": [
+          {
+            "schema_version": "1.0",
+            "document_revision_id": "revision_01J0000000000000000000000A",
+            "coordinate_system": "utf8_byte",
+            "start": 0,
+            "end": 12,
+            "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+            "text_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "rejected_ranges": [],
+        "destination": {
+          "revision_id": "revision_01J0000000000000000000000B",
+          "path": "manuscript/revisions/revision.md",
+          "operation": "insert"
+        },
+        "stale_context_resolution": "revalidated",
+        "decided_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "disposition-revision.destination: reject unexpected property",
+      "instance": {
+        "schema_version": "1.0",
+        "disposition_id": "disposition_01J0000000000000000000000M",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "revision_number": 1,
+        "status": "partially_accepted",
+        "accepted_ranges": [
+          {
+            "schema_version": "1.0",
+            "document_revision_id": "revision_01J0000000000000000000000A",
+            "coordinate_system": "utf8_byte",
+            "start": 0,
+            "end": 12,
+            "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+            "text_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "rejected_ranges": [],
+        "destination": {
+          "revision_id": "revision_01J0000000000000000000000B",
+          "path": "manuscript/revisions/revision.md",
+          "operation": "insert",
+          "position": 0,
+          "__unexpected": true
+        },
+        "stale_context_resolution": "revalidated",
+        "decided_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "disposition-revision.destination.revision_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "disposition_id": "disposition_01J0000000000000000000000M",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "revision_number": 1,
+        "status": "partially_accepted",
+        "accepted_ranges": [
+          {
+            "schema_version": "1.0",
+            "document_revision_id": "revision_01J0000000000000000000000A",
+            "coordinate_system": "utf8_byte",
+            "start": 0,
+            "end": 12,
+            "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+            "text_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "rejected_ranges": [],
+        "destination": {
+          "revision_id": "invalid-id",
+          "path": "manuscript/revisions/revision.md",
+          "operation": "insert",
+          "position": 0
+        },
+        "stale_context_resolution": "revalidated",
+        "decided_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "disposition-revision.destination.path: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "disposition_id": "disposition_01J0000000000000000000000M",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "revision_number": 1,
+        "status": "partially_accepted",
+        "accepted_ranges": [
+          {
+            "schema_version": "1.0",
+            "document_revision_id": "revision_01J0000000000000000000000A",
+            "coordinate_system": "utf8_byte",
+            "start": 0,
+            "end": 12,
+            "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+            "text_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "rejected_ranges": [],
+        "destination": {
+          "revision_id": "revision_01J0000000000000000000000B",
+          "path": "../outside-project",
+          "operation": "insert",
+          "position": 0
+        },
+        "stale_context_resolution": "revalidated",
+        "decided_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "disposition-revision.destination.path: reject string below minLength",
+      "instance": {
+        "schema_version": "1.0",
+        "disposition_id": "disposition_01J0000000000000000000000M",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "revision_number": 1,
+        "status": "partially_accepted",
+        "accepted_ranges": [
+          {
+            "schema_version": "1.0",
+            "document_revision_id": "revision_01J0000000000000000000000A",
+            "coordinate_system": "utf8_byte",
+            "start": 0,
+            "end": 12,
+            "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+            "text_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "rejected_ranges": [],
+        "destination": {
+          "revision_id": "revision_01J0000000000000000000000B",
+          "path": "",
+          "operation": "insert",
+          "position": 0
+        },
+        "stale_context_resolution": "revalidated",
+        "decided_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "disposition-revision.destination.operation: reject value outside enum",
+      "instance": {
+        "schema_version": "1.0",
+        "disposition_id": "disposition_01J0000000000000000000000M",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "revision_number": 1,
+        "status": "partially_accepted",
+        "accepted_ranges": [
+          {
+            "schema_version": "1.0",
+            "document_revision_id": "revision_01J0000000000000000000000A",
+            "coordinate_system": "utf8_byte",
+            "start": 0,
+            "end": 12,
+            "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+            "text_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "rejected_ranges": [],
+        "destination": {
+          "revision_id": "revision_01J0000000000000000000000B",
+          "path": "manuscript/revisions/revision.md",
+          "operation": "__INVALID_ENUM__",
+          "position": 0
+        },
+        "stale_context_resolution": "revalidated",
+        "decided_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "disposition-revision.destination.position: reject value below minimum",
+      "instance": {
+        "schema_version": "1.0",
+        "disposition_id": "disposition_01J0000000000000000000000M",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "revision_number": 1,
+        "status": "partially_accepted",
+        "accepted_ranges": [
+          {
+            "schema_version": "1.0",
+            "document_revision_id": "revision_01J0000000000000000000000A",
+            "coordinate_system": "utf8_byte",
+            "start": 0,
+            "end": 12,
+            "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+            "text_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "rejected_ranges": [],
+        "destination": {
+          "revision_id": "revision_01J0000000000000000000000B",
+          "path": "manuscript/revisions/revision.md",
+          "operation": "insert",
+          "position": -1
+        },
+        "stale_context_resolution": "revalidated",
+        "decided_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "disposition-revision.stale_context_resolution: reject value outside enum",
+      "instance": {
+        "schema_version": "1.0",
+        "disposition_id": "disposition_01J0000000000000000000000M",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "revision_number": 1,
+        "status": "partially_accepted",
+        "accepted_ranges": [
+          {
+            "schema_version": "1.0",
+            "document_revision_id": "revision_01J0000000000000000000000A",
+            "coordinate_system": "utf8_byte",
+            "start": 0,
+            "end": 12,
+            "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+            "text_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "rejected_ranges": [],
+        "destination": {
+          "revision_id": "revision_01J0000000000000000000000B",
+          "path": "manuscript/revisions/revision.md",
+          "operation": "insert",
+          "position": 0
+        },
+        "stale_context_resolution": "__INVALID_ENUM__",
+        "decided_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "disposition-revision.decided_at: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "disposition_id": "disposition_01J0000000000000000000000M",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "revision_number": 1,
+        "status": "partially_accepted",
+        "accepted_ranges": [
+          {
+            "schema_version": "1.0",
+            "document_revision_id": "revision_01J0000000000000000000000A",
+            "coordinate_system": "utf8_byte",
+            "start": 0,
+            "end": 12,
+            "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+            "text_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "rejected_ranges": [],
+        "destination": {
+          "revision_id": "revision_01J0000000000000000000000B",
+          "path": "manuscript/revisions/revision.md",
+          "operation": "insert",
+          "position": 0
+        },
+        "stale_context_resolution": "revalidated",
+        "decided_at": "not-a-timestamp",
+        "event_id": "event_01J00000000000000000000004"
+      }
+    },
+    {
+      "description": "disposition-revision.event_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "disposition_id": "disposition_01J0000000000000000000000M",
+        "invocation_id": "invocation_01J00000000000000000000008",
+        "revision_number": 1,
+        "status": "partially_accepted",
+        "accepted_ranges": [
+          {
+            "schema_version": "1.0",
+            "document_revision_id": "revision_01J0000000000000000000000A",
+            "coordinate_system": "utf8_byte",
+            "start": 0,
+            "end": 12,
+            "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+            "text_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        ],
+        "rejected_ranges": [],
+        "destination": {
+          "revision_id": "revision_01J0000000000000000000000B",
+          "path": "manuscript/revisions/revision.md",
+          "operation": "insert",
+          "position": 0
+        },
+        "stale_context_resolution": "revalidated",
+        "decided_at": "2026-07-17T18:43:11.456Z",
+        "event_id": "invalid-id"
+      }
+    }
+  ]
+}

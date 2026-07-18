@@ -1,0 +1,160 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://thinkloom.app/schemas/provenance/1.0/record-envelope.schema.json",
+  "title": "Authoritative record envelope",
+  "description": "Stable logical record identity with plaintext or authenticated protected payload.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "project_id": {
+      "type": "string",
+      "pattern": "^project_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "record_id": {
+      "type": "string",
+      "pattern": "^record_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "record_type": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]+$"
+    },
+    "protection": {
+      "enum": [
+        "none",
+        "protected"
+      ]
+    },
+    "plaintext_sha256": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "payload": {
+      "anyOf": [
+        {},
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "encryption": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "algorithm": {
+              "const": "xchacha20-poly1305"
+            },
+            "key_id": {
+              "type": "string",
+              "pattern": "^key_[0-9A-HJKMNP-TV-Z]{26}$"
+            },
+            "nonce": {
+              "type": "string",
+              "minLength": 32
+            },
+            "ciphertext": {
+              "type": "string",
+              "minLength": 16
+            },
+            "ciphertext_sha256": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            }
+          },
+          "required": [
+            "algorithm",
+            "key_id",
+            "nonce",
+            "ciphertext",
+            "ciphertext_sha256"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "project_id",
+    "record_id",
+    "record_type",
+    "protection",
+    "plaintext_sha256",
+    "payload",
+    "encryption"
+  ],
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "protection": {
+            "const": "none"
+          }
+        },
+        "required": [
+          "protection"
+        ]
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "not": {
+              "type": "null"
+            }
+          },
+          "encryption": {
+            "type": "null"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "protection": {
+            "const": "protected"
+          }
+        },
+        "required": [
+          "protection"
+        ]
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "type": "null"
+          },
+          "encryption": {
+            "not": {
+              "type": "null"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "examples": [
+    {
+      "schema_version": "1.0",
+      "project_id": "project_01J00000000000000000000001",
+      "record_id": "record_01J00000000000000000000005",
+      "record_type": "invocation_request",
+      "protection": "protected",
+      "plaintext_sha256": "sha256:97154eddff15ab6607181e55945547fdbbc5bde02b1e5123eade7a69509f00c5",
+      "payload": null,
+      "encryption": {
+        "algorithm": "xchacha20-poly1305",
+        "key_id": "key_01J0000000000000000000000G",
+        "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "ciphertext": "ZW5jcnlwdGVkLXJlY29yZA==",
+        "ciphertext_sha256": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      }
+    }
+  ]
+}

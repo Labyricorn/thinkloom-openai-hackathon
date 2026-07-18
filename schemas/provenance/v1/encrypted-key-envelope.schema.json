@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://thinkloom.app/schemas/provenance/1.0/encrypted-key-envelope.schema.json",
+  "title": "Encrypted key envelope",
+  "description": "Authenticated envelope wrapping a project data-encryption key.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "envelope_id": {
+      "type": "string",
+      "pattern": "^record_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "key_id": {
+      "type": "string",
+      "pattern": "^key_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "envelope_type": {
+      "enum": [
+        "device",
+        "recovery"
+      ]
+    },
+    "algorithm": {
+      "enum": [
+        "xchacha20-poly1305"
+      ]
+    },
+    "key_derivation": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "algorithm": {
+              "const": "argon2id"
+            },
+            "memory_kib": {
+              "type": "integer",
+              "minimum": 65536
+            },
+            "iterations": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "parallelism": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "salt": {
+              "type": "string",
+              "minLength": 16
+            }
+          },
+          "required": [
+            "algorithm",
+            "memory_kib",
+            "iterations",
+            "parallelism",
+            "salt"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "nonce": {
+      "type": "string",
+      "minLength": 32
+    },
+    "wrapped_key": {
+      "type": "string",
+      "minLength": 16
+    },
+    "ciphertext_sha256": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+    }
+  },
+  "required": [
+    "schema_version",
+    "envelope_id",
+    "key_id",
+    "envelope_type",
+    "algorithm",
+    "key_derivation",
+    "nonce",
+    "wrapped_key",
+    "ciphertext_sha256",
+    "created_at"
+  ],
+  "additionalProperties": false,
+  "examples": [
+    {
+      "schema_version": "1.0",
+      "envelope_id": "record_01J00000000000000000000005",
+      "key_id": "key_01J0000000000000000000000G",
+      "envelope_type": "device",
+      "algorithm": "xchacha20-poly1305",
+      "key_derivation": null,
+      "nonce": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "wrapped_key": "d3JhcHBlZC1wcm9qZWN0LWtleQ==",
+      "ciphertext_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "created_at": "2026-07-17T18:42:10.123Z"
+    }
+  ]
+}

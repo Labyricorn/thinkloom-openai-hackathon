@@ -1,0 +1,916 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/verification-report.schema.json",
+  "cases": [
+    {
+      "description": "verification-report.schema_version: reject missing required property",
+      "instance": {
+        "verification_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "status": "VERIFIED_WITH_WARNINGS",
+        "verified_through_event_id": "event_01J00000000000000000000003",
+        "verified_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "checked_segments": 1,
+        "checked_events": 1,
+        "checked_records": 4,
+        "findings": [
+          {
+            "severity": "WARNING",
+            "code": "INDEX_STALE",
+            "message": "Contribution index is stale.",
+            "authoritative_evidence_affected": false,
+            "path": "provenance/indexes/contribution-graph.json",
+            "event_id": null
+          }
+        ],
+        "verifier_version": "1.0.0",
+        "completed_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "verification-report.verification_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "status": "VERIFIED_WITH_WARNINGS",
+        "verified_through_event_id": "event_01J00000000000000000000003",
+        "verified_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "checked_segments": 1,
+        "checked_events": 1,
+        "checked_records": 4,
+        "findings": [
+          {
+            "severity": "WARNING",
+            "code": "INDEX_STALE",
+            "message": "Contribution index is stale.",
+            "authoritative_evidence_affected": false,
+            "path": "provenance/indexes/contribution-graph.json",
+            "event_id": null
+          }
+        ],
+        "verifier_version": "1.0.0",
+        "completed_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "verification-report.project_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "verification_id": "record_01J00000000000000000000005",
+        "status": "VERIFIED_WITH_WARNINGS",
+        "verified_through_event_id": "event_01J00000000000000000000003",
+        "verified_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "checked_segments": 1,
+        "checked_events": 1,
+        "checked_records": 4,
+        "findings": [
+          {
+            "severity": "WARNING",
+            "code": "INDEX_STALE",
+            "message": "Contribution index is stale.",
+            "authoritative_evidence_affected": false,
+            "path": "provenance/indexes/contribution-graph.json",
+            "event_id": null
+          }
+        ],
+        "verifier_version": "1.0.0",
+        "completed_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "verification-report.status: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "verification_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "verified_through_event_id": "event_01J00000000000000000000003",
+        "verified_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "checked_segments": 1,
+        "checked_events": 1,
+        "checked_records": 4,
+        "findings": [
+          {
+            "severity": "WARNING",
+            "code": "INDEX_STALE",
+            "message": "Contribution index is stale.",
+            "authoritative_evidence_affected": false,
+            "path": "provenance/indexes/contribution-graph.json",
+            "event_id": null
+          }
+        ],
+        "verifier_version": "1.0.0",
+        "completed_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "verification-report.verified_through_event_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "verification_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "status": "VERIFIED_WITH_WARNINGS",
+        "verified_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "checked_segments": 1,
+        "checked_events": 1,
+        "checked_records": 4,
+        "findings": [
+          {
+            "severity": "WARNING",
+            "code": "INDEX_STALE",
+            "message": "Contribution index is stale.",
+            "authoritative_evidence_affected": false,
+            "path": "provenance/indexes/contribution-graph.json",
+            "event_id": null
+          }
+        ],
+        "verifier_version": "1.0.0",
+        "completed_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "verification-report.verified_chain_head: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "verification_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "status": "VERIFIED_WITH_WARNINGS",
+        "verified_through_event_id": "event_01J00000000000000000000003",
+        "checked_segments": 1,
+        "checked_events": 1,
+        "checked_records": 4,
+        "findings": [
+          {
+            "severity": "WARNING",
+            "code": "INDEX_STALE",
+            "message": "Contribution index is stale.",
+            "authoritative_evidence_affected": false,
+            "path": "provenance/indexes/contribution-graph.json",
+            "event_id": null
+          }
+        ],
+        "verifier_version": "1.0.0",
+        "completed_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "verification-report.checked_segments: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "verification_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "status": "VERIFIED_WITH_WARNINGS",
+        "verified_through_event_id": "event_01J00000000000000000000003",
+        "verified_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "checked_events": 1,
+        "checked_records": 4,
+        "findings": [
+          {
+            "severity": "WARNING",
+            "code": "INDEX_STALE",
+            "message": "Contribution index is stale.",
+            "authoritative_evidence_affected": false,
+            "path": "provenance/indexes/contribution-graph.json",
+            "event_id": null
+          }
+        ],
+        "verifier_version": "1.0.0",
+        "completed_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "verification-report.checked_events: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "verification_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "status": "VERIFIED_WITH_WARNINGS",
+        "verified_through_event_id": "event_01J00000000000000000000003",
+        "verified_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "checked_segments": 1,
+        "checked_records": 4,
+        "findings": [
+          {
+            "severity": "WARNING",
+            "code": "INDEX_STALE",
+            "message": "Contribution index is stale.",
+            "authoritative_evidence_affected": false,
+            "path": "provenance/indexes/contribution-graph.json",
+            "event_id": null
+          }
+        ],
+        "verifier_version": "1.0.0",
+        "completed_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "verification-report.checked_records: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "verification_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "status": "VERIFIED_WITH_WARNINGS",
+        "verified_through_event_id": "event_01J00000000000000000000003",
+        "verified_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "checked_segments": 1,
+        "checked_events": 1,
+        "findings": [
+          {
+            "severity": "WARNING",
+            "code": "INDEX_STALE",
+            "message": "Contribution index is stale.",
+            "authoritative_evidence_affected": false,
+            "path": "provenance/indexes/contribution-graph.json",
+            "event_id": null
+          }
+        ],
+        "verifier_version": "1.0.0",
+        "completed_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "verification-report.findings: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "verification_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "status": "VERIFIED_WITH_WARNINGS",
+        "verified_through_event_id": "event_01J00000000000000000000003",
+        "verified_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "checked_segments": 1,
+        "checked_events": 1,
+        "checked_records": 4,
+        "verifier_version": "1.0.0",
+        "completed_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "verification-report.verifier_version: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "verification_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "status": "VERIFIED_WITH_WARNINGS",
+        "verified_through_event_id": "event_01J00000000000000000000003",
+        "verified_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "checked_segments": 1,
+        "checked_events": 1,
+        "checked_records": 4,
+        "findings": [
+          {
+            "severity": "WARNING",
+            "code": "INDEX_STALE",
+            "message": "Contribution index is stale.",
+            "authoritative_evidence_affected": false,
+            "path": "provenance/indexes/contribution-graph.json",
+            "event_id": null
+          }
+        ],
+        "completed_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "verification-report.completed_at: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "verification_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "status": "VERIFIED_WITH_WARNINGS",
+        "verified_through_event_id": "event_01J00000000000000000000003",
+        "verified_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "checked_segments": 1,
+        "checked_events": 1,
+        "checked_records": 4,
+        "findings": [
+          {
+            "severity": "WARNING",
+            "code": "INDEX_STALE",
+            "message": "Contribution index is stale.",
+            "authoritative_evidence_affected": false,
+            "path": "provenance/indexes/contribution-graph.json",
+            "event_id": null
+          }
+        ],
+        "verifier_version": "1.0.0"
+      }
+    },
+    {
+      "description": "verification-report: reject unexpected property",
+      "instance": {
+        "schema_version": "1.0",
+        "verification_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "status": "VERIFIED_WITH_WARNINGS",
+        "verified_through_event_id": "event_01J00000000000000000000003",
+        "verified_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "checked_segments": 1,
+        "checked_events": 1,
+        "checked_records": 4,
+        "findings": [
+          {
+            "severity": "WARNING",
+            "code": "INDEX_STALE",
+            "message": "Contribution index is stale.",
+            "authoritative_evidence_affected": false,
+            "path": "provenance/indexes/contribution-graph.json",
+            "event_id": null
+          }
+        ],
+        "verifier_version": "1.0.0",
+        "completed_at": "2026-07-17T18:43:11.456Z",
+        "__unexpected": true
+      }
+    },
+    {
+      "description": "verification-report.schema_version: reject value different from const",
+      "instance": {
+        "schema_version": "__INVALID_CONST__",
+        "verification_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "status": "VERIFIED_WITH_WARNINGS",
+        "verified_through_event_id": "event_01J00000000000000000000003",
+        "verified_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "checked_segments": 1,
+        "checked_events": 1,
+        "checked_records": 4,
+        "findings": [
+          {
+            "severity": "WARNING",
+            "code": "INDEX_STALE",
+            "message": "Contribution index is stale.",
+            "authoritative_evidence_affected": false,
+            "path": "provenance/indexes/contribution-graph.json",
+            "event_id": null
+          }
+        ],
+        "verifier_version": "1.0.0",
+        "completed_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "verification-report.verification_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "verification_id": "invalid-id",
+        "project_id": "project_01J00000000000000000000001",
+        "status": "VERIFIED_WITH_WARNINGS",
+        "verified_through_event_id": "event_01J00000000000000000000003",
+        "verified_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "checked_segments": 1,
+        "checked_events": 1,
+        "checked_records": 4,
+        "findings": [
+          {
+            "severity": "WARNING",
+            "code": "INDEX_STALE",
+            "message": "Contribution index is stale.",
+            "authoritative_evidence_affected": false,
+            "path": "provenance/indexes/contribution-graph.json",
+            "event_id": null
+          }
+        ],
+        "verifier_version": "1.0.0",
+        "completed_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "verification-report.project_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "verification_id": "record_01J00000000000000000000005",
+        "project_id": "invalid-id",
+        "status": "VERIFIED_WITH_WARNINGS",
+        "verified_through_event_id": "event_01J00000000000000000000003",
+        "verified_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "checked_segments": 1,
+        "checked_events": 1,
+        "checked_records": 4,
+        "findings": [
+          {
+            "severity": "WARNING",
+            "code": "INDEX_STALE",
+            "message": "Contribution index is stale.",
+            "authoritative_evidence_affected": false,
+            "path": "provenance/indexes/contribution-graph.json",
+            "event_id": null
+          }
+        ],
+        "verifier_version": "1.0.0",
+        "completed_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "verification-report.status: reject value outside enum",
+      "instance": {
+        "schema_version": "1.0",
+        "verification_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "status": "__INVALID_ENUM__",
+        "verified_through_event_id": "event_01J00000000000000000000003",
+        "verified_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "checked_segments": 1,
+        "checked_events": 1,
+        "checked_records": 4,
+        "findings": [
+          {
+            "severity": "WARNING",
+            "code": "INDEX_STALE",
+            "message": "Contribution index is stale.",
+            "authoritative_evidence_affected": false,
+            "path": "provenance/indexes/contribution-graph.json",
+            "event_id": null
+          }
+        ],
+        "verifier_version": "1.0.0",
+        "completed_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "verification-report.verified_through_event_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "verification_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "status": "VERIFIED_WITH_WARNINGS",
+        "verified_through_event_id": "invalid-id",
+        "verified_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "checked_segments": 1,
+        "checked_events": 1,
+        "checked_records": 4,
+        "findings": [
+          {
+            "severity": "WARNING",
+            "code": "INDEX_STALE",
+            "message": "Contribution index is stale.",
+            "authoritative_evidence_affected": false,
+            "path": "provenance/indexes/contribution-graph.json",
+            "event_id": null
+          }
+        ],
+        "verifier_version": "1.0.0",
+        "completed_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "verification-report.verified_chain_head: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "verification_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "status": "VERIFIED_WITH_WARNINGS",
+        "verified_through_event_id": "event_01J00000000000000000000003",
+        "verified_chain_head": "sha256:INVALID",
+        "checked_segments": 1,
+        "checked_events": 1,
+        "checked_records": 4,
+        "findings": [
+          {
+            "severity": "WARNING",
+            "code": "INDEX_STALE",
+            "message": "Contribution index is stale.",
+            "authoritative_evidence_affected": false,
+            "path": "provenance/indexes/contribution-graph.json",
+            "event_id": null
+          }
+        ],
+        "verifier_version": "1.0.0",
+        "completed_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "verification-report.checked_segments: reject value below minimum",
+      "instance": {
+        "schema_version": "1.0",
+        "verification_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "status": "VERIFIED_WITH_WARNINGS",
+        "verified_through_event_id": "event_01J00000000000000000000003",
+        "verified_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "checked_segments": -1,
+        "checked_events": 1,
+        "checked_records": 4,
+        "findings": [
+          {
+            "severity": "WARNING",
+            "code": "INDEX_STALE",
+            "message": "Contribution index is stale.",
+            "authoritative_evidence_affected": false,
+            "path": "provenance/indexes/contribution-graph.json",
+            "event_id": null
+          }
+        ],
+        "verifier_version": "1.0.0",
+        "completed_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "verification-report.checked_events: reject value below minimum",
+      "instance": {
+        "schema_version": "1.0",
+        "verification_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "status": "VERIFIED_WITH_WARNINGS",
+        "verified_through_event_id": "event_01J00000000000000000000003",
+        "verified_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "checked_segments": 1,
+        "checked_events": -1,
+        "checked_records": 4,
+        "findings": [
+          {
+            "severity": "WARNING",
+            "code": "INDEX_STALE",
+            "message": "Contribution index is stale.",
+            "authoritative_evidence_affected": false,
+            "path": "provenance/indexes/contribution-graph.json",
+            "event_id": null
+          }
+        ],
+        "verifier_version": "1.0.0",
+        "completed_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "verification-report.checked_records: reject value below minimum",
+      "instance": {
+        "schema_version": "1.0",
+        "verification_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "status": "VERIFIED_WITH_WARNINGS",
+        "verified_through_event_id": "event_01J00000000000000000000003",
+        "verified_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "checked_segments": 1,
+        "checked_events": 1,
+        "checked_records": -1,
+        "findings": [
+          {
+            "severity": "WARNING",
+            "code": "INDEX_STALE",
+            "message": "Contribution index is stale.",
+            "authoritative_evidence_affected": false,
+            "path": "provenance/indexes/contribution-graph.json",
+            "event_id": null
+          }
+        ],
+        "verifier_version": "1.0.0",
+        "completed_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "verification-report.findings[0].severity: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "verification_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "status": "VERIFIED_WITH_WARNINGS",
+        "verified_through_event_id": "event_01J00000000000000000000003",
+        "verified_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "checked_segments": 1,
+        "checked_events": 1,
+        "checked_records": 4,
+        "findings": [
+          {
+            "code": "INDEX_STALE",
+            "message": "Contribution index is stale.",
+            "authoritative_evidence_affected": false,
+            "path": "provenance/indexes/contribution-graph.json",
+            "event_id": null
+          }
+        ],
+        "verifier_version": "1.0.0",
+        "completed_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "verification-report.findings[0].code: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "verification_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "status": "VERIFIED_WITH_WARNINGS",
+        "verified_through_event_id": "event_01J00000000000000000000003",
+        "verified_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "checked_segments": 1,
+        "checked_events": 1,
+        "checked_records": 4,
+        "findings": [
+          {
+            "severity": "WARNING",
+            "message": "Contribution index is stale.",
+            "authoritative_evidence_affected": false,
+            "path": "provenance/indexes/contribution-graph.json",
+            "event_id": null
+          }
+        ],
+        "verifier_version": "1.0.0",
+        "completed_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "verification-report.findings[0].message: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "verification_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "status": "VERIFIED_WITH_WARNINGS",
+        "verified_through_event_id": "event_01J00000000000000000000003",
+        "verified_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "checked_segments": 1,
+        "checked_events": 1,
+        "checked_records": 4,
+        "findings": [
+          {
+            "severity": "WARNING",
+            "code": "INDEX_STALE",
+            "authoritative_evidence_affected": false,
+            "path": "provenance/indexes/contribution-graph.json",
+            "event_id": null
+          }
+        ],
+        "verifier_version": "1.0.0",
+        "completed_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "verification-report.findings[0].authoritative_evidence_affected: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "verification_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "status": "VERIFIED_WITH_WARNINGS",
+        "verified_through_event_id": "event_01J00000000000000000000003",
+        "verified_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "checked_segments": 1,
+        "checked_events": 1,
+        "checked_records": 4,
+        "findings": [
+          {
+            "severity": "WARNING",
+            "code": "INDEX_STALE",
+            "message": "Contribution index is stale.",
+            "path": "provenance/indexes/contribution-graph.json",
+            "event_id": null
+          }
+        ],
+        "verifier_version": "1.0.0",
+        "completed_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "verification-report.findings[0].path: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "verification_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "status": "VERIFIED_WITH_WARNINGS",
+        "verified_through_event_id": "event_01J00000000000000000000003",
+        "verified_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "checked_segments": 1,
+        "checked_events": 1,
+        "checked_records": 4,
+        "findings": [
+          {
+            "severity": "WARNING",
+            "code": "INDEX_STALE",
+            "message": "Contribution index is stale.",
+            "authoritative_evidence_affected": false,
+            "event_id": null
+          }
+        ],
+        "verifier_version": "1.0.0",
+        "completed_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "verification-report.findings[0].event_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "verification_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "status": "VERIFIED_WITH_WARNINGS",
+        "verified_through_event_id": "event_01J00000000000000000000003",
+        "verified_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "checked_segments": 1,
+        "checked_events": 1,
+        "checked_records": 4,
+        "findings": [
+          {
+            "severity": "WARNING",
+            "code": "INDEX_STALE",
+            "message": "Contribution index is stale.",
+            "authoritative_evidence_affected": false,
+            "path": "provenance/indexes/contribution-graph.json"
+          }
+        ],
+        "verifier_version": "1.0.0",
+        "completed_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "verification-report.findings[0]: reject unexpected property",
+      "instance": {
+        "schema_version": "1.0",
+        "verification_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "status": "VERIFIED_WITH_WARNINGS",
+        "verified_through_event_id": "event_01J00000000000000000000003",
+        "verified_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "checked_segments": 1,
+        "checked_events": 1,
+        "checked_records": 4,
+        "findings": [
+          {
+            "severity": "WARNING",
+            "code": "INDEX_STALE",
+            "message": "Contribution index is stale.",
+            "authoritative_evidence_affected": false,
+            "path": "provenance/indexes/contribution-graph.json",
+            "event_id": null,
+            "__unexpected": true
+          }
+        ],
+        "verifier_version": "1.0.0",
+        "completed_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "verification-report.findings[0].severity: reject value outside enum",
+      "instance": {
+        "schema_version": "1.0",
+        "verification_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "status": "VERIFIED_WITH_WARNINGS",
+        "verified_through_event_id": "event_01J00000000000000000000003",
+        "verified_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "checked_segments": 1,
+        "checked_events": 1,
+        "checked_records": 4,
+        "findings": [
+          {
+            "severity": "__INVALID_ENUM__",
+            "code": "INDEX_STALE",
+            "message": "Contribution index is stale.",
+            "authoritative_evidence_affected": false,
+            "path": "provenance/indexes/contribution-graph.json",
+            "event_id": null
+          }
+        ],
+        "verifier_version": "1.0.0",
+        "completed_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "verification-report.findings[0].code: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "verification_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "status": "VERIFIED_WITH_WARNINGS",
+        "verified_through_event_id": "event_01J00000000000000000000003",
+        "verified_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "checked_segments": 1,
+        "checked_events": 1,
+        "checked_records": 4,
+        "findings": [
+          {
+            "severity": "WARNING",
+            "code": " invalid!",
+            "message": "Contribution index is stale.",
+            "authoritative_evidence_affected": false,
+            "path": "provenance/indexes/contribution-graph.json",
+            "event_id": null
+          }
+        ],
+        "verifier_version": "1.0.0",
+        "completed_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "verification-report.findings[0].message: reject string below minLength",
+      "instance": {
+        "schema_version": "1.0",
+        "verification_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "status": "VERIFIED_WITH_WARNINGS",
+        "verified_through_event_id": "event_01J00000000000000000000003",
+        "verified_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "checked_segments": 1,
+        "checked_events": 1,
+        "checked_records": 4,
+        "findings": [
+          {
+            "severity": "WARNING",
+            "code": "INDEX_STALE",
+            "message": "",
+            "authoritative_evidence_affected": false,
+            "path": "provenance/indexes/contribution-graph.json",
+            "event_id": null
+          }
+        ],
+        "verifier_version": "1.0.0",
+        "completed_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "verification-report.findings[0].path: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "verification_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "status": "VERIFIED_WITH_WARNINGS",
+        "verified_through_event_id": "event_01J00000000000000000000003",
+        "verified_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "checked_segments": 1,
+        "checked_events": 1,
+        "checked_records": 4,
+        "findings": [
+          {
+            "severity": "WARNING",
+            "code": "INDEX_STALE",
+            "message": "Contribution index is stale.",
+            "authoritative_evidence_affected": false,
+            "path": "../outside-project",
+            "event_id": null
+          }
+        ],
+        "verifier_version": "1.0.0",
+        "completed_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "verification-report.findings[0].path: reject string below minLength",
+      "instance": {
+        "schema_version": "1.0",
+        "verification_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "status": "VERIFIED_WITH_WARNINGS",
+        "verified_through_event_id": "event_01J00000000000000000000003",
+        "verified_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "checked_segments": 1,
+        "checked_events": 1,
+        "checked_records": 4,
+        "findings": [
+          {
+            "severity": "WARNING",
+            "code": "INDEX_STALE",
+            "message": "Contribution index is stale.",
+            "authoritative_evidence_affected": false,
+            "path": "",
+            "event_id": null
+          }
+        ],
+        "verifier_version": "1.0.0",
+        "completed_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "verification-report.verifier_version: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "verification_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "status": "VERIFIED_WITH_WARNINGS",
+        "verified_through_event_id": "event_01J00000000000000000000003",
+        "verified_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "checked_segments": 1,
+        "checked_events": 1,
+        "checked_records": 4,
+        "findings": [
+          {
+            "severity": "WARNING",
+            "code": "INDEX_STALE",
+            "message": "Contribution index is stale.",
+            "authoritative_evidence_affected": false,
+            "path": "provenance/indexes/contribution-graph.json",
+            "event_id": null
+          }
+        ],
+        "verifier_version": " invalid!",
+        "completed_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "verification-report.completed_at: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "verification_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "status": "VERIFIED_WITH_WARNINGS",
+        "verified_through_event_id": "event_01J00000000000000000000003",
+        "verified_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "checked_segments": 1,
+        "checked_events": 1,
+        "checked_records": 4,
+        "findings": [
+          {
+            "severity": "WARNING",
+            "code": "INDEX_STALE",
+            "message": "Contribution index is stale.",
+            "authoritative_evidence_affected": false,
+            "path": "provenance/indexes/contribution-graph.json",
+            "event_id": null
+          }
+        ],
+        "verifier_version": "1.0.0",
+        "completed_at": "not-a-timestamp"
+      }
+    }
+  ]
+}

@@ -1,0 +1,237 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://thinkloom.app/schemas/provenance/1.0/invocation-request.schema.json",
+  "title": "Invocation request",
+  "description": "Credential-free immutable provider request evidence; minimal mode may omit messages.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "invocation_id": {
+      "type": "string",
+      "pattern": "^invocation_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "project_id": {
+      "type": "string",
+      "pattern": "^project_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "purpose": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]+$"
+    },
+    "initiated_by_event_id": {
+      "type": "string",
+      "pattern": "^event_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "retention_mode": {
+      "enum": [
+        "minimal",
+        "full_private"
+      ]
+    },
+    "provider": {
+      "type": "object",
+      "properties": {
+        "provider_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "model_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "processing_mode": {
+          "enum": [
+            "local",
+            "cloud"
+          ]
+        }
+      },
+      "required": [
+        "provider_id",
+        "model_id",
+        "processing_mode"
+      ],
+      "additionalProperties": false
+    },
+    "model_configuration_sha256": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "prompt_template": {
+      "$ref": "https://thinkloom.app/schemas/provenance/1.0/prompt-template-reference.schema.json"
+    },
+    "messages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "role": {
+            "enum": [
+              "system",
+              "user",
+              "assistant",
+              "tool"
+            ]
+          },
+          "content": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "role",
+          "content"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "context_references": {
+      "type": "array",
+      "items": {
+        "$ref": "https://thinkloom.app/schemas/provenance/1.0/content-reference.schema.json"
+      }
+    },
+    "manuscript_revision_id": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^revision_[0-9A-HJKMNP-TV-Z]{26}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "idea_revision_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^revision_[0-9A-HJKMNP-TV-Z]{26}$"
+      },
+      "uniqueItems": true
+    },
+    "conversation_head": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^turn_[0-9A-HJKMNP-TV-Z]{26}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "submitted_at": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+    },
+    "redactions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "category": {
+            "enum": [
+              "credential",
+              "personal_identifier",
+              "signed_url",
+              "policy_omission",
+              "other"
+            ]
+          },
+          "replacement": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "category",
+          "replacement"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "invocation_id",
+    "project_id",
+    "purpose",
+    "initiated_by_event_id",
+    "retention_mode",
+    "provider",
+    "model_configuration_sha256",
+    "prompt_template",
+    "messages",
+    "context_references",
+    "manuscript_revision_id",
+    "idea_revision_ids",
+    "conversation_head",
+    "submitted_at",
+    "redactions"
+  ],
+  "additionalProperties": false,
+  "examples": [
+    {
+      "schema_version": "1.0",
+      "invocation_id": "invocation_01J00000000000000000000008",
+      "project_id": "project_01J00000000000000000000001",
+      "purpose": "draft_from_selected_ideas",
+      "initiated_by_event_id": "event_01J00000000000000000000003",
+      "retention_mode": "full_private",
+      "provider": {
+        "provider_id": "ollama",
+        "model_id": "llama3.2",
+        "processing_mode": "local"
+      },
+      "model_configuration_sha256": "sha256:8888888888888888888888888888888888888888888888888888888888888888",
+      "prompt_template": {
+        "schema_version": "1.0",
+        "template_id": "template_01J0000000000000000000000F",
+        "version": 1,
+        "path": "records/prompt-templates/drafting/template.json",
+        "template_sha256": "sha256:7777777777777777777777777777777777777777777777777777777777777777"
+      },
+      "messages": [
+        {
+          "role": "user",
+          "content": "Use the selected ideas to draft a passage."
+        }
+      ],
+      "context_references": [
+        {
+          "schema_version": "1.0",
+          "record_id": "record_01J00000000000000000000005",
+          "record_type": "manuscript_revision",
+          "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+          "path": "manuscript/revisions/revision.json",
+          "revision_id": "revision_01J0000000000000000000000A",
+          "range": {
+            "schema_version": "1.0",
+            "document_revision_id": "revision_01J0000000000000000000000A",
+            "coordinate_system": "utf8_byte",
+            "start": 0,
+            "end": 12,
+            "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+            "text_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        }
+      ],
+      "manuscript_revision_id": "revision_01J0000000000000000000000A",
+      "idea_revision_ids": [
+        "revision_01J0000000000000000000000B"
+      ],
+      "conversation_head": "turn_01J00000000000000000000007",
+      "submitted_at": "2026-07-17T18:42:10.123Z",
+      "redactions": [
+        {
+          "category": "personal_identifier",
+          "replacement": "[redacted]"
+        }
+      ]
+    }
+  ]
+}

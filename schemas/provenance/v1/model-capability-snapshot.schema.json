@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://thinkloom.app/schemas/provenance/1.0/model-capability-snapshot.schema.json",
+  "title": "Model capability snapshot",
+  "description": "Immutable observed capability set for an invoked model.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "snapshot_id": {
+      "type": "string",
+      "pattern": "^record_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "provider_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "model_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "capabilities": {
+      "type": "object",
+      "properties": {
+        "streaming": {
+          "type": "boolean"
+        },
+        "structured_output": {
+          "type": "boolean"
+        },
+        "tools": {
+          "type": "boolean"
+        },
+        "vision": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "streaming",
+        "structured_output",
+        "tools",
+        "vision"
+      ],
+      "additionalProperties": false
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+    }
+  },
+  "required": [
+    "schema_version",
+    "snapshot_id",
+    "provider_id",
+    "model_id",
+    "capabilities",
+    "observed_at"
+  ],
+  "additionalProperties": false,
+  "examples": [
+    {
+      "schema_version": "1.0",
+      "snapshot_id": "record_01J00000000000000000000005",
+      "provider_id": "ollama",
+      "model_id": "llama3.2",
+      "capabilities": {
+        "streaming": true,
+        "structured_output": false,
+        "tools": false,
+        "vision": false
+      },
+      "observed_at": "2026-07-17T18:42:10.123Z"
+    }
+  ]
+}

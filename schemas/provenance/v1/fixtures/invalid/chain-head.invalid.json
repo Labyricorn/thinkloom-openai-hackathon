@@ -1,0 +1,179 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/chain-head.schema.json",
+  "cases": [
+    {
+      "description": "chain-head.schema_version: reject missing required property",
+      "instance": {
+        "project_id": "project_01J00000000000000000000001",
+        "active_segment_number": 1,
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "updated_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "chain-head.project_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "active_segment_number": 1,
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "updated_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "chain-head.active_segment_number: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "updated_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "chain-head.event_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "active_segment_number": 1,
+        "event_sequence": 1,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "updated_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "chain-head.event_sequence: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "active_segment_number": 1,
+        "event_id": "event_01J00000000000000000000003",
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "updated_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "chain-head.event_hash: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "active_segment_number": 1,
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "updated_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "chain-head.updated_at: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "active_segment_number": 1,
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "chain-head: reject unexpected property",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "active_segment_number": 1,
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "updated_at": "2026-07-17T18:42:10.123Z",
+        "__unexpected": true
+      }
+    },
+    {
+      "description": "chain-head.schema_version: reject value different from const",
+      "instance": {
+        "schema_version": "__INVALID_CONST__",
+        "project_id": "project_01J00000000000000000000001",
+        "active_segment_number": 1,
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "updated_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "chain-head.project_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "invalid-id",
+        "active_segment_number": 1,
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "updated_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "chain-head.active_segment_number: reject value below minimum",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "active_segment_number": 0,
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "updated_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "chain-head.event_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "active_segment_number": 1,
+        "event_id": "invalid-id",
+        "event_sequence": 1,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "updated_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "chain-head.event_sequence: reject value below minimum",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "active_segment_number": 1,
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 0,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "updated_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "chain-head.event_hash: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "active_segment_number": 1,
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "event_hash": "sha256:INVALID",
+        "updated_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "chain-head.updated_at: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "active_segment_number": 1,
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "updated_at": "not-a-timestamp"
+      }
+    }
+  ]
+}

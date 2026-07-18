@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://thinkloom.app/schemas/provenance/1.0/invocation-failure.schema.json",
+  "title": "Invocation failure",
+  "description": "Immutable bounded record of an invocation failure.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "failure_id": {
+      "type": "string",
+      "pattern": "^failure_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "invocation_id": {
+      "type": "string",
+      "pattern": "^invocation_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "code": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9_]+$"
+    },
+    "category": {
+      "enum": [
+        "provider",
+        "validation",
+        "cancellation",
+        "output_limit",
+        "application",
+        "privacy"
+      ]
+    },
+    "recoverable": {
+      "type": "boolean"
+    },
+    "bounded_summary": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000
+    },
+    "partial_output_preserved": {
+      "type": "boolean"
+    },
+    "occurred_at": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+    }
+  },
+  "required": [
+    "schema_version",
+    "failure_id",
+    "invocation_id",
+    "code",
+    "category",
+    "recoverable",
+    "bounded_summary",
+    "partial_output_preserved",
+    "occurred_at"
+  ],
+  "additionalProperties": false,
+  "examples": [
+    {
+      "schema_version": "1.0",
+      "failure_id": "failure_01J0000000000000000000000P",
+      "invocation_id": "invocation_01J00000000000000000000008",
+      "code": "PROVIDER_TIMEOUT",
+      "category": "provider",
+      "recoverable": true,
+      "bounded_summary": "The provider did not respond within the configured timeout.",
+      "partial_output_preserved": false,
+      "occurred_at": "2026-07-17T18:43:11.456Z"
+    }
+  ]
+}

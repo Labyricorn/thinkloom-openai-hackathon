@@ -1,21 +1,25 @@
 {
   "name": "thinkloom",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": "Christopher Chambers",
   "license": "AGPL-3.0-only",
   "repository": "https://github.com/Labyricorn/thinkloom-openai-hackathon.git",
   "homepage": "https://github.com/Labyricorn/thinkloom-openai-hackathon",
   "private": true,
   "type": "module",
-  "engines": { "node": ">=22.13.0" },
+  "engines": {
+    "node": ">=22.13.0"
+  },
   "scripts": {
     "dev": "vite --port 1420 --strictPort",
     "build": "npm run typecheck && vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
-    "lint": "eslint src tests vite.config.ts",
-    "test": "npm run typecheck && node tests/native-app.test.mjs",
-    "tauri": "tauri"
+    "lint": "eslint src tests scripts vite.config.ts",
+    "test": "npm run typecheck && node tests/native-app.test.mjs && npm run provenance:schema:test",
+    "tauri": "tauri",
+    "provenance:schema:generate": "node scripts/generate-provenance-stage2.mjs",
+    "provenance:schema:test": "node tests/provenance-schema.test.mjs"
   },
   "dependencies": {
     "@tiptap/markdown": "^3.28.0",
@@ -32,6 +36,8 @@
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "@vitejs/plugin-react": "6.0.2",
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
     "eslint": "9.39.4",
     "eslint-plugin-react-hooks": "7.1.1",
     "globals": "14.0.0",

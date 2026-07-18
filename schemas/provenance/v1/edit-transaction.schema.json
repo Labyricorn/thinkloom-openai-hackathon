@@ -1,0 +1,150 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://thinkloom.app/schemas/provenance/1.0/edit-transaction.schema.json",
+  "title": "Manuscript edit transaction",
+  "description": "Meaningful coalesced manual or acceptance-driven edit transaction.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "transaction_id": {
+      "type": "string",
+      "pattern": "^transaction_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "project_id": {
+      "type": "string",
+      "pattern": "^project_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "base_revision_id": {
+      "type": "string",
+      "pattern": "^revision_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "result_revision_id": {
+      "type": "string",
+      "pattern": "^revision_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+    },
+    "ended_at": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+    },
+    "operations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "operation_type": {
+            "enum": [
+              "insert",
+              "delete",
+              "replace",
+              "move",
+              "format"
+            ]
+          },
+          "source_range": {
+            "anyOf": [
+              {
+                "$ref": "https://thinkloom.app/schemas/provenance/1.0/text-fragment-reference.schema.json"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "destination_position": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "inserted_text_sha256": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^sha256:[a-f0-9]{64}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "result_fragment_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^fragment_[0-9A-HJKMNP-TV-Z]{26}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "operation_type",
+          "source_range",
+          "destination_position",
+          "inserted_text_sha256",
+          "result_fragment_id"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "preimage_sha256": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "result_sha256": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    }
+  },
+  "required": [
+    "schema_version",
+    "transaction_id",
+    "project_id",
+    "base_revision_id",
+    "result_revision_id",
+    "started_at",
+    "ended_at",
+    "operations",
+    "preimage_sha256",
+    "result_sha256"
+  ],
+  "additionalProperties": false,
+  "examples": [
+    {
+      "schema_version": "1.0",
+      "transaction_id": "transaction_01J0000000000000000000000N",
+      "project_id": "project_01J00000000000000000000001",
+      "base_revision_id": "revision_01J0000000000000000000000A",
+      "result_revision_id": "revision_01J0000000000000000000000B",
+      "started_at": "2026-07-17T18:42:10.123Z",
+      "ended_at": "2026-07-17T18:43:11.456Z",
+      "operations": [
+        {
+          "operation_type": "insert",
+          "source_range": null,
+          "destination_position": 0,
+          "inserted_text_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+          "result_fragment_id": "fragment_01J0000000000000000000000C"
+        }
+      ],
+      "preimage_sha256": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+      "result_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/invocation-state.schema.json",
+  "description": "Valid Invocation state example.",
+  "instance": {
+    "schema_version": "1.0",
+    "invocation_id": "invocation_01J00000000000000000000008",
+    "state": "REQUEST_RECORDED",
+    "state_sequence": 2,
+    "updated_at": "2026-07-17T18:42:10.123Z",
+    "failure_id": null
+  }
+}

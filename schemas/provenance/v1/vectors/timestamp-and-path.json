@@ -1,0 +1,35 @@
+{
+  "vector_version": "1.0",
+  "timestamps": {
+    "accepted": [
+      "2026-07-17T18:42:10.123Z",
+      "2026-07-17T18:43:11.456Z",
+      "2000-01-01T00:00:00.000Z"
+    ],
+    "rejected": [
+      "2026-07-17T18:42:10Z",
+      "2026-07-17T18:42:10.12Z",
+      "2026-07-17T18:42:10.1234Z",
+      "2026-07-17T11:42:10.123-07:00",
+      "not-a-timestamp"
+    ]
+  },
+  "repository_paths": {
+    "accepted": [
+      "project.json",
+      "records/invocations/request.json",
+      "manuscript/Café.md"
+    ],
+    "rejected": [
+      "",
+      "/absolute/path",
+      "C:/absolute/path",
+      "records\\request.json",
+      ".",
+      "..",
+      "records/../outside.json",
+      "records/./alias.json"
+    ]
+  },
+  "normalization_rule": "Paths use NFC, forward slashes, repository-relative spelling, and no dot segments."
+}

@@ -1,0 +1,385 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/transcript-turn.schema.json",
+  "cases": [
+    {
+      "description": "transcript-turn.schema_version: reject missing required property",
+      "instance": {
+        "turn_id": "turn_01J00000000000000000000007",
+        "session_id": "session_01J00000000000000000000006",
+        "speaker": "user",
+        "input_mode": "typed",
+        "retained_text": "Attention shapes public life.",
+        "raw_transcript": null,
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "audio_retained": false,
+        "invocation_id": null,
+        "event_id": "event_01J00000000000000000000003"
+      }
+    },
+    {
+      "description": "transcript-turn.turn_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "session_id": "session_01J00000000000000000000006",
+        "speaker": "user",
+        "input_mode": "typed",
+        "retained_text": "Attention shapes public life.",
+        "raw_transcript": null,
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "audio_retained": false,
+        "invocation_id": null,
+        "event_id": "event_01J00000000000000000000003"
+      }
+    },
+    {
+      "description": "transcript-turn.session_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "turn_id": "turn_01J00000000000000000000007",
+        "speaker": "user",
+        "input_mode": "typed",
+        "retained_text": "Attention shapes public life.",
+        "raw_transcript": null,
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "audio_retained": false,
+        "invocation_id": null,
+        "event_id": "event_01J00000000000000000000003"
+      }
+    },
+    {
+      "description": "transcript-turn.speaker: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "turn_id": "turn_01J00000000000000000000007",
+        "session_id": "session_01J00000000000000000000006",
+        "input_mode": "typed",
+        "retained_text": "Attention shapes public life.",
+        "raw_transcript": null,
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "audio_retained": false,
+        "invocation_id": null,
+        "event_id": "event_01J00000000000000000000003"
+      }
+    },
+    {
+      "description": "transcript-turn.input_mode: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "turn_id": "turn_01J00000000000000000000007",
+        "session_id": "session_01J00000000000000000000006",
+        "speaker": "user",
+        "retained_text": "Attention shapes public life.",
+        "raw_transcript": null,
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "audio_retained": false,
+        "invocation_id": null,
+        "event_id": "event_01J00000000000000000000003"
+      }
+    },
+    {
+      "description": "transcript-turn.retained_text: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "turn_id": "turn_01J00000000000000000000007",
+        "session_id": "session_01J00000000000000000000006",
+        "speaker": "user",
+        "input_mode": "typed",
+        "raw_transcript": null,
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "audio_retained": false,
+        "invocation_id": null,
+        "event_id": "event_01J00000000000000000000003"
+      }
+    },
+    {
+      "description": "transcript-turn.raw_transcript: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "turn_id": "turn_01J00000000000000000000007",
+        "session_id": "session_01J00000000000000000000006",
+        "speaker": "user",
+        "input_mode": "typed",
+        "retained_text": "Attention shapes public life.",
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "audio_retained": false,
+        "invocation_id": null,
+        "event_id": "event_01J00000000000000000000003"
+      }
+    },
+    {
+      "description": "transcript-turn.started_at: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "turn_id": "turn_01J00000000000000000000007",
+        "session_id": "session_01J00000000000000000000006",
+        "speaker": "user",
+        "input_mode": "typed",
+        "retained_text": "Attention shapes public life.",
+        "raw_transcript": null,
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "audio_retained": false,
+        "invocation_id": null,
+        "event_id": "event_01J00000000000000000000003"
+      }
+    },
+    {
+      "description": "transcript-turn.ended_at: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "turn_id": "turn_01J00000000000000000000007",
+        "session_id": "session_01J00000000000000000000006",
+        "speaker": "user",
+        "input_mode": "typed",
+        "retained_text": "Attention shapes public life.",
+        "raw_transcript": null,
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "audio_retained": false,
+        "invocation_id": null,
+        "event_id": "event_01J00000000000000000000003"
+      }
+    },
+    {
+      "description": "transcript-turn.audio_retained: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "turn_id": "turn_01J00000000000000000000007",
+        "session_id": "session_01J00000000000000000000006",
+        "speaker": "user",
+        "input_mode": "typed",
+        "retained_text": "Attention shapes public life.",
+        "raw_transcript": null,
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "invocation_id": null,
+        "event_id": "event_01J00000000000000000000003"
+      }
+    },
+    {
+      "description": "transcript-turn.invocation_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "turn_id": "turn_01J00000000000000000000007",
+        "session_id": "session_01J00000000000000000000006",
+        "speaker": "user",
+        "input_mode": "typed",
+        "retained_text": "Attention shapes public life.",
+        "raw_transcript": null,
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "audio_retained": false,
+        "event_id": "event_01J00000000000000000000003"
+      }
+    },
+    {
+      "description": "transcript-turn.event_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "turn_id": "turn_01J00000000000000000000007",
+        "session_id": "session_01J00000000000000000000006",
+        "speaker": "user",
+        "input_mode": "typed",
+        "retained_text": "Attention shapes public life.",
+        "raw_transcript": null,
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "audio_retained": false,
+        "invocation_id": null
+      }
+    },
+    {
+      "description": "transcript-turn: reject unexpected property",
+      "instance": {
+        "schema_version": "1.0",
+        "turn_id": "turn_01J00000000000000000000007",
+        "session_id": "session_01J00000000000000000000006",
+        "speaker": "user",
+        "input_mode": "typed",
+        "retained_text": "Attention shapes public life.",
+        "raw_transcript": null,
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "audio_retained": false,
+        "invocation_id": null,
+        "event_id": "event_01J00000000000000000000003",
+        "__unexpected": true
+      }
+    },
+    {
+      "description": "transcript-turn.schema_version: reject value different from const",
+      "instance": {
+        "schema_version": "__INVALID_CONST__",
+        "turn_id": "turn_01J00000000000000000000007",
+        "session_id": "session_01J00000000000000000000006",
+        "speaker": "user",
+        "input_mode": "typed",
+        "retained_text": "Attention shapes public life.",
+        "raw_transcript": null,
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "audio_retained": false,
+        "invocation_id": null,
+        "event_id": "event_01J00000000000000000000003"
+      }
+    },
+    {
+      "description": "transcript-turn.turn_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "turn_id": "invalid-id",
+        "session_id": "session_01J00000000000000000000006",
+        "speaker": "user",
+        "input_mode": "typed",
+        "retained_text": "Attention shapes public life.",
+        "raw_transcript": null,
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "audio_retained": false,
+        "invocation_id": null,
+        "event_id": "event_01J00000000000000000000003"
+      }
+    },
+    {
+      "description": "transcript-turn.session_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "turn_id": "turn_01J00000000000000000000007",
+        "session_id": "invalid-id",
+        "speaker": "user",
+        "input_mode": "typed",
+        "retained_text": "Attention shapes public life.",
+        "raw_transcript": null,
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "audio_retained": false,
+        "invocation_id": null,
+        "event_id": "event_01J00000000000000000000003"
+      }
+    },
+    {
+      "description": "transcript-turn.speaker: reject value outside enum",
+      "instance": {
+        "schema_version": "1.0",
+        "turn_id": "turn_01J00000000000000000000007",
+        "session_id": "session_01J00000000000000000000006",
+        "speaker": "__INVALID_ENUM__",
+        "input_mode": "typed",
+        "retained_text": "Attention shapes public life.",
+        "raw_transcript": null,
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "audio_retained": false,
+        "invocation_id": null,
+        "event_id": "event_01J00000000000000000000003"
+      }
+    },
+    {
+      "description": "transcript-turn.input_mode: reject value outside enum",
+      "instance": {
+        "schema_version": "1.0",
+        "turn_id": "turn_01J00000000000000000000007",
+        "session_id": "session_01J00000000000000000000006",
+        "speaker": "user",
+        "input_mode": "__INVALID_ENUM__",
+        "retained_text": "Attention shapes public life.",
+        "raw_transcript": null,
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "audio_retained": false,
+        "invocation_id": null,
+        "event_id": "event_01J00000000000000000000003"
+      }
+    },
+    {
+      "description": "transcript-turn.retained_text: reject string below minLength",
+      "instance": {
+        "schema_version": "1.0",
+        "turn_id": "turn_01J00000000000000000000007",
+        "session_id": "session_01J00000000000000000000006",
+        "speaker": "user",
+        "input_mode": "typed",
+        "retained_text": "",
+        "raw_transcript": null,
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "audio_retained": false,
+        "invocation_id": null,
+        "event_id": "event_01J00000000000000000000003"
+      }
+    },
+    {
+      "description": "transcript-turn.started_at: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "turn_id": "turn_01J00000000000000000000007",
+        "session_id": "session_01J00000000000000000000006",
+        "speaker": "user",
+        "input_mode": "typed",
+        "retained_text": "Attention shapes public life.",
+        "raw_transcript": null,
+        "started_at": "not-a-timestamp",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "audio_retained": false,
+        "invocation_id": null,
+        "event_id": "event_01J00000000000000000000003"
+      }
+    },
+    {
+      "description": "transcript-turn.ended_at: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "turn_id": "turn_01J00000000000000000000007",
+        "session_id": "session_01J00000000000000000000006",
+        "speaker": "user",
+        "input_mode": "typed",
+        "retained_text": "Attention shapes public life.",
+        "raw_transcript": null,
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "not-a-timestamp",
+        "audio_retained": false,
+        "invocation_id": null,
+        "event_id": "event_01J00000000000000000000003"
+      }
+    },
+    {
+      "description": "transcript-turn.audio_retained: reject value different from const",
+      "instance": {
+        "schema_version": "1.0",
+        "turn_id": "turn_01J00000000000000000000007",
+        "session_id": "session_01J00000000000000000000006",
+        "speaker": "user",
+        "input_mode": "typed",
+        "retained_text": "Attention shapes public life.",
+        "raw_transcript": null,
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "audio_retained": true,
+        "invocation_id": null,
+        "event_id": "event_01J00000000000000000000003"
+      }
+    },
+    {
+      "description": "transcript-turn.event_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "turn_id": "turn_01J00000000000000000000007",
+        "session_id": "session_01J00000000000000000000006",
+        "speaker": "user",
+        "input_mode": "typed",
+        "retained_text": "Attention shapes public life.",
+        "raw_transcript": null,
+        "started_at": "2026-07-17T18:42:10.123Z",
+        "ended_at": "2026-07-17T18:43:11.456Z",
+        "audio_retained": false,
+        "invocation_id": null,
+        "event_id": "invalid-id"
+      }
+    }
+  ]
+}

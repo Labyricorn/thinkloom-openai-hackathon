@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://thinkloom.app/schemas/provenance/1.0/invocation-stream-summary.schema.json",
+  "title": "Invocation stream summary",
+  "description": "Bounded immutable summary of a completed or interrupted stream.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "stream_id": {
+      "type": "string",
+      "pattern": "^stream_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "invocation_id": {
+      "type": "string",
+      "pattern": "^invocation_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "terminal_state": {
+      "enum": [
+        "COMPLETED",
+        "FAILED",
+        "CANCELLED",
+        "ABANDONED"
+      ]
+    },
+    "bytes_received": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 67108864
+    },
+    "chunks_received": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "duration_milliseconds": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1800000
+    },
+    "partial_output_preserved": {
+      "type": "boolean"
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+    }
+  },
+  "required": [
+    "schema_version",
+    "stream_id",
+    "invocation_id",
+    "terminal_state",
+    "bytes_received",
+    "chunks_received",
+    "duration_milliseconds",
+    "partial_output_preserved",
+    "completed_at"
+  ],
+  "additionalProperties": false,
+  "examples": [
+    {
+      "schema_version": "1.0",
+      "stream_id": "stream_01J0000000000000000000000Q",
+      "invocation_id": "invocation_01J00000000000000000000008",
+      "terminal_state": "COMPLETED",
+      "bytes_received": 512,
+      "chunks_received": 4,
+      "duration_milliseconds": 2400,
+      "partial_output_preserved": false,
+      "completed_at": "2026-07-17T18:43:11.456Z"
+    }
+  ]
+}

@@ -1,0 +1,179 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/idea.schema.json",
+  "cases": [
+    {
+      "description": "idea.schema_version: reject missing required property",
+      "instance": {
+        "idea_id": "idea_01J00000000000000000000009",
+        "project_id": "project_01J00000000000000000000001",
+        "current_revision_id": "revision_01J0000000000000000000000A",
+        "status": "accepted",
+        "created_at": "2026-07-17T18:42:10.123Z",
+        "updated_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "idea.idea_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "current_revision_id": "revision_01J0000000000000000000000A",
+        "status": "accepted",
+        "created_at": "2026-07-17T18:42:10.123Z",
+        "updated_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "idea.project_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "idea_id": "idea_01J00000000000000000000009",
+        "current_revision_id": "revision_01J0000000000000000000000A",
+        "status": "accepted",
+        "created_at": "2026-07-17T18:42:10.123Z",
+        "updated_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "idea.current_revision_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "idea_id": "idea_01J00000000000000000000009",
+        "project_id": "project_01J00000000000000000000001",
+        "status": "accepted",
+        "created_at": "2026-07-17T18:42:10.123Z",
+        "updated_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "idea.status: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "idea_id": "idea_01J00000000000000000000009",
+        "project_id": "project_01J00000000000000000000001",
+        "current_revision_id": "revision_01J0000000000000000000000A",
+        "created_at": "2026-07-17T18:42:10.123Z",
+        "updated_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "idea.created_at: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "idea_id": "idea_01J00000000000000000000009",
+        "project_id": "project_01J00000000000000000000001",
+        "current_revision_id": "revision_01J0000000000000000000000A",
+        "status": "accepted",
+        "updated_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "idea.updated_at: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "idea_id": "idea_01J00000000000000000000009",
+        "project_id": "project_01J00000000000000000000001",
+        "current_revision_id": "revision_01J0000000000000000000000A",
+        "status": "accepted",
+        "created_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "idea: reject unexpected property",
+      "instance": {
+        "schema_version": "1.0",
+        "idea_id": "idea_01J00000000000000000000009",
+        "project_id": "project_01J00000000000000000000001",
+        "current_revision_id": "revision_01J0000000000000000000000A",
+        "status": "accepted",
+        "created_at": "2026-07-17T18:42:10.123Z",
+        "updated_at": "2026-07-17T18:43:11.456Z",
+        "__unexpected": true
+      }
+    },
+    {
+      "description": "idea.schema_version: reject value different from const",
+      "instance": {
+        "schema_version": "__INVALID_CONST__",
+        "idea_id": "idea_01J00000000000000000000009",
+        "project_id": "project_01J00000000000000000000001",
+        "current_revision_id": "revision_01J0000000000000000000000A",
+        "status": "accepted",
+        "created_at": "2026-07-17T18:42:10.123Z",
+        "updated_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "idea.idea_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "idea_id": "invalid-id",
+        "project_id": "project_01J00000000000000000000001",
+        "current_revision_id": "revision_01J0000000000000000000000A",
+        "status": "accepted",
+        "created_at": "2026-07-17T18:42:10.123Z",
+        "updated_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "idea.project_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "idea_id": "idea_01J00000000000000000000009",
+        "project_id": "invalid-id",
+        "current_revision_id": "revision_01J0000000000000000000000A",
+        "status": "accepted",
+        "created_at": "2026-07-17T18:42:10.123Z",
+        "updated_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "idea.current_revision_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "idea_id": "idea_01J00000000000000000000009",
+        "project_id": "project_01J00000000000000000000001",
+        "current_revision_id": "invalid-id",
+        "status": "accepted",
+        "created_at": "2026-07-17T18:42:10.123Z",
+        "updated_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "idea.status: reject value outside enum",
+      "instance": {
+        "schema_version": "1.0",
+        "idea_id": "idea_01J00000000000000000000009",
+        "project_id": "project_01J00000000000000000000001",
+        "current_revision_id": "revision_01J0000000000000000000000A",
+        "status": "__INVALID_ENUM__",
+        "created_at": "2026-07-17T18:42:10.123Z",
+        "updated_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "idea.created_at: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "idea_id": "idea_01J00000000000000000000009",
+        "project_id": "project_01J00000000000000000000001",
+        "current_revision_id": "revision_01J0000000000000000000000A",
+        "status": "accepted",
+        "created_at": "not-a-timestamp",
+        "updated_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "idea.updated_at: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "idea_id": "idea_01J00000000000000000000009",
+        "project_id": "project_01J00000000000000000000001",
+        "current_revision_id": "revision_01J0000000000000000000000A",
+        "status": "accepted",
+        "created_at": "2026-07-17T18:42:10.123Z",
+        "updated_at": "not-a-timestamp"
+      }
+    }
+  ]
+}

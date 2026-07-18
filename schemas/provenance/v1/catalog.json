@@ -1,0 +1,280 @@
+{
+  "catalog_version": "1.0",
+  "dialect": "https://json-schema.org/draft/2020-12/schema",
+  "provenance_schema_version": "1.0",
+  "application_version": "0.3.0",
+  "compatible_application_versions": [
+    "0.3.0"
+  ],
+  "native_writer_conformance": false,
+  "normative_specification": "../../../docs/provenance/STAGE-1-NORMATIVE-SPECIFICATION.md",
+  "generated_by": "scripts/generate-provenance-stage2.mjs",
+  "schemas": [
+    {
+      "name": "backup-manifest",
+      "id": "https://thinkloom.app/schemas/provenance/1.0/backup-manifest.schema.json",
+      "file": "backup-manifest.schema.json",
+      "valid_fixture": "fixtures/valid/backup-manifest.valid.json",
+      "invalid_fixture": "fixtures/invalid/backup-manifest.invalid.json"
+    },
+    {
+      "name": "chain-head",
+      "id": "https://thinkloom.app/schemas/provenance/1.0/chain-head.schema.json",
+      "file": "chain-head.schema.json",
+      "valid_fixture": "fixtures/valid/chain-head.valid.json",
+      "invalid_fixture": "fixtures/invalid/chain-head.invalid.json"
+    },
+    {
+      "name": "content-reference",
+      "id": "https://thinkloom.app/schemas/provenance/1.0/content-reference.schema.json",
+      "file": "content-reference.schema.json",
+      "valid_fixture": "fixtures/valid/content-reference.valid.json",
+      "invalid_fixture": "fixtures/invalid/content-reference.invalid.json"
+    },
+    {
+      "name": "conversation-session",
+      "id": "https://thinkloom.app/schemas/provenance/1.0/conversation-session.schema.json",
+      "file": "conversation-session.schema.json",
+      "valid_fixture": "fixtures/valid/conversation-session.valid.json",
+      "invalid_fixture": "fixtures/invalid/conversation-session.invalid.json"
+    },
+    {
+      "name": "derived-index-manifest",
+      "id": "https://thinkloom.app/schemas/provenance/1.0/derived-index-manifest.schema.json",
+      "file": "derived-index-manifest.schema.json",
+      "valid_fixture": "fixtures/valid/derived-index-manifest.valid.json",
+      "invalid_fixture": "fixtures/invalid/derived-index-manifest.invalid.json"
+    },
+    {
+      "name": "disposition-revision",
+      "id": "https://thinkloom.app/schemas/provenance/1.0/disposition-revision.schema.json",
+      "file": "disposition-revision.schema.json",
+      "valid_fixture": "fixtures/valid/disposition-revision.valid.json",
+      "invalid_fixture": "fixtures/invalid/disposition-revision.invalid.json"
+    },
+    {
+      "name": "edit-transaction",
+      "id": "https://thinkloom.app/schemas/provenance/1.0/edit-transaction.schema.json",
+      "file": "edit-transaction.schema.json",
+      "valid_fixture": "fixtures/valid/edit-transaction.valid.json",
+      "invalid_fixture": "fixtures/invalid/edit-transaction.invalid.json"
+    },
+    {
+      "name": "encrypted-key-envelope",
+      "id": "https://thinkloom.app/schemas/provenance/1.0/encrypted-key-envelope.schema.json",
+      "file": "encrypted-key-envelope.schema.json",
+      "valid_fixture": "fixtures/valid/encrypted-key-envelope.valid.json",
+      "invalid_fixture": "fixtures/invalid/encrypted-key-envelope.invalid.json"
+    },
+    {
+      "name": "idea",
+      "id": "https://thinkloom.app/schemas/provenance/1.0/idea.schema.json",
+      "file": "idea.schema.json",
+      "valid_fixture": "fixtures/valid/idea.valid.json",
+      "invalid_fixture": "fixtures/invalid/idea.invalid.json"
+    },
+    {
+      "name": "idea-revision",
+      "id": "https://thinkloom.app/schemas/provenance/1.0/idea-revision.schema.json",
+      "file": "idea-revision.schema.json",
+      "valid_fixture": "fixtures/valid/idea-revision.valid.json",
+      "invalid_fixture": "fixtures/invalid/idea-revision.invalid.json"
+    },
+    {
+      "name": "invocation-failure",
+      "id": "https://thinkloom.app/schemas/provenance/1.0/invocation-failure.schema.json",
+      "file": "invocation-failure.schema.json",
+      "valid_fixture": "fixtures/valid/invocation-failure.valid.json",
+      "invalid_fixture": "fixtures/invalid/invocation-failure.invalid.json"
+    },
+    {
+      "name": "invocation-request",
+      "id": "https://thinkloom.app/schemas/provenance/1.0/invocation-request.schema.json",
+      "file": "invocation-request.schema.json",
+      "valid_fixture": "fixtures/valid/invocation-request.valid.json",
+      "invalid_fixture": "fixtures/invalid/invocation-request.invalid.json"
+    },
+    {
+      "name": "invocation-response",
+      "id": "https://thinkloom.app/schemas/provenance/1.0/invocation-response.schema.json",
+      "file": "invocation-response.schema.json",
+      "valid_fixture": "fixtures/valid/invocation-response.valid.json",
+      "invalid_fixture": "fixtures/invalid/invocation-response.invalid.json"
+    },
+    {
+      "name": "invocation-state",
+      "id": "https://thinkloom.app/schemas/provenance/1.0/invocation-state.schema.json",
+      "file": "invocation-state.schema.json",
+      "valid_fixture": "fixtures/valid/invocation-state.valid.json",
+      "invalid_fixture": "fixtures/invalid/invocation-state.invalid.json"
+    },
+    {
+      "name": "invocation-stream-state",
+      "id": "https://thinkloom.app/schemas/provenance/1.0/invocation-stream-state.schema.json",
+      "file": "invocation-stream-state.schema.json",
+      "valid_fixture": "fixtures/valid/invocation-stream-state.valid.json",
+      "invalid_fixture": "fixtures/invalid/invocation-stream-state.invalid.json"
+    },
+    {
+      "name": "invocation-stream-summary",
+      "id": "https://thinkloom.app/schemas/provenance/1.0/invocation-stream-summary.schema.json",
+      "file": "invocation-stream-summary.schema.json",
+      "valid_fixture": "fixtures/valid/invocation-stream-summary.valid.json",
+      "invalid_fixture": "fixtures/invalid/invocation-stream-summary.invalid.json"
+    },
+    {
+      "name": "ledger-segment-manifest",
+      "id": "https://thinkloom.app/schemas/provenance/1.0/ledger-segment-manifest.schema.json",
+      "file": "ledger-segment-manifest.schema.json",
+      "valid_fixture": "fixtures/valid/ledger-segment-manifest.valid.json",
+      "invalid_fixture": "fixtures/invalid/ledger-segment-manifest.invalid.json"
+    },
+    {
+      "name": "manuscript-revision",
+      "id": "https://thinkloom.app/schemas/provenance/1.0/manuscript-revision.schema.json",
+      "file": "manuscript-revision.schema.json",
+      "valid_fixture": "fixtures/valid/manuscript-revision.valid.json",
+      "invalid_fixture": "fixtures/invalid/manuscript-revision.invalid.json"
+    },
+    {
+      "name": "model-capability-snapshot",
+      "id": "https://thinkloom.app/schemas/provenance/1.0/model-capability-snapshot.schema.json",
+      "file": "model-capability-snapshot.schema.json",
+      "valid_fixture": "fixtures/valid/model-capability-snapshot.valid.json",
+      "invalid_fixture": "fixtures/invalid/model-capability-snapshot.invalid.json"
+    },
+    {
+      "name": "model-configuration-snapshot",
+      "id": "https://thinkloom.app/schemas/provenance/1.0/model-configuration-snapshot.schema.json",
+      "file": "model-configuration-snapshot.schema.json",
+      "valid_fixture": "fixtures/valid/model-configuration-snapshot.valid.json",
+      "invalid_fixture": "fixtures/invalid/model-configuration-snapshot.invalid.json"
+    },
+    {
+      "name": "project-key-manifest",
+      "id": "https://thinkloom.app/schemas/provenance/1.0/project-key-manifest.schema.json",
+      "file": "project-key-manifest.schema.json",
+      "valid_fixture": "fixtures/valid/project-key-manifest.valid.json",
+      "invalid_fixture": "fixtures/invalid/project-key-manifest.invalid.json"
+    },
+    {
+      "name": "project-manifest",
+      "id": "https://thinkloom.app/schemas/provenance/1.0/project-manifest.schema.json",
+      "file": "project-manifest.schema.json",
+      "valid_fixture": "fixtures/valid/project-manifest.valid.json",
+      "invalid_fixture": "fixtures/invalid/project-manifest.invalid.json"
+    },
+    {
+      "name": "prompt-template",
+      "id": "https://thinkloom.app/schemas/provenance/1.0/prompt-template.schema.json",
+      "file": "prompt-template.schema.json",
+      "valid_fixture": "fixtures/valid/prompt-template.valid.json",
+      "invalid_fixture": "fixtures/invalid/prompt-template.invalid.json"
+    },
+    {
+      "name": "prompt-template-reference",
+      "id": "https://thinkloom.app/schemas/provenance/1.0/prompt-template-reference.schema.json",
+      "file": "prompt-template-reference.schema.json",
+      "valid_fixture": "fixtures/valid/prompt-template-reference.valid.json",
+      "invalid_fixture": "fixtures/invalid/prompt-template-reference.invalid.json"
+    },
+    {
+      "name": "provenance-event",
+      "id": "https://thinkloom.app/schemas/provenance/1.0/provenance-event.schema.json",
+      "file": "provenance-event.schema.json",
+      "valid_fixture": "fixtures/valid/provenance-event.valid.json",
+      "invalid_fixture": "fixtures/invalid/provenance-event.invalid.json"
+    },
+    {
+      "name": "provenance-policy",
+      "id": "https://thinkloom.app/schemas/provenance/1.0/provenance-policy.schema.json",
+      "file": "provenance-policy.schema.json",
+      "valid_fixture": "fixtures/valid/provenance-policy.valid.json",
+      "invalid_fixture": "fixtures/invalid/provenance-policy.invalid.json"
+    },
+    {
+      "name": "purge-manifest",
+      "id": "https://thinkloom.app/schemas/provenance/1.0/purge-manifest.schema.json",
+      "file": "purge-manifest.schema.json",
+      "valid_fixture": "fixtures/valid/purge-manifest.valid.json",
+      "invalid_fixture": "fixtures/invalid/purge-manifest.invalid.json"
+    },
+    {
+      "name": "record-envelope",
+      "id": "https://thinkloom.app/schemas/provenance/1.0/record-envelope.schema.json",
+      "file": "record-envelope.schema.json",
+      "valid_fixture": "fixtures/valid/record-envelope.valid.json",
+      "invalid_fixture": "fixtures/invalid/record-envelope.invalid.json"
+    },
+    {
+      "name": "recovery-key-envelope",
+      "id": "https://thinkloom.app/schemas/provenance/1.0/recovery-key-envelope.schema.json",
+      "file": "recovery-key-envelope.schema.json",
+      "valid_fixture": "fixtures/valid/recovery-key-envelope.valid.json",
+      "invalid_fixture": "fixtures/invalid/recovery-key-envelope.invalid.json"
+    },
+    {
+      "name": "release-manifest",
+      "id": "https://thinkloom.app/schemas/provenance/1.0/release-manifest.schema.json",
+      "file": "release-manifest.schema.json",
+      "valid_fixture": "fixtures/valid/release-manifest.valid.json",
+      "invalid_fixture": "fixtures/invalid/release-manifest.invalid.json"
+    },
+    {
+      "name": "release-state",
+      "id": "https://thinkloom.app/schemas/provenance/1.0/release-state.schema.json",
+      "file": "release-state.schema.json",
+      "valid_fixture": "fixtures/valid/release-state.valid.json",
+      "invalid_fixture": "fixtures/invalid/release-state.invalid.json"
+    },
+    {
+      "name": "sanitized-export-manifest",
+      "id": "https://thinkloom.app/schemas/provenance/1.0/sanitized-export-manifest.schema.json",
+      "file": "sanitized-export-manifest.schema.json",
+      "valid_fixture": "fixtures/valid/sanitized-export-manifest.valid.json",
+      "invalid_fixture": "fixtures/invalid/sanitized-export-manifest.invalid.json"
+    },
+    {
+      "name": "text-fragment-reference",
+      "id": "https://thinkloom.app/schemas/provenance/1.0/text-fragment-reference.schema.json",
+      "file": "text-fragment-reference.schema.json",
+      "valid_fixture": "fixtures/valid/text-fragment-reference.valid.json",
+      "invalid_fixture": "fixtures/invalid/text-fragment-reference.invalid.json"
+    },
+    {
+      "name": "transcript-correction",
+      "id": "https://thinkloom.app/schemas/provenance/1.0/transcript-correction.schema.json",
+      "file": "transcript-correction.schema.json",
+      "valid_fixture": "fixtures/valid/transcript-correction.valid.json",
+      "invalid_fixture": "fixtures/invalid/transcript-correction.invalid.json"
+    },
+    {
+      "name": "transcript-normalization",
+      "id": "https://thinkloom.app/schemas/provenance/1.0/transcript-normalization.schema.json",
+      "file": "transcript-normalization.schema.json",
+      "valid_fixture": "fixtures/valid/transcript-normalization.valid.json",
+      "invalid_fixture": "fixtures/invalid/transcript-normalization.invalid.json"
+    },
+    {
+      "name": "transcript-turn",
+      "id": "https://thinkloom.app/schemas/provenance/1.0/transcript-turn.schema.json",
+      "file": "transcript-turn.schema.json",
+      "valid_fixture": "fixtures/valid/transcript-turn.valid.json",
+      "invalid_fixture": "fixtures/invalid/transcript-turn.invalid.json"
+    },
+    {
+      "name": "verification-report",
+      "id": "https://thinkloom.app/schemas/provenance/1.0/verification-report.schema.json",
+      "file": "verification-report.schema.json",
+      "valid_fixture": "fixtures/valid/verification-report.valid.json",
+      "invalid_fixture": "fixtures/invalid/verification-report.invalid.json"
+    },
+    {
+      "name": "write-intent",
+      "id": "https://thinkloom.app/schemas/provenance/1.0/write-intent.schema.json",
+      "file": "write-intent.schema.json",
+      "valid_fixture": "fixtures/valid/write-intent.valid.json",
+      "invalid_fixture": "fixtures/invalid/write-intent.invalid.json"
+    }
+  ]
+}

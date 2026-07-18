@@ -1,0 +1,17 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/derived-index-manifest.schema.json",
+  "description": "Valid Derived index manifest example.",
+  "instance": {
+    "schema_version": "1.0",
+    "index_type": "contribution_graph",
+    "source_chain_head": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "source_event_count": 42,
+    "generator": {
+      "name": "thinkloom-indexer",
+      "version": "1.0.0",
+      "configuration_sha256": "sha256:0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+    "generated_at": "2026-07-17T18:42:10.123Z"
+  }
+}

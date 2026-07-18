@@ -1,0 +1,41 @@
+{
+  "vector_version": "1.0",
+  "source_chain_head_before": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+  "source_chain_head_after": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+  "source_record_count": 7,
+  "exported_record_count": 3,
+  "manifest": {
+    "schema_version": "1.0",
+    "export_id": "record_01J00000000000000000000005",
+    "project_id": "project_01J00000000000000000000001",
+    "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+    "profile": "sanitized",
+    "omission_rules": [
+      {
+        "category": "private_conversation",
+        "action": "exclude",
+        "count": 2
+      },
+      {
+        "category": "personal_identifier",
+        "action": "redact",
+        "count": 1
+      },
+      {
+        "category": "provider_detail",
+        "action": "summarize",
+        "count": 1
+      }
+    ],
+    "rules_sha256": "sha256:352ccc3dde25000a1d6dd006a4c0376f73b7805736232b09458696928d3036f6",
+    "files": [
+      {
+        "path": "final-manuscript.md",
+        "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "size": 1024
+      }
+    ],
+    "created_at": "2026-07-17T18:43:11.456Z"
+  },
+  "non_mutation_rule": "Sanitization creates a disclosure-bearing export and never rewrites the project or source chain."
+}

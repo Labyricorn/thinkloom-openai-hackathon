@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://thinkloom.app/schemas/provenance/1.0/transcript-correction.schema.json",
+  "title": "Transcript correction",
+  "description": "Immutable ordered correction to a retained transcript turn.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "correction_id": {
+      "type": "string",
+      "pattern": "^correction_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "turn_id": {
+      "type": "string",
+      "pattern": "^turn_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "revision_number": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "corrected_text": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reason": {
+      "enum": [
+        "user_correction",
+        "transcription_error",
+        "clarification",
+        "other"
+      ]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+    },
+    "event_id": {
+      "type": "string",
+      "pattern": "^event_[0-9A-HJKMNP-TV-Z]{26}$"
+    }
+  },
+  "required": [
+    "schema_version",
+    "correction_id",
+    "turn_id",
+    "revision_number",
+    "corrected_text",
+    "reason",
+    "created_at",
+    "event_id"
+  ],
+  "additionalProperties": false,
+  "examples": [
+    {
+      "schema_version": "1.0",
+      "correction_id": "correction_01J0000000000000000000000J",
+      "turn_id": "turn_01J00000000000000000000007",
+      "revision_number": 1,
+      "corrected_text": "Attention shapes our public life.",
+      "reason": "user_correction",
+      "created_at": "2026-07-17T18:43:11.456Z",
+      "event_id": "event_01J00000000000000000000004"
+    }
+  ]
+}

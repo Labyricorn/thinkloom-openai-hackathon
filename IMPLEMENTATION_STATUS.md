@@ -11,6 +11,7 @@ Status date: 2026-07-17
 - M4 drafting workspace: TipTap structured editor, dominant three-panel layout, selective context, staged generation, all acceptance destinations, partial acceptance, manual editing, undo/redo, and autosave.
 - M5 finalization/style/history: editorial action previews, editable style traits and disallowed habits, saved versions, comparison summary, restore, release checkpoints, provenance timeline, and contribution relationships.
 - M7 export/backup/evidence: Markdown, HTML, PDF, text, backup ZIP, evidence ZIP, sanitization disclosure, hashes, manifest, atomic finalization, and strict ZIP import validation.
+- Provenance Stage 2 contract (v0.3.0): 38 JSON Schema Draft 2020-12 schemas, valid/invalid fixture suites, canonical JSON and JSONL vectors, event-chain vectors, protected-record/key-rotation vectors, retention-policy vectors, and a formal release-files Merkle construction.
 - Product surface: Sites, Next, Vinext, Cloudflare, and browser-companion code and configuration have been removed. Tauri is the sole application target.
 
 ## External release gates
@@ -26,7 +27,7 @@ These items cannot be honestly certified from this workspace alone and need proj
 
 ## Remaining hardening
 
-- Replace the current MVP provenance persistence path with the approved [Thinkloom 1.0 Stage 1 normative provenance subsystem](docs/provenance/README.md). The specification is complete; formal schemas, fixtures, native implementation, and fault-injection conformance remain future stages.
+- Replace the current MVP provenance persistence path with the approved [Thinkloom 1.0 Stage 1 normative provenance subsystem](docs/provenance/README.md). The specification and formal schemas/fixtures are complete; native implementation and fault-injection conformance remain future stages.
 
 - Run microphone/VAD/transcription integration tests once the approved model assets are supplied.
 - Run signed clean-install, upgrade, downgrade-warning, and uninstall tests on each release platform.

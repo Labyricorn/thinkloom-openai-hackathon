@@ -1,0 +1,15 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/invocation-stream-summary.schema.json",
+  "description": "Valid Invocation stream summary example.",
+  "instance": {
+    "schema_version": "1.0",
+    "stream_id": "stream_01J0000000000000000000000Q",
+    "invocation_id": "invocation_01J00000000000000000000008",
+    "terminal_state": "COMPLETED",
+    "bytes_received": 512,
+    "chunks_received": 4,
+    "duration_milliseconds": 2400,
+    "partial_output_preserved": false,
+    "completed_at": "2026-07-17T18:43:11.456Z"
+  }
+}

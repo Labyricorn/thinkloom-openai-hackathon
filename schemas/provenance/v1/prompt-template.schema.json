@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://thinkloom.app/schemas/provenance/1.0/prompt-template.schema.json",
+  "title": "Prompt template",
+  "description": "Immutable versioned prompt template. Its digest identity excludes template_sha256.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "template_id": {
+      "type": "string",
+      "pattern": "^template_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "purpose": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]+$"
+    },
+    "canonical_template_body": {
+      "type": "string",
+      "minLength": 1
+    },
+    "variables": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "minLength": 1
+          },
+          "required": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "description",
+          "required"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "creation_application_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "retention_classification": {
+      "enum": [
+        "application_default",
+        "project_record",
+        "protected_project_record"
+      ]
+    },
+    "template_sha256": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+    }
+  },
+  "required": [
+    "schema_version",
+    "template_id",
+    "version",
+    "purpose",
+    "canonical_template_body",
+    "variables",
+    "creation_application_version",
+    "retention_classification",
+    "template_sha256",
+    "created_at"
+  ],
+  "additionalProperties": false,
+  "examples": [
+    {
+      "schema_version": "1.0",
+      "template_id": "template_01J0000000000000000000000F",
+      "version": 1,
+      "purpose": "draft_from_selected_ideas",
+      "canonical_template_body": "Use {{context}} to draft a passage.",
+      "variables": {
+        "context": {
+          "description": "Selected idea context",
+          "required": true
+        }
+      },
+      "creation_application_version": "0.3.0",
+      "retention_classification": "project_record",
+      "template_sha256": "sha256:7777777777777777777777777777777777777777777777777777777777777777",
+      "created_at": "2026-07-17T18:42:10.123Z"
+    }
+  ]
+}

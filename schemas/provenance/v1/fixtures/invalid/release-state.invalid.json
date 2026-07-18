@@ -1,0 +1,249 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/release-state.schema.json",
+  "cases": [
+    {
+      "description": "release-state.schema_version: reject missing required property",
+      "instance": {
+        "release_id": "release_01J0000000000000000000000E",
+        "project_id": "project_01J00000000000000000000001",
+        "state": "RELEASE_STAGED",
+        "state_sequence": 5,
+        "source_commit": "0123456789abcdef0123456789abcdef01234567",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "updated_at": "2026-07-17T18:43:11.456Z",
+        "failure": null
+      }
+    },
+    {
+      "description": "release-state.release_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "state": "RELEASE_STAGED",
+        "state_sequence": 5,
+        "source_commit": "0123456789abcdef0123456789abcdef01234567",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "updated_at": "2026-07-17T18:43:11.456Z",
+        "failure": null
+      }
+    },
+    {
+      "description": "release-state.project_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "release_id": "release_01J0000000000000000000000E",
+        "state": "RELEASE_STAGED",
+        "state_sequence": 5,
+        "source_commit": "0123456789abcdef0123456789abcdef01234567",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "updated_at": "2026-07-17T18:43:11.456Z",
+        "failure": null
+      }
+    },
+    {
+      "description": "release-state.state: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "release_id": "release_01J0000000000000000000000E",
+        "project_id": "project_01J00000000000000000000001",
+        "state_sequence": 5,
+        "source_commit": "0123456789abcdef0123456789abcdef01234567",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "updated_at": "2026-07-17T18:43:11.456Z",
+        "failure": null
+      }
+    },
+    {
+      "description": "release-state.state_sequence: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "release_id": "release_01J0000000000000000000000E",
+        "project_id": "project_01J00000000000000000000001",
+        "state": "RELEASE_STAGED",
+        "source_commit": "0123456789abcdef0123456789abcdef01234567",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "updated_at": "2026-07-17T18:43:11.456Z",
+        "failure": null
+      }
+    },
+    {
+      "description": "release-state.source_commit: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "release_id": "release_01J0000000000000000000000E",
+        "project_id": "project_01J00000000000000000000001",
+        "state": "RELEASE_STAGED",
+        "state_sequence": 5,
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "updated_at": "2026-07-17T18:43:11.456Z",
+        "failure": null
+      }
+    },
+    {
+      "description": "release-state.source_chain_head: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "release_id": "release_01J0000000000000000000000E",
+        "project_id": "project_01J00000000000000000000001",
+        "state": "RELEASE_STAGED",
+        "state_sequence": 5,
+        "source_commit": "0123456789abcdef0123456789abcdef01234567",
+        "updated_at": "2026-07-17T18:43:11.456Z",
+        "failure": null
+      }
+    },
+    {
+      "description": "release-state.updated_at: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "release_id": "release_01J0000000000000000000000E",
+        "project_id": "project_01J00000000000000000000001",
+        "state": "RELEASE_STAGED",
+        "state_sequence": 5,
+        "source_commit": "0123456789abcdef0123456789abcdef01234567",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "failure": null
+      }
+    },
+    {
+      "description": "release-state.failure: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "release_id": "release_01J0000000000000000000000E",
+        "project_id": "project_01J00000000000000000000001",
+        "state": "RELEASE_STAGED",
+        "state_sequence": 5,
+        "source_commit": "0123456789abcdef0123456789abcdef01234567",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "updated_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "release-state: reject unexpected property",
+      "instance": {
+        "schema_version": "1.0",
+        "release_id": "release_01J0000000000000000000000E",
+        "project_id": "project_01J00000000000000000000001",
+        "state": "RELEASE_STAGED",
+        "state_sequence": 5,
+        "source_commit": "0123456789abcdef0123456789abcdef01234567",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "updated_at": "2026-07-17T18:43:11.456Z",
+        "failure": null,
+        "__unexpected": true
+      }
+    },
+    {
+      "description": "release-state.schema_version: reject value different from const",
+      "instance": {
+        "schema_version": "__INVALID_CONST__",
+        "release_id": "release_01J0000000000000000000000E",
+        "project_id": "project_01J00000000000000000000001",
+        "state": "RELEASE_STAGED",
+        "state_sequence": 5,
+        "source_commit": "0123456789abcdef0123456789abcdef01234567",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "updated_at": "2026-07-17T18:43:11.456Z",
+        "failure": null
+      }
+    },
+    {
+      "description": "release-state.release_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "release_id": "invalid-id",
+        "project_id": "project_01J00000000000000000000001",
+        "state": "RELEASE_STAGED",
+        "state_sequence": 5,
+        "source_commit": "0123456789abcdef0123456789abcdef01234567",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "updated_at": "2026-07-17T18:43:11.456Z",
+        "failure": null
+      }
+    },
+    {
+      "description": "release-state.project_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "release_id": "release_01J0000000000000000000000E",
+        "project_id": "invalid-id",
+        "state": "RELEASE_STAGED",
+        "state_sequence": 5,
+        "source_commit": "0123456789abcdef0123456789abcdef01234567",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "updated_at": "2026-07-17T18:43:11.456Z",
+        "failure": null
+      }
+    },
+    {
+      "description": "release-state.state: reject value outside enum",
+      "instance": {
+        "schema_version": "1.0",
+        "release_id": "release_01J0000000000000000000000E",
+        "project_id": "project_01J00000000000000000000001",
+        "state": "__INVALID_ENUM__",
+        "state_sequence": 5,
+        "source_commit": "0123456789abcdef0123456789abcdef01234567",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "updated_at": "2026-07-17T18:43:11.456Z",
+        "failure": null
+      }
+    },
+    {
+      "description": "release-state.state_sequence: reject value below minimum",
+      "instance": {
+        "schema_version": "1.0",
+        "release_id": "release_01J0000000000000000000000E",
+        "project_id": "project_01J00000000000000000000001",
+        "state": "RELEASE_STAGED",
+        "state_sequence": 0,
+        "source_commit": "0123456789abcdef0123456789abcdef01234567",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "updated_at": "2026-07-17T18:43:11.456Z",
+        "failure": null
+      }
+    },
+    {
+      "description": "release-state.source_commit: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "release_id": "release_01J0000000000000000000000E",
+        "project_id": "project_01J00000000000000000000001",
+        "state": "RELEASE_STAGED",
+        "state_sequence": 5,
+        "source_commit": " invalid!",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "updated_at": "2026-07-17T18:43:11.456Z",
+        "failure": null
+      }
+    },
+    {
+      "description": "release-state.source_chain_head: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "release_id": "release_01J0000000000000000000000E",
+        "project_id": "project_01J00000000000000000000001",
+        "state": "RELEASE_STAGED",
+        "state_sequence": 5,
+        "source_commit": "0123456789abcdef0123456789abcdef01234567",
+        "source_chain_head": "sha256:INVALID",
+        "updated_at": "2026-07-17T18:43:11.456Z",
+        "failure": null
+      }
+    },
+    {
+      "description": "release-state.updated_at: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "release_id": "release_01J0000000000000000000000E",
+        "project_id": "project_01J00000000000000000000001",
+        "state": "RELEASE_STAGED",
+        "state_sequence": 5,
+        "source_commit": "0123456789abcdef0123456789abcdef01234567",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "updated_at": "not-a-timestamp",
+        "failure": null
+      }
+    }
+  ]
+}

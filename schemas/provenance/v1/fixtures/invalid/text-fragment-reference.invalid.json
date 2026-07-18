@@ -1,0 +1,179 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/text-fragment-reference.schema.json",
+  "cases": [
+    {
+      "description": "text-fragment-reference.schema_version: reject missing required property",
+      "instance": {
+        "document_revision_id": "revision_01J0000000000000000000000A",
+        "coordinate_system": "utf8_byte",
+        "start": 0,
+        "end": 12,
+        "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "text_fragment_id": "fragment_01J0000000000000000000000C"
+      }
+    },
+    {
+      "description": "text-fragment-reference.document_revision_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "coordinate_system": "utf8_byte",
+        "start": 0,
+        "end": 12,
+        "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "text_fragment_id": "fragment_01J0000000000000000000000C"
+      }
+    },
+    {
+      "description": "text-fragment-reference.coordinate_system: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "document_revision_id": "revision_01J0000000000000000000000A",
+        "start": 0,
+        "end": 12,
+        "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "text_fragment_id": "fragment_01J0000000000000000000000C"
+      }
+    },
+    {
+      "description": "text-fragment-reference.start: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "document_revision_id": "revision_01J0000000000000000000000A",
+        "coordinate_system": "utf8_byte",
+        "end": 12,
+        "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "text_fragment_id": "fragment_01J0000000000000000000000C"
+      }
+    },
+    {
+      "description": "text-fragment-reference.end: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "document_revision_id": "revision_01J0000000000000000000000A",
+        "coordinate_system": "utf8_byte",
+        "start": 0,
+        "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "text_fragment_id": "fragment_01J0000000000000000000000C"
+      }
+    },
+    {
+      "description": "text-fragment-reference.preimage_sha256: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "document_revision_id": "revision_01J0000000000000000000000A",
+        "coordinate_system": "utf8_byte",
+        "start": 0,
+        "end": 12,
+        "text_fragment_id": "fragment_01J0000000000000000000000C"
+      }
+    },
+    {
+      "description": "text-fragment-reference.text_fragment_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "document_revision_id": "revision_01J0000000000000000000000A",
+        "coordinate_system": "utf8_byte",
+        "start": 0,
+        "end": 12,
+        "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111"
+      }
+    },
+    {
+      "description": "text-fragment-reference: reject unexpected property",
+      "instance": {
+        "schema_version": "1.0",
+        "document_revision_id": "revision_01J0000000000000000000000A",
+        "coordinate_system": "utf8_byte",
+        "start": 0,
+        "end": 12,
+        "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "text_fragment_id": "fragment_01J0000000000000000000000C",
+        "__unexpected": true
+      }
+    },
+    {
+      "description": "text-fragment-reference.schema_version: reject value different from const",
+      "instance": {
+        "schema_version": "__INVALID_CONST__",
+        "document_revision_id": "revision_01J0000000000000000000000A",
+        "coordinate_system": "utf8_byte",
+        "start": 0,
+        "end": 12,
+        "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "text_fragment_id": "fragment_01J0000000000000000000000C"
+      }
+    },
+    {
+      "description": "text-fragment-reference.document_revision_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "document_revision_id": "invalid-id",
+        "coordinate_system": "utf8_byte",
+        "start": 0,
+        "end": 12,
+        "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "text_fragment_id": "fragment_01J0000000000000000000000C"
+      }
+    },
+    {
+      "description": "text-fragment-reference.coordinate_system: reject value outside enum",
+      "instance": {
+        "schema_version": "1.0",
+        "document_revision_id": "revision_01J0000000000000000000000A",
+        "coordinate_system": "__INVALID_ENUM__",
+        "start": 0,
+        "end": 12,
+        "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "text_fragment_id": "fragment_01J0000000000000000000000C"
+      }
+    },
+    {
+      "description": "text-fragment-reference.start: reject value below minimum",
+      "instance": {
+        "schema_version": "1.0",
+        "document_revision_id": "revision_01J0000000000000000000000A",
+        "coordinate_system": "utf8_byte",
+        "start": -1,
+        "end": 12,
+        "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "text_fragment_id": "fragment_01J0000000000000000000000C"
+      }
+    },
+    {
+      "description": "text-fragment-reference.end: reject value below minimum",
+      "instance": {
+        "schema_version": "1.0",
+        "document_revision_id": "revision_01J0000000000000000000000A",
+        "coordinate_system": "utf8_byte",
+        "start": 0,
+        "end": -1,
+        "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "text_fragment_id": "fragment_01J0000000000000000000000C"
+      }
+    },
+    {
+      "description": "text-fragment-reference.preimage_sha256: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "document_revision_id": "revision_01J0000000000000000000000A",
+        "coordinate_system": "utf8_byte",
+        "start": 0,
+        "end": 12,
+        "preimage_sha256": "sha256:INVALID",
+        "text_fragment_id": "fragment_01J0000000000000000000000C"
+      }
+    },
+    {
+      "description": "text-fragment-reference.text_fragment_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "document_revision_id": "revision_01J0000000000000000000000A",
+        "coordinate_system": "utf8_byte",
+        "start": 0,
+        "end": 12,
+        "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "text_fragment_id": "invalid-id"
+      }
+    }
+  ]
+}

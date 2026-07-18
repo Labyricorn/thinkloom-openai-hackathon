@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://thinkloom.app/schemas/provenance/1.0/release-state.schema.json",
+  "title": "Release state",
+  "description": "Durable idempotent release-finalization state.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "release_id": {
+      "type": "string",
+      "pattern": "^release_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "project_id": {
+      "type": "string",
+      "pattern": "^project_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "state": {
+      "enum": [
+        "WORKING",
+        "FREEZING_SOURCE",
+        "SOURCE_FROZEN",
+        "GENERATING_RELEASE",
+        "RELEASE_STAGED",
+        "RELEASE_VERIFIED",
+        "RELEASE_COMMITTED",
+        "RELEASE_TAGGED",
+        "COMPLETE",
+        "RECOVERABLE",
+        "FAILED"
+      ]
+    },
+    "state_sequence": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "source_commit": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40,64}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "source_chain_head": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+    },
+    "failure": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "release_id",
+    "project_id",
+    "state",
+    "state_sequence",
+    "source_commit",
+    "source_chain_head",
+    "updated_at",
+    "failure"
+  ],
+  "additionalProperties": false,
+  "examples": [
+    {
+      "schema_version": "1.0",
+      "release_id": "release_01J0000000000000000000000E",
+      "project_id": "project_01J00000000000000000000001",
+      "state": "RELEASE_STAGED",
+      "state_sequence": 5,
+      "source_commit": "0123456789abcdef0123456789abcdef01234567",
+      "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+      "updated_at": "2026-07-17T18:43:11.456Z",
+      "failure": null
+    }
+  ]
+}

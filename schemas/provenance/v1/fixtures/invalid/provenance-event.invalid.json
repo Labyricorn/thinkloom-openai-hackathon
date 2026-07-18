@@ -1,0 +1,2795 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/provenance-event.schema.json",
+  "cases": [
+    {
+      "description": "provenance-event.schema_version: reject missing required property",
+      "instance": {
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.event_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.event_sequence: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.client_action_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.project_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.timestamp: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.event_type: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.actor: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.provider: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.inputs: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.outputs: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.relationships: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.metadata: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.previous_event_hash: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.event_hash: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null
+      }
+    },
+    {
+      "description": "provenance-event: reject unexpected property",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "__unexpected": true
+      }
+    },
+    {
+      "description": "provenance-event.schema_version: reject value different from const",
+      "instance": {
+        "schema_version": "__INVALID_CONST__",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.event_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "invalid-id",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.event_sequence: reject value below minimum",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 0,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.client_action_id: reject string below minLength",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.client_action_id: reject string above maxLength",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.project_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "invalid-id",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.timestamp: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "not-a-timestamp",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.event_type: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": " invalid!",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.actor.type: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.actor.actor_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user"
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.actor: reject unexpected property",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null,
+          "__unexpected": true
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.actor.type: reject value outside enum",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "__INVALID_ENUM__",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.outputs[0].schema_version: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.outputs[0].record_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.outputs[0].record_type: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.outputs[0].sha256: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.outputs[0].path: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.outputs[0].revision_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.outputs[0].range: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A"
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.outputs[0]: reject unexpected property",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            },
+            "__unexpected": true
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.outputs[0].schema_version: reject value different from const",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "__INVALID_CONST__",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.outputs[0].record_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "invalid-id",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.outputs[0].record_type: reject value outside enum",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "__INVALID_ENUM__",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.outputs[0].sha256: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:INVALID",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.outputs[0].path: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "../outside-project",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.outputs[0].path: reject string below minLength",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.outputs[0].revision_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "invalid-id",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.outputs[0].range.schema_version: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.outputs[0].range.document_revision_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.outputs[0].range.coordinate_system: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.outputs[0].range.start: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.outputs[0].range.end: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.outputs[0].range.preimage_sha256: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": 12,
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.outputs[0].range.text_fragment_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.outputs[0].range: reject unexpected property",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C",
+              "__unexpected": true
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.outputs[0].range.schema_version: reject value different from const",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "__INVALID_CONST__",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.outputs[0].range.document_revision_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "invalid-id",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.outputs[0].range.coordinate_system: reject value outside enum",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "__INVALID_ENUM__",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.outputs[0].range.start: reject value below minimum",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": -1,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.outputs[0].range.end: reject value below minimum",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": -1,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.outputs[0].range.preimage_sha256: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:INVALID",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.outputs[0].range.text_fragment_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "invalid-id"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.relationships.parent_event_ids: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.relationships.invocation_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": []
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.relationships: reject unexpected property",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null,
+          "__unexpected": true
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "description": "provenance-event.event_hash: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "event_id": "event_01J00000000000000000000003",
+        "event_sequence": 1,
+        "client_action_id": "client-action-0001",
+        "project_id": "project_01J00000000000000000000001",
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "event_type": "PROJECT_CREATED",
+        "actor": {
+          "type": "user",
+          "actor_id": null
+        },
+        "provider": null,
+        "inputs": [],
+        "outputs": [
+          {
+            "schema_version": "1.0",
+            "record_id": "record_01J00000000000000000000005",
+            "record_type": "manuscript_revision",
+            "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "path": "manuscript/revisions/revision.json",
+            "revision_id": "revision_01J0000000000000000000000A",
+            "range": {
+              "schema_version": "1.0",
+              "document_revision_id": "revision_01J0000000000000000000000A",
+              "coordinate_system": "utf8_byte",
+              "start": 0,
+              "end": 12,
+              "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+              "text_fragment_id": "fragment_01J0000000000000000000000C"
+            }
+          }
+        ],
+        "relationships": {
+          "parent_event_ids": [],
+          "invocation_id": null
+        },
+        "metadata": {
+          "summary": "Created project"
+        },
+        "previous_event_hash": null,
+        "event_hash": "sha256:INVALID"
+      }
+    }
+  ]
+}

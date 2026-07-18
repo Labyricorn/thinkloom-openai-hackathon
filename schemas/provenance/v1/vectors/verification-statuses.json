@@ -1,0 +1,124 @@
+{
+  "vector_version": "1.0",
+  "reports": [
+    {
+      "schema_version": "1.0",
+      "verification_id": "record_01J0000000000000000000000W",
+      "project_id": "project_01J00000000000000000000001",
+      "status": "VERIFIED",
+      "verified_through_event_id": "event_01J00000000000000000000003",
+      "verified_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+      "checked_segments": 1,
+      "checked_events": 1,
+      "checked_records": 4,
+      "findings": [],
+      "verifier_version": "1.0.0",
+      "completed_at": "2026-07-17T18:43:11.456Z"
+    },
+    {
+      "schema_version": "1.0",
+      "verification_id": "record_01J0000000000000000000000X",
+      "project_id": "project_01J00000000000000000000001",
+      "status": "VERIFIED_WITH_WARNINGS",
+      "verified_through_event_id": "event_01J00000000000000000000003",
+      "verified_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+      "checked_segments": 1,
+      "checked_events": 1,
+      "checked_records": 4,
+      "findings": [
+        {
+          "severity": "WARNING",
+          "code": "INDEX_STALE",
+          "message": "Contribution index is stale.",
+          "authoritative_evidence_affected": false,
+          "path": "provenance/indexes/contribution-graph.json",
+          "event_id": null
+        }
+      ],
+      "verifier_version": "1.0.0",
+      "completed_at": "2026-07-17T18:43:11.456Z"
+    },
+    {
+      "schema_version": "1.0",
+      "verification_id": "record_01J0000000000000000000000Y",
+      "project_id": "project_01J00000000000000000000001",
+      "status": "INCOMPLETE",
+      "verified_through_event_id": "event_01J00000000000000000000003",
+      "verified_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+      "checked_segments": 1,
+      "checked_events": 1,
+      "checked_records": 4,
+      "findings": [
+        {
+          "severity": "INFO",
+          "code": "OPTIONAL_BINARY_MISSING",
+          "message": "An optional release binary is unavailable.",
+          "authoritative_evidence_affected": false,
+          "path": "provenance/indexes/contribution-graph.json",
+          "event_id": null
+        }
+      ],
+      "verifier_version": "1.0.0",
+      "completed_at": "2026-07-17T18:43:11.456Z"
+    },
+    {
+      "schema_version": "1.0",
+      "verification_id": "record_01J0000000000000000000000Z",
+      "project_id": "project_01J00000000000000000000001",
+      "status": "FAILED",
+      "verified_through_event_id": "event_01J00000000000000000000003",
+      "verified_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+      "checked_segments": 1,
+      "checked_events": 1,
+      "checked_records": 4,
+      "findings": [
+        {
+          "severity": "ERROR",
+          "code": "EVENT_HASH_MISMATCH",
+          "message": "An event digest does not match canonical content.",
+          "authoritative_evidence_affected": true,
+          "path": "provenance/indexes/contribution-graph.json",
+          "event_id": null
+        }
+      ],
+      "verifier_version": "1.0.0",
+      "completed_at": "2026-07-17T18:43:11.456Z"
+    },
+    {
+      "schema_version": "1.0",
+      "verification_id": "record_01J00000000000000000000000",
+      "project_id": "project_01J00000000000000000000001",
+      "status": "UNSAFE",
+      "verified_through_event_id": "event_01J00000000000000000000003",
+      "verified_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+      "checked_segments": 1,
+      "checked_events": 1,
+      "checked_records": 4,
+      "findings": [
+        {
+          "severity": "CRITICAL",
+          "code": "CHAIN_RECONSTITUTED",
+          "message": "The chain cannot establish ordinary continuity.",
+          "authoritative_evidence_affected": true,
+          "path": "provenance/indexes/contribution-graph.json",
+          "event_id": null
+        }
+      ],
+      "verifier_version": "1.0.0",
+      "completed_at": "2026-07-17T18:43:11.456Z"
+    }
+  ],
+  "required_statuses": [
+    "VERIFIED",
+    "VERIFIED_WITH_WARNINGS",
+    "INCOMPLETE",
+    "FAILED",
+    "UNSAFE"
+  ],
+  "required_severities": [
+    "INFO",
+    "WARNING",
+    "ERROR",
+    "CRITICAL"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/provenance-policy.schema.json",
+  "description": "Valid Provenance policy example.",
+  "instance": {
+    "schema_version": "1.0",
+    "policy_id": "policy_01J0000000000000000000000H",
+    "project_id": "project_01J00000000000000000000001",
+    "retention_mode": "minimal",
+    "encryption_mode": "none",
+    "default_export_profile": "sanitized",
+    "effective_at": "2026-07-17T18:42:10.123Z"
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "vector_version": "1.0",
+  "algorithm": "Unicode NFC followed by RFC 8785 JSON Canonicalization Scheme and SHA-256 over UTF-8 bytes",
+  "cases": [
+    {
+      "id": "rfc8785-key-order",
+      "input": {
+        "z": 1,
+        "a": 2,
+        "nested": {
+          "beta": true,
+          "alpha": false
+        }
+      },
+      "canonical_json": "{\"a\":2,\"nested\":{\"alpha\":false,\"beta\":true},\"z\":1}",
+      "utf8_sha256": "sha256:f0d2d7ce87541c9b5d9c16a557f162a766ce865ae322a1ce512f89835e344479"
+    },
+    {
+      "id": "thinkloom-nfc",
+      "input": {
+        "text": "Café",
+        "é": "normalize keys and values"
+      },
+      "canonical_json": "{\"text\":\"Café\",\"é\":\"normalize keys and values\"}",
+      "utf8_sha256": "sha256:7c5f79c29886fc66ff5a0529755d07fe905f178131f264a95b4ff44d91214e4c"
+    },
+    {
+      "id": "rfc8785-numbers",
+      "input": {
+        "numbers": [
+          333333333.3333333,
+          1e+30,
+          4.5,
+          0.002,
+          1e-27
+        ]
+      },
+      "canonical_json": "{\"numbers\":[333333333.3333333,1e+30,4.5,0.002,1e-27]}",
+      "utf8_sha256": "sha256:7c892d3452ad85ad65857a43e8dcac93b79475d2334fc3e85bac5c599142c158"
+    },
+    {
+      "id": "thinkloom-timestamp-and-path",
+      "input": {
+        "timestamp": "2026-07-17T18:42:10.123Z",
+        "path": "records/invocations/request.json"
+      },
+      "canonical_json": "{\"path\":\"records/invocations/request.json\",\"timestamp\":\"2026-07-17T18:42:10.123Z\"}",
+      "utf8_sha256": "sha256:97f1f02f62ecbbe8b80ede4e48655f5d8774fd6022bba1f6d2c421eca9975068"
+    }
+  ],
+  "rejected_inputs": [
+    {
+      "id": "non-finite-number",
+      "description": "NaN and infinity are not JSON and MUST be rejected before canonicalization."
+    },
+    {
+      "id": "undefined-value",
+      "description": "Undefined values MUST be rejected rather than silently omitted."
+    },
+    {
+      "id": "nfc-key-collision",
+      "description": "Distinct source keys that normalize to the same NFC key MUST be rejected."
+    },
+    {
+      "id": "unpaired-surrogate",
+      "description": "I-JSON prohibits unpaired Unicode surrogate code units."
+    },
+    {
+      "id": "non-json-runtime-types",
+      "description": "BigInt, symbols, functions, sparse arrays, and non-plain objects MUST be rejected."
+    }
+  ]
+}

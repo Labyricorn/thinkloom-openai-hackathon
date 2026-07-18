@@ -1,0 +1,625 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/purge-manifest.schema.json",
+  "cases": [
+    {
+      "description": "purge-manifest.schema_version: reject missing required property",
+      "instance": {
+        "purge_id": "purge_01J0000000000000000000000R",
+        "project_id": "project_01J00000000000000000000001",
+        "requested_at": "2026-07-17T18:42:10.123Z",
+        "completed_at": "2026-07-17T18:43:11.456Z",
+        "reason": "Remove accidentally retained credential",
+        "superseded_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "new_chain_root": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "affected_record_ids": [
+          "record_01J00000000000000000000005"
+        ],
+        "affected_paths": [
+          "records/invocations/request.json"
+        ],
+        "git_history_rewritten": true,
+        "prior_copies_revocable": false,
+        "confirmation_phrase_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666"
+      }
+    },
+    {
+      "description": "purge-manifest.purge_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "requested_at": "2026-07-17T18:42:10.123Z",
+        "completed_at": "2026-07-17T18:43:11.456Z",
+        "reason": "Remove accidentally retained credential",
+        "superseded_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "new_chain_root": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "affected_record_ids": [
+          "record_01J00000000000000000000005"
+        ],
+        "affected_paths": [
+          "records/invocations/request.json"
+        ],
+        "git_history_rewritten": true,
+        "prior_copies_revocable": false,
+        "confirmation_phrase_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666"
+      }
+    },
+    {
+      "description": "purge-manifest.project_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "purge_id": "purge_01J0000000000000000000000R",
+        "requested_at": "2026-07-17T18:42:10.123Z",
+        "completed_at": "2026-07-17T18:43:11.456Z",
+        "reason": "Remove accidentally retained credential",
+        "superseded_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "new_chain_root": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "affected_record_ids": [
+          "record_01J00000000000000000000005"
+        ],
+        "affected_paths": [
+          "records/invocations/request.json"
+        ],
+        "git_history_rewritten": true,
+        "prior_copies_revocable": false,
+        "confirmation_phrase_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666"
+      }
+    },
+    {
+      "description": "purge-manifest.requested_at: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "purge_id": "purge_01J0000000000000000000000R",
+        "project_id": "project_01J00000000000000000000001",
+        "completed_at": "2026-07-17T18:43:11.456Z",
+        "reason": "Remove accidentally retained credential",
+        "superseded_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "new_chain_root": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "affected_record_ids": [
+          "record_01J00000000000000000000005"
+        ],
+        "affected_paths": [
+          "records/invocations/request.json"
+        ],
+        "git_history_rewritten": true,
+        "prior_copies_revocable": false,
+        "confirmation_phrase_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666"
+      }
+    },
+    {
+      "description": "purge-manifest.completed_at: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "purge_id": "purge_01J0000000000000000000000R",
+        "project_id": "project_01J00000000000000000000001",
+        "requested_at": "2026-07-17T18:42:10.123Z",
+        "reason": "Remove accidentally retained credential",
+        "superseded_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "new_chain_root": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "affected_record_ids": [
+          "record_01J00000000000000000000005"
+        ],
+        "affected_paths": [
+          "records/invocations/request.json"
+        ],
+        "git_history_rewritten": true,
+        "prior_copies_revocable": false,
+        "confirmation_phrase_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666"
+      }
+    },
+    {
+      "description": "purge-manifest.reason: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "purge_id": "purge_01J0000000000000000000000R",
+        "project_id": "project_01J00000000000000000000001",
+        "requested_at": "2026-07-17T18:42:10.123Z",
+        "completed_at": "2026-07-17T18:43:11.456Z",
+        "superseded_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "new_chain_root": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "affected_record_ids": [
+          "record_01J00000000000000000000005"
+        ],
+        "affected_paths": [
+          "records/invocations/request.json"
+        ],
+        "git_history_rewritten": true,
+        "prior_copies_revocable": false,
+        "confirmation_phrase_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666"
+      }
+    },
+    {
+      "description": "purge-manifest.superseded_chain_head: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "purge_id": "purge_01J0000000000000000000000R",
+        "project_id": "project_01J00000000000000000000001",
+        "requested_at": "2026-07-17T18:42:10.123Z",
+        "completed_at": "2026-07-17T18:43:11.456Z",
+        "reason": "Remove accidentally retained credential",
+        "new_chain_root": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "affected_record_ids": [
+          "record_01J00000000000000000000005"
+        ],
+        "affected_paths": [
+          "records/invocations/request.json"
+        ],
+        "git_history_rewritten": true,
+        "prior_copies_revocable": false,
+        "confirmation_phrase_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666"
+      }
+    },
+    {
+      "description": "purge-manifest.new_chain_root: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "purge_id": "purge_01J0000000000000000000000R",
+        "project_id": "project_01J00000000000000000000001",
+        "requested_at": "2026-07-17T18:42:10.123Z",
+        "completed_at": "2026-07-17T18:43:11.456Z",
+        "reason": "Remove accidentally retained credential",
+        "superseded_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "affected_record_ids": [
+          "record_01J00000000000000000000005"
+        ],
+        "affected_paths": [
+          "records/invocations/request.json"
+        ],
+        "git_history_rewritten": true,
+        "prior_copies_revocable": false,
+        "confirmation_phrase_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666"
+      }
+    },
+    {
+      "description": "purge-manifest.affected_record_ids: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "purge_id": "purge_01J0000000000000000000000R",
+        "project_id": "project_01J00000000000000000000001",
+        "requested_at": "2026-07-17T18:42:10.123Z",
+        "completed_at": "2026-07-17T18:43:11.456Z",
+        "reason": "Remove accidentally retained credential",
+        "superseded_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "new_chain_root": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "affected_paths": [
+          "records/invocations/request.json"
+        ],
+        "git_history_rewritten": true,
+        "prior_copies_revocable": false,
+        "confirmation_phrase_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666"
+      }
+    },
+    {
+      "description": "purge-manifest.affected_paths: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "purge_id": "purge_01J0000000000000000000000R",
+        "project_id": "project_01J00000000000000000000001",
+        "requested_at": "2026-07-17T18:42:10.123Z",
+        "completed_at": "2026-07-17T18:43:11.456Z",
+        "reason": "Remove accidentally retained credential",
+        "superseded_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "new_chain_root": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "affected_record_ids": [
+          "record_01J00000000000000000000005"
+        ],
+        "git_history_rewritten": true,
+        "prior_copies_revocable": false,
+        "confirmation_phrase_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666"
+      }
+    },
+    {
+      "description": "purge-manifest.git_history_rewritten: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "purge_id": "purge_01J0000000000000000000000R",
+        "project_id": "project_01J00000000000000000000001",
+        "requested_at": "2026-07-17T18:42:10.123Z",
+        "completed_at": "2026-07-17T18:43:11.456Z",
+        "reason": "Remove accidentally retained credential",
+        "superseded_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "new_chain_root": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "affected_record_ids": [
+          "record_01J00000000000000000000005"
+        ],
+        "affected_paths": [
+          "records/invocations/request.json"
+        ],
+        "prior_copies_revocable": false,
+        "confirmation_phrase_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666"
+      }
+    },
+    {
+      "description": "purge-manifest.prior_copies_revocable: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "purge_id": "purge_01J0000000000000000000000R",
+        "project_id": "project_01J00000000000000000000001",
+        "requested_at": "2026-07-17T18:42:10.123Z",
+        "completed_at": "2026-07-17T18:43:11.456Z",
+        "reason": "Remove accidentally retained credential",
+        "superseded_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "new_chain_root": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "affected_record_ids": [
+          "record_01J00000000000000000000005"
+        ],
+        "affected_paths": [
+          "records/invocations/request.json"
+        ],
+        "git_history_rewritten": true,
+        "confirmation_phrase_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666"
+      }
+    },
+    {
+      "description": "purge-manifest.confirmation_phrase_sha256: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "purge_id": "purge_01J0000000000000000000000R",
+        "project_id": "project_01J00000000000000000000001",
+        "requested_at": "2026-07-17T18:42:10.123Z",
+        "completed_at": "2026-07-17T18:43:11.456Z",
+        "reason": "Remove accidentally retained credential",
+        "superseded_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "new_chain_root": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "affected_record_ids": [
+          "record_01J00000000000000000000005"
+        ],
+        "affected_paths": [
+          "records/invocations/request.json"
+        ],
+        "git_history_rewritten": true,
+        "prior_copies_revocable": false
+      }
+    },
+    {
+      "description": "purge-manifest: reject unexpected property",
+      "instance": {
+        "schema_version": "1.0",
+        "purge_id": "purge_01J0000000000000000000000R",
+        "project_id": "project_01J00000000000000000000001",
+        "requested_at": "2026-07-17T18:42:10.123Z",
+        "completed_at": "2026-07-17T18:43:11.456Z",
+        "reason": "Remove accidentally retained credential",
+        "superseded_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "new_chain_root": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "affected_record_ids": [
+          "record_01J00000000000000000000005"
+        ],
+        "affected_paths": [
+          "records/invocations/request.json"
+        ],
+        "git_history_rewritten": true,
+        "prior_copies_revocable": false,
+        "confirmation_phrase_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "__unexpected": true
+      }
+    },
+    {
+      "description": "purge-manifest.schema_version: reject value different from const",
+      "instance": {
+        "schema_version": "__INVALID_CONST__",
+        "purge_id": "purge_01J0000000000000000000000R",
+        "project_id": "project_01J00000000000000000000001",
+        "requested_at": "2026-07-17T18:42:10.123Z",
+        "completed_at": "2026-07-17T18:43:11.456Z",
+        "reason": "Remove accidentally retained credential",
+        "superseded_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "new_chain_root": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "affected_record_ids": [
+          "record_01J00000000000000000000005"
+        ],
+        "affected_paths": [
+          "records/invocations/request.json"
+        ],
+        "git_history_rewritten": true,
+        "prior_copies_revocable": false,
+        "confirmation_phrase_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666"
+      }
+    },
+    {
+      "description": "purge-manifest.purge_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "purge_id": "invalid-id",
+        "project_id": "project_01J00000000000000000000001",
+        "requested_at": "2026-07-17T18:42:10.123Z",
+        "completed_at": "2026-07-17T18:43:11.456Z",
+        "reason": "Remove accidentally retained credential",
+        "superseded_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "new_chain_root": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "affected_record_ids": [
+          "record_01J00000000000000000000005"
+        ],
+        "affected_paths": [
+          "records/invocations/request.json"
+        ],
+        "git_history_rewritten": true,
+        "prior_copies_revocable": false,
+        "confirmation_phrase_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666"
+      }
+    },
+    {
+      "description": "purge-manifest.project_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "purge_id": "purge_01J0000000000000000000000R",
+        "project_id": "invalid-id",
+        "requested_at": "2026-07-17T18:42:10.123Z",
+        "completed_at": "2026-07-17T18:43:11.456Z",
+        "reason": "Remove accidentally retained credential",
+        "superseded_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "new_chain_root": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "affected_record_ids": [
+          "record_01J00000000000000000000005"
+        ],
+        "affected_paths": [
+          "records/invocations/request.json"
+        ],
+        "git_history_rewritten": true,
+        "prior_copies_revocable": false,
+        "confirmation_phrase_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666"
+      }
+    },
+    {
+      "description": "purge-manifest.requested_at: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "purge_id": "purge_01J0000000000000000000000R",
+        "project_id": "project_01J00000000000000000000001",
+        "requested_at": "not-a-timestamp",
+        "completed_at": "2026-07-17T18:43:11.456Z",
+        "reason": "Remove accidentally retained credential",
+        "superseded_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "new_chain_root": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "affected_record_ids": [
+          "record_01J00000000000000000000005"
+        ],
+        "affected_paths": [
+          "records/invocations/request.json"
+        ],
+        "git_history_rewritten": true,
+        "prior_copies_revocable": false,
+        "confirmation_phrase_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666"
+      }
+    },
+    {
+      "description": "purge-manifest.completed_at: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "purge_id": "purge_01J0000000000000000000000R",
+        "project_id": "project_01J00000000000000000000001",
+        "requested_at": "2026-07-17T18:42:10.123Z",
+        "completed_at": "not-a-timestamp",
+        "reason": "Remove accidentally retained credential",
+        "superseded_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "new_chain_root": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "affected_record_ids": [
+          "record_01J00000000000000000000005"
+        ],
+        "affected_paths": [
+          "records/invocations/request.json"
+        ],
+        "git_history_rewritten": true,
+        "prior_copies_revocable": false,
+        "confirmation_phrase_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666"
+      }
+    },
+    {
+      "description": "purge-manifest.reason: reject string below minLength",
+      "instance": {
+        "schema_version": "1.0",
+        "purge_id": "purge_01J0000000000000000000000R",
+        "project_id": "project_01J00000000000000000000001",
+        "requested_at": "2026-07-17T18:42:10.123Z",
+        "completed_at": "2026-07-17T18:43:11.456Z",
+        "reason": "",
+        "superseded_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "new_chain_root": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "affected_record_ids": [
+          "record_01J00000000000000000000005"
+        ],
+        "affected_paths": [
+          "records/invocations/request.json"
+        ],
+        "git_history_rewritten": true,
+        "prior_copies_revocable": false,
+        "confirmation_phrase_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666"
+      }
+    },
+    {
+      "description": "purge-manifest.superseded_chain_head: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "purge_id": "purge_01J0000000000000000000000R",
+        "project_id": "project_01J00000000000000000000001",
+        "requested_at": "2026-07-17T18:42:10.123Z",
+        "completed_at": "2026-07-17T18:43:11.456Z",
+        "reason": "Remove accidentally retained credential",
+        "superseded_chain_head": "sha256:INVALID",
+        "new_chain_root": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "affected_record_ids": [
+          "record_01J00000000000000000000005"
+        ],
+        "affected_paths": [
+          "records/invocations/request.json"
+        ],
+        "git_history_rewritten": true,
+        "prior_copies_revocable": false,
+        "confirmation_phrase_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666"
+      }
+    },
+    {
+      "description": "purge-manifest.new_chain_root: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "purge_id": "purge_01J0000000000000000000000R",
+        "project_id": "project_01J00000000000000000000001",
+        "requested_at": "2026-07-17T18:42:10.123Z",
+        "completed_at": "2026-07-17T18:43:11.456Z",
+        "reason": "Remove accidentally retained credential",
+        "superseded_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "new_chain_root": "sha256:INVALID",
+        "affected_record_ids": [
+          "record_01J00000000000000000000005"
+        ],
+        "affected_paths": [
+          "records/invocations/request.json"
+        ],
+        "git_history_rewritten": true,
+        "prior_copies_revocable": false,
+        "confirmation_phrase_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666"
+      }
+    },
+    {
+      "description": "purge-manifest.affected_record_ids: reject array below minItems",
+      "instance": {
+        "schema_version": "1.0",
+        "purge_id": "purge_01J0000000000000000000000R",
+        "project_id": "project_01J00000000000000000000001",
+        "requested_at": "2026-07-17T18:42:10.123Z",
+        "completed_at": "2026-07-17T18:43:11.456Z",
+        "reason": "Remove accidentally retained credential",
+        "superseded_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "new_chain_root": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "affected_record_ids": [],
+        "affected_paths": [
+          "records/invocations/request.json"
+        ],
+        "git_history_rewritten": true,
+        "prior_copies_revocable": false,
+        "confirmation_phrase_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666"
+      }
+    },
+    {
+      "description": "purge-manifest.affected_record_ids[0]: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "purge_id": "purge_01J0000000000000000000000R",
+        "project_id": "project_01J00000000000000000000001",
+        "requested_at": "2026-07-17T18:42:10.123Z",
+        "completed_at": "2026-07-17T18:43:11.456Z",
+        "reason": "Remove accidentally retained credential",
+        "superseded_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "new_chain_root": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "affected_record_ids": [
+          "invalid-id"
+        ],
+        "affected_paths": [
+          "records/invocations/request.json"
+        ],
+        "git_history_rewritten": true,
+        "prior_copies_revocable": false,
+        "confirmation_phrase_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666"
+      }
+    },
+    {
+      "description": "purge-manifest.affected_paths[0]: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "purge_id": "purge_01J0000000000000000000000R",
+        "project_id": "project_01J00000000000000000000001",
+        "requested_at": "2026-07-17T18:42:10.123Z",
+        "completed_at": "2026-07-17T18:43:11.456Z",
+        "reason": "Remove accidentally retained credential",
+        "superseded_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "new_chain_root": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "affected_record_ids": [
+          "record_01J00000000000000000000005"
+        ],
+        "affected_paths": [
+          "../outside-project"
+        ],
+        "git_history_rewritten": true,
+        "prior_copies_revocable": false,
+        "confirmation_phrase_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666"
+      }
+    },
+    {
+      "description": "purge-manifest.affected_paths[0]: reject string below minLength",
+      "instance": {
+        "schema_version": "1.0",
+        "purge_id": "purge_01J0000000000000000000000R",
+        "project_id": "project_01J00000000000000000000001",
+        "requested_at": "2026-07-17T18:42:10.123Z",
+        "completed_at": "2026-07-17T18:43:11.456Z",
+        "reason": "Remove accidentally retained credential",
+        "superseded_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "new_chain_root": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "affected_record_ids": [
+          "record_01J00000000000000000000005"
+        ],
+        "affected_paths": [
+          ""
+        ],
+        "git_history_rewritten": true,
+        "prior_copies_revocable": false,
+        "confirmation_phrase_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666"
+      }
+    },
+    {
+      "description": "purge-manifest.git_history_rewritten: reject value different from const",
+      "instance": {
+        "schema_version": "1.0",
+        "purge_id": "purge_01J0000000000000000000000R",
+        "project_id": "project_01J00000000000000000000001",
+        "requested_at": "2026-07-17T18:42:10.123Z",
+        "completed_at": "2026-07-17T18:43:11.456Z",
+        "reason": "Remove accidentally retained credential",
+        "superseded_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "new_chain_root": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "affected_record_ids": [
+          "record_01J00000000000000000000005"
+        ],
+        "affected_paths": [
+          "records/invocations/request.json"
+        ],
+        "git_history_rewritten": false,
+        "prior_copies_revocable": false,
+        "confirmation_phrase_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666"
+      }
+    },
+    {
+      "description": "purge-manifest.prior_copies_revocable: reject value different from const",
+      "instance": {
+        "schema_version": "1.0",
+        "purge_id": "purge_01J0000000000000000000000R",
+        "project_id": "project_01J00000000000000000000001",
+        "requested_at": "2026-07-17T18:42:10.123Z",
+        "completed_at": "2026-07-17T18:43:11.456Z",
+        "reason": "Remove accidentally retained credential",
+        "superseded_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "new_chain_root": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "affected_record_ids": [
+          "record_01J00000000000000000000005"
+        ],
+        "affected_paths": [
+          "records/invocations/request.json"
+        ],
+        "git_history_rewritten": true,
+        "prior_copies_revocable": true,
+        "confirmation_phrase_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666"
+      }
+    },
+    {
+      "description": "purge-manifest.confirmation_phrase_sha256: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "purge_id": "purge_01J0000000000000000000000R",
+        "project_id": "project_01J00000000000000000000001",
+        "requested_at": "2026-07-17T18:42:10.123Z",
+        "completed_at": "2026-07-17T18:43:11.456Z",
+        "reason": "Remove accidentally retained credential",
+        "superseded_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "new_chain_root": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "affected_record_ids": [
+          "record_01J00000000000000000000005"
+        ],
+        "affected_paths": [
+          "records/invocations/request.json"
+        ],
+        "git_history_rewritten": true,
+        "prior_copies_revocable": false,
+        "confirmation_phrase_sha256": "sha256:INVALID"
+      }
+    }
+  ]
+}

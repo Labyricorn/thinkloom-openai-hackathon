@@ -1,0 +1,1213 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/release-manifest.schema.json",
+  "cases": [
+    {
+      "description": "release-manifest.schema_version: reject missing required property",
+      "instance": {
+        "application_version": "0.3.0",
+        "release_id": "release_01J0000000000000000000000E",
+        "project_id": "project_01J00000000000000000000001",
+        "version": "1.0.0",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "source_commit": "0123456789abcdef0123456789abcdef01234567",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "source_manuscript": {
+          "path": "manuscript/final-manuscript.md",
+          "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+        },
+        "sanitized": false,
+        "files": [
+          {
+            "path": "manuscript/final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          },
+          {
+            "path": "evidence/creative-process-report.md",
+            "sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "size": 512
+          }
+        ],
+        "release_files_merkle_root": "sha256:b773ac929d720839a617ec0f9d6e39ad5401fa7795e21f799302658de8db9cda",
+        "merkle_algorithm": "thinkloom-release-merkle-v1"
+      }
+    },
+    {
+      "description": "release-manifest.application_version: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "release_id": "release_01J0000000000000000000000E",
+        "project_id": "project_01J00000000000000000000001",
+        "version": "1.0.0",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "source_commit": "0123456789abcdef0123456789abcdef01234567",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "source_manuscript": {
+          "path": "manuscript/final-manuscript.md",
+          "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+        },
+        "sanitized": false,
+        "files": [
+          {
+            "path": "manuscript/final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          },
+          {
+            "path": "evidence/creative-process-report.md",
+            "sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "size": 512
+          }
+        ],
+        "release_files_merkle_root": "sha256:b773ac929d720839a617ec0f9d6e39ad5401fa7795e21f799302658de8db9cda",
+        "merkle_algorithm": "thinkloom-release-merkle-v1"
+      }
+    },
+    {
+      "description": "release-manifest.release_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "application_version": "0.3.0",
+        "project_id": "project_01J00000000000000000000001",
+        "version": "1.0.0",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "source_commit": "0123456789abcdef0123456789abcdef01234567",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "source_manuscript": {
+          "path": "manuscript/final-manuscript.md",
+          "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+        },
+        "sanitized": false,
+        "files": [
+          {
+            "path": "manuscript/final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          },
+          {
+            "path": "evidence/creative-process-report.md",
+            "sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "size": 512
+          }
+        ],
+        "release_files_merkle_root": "sha256:b773ac929d720839a617ec0f9d6e39ad5401fa7795e21f799302658de8db9cda",
+        "merkle_algorithm": "thinkloom-release-merkle-v1"
+      }
+    },
+    {
+      "description": "release-manifest.project_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "application_version": "0.3.0",
+        "release_id": "release_01J0000000000000000000000E",
+        "version": "1.0.0",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "source_commit": "0123456789abcdef0123456789abcdef01234567",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "source_manuscript": {
+          "path": "manuscript/final-manuscript.md",
+          "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+        },
+        "sanitized": false,
+        "files": [
+          {
+            "path": "manuscript/final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          },
+          {
+            "path": "evidence/creative-process-report.md",
+            "sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "size": 512
+          }
+        ],
+        "release_files_merkle_root": "sha256:b773ac929d720839a617ec0f9d6e39ad5401fa7795e21f799302658de8db9cda",
+        "merkle_algorithm": "thinkloom-release-merkle-v1"
+      }
+    },
+    {
+      "description": "release-manifest.version: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "application_version": "0.3.0",
+        "release_id": "release_01J0000000000000000000000E",
+        "project_id": "project_01J00000000000000000000001",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "source_commit": "0123456789abcdef0123456789abcdef01234567",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "source_manuscript": {
+          "path": "manuscript/final-manuscript.md",
+          "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+        },
+        "sanitized": false,
+        "files": [
+          {
+            "path": "manuscript/final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          },
+          {
+            "path": "evidence/creative-process-report.md",
+            "sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "size": 512
+          }
+        ],
+        "release_files_merkle_root": "sha256:b773ac929d720839a617ec0f9d6e39ad5401fa7795e21f799302658de8db9cda",
+        "merkle_algorithm": "thinkloom-release-merkle-v1"
+      }
+    },
+    {
+      "description": "release-manifest.created_at: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "application_version": "0.3.0",
+        "release_id": "release_01J0000000000000000000000E",
+        "project_id": "project_01J00000000000000000000001",
+        "version": "1.0.0",
+        "source_commit": "0123456789abcdef0123456789abcdef01234567",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "source_manuscript": {
+          "path": "manuscript/final-manuscript.md",
+          "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+        },
+        "sanitized": false,
+        "files": [
+          {
+            "path": "manuscript/final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          },
+          {
+            "path": "evidence/creative-process-report.md",
+            "sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "size": 512
+          }
+        ],
+        "release_files_merkle_root": "sha256:b773ac929d720839a617ec0f9d6e39ad5401fa7795e21f799302658de8db9cda",
+        "merkle_algorithm": "thinkloom-release-merkle-v1"
+      }
+    },
+    {
+      "description": "release-manifest.source_commit: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "application_version": "0.3.0",
+        "release_id": "release_01J0000000000000000000000E",
+        "project_id": "project_01J00000000000000000000001",
+        "version": "1.0.0",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "source_manuscript": {
+          "path": "manuscript/final-manuscript.md",
+          "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+        },
+        "sanitized": false,
+        "files": [
+          {
+            "path": "manuscript/final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          },
+          {
+            "path": "evidence/creative-process-report.md",
+            "sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "size": 512
+          }
+        ],
+        "release_files_merkle_root": "sha256:b773ac929d720839a617ec0f9d6e39ad5401fa7795e21f799302658de8db9cda",
+        "merkle_algorithm": "thinkloom-release-merkle-v1"
+      }
+    },
+    {
+      "description": "release-manifest.source_chain_head: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "application_version": "0.3.0",
+        "release_id": "release_01J0000000000000000000000E",
+        "project_id": "project_01J00000000000000000000001",
+        "version": "1.0.0",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "source_commit": "0123456789abcdef0123456789abcdef01234567",
+        "source_manuscript": {
+          "path": "manuscript/final-manuscript.md",
+          "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+        },
+        "sanitized": false,
+        "files": [
+          {
+            "path": "manuscript/final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          },
+          {
+            "path": "evidence/creative-process-report.md",
+            "sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "size": 512
+          }
+        ],
+        "release_files_merkle_root": "sha256:b773ac929d720839a617ec0f9d6e39ad5401fa7795e21f799302658de8db9cda",
+        "merkle_algorithm": "thinkloom-release-merkle-v1"
+      }
+    },
+    {
+      "description": "release-manifest.source_manuscript: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "application_version": "0.3.0",
+        "release_id": "release_01J0000000000000000000000E",
+        "project_id": "project_01J00000000000000000000001",
+        "version": "1.0.0",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "source_commit": "0123456789abcdef0123456789abcdef01234567",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "sanitized": false,
+        "files": [
+          {
+            "path": "manuscript/final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          },
+          {
+            "path": "evidence/creative-process-report.md",
+            "sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "size": 512
+          }
+        ],
+        "release_files_merkle_root": "sha256:b773ac929d720839a617ec0f9d6e39ad5401fa7795e21f799302658de8db9cda",
+        "merkle_algorithm": "thinkloom-release-merkle-v1"
+      }
+    },
+    {
+      "description": "release-manifest.sanitized: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "application_version": "0.3.0",
+        "release_id": "release_01J0000000000000000000000E",
+        "project_id": "project_01J00000000000000000000001",
+        "version": "1.0.0",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "source_commit": "0123456789abcdef0123456789abcdef01234567",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "source_manuscript": {
+          "path": "manuscript/final-manuscript.md",
+          "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+        },
+        "files": [
+          {
+            "path": "manuscript/final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          },
+          {
+            "path": "evidence/creative-process-report.md",
+            "sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "size": 512
+          }
+        ],
+        "release_files_merkle_root": "sha256:b773ac929d720839a617ec0f9d6e39ad5401fa7795e21f799302658de8db9cda",
+        "merkle_algorithm": "thinkloom-release-merkle-v1"
+      }
+    },
+    {
+      "description": "release-manifest.files: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "application_version": "0.3.0",
+        "release_id": "release_01J0000000000000000000000E",
+        "project_id": "project_01J00000000000000000000001",
+        "version": "1.0.0",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "source_commit": "0123456789abcdef0123456789abcdef01234567",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "source_manuscript": {
+          "path": "manuscript/final-manuscript.md",
+          "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+        },
+        "sanitized": false,
+        "release_files_merkle_root": "sha256:b773ac929d720839a617ec0f9d6e39ad5401fa7795e21f799302658de8db9cda",
+        "merkle_algorithm": "thinkloom-release-merkle-v1"
+      }
+    },
+    {
+      "description": "release-manifest.release_files_merkle_root: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "application_version": "0.3.0",
+        "release_id": "release_01J0000000000000000000000E",
+        "project_id": "project_01J00000000000000000000001",
+        "version": "1.0.0",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "source_commit": "0123456789abcdef0123456789abcdef01234567",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "source_manuscript": {
+          "path": "manuscript/final-manuscript.md",
+          "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+        },
+        "sanitized": false,
+        "files": [
+          {
+            "path": "manuscript/final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          },
+          {
+            "path": "evidence/creative-process-report.md",
+            "sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "size": 512
+          }
+        ],
+        "merkle_algorithm": "thinkloom-release-merkle-v1"
+      }
+    },
+    {
+      "description": "release-manifest.merkle_algorithm: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "application_version": "0.3.0",
+        "release_id": "release_01J0000000000000000000000E",
+        "project_id": "project_01J00000000000000000000001",
+        "version": "1.0.0",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "source_commit": "0123456789abcdef0123456789abcdef01234567",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "source_manuscript": {
+          "path": "manuscript/final-manuscript.md",
+          "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+        },
+        "sanitized": false,
+        "files": [
+          {
+            "path": "manuscript/final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          },
+          {
+            "path": "evidence/creative-process-report.md",
+            "sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "size": 512
+          }
+        ],
+        "release_files_merkle_root": "sha256:b773ac929d720839a617ec0f9d6e39ad5401fa7795e21f799302658de8db9cda"
+      }
+    },
+    {
+      "description": "release-manifest: reject unexpected property",
+      "instance": {
+        "schema_version": "1.0",
+        "application_version": "0.3.0",
+        "release_id": "release_01J0000000000000000000000E",
+        "project_id": "project_01J00000000000000000000001",
+        "version": "1.0.0",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "source_commit": "0123456789abcdef0123456789abcdef01234567",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "source_manuscript": {
+          "path": "manuscript/final-manuscript.md",
+          "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+        },
+        "sanitized": false,
+        "files": [
+          {
+            "path": "manuscript/final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          },
+          {
+            "path": "evidence/creative-process-report.md",
+            "sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "size": 512
+          }
+        ],
+        "release_files_merkle_root": "sha256:b773ac929d720839a617ec0f9d6e39ad5401fa7795e21f799302658de8db9cda",
+        "merkle_algorithm": "thinkloom-release-merkle-v1",
+        "__unexpected": true
+      }
+    },
+    {
+      "description": "release-manifest.schema_version: reject value different from const",
+      "instance": {
+        "schema_version": "__INVALID_CONST__",
+        "application_version": "0.3.0",
+        "release_id": "release_01J0000000000000000000000E",
+        "project_id": "project_01J00000000000000000000001",
+        "version": "1.0.0",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "source_commit": "0123456789abcdef0123456789abcdef01234567",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "source_manuscript": {
+          "path": "manuscript/final-manuscript.md",
+          "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+        },
+        "sanitized": false,
+        "files": [
+          {
+            "path": "manuscript/final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          },
+          {
+            "path": "evidence/creative-process-report.md",
+            "sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "size": 512
+          }
+        ],
+        "release_files_merkle_root": "sha256:b773ac929d720839a617ec0f9d6e39ad5401fa7795e21f799302658de8db9cda",
+        "merkle_algorithm": "thinkloom-release-merkle-v1"
+      }
+    },
+    {
+      "description": "release-manifest.application_version: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "application_version": " invalid!",
+        "release_id": "release_01J0000000000000000000000E",
+        "project_id": "project_01J00000000000000000000001",
+        "version": "1.0.0",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "source_commit": "0123456789abcdef0123456789abcdef01234567",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "source_manuscript": {
+          "path": "manuscript/final-manuscript.md",
+          "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+        },
+        "sanitized": false,
+        "files": [
+          {
+            "path": "manuscript/final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          },
+          {
+            "path": "evidence/creative-process-report.md",
+            "sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "size": 512
+          }
+        ],
+        "release_files_merkle_root": "sha256:b773ac929d720839a617ec0f9d6e39ad5401fa7795e21f799302658de8db9cda",
+        "merkle_algorithm": "thinkloom-release-merkle-v1"
+      }
+    },
+    {
+      "description": "release-manifest.release_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "application_version": "0.3.0",
+        "release_id": "invalid-id",
+        "project_id": "project_01J00000000000000000000001",
+        "version": "1.0.0",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "source_commit": "0123456789abcdef0123456789abcdef01234567",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "source_manuscript": {
+          "path": "manuscript/final-manuscript.md",
+          "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+        },
+        "sanitized": false,
+        "files": [
+          {
+            "path": "manuscript/final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          },
+          {
+            "path": "evidence/creative-process-report.md",
+            "sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "size": 512
+          }
+        ],
+        "release_files_merkle_root": "sha256:b773ac929d720839a617ec0f9d6e39ad5401fa7795e21f799302658de8db9cda",
+        "merkle_algorithm": "thinkloom-release-merkle-v1"
+      }
+    },
+    {
+      "description": "release-manifest.project_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "application_version": "0.3.0",
+        "release_id": "release_01J0000000000000000000000E",
+        "project_id": "invalid-id",
+        "version": "1.0.0",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "source_commit": "0123456789abcdef0123456789abcdef01234567",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "source_manuscript": {
+          "path": "manuscript/final-manuscript.md",
+          "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+        },
+        "sanitized": false,
+        "files": [
+          {
+            "path": "manuscript/final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          },
+          {
+            "path": "evidence/creative-process-report.md",
+            "sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "size": 512
+          }
+        ],
+        "release_files_merkle_root": "sha256:b773ac929d720839a617ec0f9d6e39ad5401fa7795e21f799302658de8db9cda",
+        "merkle_algorithm": "thinkloom-release-merkle-v1"
+      }
+    },
+    {
+      "description": "release-manifest.version: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "application_version": "0.3.0",
+        "release_id": "release_01J0000000000000000000000E",
+        "project_id": "project_01J00000000000000000000001",
+        "version": " invalid!",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "source_commit": "0123456789abcdef0123456789abcdef01234567",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "source_manuscript": {
+          "path": "manuscript/final-manuscript.md",
+          "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+        },
+        "sanitized": false,
+        "files": [
+          {
+            "path": "manuscript/final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          },
+          {
+            "path": "evidence/creative-process-report.md",
+            "sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "size": 512
+          }
+        ],
+        "release_files_merkle_root": "sha256:b773ac929d720839a617ec0f9d6e39ad5401fa7795e21f799302658de8db9cda",
+        "merkle_algorithm": "thinkloom-release-merkle-v1"
+      }
+    },
+    {
+      "description": "release-manifest.created_at: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "application_version": "0.3.0",
+        "release_id": "release_01J0000000000000000000000E",
+        "project_id": "project_01J00000000000000000000001",
+        "version": "1.0.0",
+        "created_at": "not-a-timestamp",
+        "source_commit": "0123456789abcdef0123456789abcdef01234567",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "source_manuscript": {
+          "path": "manuscript/final-manuscript.md",
+          "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+        },
+        "sanitized": false,
+        "files": [
+          {
+            "path": "manuscript/final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          },
+          {
+            "path": "evidence/creative-process-report.md",
+            "sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "size": 512
+          }
+        ],
+        "release_files_merkle_root": "sha256:b773ac929d720839a617ec0f9d6e39ad5401fa7795e21f799302658de8db9cda",
+        "merkle_algorithm": "thinkloom-release-merkle-v1"
+      }
+    },
+    {
+      "description": "release-manifest.source_commit: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "application_version": "0.3.0",
+        "release_id": "release_01J0000000000000000000000E",
+        "project_id": "project_01J00000000000000000000001",
+        "version": "1.0.0",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "source_commit": " invalid!",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "source_manuscript": {
+          "path": "manuscript/final-manuscript.md",
+          "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+        },
+        "sanitized": false,
+        "files": [
+          {
+            "path": "manuscript/final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          },
+          {
+            "path": "evidence/creative-process-report.md",
+            "sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "size": 512
+          }
+        ],
+        "release_files_merkle_root": "sha256:b773ac929d720839a617ec0f9d6e39ad5401fa7795e21f799302658de8db9cda",
+        "merkle_algorithm": "thinkloom-release-merkle-v1"
+      }
+    },
+    {
+      "description": "release-manifest.source_chain_head: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "application_version": "0.3.0",
+        "release_id": "release_01J0000000000000000000000E",
+        "project_id": "project_01J00000000000000000000001",
+        "version": "1.0.0",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "source_commit": "0123456789abcdef0123456789abcdef01234567",
+        "source_chain_head": "sha256:INVALID",
+        "source_manuscript": {
+          "path": "manuscript/final-manuscript.md",
+          "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+        },
+        "sanitized": false,
+        "files": [
+          {
+            "path": "manuscript/final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          },
+          {
+            "path": "evidence/creative-process-report.md",
+            "sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "size": 512
+          }
+        ],
+        "release_files_merkle_root": "sha256:b773ac929d720839a617ec0f9d6e39ad5401fa7795e21f799302658de8db9cda",
+        "merkle_algorithm": "thinkloom-release-merkle-v1"
+      }
+    },
+    {
+      "description": "release-manifest.source_manuscript.path: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "application_version": "0.3.0",
+        "release_id": "release_01J0000000000000000000000E",
+        "project_id": "project_01J00000000000000000000001",
+        "version": "1.0.0",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "source_commit": "0123456789abcdef0123456789abcdef01234567",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "source_manuscript": {
+          "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+        },
+        "sanitized": false,
+        "files": [
+          {
+            "path": "manuscript/final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          },
+          {
+            "path": "evidence/creative-process-report.md",
+            "sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "size": 512
+          }
+        ],
+        "release_files_merkle_root": "sha256:b773ac929d720839a617ec0f9d6e39ad5401fa7795e21f799302658de8db9cda",
+        "merkle_algorithm": "thinkloom-release-merkle-v1"
+      }
+    },
+    {
+      "description": "release-manifest.source_manuscript.sha256: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "application_version": "0.3.0",
+        "release_id": "release_01J0000000000000000000000E",
+        "project_id": "project_01J00000000000000000000001",
+        "version": "1.0.0",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "source_commit": "0123456789abcdef0123456789abcdef01234567",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "source_manuscript": {
+          "path": "manuscript/final-manuscript.md"
+        },
+        "sanitized": false,
+        "files": [
+          {
+            "path": "manuscript/final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          },
+          {
+            "path": "evidence/creative-process-report.md",
+            "sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "size": 512
+          }
+        ],
+        "release_files_merkle_root": "sha256:b773ac929d720839a617ec0f9d6e39ad5401fa7795e21f799302658de8db9cda",
+        "merkle_algorithm": "thinkloom-release-merkle-v1"
+      }
+    },
+    {
+      "description": "release-manifest.source_manuscript: reject unexpected property",
+      "instance": {
+        "schema_version": "1.0",
+        "application_version": "0.3.0",
+        "release_id": "release_01J0000000000000000000000E",
+        "project_id": "project_01J00000000000000000000001",
+        "version": "1.0.0",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "source_commit": "0123456789abcdef0123456789abcdef01234567",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "source_manuscript": {
+          "path": "manuscript/final-manuscript.md",
+          "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+          "__unexpected": true
+        },
+        "sanitized": false,
+        "files": [
+          {
+            "path": "manuscript/final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          },
+          {
+            "path": "evidence/creative-process-report.md",
+            "sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "size": 512
+          }
+        ],
+        "release_files_merkle_root": "sha256:b773ac929d720839a617ec0f9d6e39ad5401fa7795e21f799302658de8db9cda",
+        "merkle_algorithm": "thinkloom-release-merkle-v1"
+      }
+    },
+    {
+      "description": "release-manifest.source_manuscript.path: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "application_version": "0.3.0",
+        "release_id": "release_01J0000000000000000000000E",
+        "project_id": "project_01J00000000000000000000001",
+        "version": "1.0.0",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "source_commit": "0123456789abcdef0123456789abcdef01234567",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "source_manuscript": {
+          "path": "../outside-project",
+          "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+        },
+        "sanitized": false,
+        "files": [
+          {
+            "path": "manuscript/final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          },
+          {
+            "path": "evidence/creative-process-report.md",
+            "sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "size": 512
+          }
+        ],
+        "release_files_merkle_root": "sha256:b773ac929d720839a617ec0f9d6e39ad5401fa7795e21f799302658de8db9cda",
+        "merkle_algorithm": "thinkloom-release-merkle-v1"
+      }
+    },
+    {
+      "description": "release-manifest.source_manuscript.path: reject string below minLength",
+      "instance": {
+        "schema_version": "1.0",
+        "application_version": "0.3.0",
+        "release_id": "release_01J0000000000000000000000E",
+        "project_id": "project_01J00000000000000000000001",
+        "version": "1.0.0",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "source_commit": "0123456789abcdef0123456789abcdef01234567",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "source_manuscript": {
+          "path": "",
+          "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+        },
+        "sanitized": false,
+        "files": [
+          {
+            "path": "manuscript/final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          },
+          {
+            "path": "evidence/creative-process-report.md",
+            "sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "size": 512
+          }
+        ],
+        "release_files_merkle_root": "sha256:b773ac929d720839a617ec0f9d6e39ad5401fa7795e21f799302658de8db9cda",
+        "merkle_algorithm": "thinkloom-release-merkle-v1"
+      }
+    },
+    {
+      "description": "release-manifest.source_manuscript.sha256: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "application_version": "0.3.0",
+        "release_id": "release_01J0000000000000000000000E",
+        "project_id": "project_01J00000000000000000000001",
+        "version": "1.0.0",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "source_commit": "0123456789abcdef0123456789abcdef01234567",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "source_manuscript": {
+          "path": "manuscript/final-manuscript.md",
+          "sha256": "sha256:INVALID"
+        },
+        "sanitized": false,
+        "files": [
+          {
+            "path": "manuscript/final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          },
+          {
+            "path": "evidence/creative-process-report.md",
+            "sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "size": 512
+          }
+        ],
+        "release_files_merkle_root": "sha256:b773ac929d720839a617ec0f9d6e39ad5401fa7795e21f799302658de8db9cda",
+        "merkle_algorithm": "thinkloom-release-merkle-v1"
+      }
+    },
+    {
+      "description": "release-manifest.files: reject array below minItems",
+      "instance": {
+        "schema_version": "1.0",
+        "application_version": "0.3.0",
+        "release_id": "release_01J0000000000000000000000E",
+        "project_id": "project_01J00000000000000000000001",
+        "version": "1.0.0",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "source_commit": "0123456789abcdef0123456789abcdef01234567",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "source_manuscript": {
+          "path": "manuscript/final-manuscript.md",
+          "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+        },
+        "sanitized": false,
+        "files": [],
+        "release_files_merkle_root": "sha256:b773ac929d720839a617ec0f9d6e39ad5401fa7795e21f799302658de8db9cda",
+        "merkle_algorithm": "thinkloom-release-merkle-v1"
+      }
+    },
+    {
+      "description": "release-manifest.files[0].path: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "application_version": "0.3.0",
+        "release_id": "release_01J0000000000000000000000E",
+        "project_id": "project_01J00000000000000000000001",
+        "version": "1.0.0",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "source_commit": "0123456789abcdef0123456789abcdef01234567",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "source_manuscript": {
+          "path": "manuscript/final-manuscript.md",
+          "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+        },
+        "sanitized": false,
+        "files": [
+          {
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          },
+          {
+            "path": "evidence/creative-process-report.md",
+            "sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "size": 512
+          }
+        ],
+        "release_files_merkle_root": "sha256:b773ac929d720839a617ec0f9d6e39ad5401fa7795e21f799302658de8db9cda",
+        "merkle_algorithm": "thinkloom-release-merkle-v1"
+      }
+    },
+    {
+      "description": "release-manifest.files[0].sha256: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "application_version": "0.3.0",
+        "release_id": "release_01J0000000000000000000000E",
+        "project_id": "project_01J00000000000000000000001",
+        "version": "1.0.0",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "source_commit": "0123456789abcdef0123456789abcdef01234567",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "source_manuscript": {
+          "path": "manuscript/final-manuscript.md",
+          "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+        },
+        "sanitized": false,
+        "files": [
+          {
+            "path": "manuscript/final-manuscript.md",
+            "size": 1024
+          },
+          {
+            "path": "evidence/creative-process-report.md",
+            "sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "size": 512
+          }
+        ],
+        "release_files_merkle_root": "sha256:b773ac929d720839a617ec0f9d6e39ad5401fa7795e21f799302658de8db9cda",
+        "merkle_algorithm": "thinkloom-release-merkle-v1"
+      }
+    },
+    {
+      "description": "release-manifest.files[0].size: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "application_version": "0.3.0",
+        "release_id": "release_01J0000000000000000000000E",
+        "project_id": "project_01J00000000000000000000001",
+        "version": "1.0.0",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "source_commit": "0123456789abcdef0123456789abcdef01234567",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "source_manuscript": {
+          "path": "manuscript/final-manuscript.md",
+          "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+        },
+        "sanitized": false,
+        "files": [
+          {
+            "path": "manuscript/final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+          },
+          {
+            "path": "evidence/creative-process-report.md",
+            "sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "size": 512
+          }
+        ],
+        "release_files_merkle_root": "sha256:b773ac929d720839a617ec0f9d6e39ad5401fa7795e21f799302658de8db9cda",
+        "merkle_algorithm": "thinkloom-release-merkle-v1"
+      }
+    },
+    {
+      "description": "release-manifest.files[0]: reject unexpected property",
+      "instance": {
+        "schema_version": "1.0",
+        "application_version": "0.3.0",
+        "release_id": "release_01J0000000000000000000000E",
+        "project_id": "project_01J00000000000000000000001",
+        "version": "1.0.0",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "source_commit": "0123456789abcdef0123456789abcdef01234567",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "source_manuscript": {
+          "path": "manuscript/final-manuscript.md",
+          "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+        },
+        "sanitized": false,
+        "files": [
+          {
+            "path": "manuscript/final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024,
+            "__unexpected": true
+          },
+          {
+            "path": "evidence/creative-process-report.md",
+            "sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "size": 512
+          }
+        ],
+        "release_files_merkle_root": "sha256:b773ac929d720839a617ec0f9d6e39ad5401fa7795e21f799302658de8db9cda",
+        "merkle_algorithm": "thinkloom-release-merkle-v1"
+      }
+    },
+    {
+      "description": "release-manifest.files[0].path: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "application_version": "0.3.0",
+        "release_id": "release_01J0000000000000000000000E",
+        "project_id": "project_01J00000000000000000000001",
+        "version": "1.0.0",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "source_commit": "0123456789abcdef0123456789abcdef01234567",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "source_manuscript": {
+          "path": "manuscript/final-manuscript.md",
+          "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+        },
+        "sanitized": false,
+        "files": [
+          {
+            "path": "../outside-project",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          },
+          {
+            "path": "evidence/creative-process-report.md",
+            "sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "size": 512
+          }
+        ],
+        "release_files_merkle_root": "sha256:b773ac929d720839a617ec0f9d6e39ad5401fa7795e21f799302658de8db9cda",
+        "merkle_algorithm": "thinkloom-release-merkle-v1"
+      }
+    },
+    {
+      "description": "release-manifest.files[0].path: reject string below minLength",
+      "instance": {
+        "schema_version": "1.0",
+        "application_version": "0.3.0",
+        "release_id": "release_01J0000000000000000000000E",
+        "project_id": "project_01J00000000000000000000001",
+        "version": "1.0.0",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "source_commit": "0123456789abcdef0123456789abcdef01234567",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "source_manuscript": {
+          "path": "manuscript/final-manuscript.md",
+          "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+        },
+        "sanitized": false,
+        "files": [
+          {
+            "path": "",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          },
+          {
+            "path": "evidence/creative-process-report.md",
+            "sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "size": 512
+          }
+        ],
+        "release_files_merkle_root": "sha256:b773ac929d720839a617ec0f9d6e39ad5401fa7795e21f799302658de8db9cda",
+        "merkle_algorithm": "thinkloom-release-merkle-v1"
+      }
+    },
+    {
+      "description": "release-manifest.files[0].sha256: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "application_version": "0.3.0",
+        "release_id": "release_01J0000000000000000000000E",
+        "project_id": "project_01J00000000000000000000001",
+        "version": "1.0.0",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "source_commit": "0123456789abcdef0123456789abcdef01234567",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "source_manuscript": {
+          "path": "manuscript/final-manuscript.md",
+          "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+        },
+        "sanitized": false,
+        "files": [
+          {
+            "path": "manuscript/final-manuscript.md",
+            "sha256": "sha256:INVALID",
+            "size": 1024
+          },
+          {
+            "path": "evidence/creative-process-report.md",
+            "sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "size": 512
+          }
+        ],
+        "release_files_merkle_root": "sha256:b773ac929d720839a617ec0f9d6e39ad5401fa7795e21f799302658de8db9cda",
+        "merkle_algorithm": "thinkloom-release-merkle-v1"
+      }
+    },
+    {
+      "description": "release-manifest.files[0].size: reject value below minimum",
+      "instance": {
+        "schema_version": "1.0",
+        "application_version": "0.3.0",
+        "release_id": "release_01J0000000000000000000000E",
+        "project_id": "project_01J00000000000000000000001",
+        "version": "1.0.0",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "source_commit": "0123456789abcdef0123456789abcdef01234567",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "source_manuscript": {
+          "path": "manuscript/final-manuscript.md",
+          "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+        },
+        "sanitized": false,
+        "files": [
+          {
+            "path": "manuscript/final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": -1
+          },
+          {
+            "path": "evidence/creative-process-report.md",
+            "sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "size": 512
+          }
+        ],
+        "release_files_merkle_root": "sha256:b773ac929d720839a617ec0f9d6e39ad5401fa7795e21f799302658de8db9cda",
+        "merkle_algorithm": "thinkloom-release-merkle-v1"
+      }
+    },
+    {
+      "description": "release-manifest.release_files_merkle_root: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "application_version": "0.3.0",
+        "release_id": "release_01J0000000000000000000000E",
+        "project_id": "project_01J00000000000000000000001",
+        "version": "1.0.0",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "source_commit": "0123456789abcdef0123456789abcdef01234567",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "source_manuscript": {
+          "path": "manuscript/final-manuscript.md",
+          "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+        },
+        "sanitized": false,
+        "files": [
+          {
+            "path": "manuscript/final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          },
+          {
+            "path": "evidence/creative-process-report.md",
+            "sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "size": 512
+          }
+        ],
+        "release_files_merkle_root": "sha256:INVALID",
+        "merkle_algorithm": "thinkloom-release-merkle-v1"
+      }
+    },
+    {
+      "description": "release-manifest.merkle_algorithm: reject value different from const",
+      "instance": {
+        "schema_version": "1.0",
+        "application_version": "0.3.0",
+        "release_id": "release_01J0000000000000000000000E",
+        "project_id": "project_01J00000000000000000000001",
+        "version": "1.0.0",
+        "created_at": "2026-07-17T18:43:11.456Z",
+        "source_commit": "0123456789abcdef0123456789abcdef01234567",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "source_manuscript": {
+          "path": "manuscript/final-manuscript.md",
+          "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+        },
+        "sanitized": false,
+        "files": [
+          {
+            "path": "manuscript/final-manuscript.md",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          },
+          {
+            "path": "evidence/creative-process-report.md",
+            "sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "size": 512
+          }
+        ],
+        "release_files_merkle_root": "sha256:b773ac929d720839a617ec0f9d6e39ad5401fa7795e21f799302658de8db9cda",
+        "merkle_algorithm": "__INVALID_CONST__"
+      }
+    }
+  ]
+}

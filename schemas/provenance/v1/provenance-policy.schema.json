@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://thinkloom.app/schemas/provenance/1.0/provenance-policy.schema.json",
+  "title": "Provenance policy",
+  "description": "Prospective project retention, protection, and export defaults.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "policy_id": {
+      "type": "string",
+      "pattern": "^policy_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "project_id": {
+      "type": "string",
+      "pattern": "^project_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "retention_mode": {
+      "enum": [
+        "minimal",
+        "full_private"
+      ]
+    },
+    "encryption_mode": {
+      "enum": [
+        "none",
+        "protected"
+      ]
+    },
+    "default_export_profile": {
+      "enum": [
+        "full",
+        "sanitized"
+      ]
+    },
+    "effective_at": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+    }
+  },
+  "required": [
+    "schema_version",
+    "policy_id",
+    "project_id",
+    "retention_mode",
+    "encryption_mode",
+    "default_export_profile",
+    "effective_at"
+  ],
+  "additionalProperties": false,
+  "examples": [
+    {
+      "schema_version": "1.0",
+      "policy_id": "policy_01J0000000000000000000000H",
+      "project_id": "project_01J00000000000000000000001",
+      "retention_mode": "minimal",
+      "encryption_mode": "none",
+      "default_export_profile": "sanitized",
+      "effective_at": "2026-07-17T18:42:10.123Z"
+    }
+  ]
+}

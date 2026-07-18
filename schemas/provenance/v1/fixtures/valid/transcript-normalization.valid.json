@@ -1,0 +1,15 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/transcript-normalization.schema.json",
+  "description": "Valid Transcript normalization example.",
+  "instance": {
+    "schema_version": "1.0",
+    "normalization_id": "normalization_01J0000000000000000000000K",
+    "turn_id": "turn_01J00000000000000000000007",
+    "revision_number": 1,
+    "normalized_text": "Attention shapes public life.",
+    "method": "application",
+    "source_correction_id": "correction_01J0000000000000000000000J",
+    "created_at": "2026-07-17T18:43:11.456Z",
+    "event_id": "event_01J00000000000000000000004"
+  }
+}

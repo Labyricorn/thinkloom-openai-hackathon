@@ -1,0 +1,19 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/write-intent.schema.json",
+  "description": "Valid Cross-store write intent example.",
+  "instance": {
+    "schema_version": "1.0",
+    "intent_id": "intent_01J00000000000000000000002",
+    "client_action_id": "client-action-0001",
+    "project_id": "project_01J00000000000000000000001",
+    "operation_type": "IDEA_ACCEPTED",
+    "phase": "PREPARED",
+    "event_id": null,
+    "event_sequence": null,
+    "staged_path": ".app/temp/intents/intent.json",
+    "command_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+    "result": null,
+    "created_at": "2026-07-17T18:42:10.123Z",
+    "updated_at": "2026-07-17T18:42:10.123Z"
+  }
+}

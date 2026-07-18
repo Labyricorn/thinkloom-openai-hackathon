@@ -1,0 +1,24 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/edit-transaction.schema.json",
+  "description": "Valid Manuscript edit transaction example.",
+  "instance": {
+    "schema_version": "1.0",
+    "transaction_id": "transaction_01J0000000000000000000000N",
+    "project_id": "project_01J00000000000000000000001",
+    "base_revision_id": "revision_01J0000000000000000000000A",
+    "result_revision_id": "revision_01J0000000000000000000000B",
+    "started_at": "2026-07-17T18:42:10.123Z",
+    "ended_at": "2026-07-17T18:43:11.456Z",
+    "operations": [
+      {
+        "operation_type": "insert",
+        "source_range": null,
+        "destination_position": 0,
+        "inserted_text_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "result_fragment_id": "fragment_01J0000000000000000000000C"
+      }
+    ],
+    "preimage_sha256": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+    "result_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+  }
+}

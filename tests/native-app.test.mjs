@@ -95,13 +95,14 @@ test("never ships retained audio assets", async () => {
 });
 
 test("externalizes and documents every model prompt", async () => {
-  const [conversationRaw, draftingRaw, source, rust, guide, packageRaw, tauriRaw, cargoRaw] = await Promise.all([
+  const [conversationRaw, draftingRaw, source, rust, guide, packageRaw, packageLockRaw, tauriRaw, cargoRaw] = await Promise.all([
     readFile(new URL("../src-tauri/prompts/conversation.json", import.meta.url), "utf8"),
     readFile(new URL("../src-tauri/prompts/drafting.json", import.meta.url), "utf8"),
     readFile(new URL("../src/Thinkloom.tsx", import.meta.url), "utf8"),
     readFile(new URL("../src-tauri/src/lib.rs", import.meta.url), "utf8"),
     readFile(new URL("../PROMPTS.md", import.meta.url), "utf8"),
     readFile(new URL("../package.json", import.meta.url), "utf8"),
+    readFile(new URL("../package-lock.json", import.meta.url), "utf8"),
     readFile(new URL("../src-tauri/tauri.conf.json", import.meta.url), "utf8"),
     readFile(new URL("../src-tauri/Cargo.toml", import.meta.url), "utf8"),
   ]);
@@ -132,7 +133,10 @@ test("externalizes and documents every model prompt", async () => {
   }
 
   const version = JSON.parse(packageRaw).version;
-  assert.equal(version, "0.2.0");
+  assert.equal(version, "0.3.0");
+  const packageLock = JSON.parse(packageLockRaw);
+  assert.equal(packageLock.version, version);
+  assert.equal(packageLock.packages[""].version, version);
   assert.equal(JSON.parse(tauriRaw).version, version);
   const escapedVersion = version.replaceAll(".", "\\.");
   assert.match(cargoRaw, new RegExp("^version = \"" + escapedVersion + "\"$", "m"));

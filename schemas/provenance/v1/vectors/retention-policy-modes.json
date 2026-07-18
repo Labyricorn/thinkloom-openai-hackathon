@@ -1,0 +1,188 @@
+{
+  "vector_version": "1.0",
+  "default_mode": "minimal",
+  "minimal": {
+    "policy": {
+      "schema_version": "1.0",
+      "policy_id": "policy_01J0000000000000000000000H",
+      "project_id": "project_01J00000000000000000000001",
+      "retention_mode": "minimal",
+      "encryption_mode": "none",
+      "default_export_profile": "sanitized",
+      "effective_at": "2026-07-17T18:42:10.123Z"
+    },
+    "invocation_request": {
+      "schema_version": "1.0",
+      "invocation_id": "invocation_01J00000000000000000000008",
+      "project_id": "project_01J00000000000000000000001",
+      "purpose": "draft_from_selected_ideas",
+      "initiated_by_event_id": "event_01J00000000000000000000003",
+      "retention_mode": "minimal",
+      "provider": {
+        "provider_id": "ollama",
+        "model_id": "llama3.2",
+        "processing_mode": "local"
+      },
+      "model_configuration_sha256": "sha256:8888888888888888888888888888888888888888888888888888888888888888",
+      "prompt_template": {
+        "schema_version": "1.0",
+        "template_id": "template_01J0000000000000000000000F",
+        "version": 1,
+        "path": "records/prompt-templates/drafting/template.json",
+        "template_sha256": "sha256:7777777777777777777777777777777777777777777777777777777777777777"
+      },
+      "messages": [],
+      "context_references": [
+        {
+          "schema_version": "1.0",
+          "record_id": "record_01J00000000000000000000005",
+          "record_type": "manuscript_revision",
+          "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+          "path": "manuscript/revisions/revision.json",
+          "revision_id": "revision_01J0000000000000000000000A",
+          "range": {
+            "schema_version": "1.0",
+            "document_revision_id": "revision_01J0000000000000000000000A",
+            "coordinate_system": "utf8_byte",
+            "start": 0,
+            "end": 12,
+            "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+            "text_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        }
+      ],
+      "manuscript_revision_id": "revision_01J0000000000000000000000A",
+      "idea_revision_ids": [
+        "revision_01J0000000000000000000000B"
+      ],
+      "conversation_head": "turn_01J00000000000000000000007",
+      "submitted_at": "2026-07-17T18:42:10.123Z",
+      "redactions": []
+    },
+    "invocation_response": {
+      "schema_version": "1.0",
+      "record_id": "record_01J00000000000000000000005",
+      "invocation_id": "invocation_01J00000000000000000000008",
+      "retention_mode": "minimal",
+      "content_type": "draft_preview",
+      "retained_text": null,
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 120,
+        "output_tokens": 14
+      },
+      "provider_metadata": null,
+      "validation": {
+        "schema_valid": true,
+        "repair_attempted": false
+      },
+      "content_sha256": "sha256:9999999999999999999999999999999999999999999999999999999999999999",
+      "created_at": "2026-07-17T18:43:11.456Z"
+    },
+    "prohibited_durable_fields": [
+      "complete provider-facing prompt",
+      "complete supplied context",
+      "unaccepted raw response",
+      "provider transport metadata",
+      "audio bytes or references"
+    ]
+  },
+  "full_private": {
+    "policy": {
+      "schema_version": "1.0",
+      "policy_id": "policy_01J0000000000000000000000H",
+      "project_id": "project_01J00000000000000000000001",
+      "retention_mode": "full_private",
+      "encryption_mode": "protected",
+      "default_export_profile": "sanitized",
+      "effective_at": "2026-07-17T18:42:10.123Z"
+    },
+    "invocation_request": {
+      "schema_version": "1.0",
+      "invocation_id": "invocation_01J00000000000000000000008",
+      "project_id": "project_01J00000000000000000000001",
+      "purpose": "draft_from_selected_ideas",
+      "initiated_by_event_id": "event_01J00000000000000000000003",
+      "retention_mode": "full_private",
+      "provider": {
+        "provider_id": "ollama",
+        "model_id": "llama3.2",
+        "processing_mode": "local"
+      },
+      "model_configuration_sha256": "sha256:8888888888888888888888888888888888888888888888888888888888888888",
+      "prompt_template": {
+        "schema_version": "1.0",
+        "template_id": "template_01J0000000000000000000000F",
+        "version": 1,
+        "path": "records/prompt-templates/drafting/template.json",
+        "template_sha256": "sha256:7777777777777777777777777777777777777777777777777777777777777777"
+      },
+      "messages": [
+        {
+          "role": "user",
+          "content": "Use the selected ideas to draft a passage."
+        }
+      ],
+      "context_references": [
+        {
+          "schema_version": "1.0",
+          "record_id": "record_01J00000000000000000000005",
+          "record_type": "manuscript_revision",
+          "sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+          "path": "manuscript/revisions/revision.json",
+          "revision_id": "revision_01J0000000000000000000000A",
+          "range": {
+            "schema_version": "1.0",
+            "document_revision_id": "revision_01J0000000000000000000000A",
+            "coordinate_system": "utf8_byte",
+            "start": 0,
+            "end": 12,
+            "preimage_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+            "text_fragment_id": "fragment_01J0000000000000000000000C"
+          }
+        }
+      ],
+      "manuscript_revision_id": "revision_01J0000000000000000000000A",
+      "idea_revision_ids": [
+        "revision_01J0000000000000000000000B"
+      ],
+      "conversation_head": "turn_01J00000000000000000000007",
+      "submitted_at": "2026-07-17T18:42:10.123Z",
+      "redactions": [
+        {
+          "category": "personal_identifier",
+          "replacement": "[redacted]"
+        }
+      ]
+    },
+    "invocation_response": {
+      "schema_version": "1.0",
+      "record_id": "record_01J00000000000000000000005",
+      "invocation_id": "invocation_01J00000000000000000000008",
+      "retention_mode": "full_private",
+      "content_type": "draft_preview",
+      "retained_text": "Attention is personal in experience and public in consequence.",
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 120,
+        "output_tokens": 14
+      },
+      "provider_metadata": {
+        "request_id": "local-0001",
+        "load_duration_milliseconds": 120
+      },
+      "validation": {
+        "schema_valid": true,
+        "repair_attempted": false
+      },
+      "content_sha256": "sha256:9999999999999999999999999999999999999999999999999999999999999999",
+      "created_at": "2026-07-17T18:43:11.456Z"
+    },
+    "requirements": [
+      "protected records",
+      "verified recovery envelope",
+      "authorized verification for plaintext evidence"
+    ]
+  },
+  "policy_change_rule": "Changes are prospective. Reducing retention does not delete prior records; deletion requires emergency purge."
+}

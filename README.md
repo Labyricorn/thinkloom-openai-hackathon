@@ -88,7 +88,7 @@ See [PROMPTS.md](PROMPTS.md) for each file's effect, variables, editing workflow
 
 The approved Thinkloom 1.0 provenance architecture is documented in the [Stage 1 normative provenance specification](docs/provenance/README.md). It defines the future single-writer subsystem, canonical records, segmented ledger, recovery protocol, retention policy, native verification, and release bindings.
 
-This specification is a forward implementation contract. The current 0.2.0 provenance implementation must not be represented as already conforming to it.
+Thinkloom 0.3.0 includes the formal Stage 2 schema package and deterministic verification vectors. The current native provenance writer must not be represented as conforming until the later implementation and fault-injection stages are complete.
 
 ## Provider setup
 

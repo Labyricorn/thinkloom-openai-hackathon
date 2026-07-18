@@ -1,0 +1,26 @@
+{
+  "vector_version": "1.0",
+  "algorithm_id": "thinkloom-release-merkle-v1",
+  "ordering": "Sort entries by raw UTF-8 path bytes in ascending order.",
+  "leaf": "SHA-256(UTF8('thinkloom-release-leaf-v1\\0') || UTF8(path) || 0x00 || UTF8(decimal size) || 0x00 || raw 32-byte file SHA-256 digest)",
+  "node": "SHA-256(UTF8('thinkloom-release-node-v1\\0') || raw left digest || raw right digest); duplicate the final node when a level has odd cardinality.",
+  "empty": "SHA-256(UTF8('thinkloom-release-empty-v1\\0'))",
+  "entries": [
+    {
+      "path": "manuscript/final-manuscript.md",
+      "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+      "size": 1024
+    },
+    {
+      "path": "evidence/creative-process-report.md",
+      "sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+      "size": 512
+    }
+  ],
+  "root": "sha256:b773ac929d720839a617ec0f9d6e39ad5401fa7795e21f799302658de8db9cda",
+  "excluded_paths": [
+    "release-manifest.json",
+    "release-files.sha256"
+  ],
+  "self_reference_rule": "The manifest and any flat digest file that contains the root MUST NOT be Merkle leaves."
+}
