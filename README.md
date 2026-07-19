@@ -34,7 +34,10 @@ See [CODEX_COLLABORATION_LOG.md](CODEX_COLLABORATION_LOG.md) for the complete pr
 ## Implemented workflow
 
 - Reversible Ideation, Drafting, and Finalization phases
-- Typed conversation, challenge levels, push-to-talk transcription, and optional visible speech output
+- Three-pane Phase 1 workspace for session context, live conversation, and idea distillation
+- Persona, genre, lore, and provider-aware web-search guidance assembled into each conversational instruction
+- Per-message Append to Ideas controls, editable drafting paper, one-off LLM distillation, and structured session export
+- Typed conversation, challenge levels, push-to-talk transcription, persona-linked speech output, and no retained audio
 - Suggested ideas with explicit accept/reject, editing, variants, archiving, source links, drafting sets, and merges
 - TipTap/ProseMirror structured manuscript editor with canonical Markdown round-tripping, undo/redo, headings, lists, selection replacement, and cursor insertion
 - Persisted preview-first generation states with retry-safe provider errors and partial acceptance
@@ -88,7 +91,7 @@ See [PROMPTS.md](PROMPTS.md) for each file's effect, variables, editing workflow
 
 The approved Thinkloom 1.0 provenance architecture is documented in the [Stage 1 normative provenance specification](docs/provenance/README.md). It defines the future single-writer subsystem, canonical records, segmented ledger, recovery protocol, retention policy, native verification, and release bindings.
 
-Thinkloom 0.4.0 extends the formal Stage 2 package with canonical provenance assertions, point-in-time evaluations, versioned semantic registries, and deterministic invalidation vectors. The current native provenance writer must not be represented as conforming until the later implementation and fault-injection stages are complete.
+Thinkloom 0.5.0 extends the formal Stage 2 package with canonical provenance assertions, point-in-time evaluations, versioned semantic registries, and deterministic invalidation vectors. The current native provenance writer must not be represented as conforming until the later implementation and fault-injection stages are complete.
 
 ## Provider setup
 

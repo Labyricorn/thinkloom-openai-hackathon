@@ -105,6 +105,7 @@ struct DraftingPromptConfig {
     system_prompt: String,
     draft_prompt_template: String,
     editorial_prompt_template: String,
+    distillation_prompt_template: String,
 }
 
 #[derive(Debug, Serialize)]
@@ -189,6 +190,23 @@ fn prompt_config_dir(app: &AppHandle) -> CommandResult<PathBuf> {
         })
 }
 
+fn merge_missing_prompt_fields(current: &mut Value, defaults: &Value) -> bool {
+    let (Some(current_object), Some(default_object)) =
+        (current.as_object_mut(), defaults.as_object())
+    else {
+        return false;
+    };
+    let mut changed = false;
+    for (key, default_value) in default_object {
+        if let Some(current_value) = current_object.get_mut(key) {
+            changed |= merge_missing_prompt_fields(current_value, default_value);
+        } else {
+            current_object.insert(key.clone(), default_value.clone());
+            changed = true;
+        }
+    }
+    changed
+}
 fn ensure_prompt_files_at(app: &AppHandle) -> CommandResult<PathBuf> {
     let directory = prompt_config_dir(app)?;
     fs::create_dir_all(&directory).map_err(|error| {
@@ -202,6 +220,32 @@ fn ensure_prompt_files_at(app: &AppHandle) -> CommandResult<PathBuf> {
         let path = directory.join(name);
         if !path.exists() {
             atomic_write(&path, contents.as_bytes())?;
+        } else if name.ends_with(".json") {
+            let existing = fs::read_to_string(&path).map_err(|error| {
+                CommandError::io("Could not read prompt configuration for migration", error)
+            })?;
+            if let (Ok(mut current), Ok(defaults)) = (
+                serde_json::from_str::<Value>(&existing),
+                serde_json::from_str::<Value>(contents),
+            ) {
+                let mut changed = merge_missing_prompt_fields(&mut current, &defaults);
+                if name == "conversation.json" {
+                    let legacy_system = current
+                        .get("systemPrompt")
+                        .and_then(Value::as_str)
+                        .filter(|prompt| !prompt.contains("{{persona_instruction}}"))
+                        .map(str::to_owned);
+                    if let Some(legacy_system) = legacy_system {
+                        current["systemPrompt"] = Value::String(format!(
+                            "{{{{persona_instruction}}}}\n\n{{{{genre_instruction}}}}\n\nProject lore and context:\n{{{{lore_context}}}}\n\n{{{{web_search_instruction}}}}\n\n{legacy_system}"
+                        ));
+                        changed = true;
+                    }
+                }
+                if changed {
+                    write_json(&path, &current)?;
+                }
+            }
         }
     }
     Ok(directory)
@@ -297,7 +341,7 @@ fn prompts_for_request(
             })?;
             variables.insert("challenge_guidance".into(), guidance.clone());
             Ok((
-                config.system_prompt,
+                render_prompt_template(&config.system_prompt, &variables)?,
                 render_prompt_template(&config.user_prompt_template, &variables)?,
             ))
         }
@@ -308,6 +352,7 @@ fn prompts_for_request(
                 || config.system_prompt.trim().is_empty()
                 || config.draft_prompt_template.trim().is_empty()
                 || config.editorial_prompt_template.trim().is_empty()
+                || config.distillation_prompt_template.trim().is_empty()
             {
                 return Err(CommandError::new(
                     "PROMPT_CONFIG_INVALID",
@@ -318,10 +363,10 @@ fn prompts_for_request(
                     true,
                 ));
             }
-            let template = if required_prompt_variable(&variables, "action")? == "draft" {
-                &config.draft_prompt_template
-            } else {
-                &config.editorial_prompt_template
+            let template = match required_prompt_variable(&variables, "action")? {
+                "draft" => &config.draft_prompt_template,
+                "distill" => &config.distillation_prompt_template,
+                _ => &config.editorial_prompt_template,
             };
             Ok((
                 config.system_prompt,

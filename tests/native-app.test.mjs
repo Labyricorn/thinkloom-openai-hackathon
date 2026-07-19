@@ -25,7 +25,7 @@ test("implements the control and privacy contracts", async () => {
     readFile(new URL("../src/globals.css", import.meta.url), "utf8"),
   ]);
 
-  for (const phrase of ["Insert at cursor", "Replace selection", "New section", "Discard", "History recorded", "No audio retained", "Approve for this project", "Relationships, not percentages"]) {
+  for (const phrase of ["Append to ideas", "Summarize draft", "Lore & context", "Insert at cursor", "Replace selection", "New section", "Discard", "History recorded", "No audio retained", "Approve for this project", "Relationships, not percentages"]) {
     assert.match(source, new RegExp(phrase, "i"));
   }
   assert.match(source, /GENERATION_PARTIALLY_ACCEPTED/);
@@ -113,12 +113,18 @@ test("externalizes and documents every model prompt", async () => {
   assert.match(conversation.systemPrompt, /Thinkloom/i);
   assert.match(conversation.userPromptTemplate, /\{\{challenge_guidance\}\}/);
   assert.match(conversation.userPromptTemplate, /\{\{context\}\}/);
+  assert.match(conversation.systemPrompt, /\{\{persona_instruction\}\}/);
+  assert.match(conversation.systemPrompt, /\{\{genre_instruction\}\}/);
+  assert.match(conversation.systemPrompt, /\{\{lore_context\}\}/);
+  assert.match(conversation.systemPrompt, /\{\{web_search_instruction\}\}/);
   assert.deepEqual(Object.keys(conversation.challengeGuidance).sort(), ["Balanced", "Gentle", "Rigorous"]);
   assert.equal(drafting.schemaVersion, 1);
   assert.match(drafting.draftPromptTemplate, /\{\{relation\}\}/);
   assert.match(drafting.editorialPromptTemplate, /\{\{action\}\}/);
   assert.match(drafting.draftPromptTemplate, /\{\{context\}\}/);
   assert.match(drafting.editorialPromptTemplate, /\{\{context\}\}/);
+  assert.match(drafting.distillationPromptTemplate, /token-efficient summary/i);
+  assert.match(drafting.distillationPromptTemplate, /Provide only the raw summary/i);
 
   assert.match(source, /promptVariables/);
   assert.match(source, /ensure_prompt_files/);
@@ -133,7 +139,7 @@ test("externalizes and documents every model prompt", async () => {
   }
 
   const version = JSON.parse(packageRaw).version;
-  assert.equal(version, "0.4.0");
+  assert.equal(version, "0.5.0");
   const packageLock = JSON.parse(packageLockRaw);
   assert.equal(packageLock.version, version);
   assert.equal(packageLock.packages[""].version, version);
