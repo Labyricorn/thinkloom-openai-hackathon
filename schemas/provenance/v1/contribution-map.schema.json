@@ -1,0 +1,409 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://thinkloom.app/schemas/provenance/1.0/contribution-map.schema.json",
+  "title": "Deposit contribution map",
+  "description": "Deterministic non-authoritative projection providing complete ordered deposit coverage while keeping origin, transformation, selection/arrangement, evaluation, and registration treatment independent. Its digest identity excludes contribution_map_sha256.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "contribution_map_id": {
+      "type": "string",
+      "pattern": "^map_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "project_id": {
+      "type": "string",
+      "pattern": "^project_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "deposit_id": {
+      "type": "string",
+      "pattern": "^deposit_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "deposit_sha256": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "manuscript_revision_id": {
+      "type": "string",
+      "pattern": "^revision_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "manuscript_revision_sha256": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "cpl_chain_head": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "cpl_event_sequence": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "coordinate_system": {
+      "const": "unicode_scalar"
+    },
+    "coverage": {
+      "type": "object",
+      "properties": {
+        "denominator": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "recorded_positions": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "coverage_status": {
+          "enum": [
+            "complete",
+            "partial"
+          ]
+        },
+        "denominator_unit": {
+          "const": "normalized_unicode_scalar_position"
+        },
+        "denominator_definition": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "denominator",
+        "recorded_positions",
+        "coverage_status",
+        "denominator_unit",
+        "denominator_definition"
+      ],
+      "additionalProperties": false
+    },
+    "layers": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "recorded_origin",
+          "transformation",
+          "selection_arrangement",
+          "evidentiary_evaluation",
+          "suggested_registration_treatment",
+          "structural_locator"
+        ]
+      },
+      "minItems": 5,
+      "uniqueItems": true,
+      "allOf": [
+        {
+          "contains": {
+            "const": "recorded_origin"
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "const": "transformation"
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "const": "selection_arrangement"
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "const": "evidentiary_evaluation"
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "const": "suggested_registration_treatment"
+          },
+          "minContains": 1,
+          "maxContains": 1
+        }
+      ]
+    },
+    "segments": {
+      "type": "array",
+      "items": {
+        "$ref": "https://thinkloom.app/schemas/provenance/1.0/expression-segment.schema.json"
+      },
+      "minItems": 1
+    },
+    "structural_locators": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "segment_id": {
+            "type": "string",
+            "pattern": "^segment_[0-9A-HJKMNP-TV-Z]{26}$"
+          },
+          "chapter": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "paragraph": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "page": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "segment_id",
+          "chapter",
+          "paragraph",
+          "page"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "layout_profile": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "layout_profile_id": {
+              "type": "string",
+              "pattern": "^layout_[0-9A-HJKMNP-TV-Z]{26}$"
+            },
+            "layout_profile_sha256": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            }
+          },
+          "required": [
+            "layout_profile_id",
+            "layout_profile_sha256"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "generator": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "configuration_sha256": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "name",
+        "version",
+        "configuration_sha256"
+      ],
+      "additionalProperties": false
+    },
+    "classification_status": {
+      "enum": [
+        "exact",
+        "degraded",
+        "stale",
+        "unverified"
+      ]
+    },
+    "contribution_map_sha256": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    }
+  },
+  "required": [
+    "schema_version",
+    "contribution_map_id",
+    "project_id",
+    "deposit_id",
+    "deposit_sha256",
+    "manuscript_revision_id",
+    "manuscript_revision_sha256",
+    "cpl_chain_head",
+    "cpl_event_sequence",
+    "coordinate_system",
+    "coverage",
+    "layers",
+    "segments",
+    "structural_locators",
+    "layout_profile",
+    "generator",
+    "classification_status",
+    "contribution_map_sha256"
+  ],
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "classification_status": {
+            "const": "exact"
+          }
+        },
+        "required": [
+          "classification_status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "coverage": {
+            "type": "object",
+            "properties": {
+              "coverage_status": {
+                "const": "complete"
+              }
+            },
+            "required": [
+              "coverage_status"
+            ]
+          },
+          "segments": {
+            "type": "array",
+            "items": {
+              "allOf": [
+                {
+                  "$ref": "https://thinkloom.app/schemas/provenance/1.0/expression-segment.schema.json"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "classification_status": {
+                      "const": "exact"
+                    }
+                  },
+                  "required": [
+                    "classification_status"
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "examples": [
+    {
+      "schema_version": "1.0",
+      "contribution_map_id": "map_01J0000000000000000000000Z",
+      "project_id": "project_01J00000000000000000000001",
+      "deposit_id": "deposit_01J00000000000000000000000",
+      "deposit_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+      "manuscript_revision_id": "revision_01J0000000000000000000000B",
+      "manuscript_revision_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+      "cpl_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+      "cpl_event_sequence": 42,
+      "coordinate_system": "unicode_scalar",
+      "coverage": {
+        "denominator": 12,
+        "recorded_positions": 12,
+        "coverage_status": "complete",
+        "denominator_unit": "normalized_unicode_scalar_position",
+        "denominator_definition": "All normalized Unicode scalar positions in the exact frozen deposit manuscript; this is provenance coverage, not a human-authorship percentage."
+      },
+      "layers": [
+        "recorded_origin",
+        "transformation",
+        "selection_arrangement",
+        "evidentiary_evaluation",
+        "suggested_registration_treatment"
+      ],
+      "segments": [
+        {
+          "schema_version": "1.0",
+          "segment_id": "segment_01J0000000000000000000000Y",
+          "project_id": "project_01J00000000000000000000001",
+          "revision_id": "revision_01J0000000000000000000000B",
+          "segment_sequence": 1,
+          "range": {
+            "schema_version": "1.0",
+            "document_revision_id": "revision_01J0000000000000000000000B",
+            "coordinate_system": "unicode_scalar",
+            "start": 0,
+            "end": 12,
+            "preimage_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "text_fragment_id": "fragment_01J0000000000000000000000C"
+          },
+          "content_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+          "normalized_unicode_scalar_length": 12,
+          "recorded_origin_kind": "recorded_direct_human_input",
+          "actor_identity_status": "self_declared",
+          "generation_status": "recorded",
+          "lineage_status": "recorded",
+          "lineage_reference_ids": [
+            "operation_01J0000000000000000000000X"
+          ],
+          "operation_ids": [
+            "operation_01J0000000000000000000000X"
+          ],
+          "transformation_relationships": [
+            "inserted"
+          ],
+          "assertion_ids": [
+            "assertion_01J0000000000000000000000V"
+          ],
+          "selection_arrangement_assertion_ids": [],
+          "included_in_deposit_assertion_id": "assertion_01J0000000000000000000000V",
+          "classification_status": "exact"
+        }
+      ],
+      "structural_locators": [
+        {
+          "segment_id": "segment_01J0000000000000000000000Y",
+          "chapter": 1,
+          "paragraph": 1,
+          "page": 1
+        }
+      ],
+      "layout_profile": {
+        "layout_profile_id": "layout_01J00000000000000000000005",
+        "layout_profile_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555"
+      },
+      "generator": {
+        "name": "thinkloom-contribution-map",
+        "version": "1.0.0",
+        "configuration_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666"
+      },
+      "classification_status": "exact",
+      "contribution_map_sha256": "sha256:28562ec310a4eda35436bf01ec534d0639939365af453e3c922c492ee0ebff00"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "registry_version": "1.1",
+  "provenance_schema_version": "1.0",
+  "application_version": "0.5.2",
+  "introduced_in_application_version": "0.5.2",
+  "compatible_application_versions": [
+    "0.5.2",
+    "0.5.3",
+    "0.5.4",
+    "0.5.5",
+    "0.5.6",
+    "0.5.7",
+    "0.5.8",
+    "0.5.9",
+    "0.5.10",
+    "0.5.11",
+    "0.6.0"
+  ],
+  "name": "composition-operation-kinds",
+  "description": "Composition-specific immutable operation kinds.",
+  "entries": [
+    {
+      "code": "insert",
+      "meaning": "Insert expression at a revision-bound destination."
+    },
+    {
+      "code": "delete",
+      "meaning": "Delete expression identified by an exact preimage range."
+    },
+    {
+      "code": "replace",
+      "meaning": "Replace an exact preimage range with new expression."
+    },
+    {
+      "code": "move",
+      "meaning": "Move expression while retaining stable lineage."
+    },
+    {
+      "code": "paste",
+      "meaning": "Insert pasted material whose human authorship is not inferred."
+    },
+    {
+      "code": "transcription",
+      "meaning": "Insert human expressive input mediated by transcription without retaining audio."
+    },
+    {
+      "code": "ai_acceptance",
+      "meaning": "Accept expression from a recorded model invocation and disposition."
+    },
+    {
+      "code": "restoration",
+      "meaning": "Restore expression from a recorded earlier revision."
+    }
+  ]
+}

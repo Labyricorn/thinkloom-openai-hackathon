@@ -1,0 +1,1383 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/composition-operation.schema.json",
+  "cases": [
+    {
+      "description": "composition-operation.schema_version: reject missing required property",
+      "instance": {
+        "operation_id": "operation_01J0000000000000000000000X",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_kind": "insert",
+        "client_action_id": "client-action-composition-0001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "operation_sequence": 1,
+        "source_range": null,
+        "destination_coordinate_system": "unicode_scalar",
+        "destination_start": 0,
+        "inserted_content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "deleted_content_sha256": null,
+        "source_record_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "invocation_id": null,
+        "disposition_id": null,
+        "recorded_origin_kind": "recorded_direct_human_input",
+        "actor_identity_status": "self_declared",
+        "transformation_relationships": [
+          "inserted"
+        ],
+        "lineage_reference_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "recorded_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "composition-operation.operation_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_kind": "insert",
+        "client_action_id": "client-action-composition-0001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "operation_sequence": 1,
+        "source_range": null,
+        "destination_coordinate_system": "unicode_scalar",
+        "destination_start": 0,
+        "inserted_content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "deleted_content_sha256": null,
+        "source_record_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "invocation_id": null,
+        "disposition_id": null,
+        "recorded_origin_kind": "recorded_direct_human_input",
+        "actor_identity_status": "self_declared",
+        "transformation_relationships": [
+          "inserted"
+        ],
+        "lineage_reference_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "recorded_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "composition-operation.project_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "operation_id": "operation_01J0000000000000000000000X",
+        "operation_kind": "insert",
+        "client_action_id": "client-action-composition-0001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "operation_sequence": 1,
+        "source_range": null,
+        "destination_coordinate_system": "unicode_scalar",
+        "destination_start": 0,
+        "inserted_content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "deleted_content_sha256": null,
+        "source_record_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "invocation_id": null,
+        "disposition_id": null,
+        "recorded_origin_kind": "recorded_direct_human_input",
+        "actor_identity_status": "self_declared",
+        "transformation_relationships": [
+          "inserted"
+        ],
+        "lineage_reference_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "recorded_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "composition-operation.operation_kind: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "operation_id": "operation_01J0000000000000000000000X",
+        "project_id": "project_01J00000000000000000000001",
+        "client_action_id": "client-action-composition-0001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "operation_sequence": 1,
+        "source_range": null,
+        "destination_coordinate_system": "unicode_scalar",
+        "destination_start": 0,
+        "inserted_content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "deleted_content_sha256": null,
+        "source_record_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "invocation_id": null,
+        "disposition_id": null,
+        "recorded_origin_kind": "recorded_direct_human_input",
+        "actor_identity_status": "self_declared",
+        "transformation_relationships": [
+          "inserted"
+        ],
+        "lineage_reference_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "recorded_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "composition-operation.client_action_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "operation_id": "operation_01J0000000000000000000000X",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_kind": "insert",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "operation_sequence": 1,
+        "source_range": null,
+        "destination_coordinate_system": "unicode_scalar",
+        "destination_start": 0,
+        "inserted_content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "deleted_content_sha256": null,
+        "source_record_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "invocation_id": null,
+        "disposition_id": null,
+        "recorded_origin_kind": "recorded_direct_human_input",
+        "actor_identity_status": "self_declared",
+        "transformation_relationships": [
+          "inserted"
+        ],
+        "lineage_reference_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "recorded_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "composition-operation.base_revision_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "operation_id": "operation_01J0000000000000000000000X",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_kind": "insert",
+        "client_action_id": "client-action-composition-0001",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "operation_sequence": 1,
+        "source_range": null,
+        "destination_coordinate_system": "unicode_scalar",
+        "destination_start": 0,
+        "inserted_content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "deleted_content_sha256": null,
+        "source_record_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "invocation_id": null,
+        "disposition_id": null,
+        "recorded_origin_kind": "recorded_direct_human_input",
+        "actor_identity_status": "self_declared",
+        "transformation_relationships": [
+          "inserted"
+        ],
+        "lineage_reference_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "recorded_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "composition-operation.result_revision_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "operation_id": "operation_01J0000000000000000000000X",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_kind": "insert",
+        "client_action_id": "client-action-composition-0001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "operation_sequence": 1,
+        "source_range": null,
+        "destination_coordinate_system": "unicode_scalar",
+        "destination_start": 0,
+        "inserted_content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "deleted_content_sha256": null,
+        "source_record_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "invocation_id": null,
+        "disposition_id": null,
+        "recorded_origin_kind": "recorded_direct_human_input",
+        "actor_identity_status": "self_declared",
+        "transformation_relationships": [
+          "inserted"
+        ],
+        "lineage_reference_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "recorded_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "composition-operation.operation_sequence: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "operation_id": "operation_01J0000000000000000000000X",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_kind": "insert",
+        "client_action_id": "client-action-composition-0001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "source_range": null,
+        "destination_coordinate_system": "unicode_scalar",
+        "destination_start": 0,
+        "inserted_content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "deleted_content_sha256": null,
+        "source_record_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "invocation_id": null,
+        "disposition_id": null,
+        "recorded_origin_kind": "recorded_direct_human_input",
+        "actor_identity_status": "self_declared",
+        "transformation_relationships": [
+          "inserted"
+        ],
+        "lineage_reference_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "recorded_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "composition-operation.source_range: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "operation_id": "operation_01J0000000000000000000000X",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_kind": "insert",
+        "client_action_id": "client-action-composition-0001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "operation_sequence": 1,
+        "destination_coordinate_system": "unicode_scalar",
+        "destination_start": 0,
+        "inserted_content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "deleted_content_sha256": null,
+        "source_record_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "invocation_id": null,
+        "disposition_id": null,
+        "recorded_origin_kind": "recorded_direct_human_input",
+        "actor_identity_status": "self_declared",
+        "transformation_relationships": [
+          "inserted"
+        ],
+        "lineage_reference_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "recorded_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "composition-operation.destination_coordinate_system: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "operation_id": "operation_01J0000000000000000000000X",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_kind": "insert",
+        "client_action_id": "client-action-composition-0001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "operation_sequence": 1,
+        "source_range": null,
+        "destination_start": 0,
+        "inserted_content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "deleted_content_sha256": null,
+        "source_record_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "invocation_id": null,
+        "disposition_id": null,
+        "recorded_origin_kind": "recorded_direct_human_input",
+        "actor_identity_status": "self_declared",
+        "transformation_relationships": [
+          "inserted"
+        ],
+        "lineage_reference_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "recorded_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "composition-operation.destination_start: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "operation_id": "operation_01J0000000000000000000000X",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_kind": "insert",
+        "client_action_id": "client-action-composition-0001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "operation_sequence": 1,
+        "source_range": null,
+        "destination_coordinate_system": "unicode_scalar",
+        "inserted_content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "deleted_content_sha256": null,
+        "source_record_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "invocation_id": null,
+        "disposition_id": null,
+        "recorded_origin_kind": "recorded_direct_human_input",
+        "actor_identity_status": "self_declared",
+        "transformation_relationships": [
+          "inserted"
+        ],
+        "lineage_reference_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "recorded_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "composition-operation.inserted_content_sha256: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "operation_id": "operation_01J0000000000000000000000X",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_kind": "insert",
+        "client_action_id": "client-action-composition-0001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "operation_sequence": 1,
+        "source_range": null,
+        "destination_coordinate_system": "unicode_scalar",
+        "destination_start": 0,
+        "deleted_content_sha256": null,
+        "source_record_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "invocation_id": null,
+        "disposition_id": null,
+        "recorded_origin_kind": "recorded_direct_human_input",
+        "actor_identity_status": "self_declared",
+        "transformation_relationships": [
+          "inserted"
+        ],
+        "lineage_reference_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "recorded_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "composition-operation.deleted_content_sha256: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "operation_id": "operation_01J0000000000000000000000X",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_kind": "insert",
+        "client_action_id": "client-action-composition-0001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "operation_sequence": 1,
+        "source_range": null,
+        "destination_coordinate_system": "unicode_scalar",
+        "destination_start": 0,
+        "inserted_content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "source_record_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "invocation_id": null,
+        "disposition_id": null,
+        "recorded_origin_kind": "recorded_direct_human_input",
+        "actor_identity_status": "self_declared",
+        "transformation_relationships": [
+          "inserted"
+        ],
+        "lineage_reference_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "recorded_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "composition-operation.source_record_ids: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "operation_id": "operation_01J0000000000000000000000X",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_kind": "insert",
+        "client_action_id": "client-action-composition-0001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "operation_sequence": 1,
+        "source_range": null,
+        "destination_coordinate_system": "unicode_scalar",
+        "destination_start": 0,
+        "inserted_content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "deleted_content_sha256": null,
+        "invocation_id": null,
+        "disposition_id": null,
+        "recorded_origin_kind": "recorded_direct_human_input",
+        "actor_identity_status": "self_declared",
+        "transformation_relationships": [
+          "inserted"
+        ],
+        "lineage_reference_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "recorded_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "composition-operation.invocation_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "operation_id": "operation_01J0000000000000000000000X",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_kind": "insert",
+        "client_action_id": "client-action-composition-0001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "operation_sequence": 1,
+        "source_range": null,
+        "destination_coordinate_system": "unicode_scalar",
+        "destination_start": 0,
+        "inserted_content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "deleted_content_sha256": null,
+        "source_record_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "disposition_id": null,
+        "recorded_origin_kind": "recorded_direct_human_input",
+        "actor_identity_status": "self_declared",
+        "transformation_relationships": [
+          "inserted"
+        ],
+        "lineage_reference_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "recorded_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "composition-operation.disposition_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "operation_id": "operation_01J0000000000000000000000X",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_kind": "insert",
+        "client_action_id": "client-action-composition-0001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "operation_sequence": 1,
+        "source_range": null,
+        "destination_coordinate_system": "unicode_scalar",
+        "destination_start": 0,
+        "inserted_content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "deleted_content_sha256": null,
+        "source_record_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "invocation_id": null,
+        "recorded_origin_kind": "recorded_direct_human_input",
+        "actor_identity_status": "self_declared",
+        "transformation_relationships": [
+          "inserted"
+        ],
+        "lineage_reference_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "recorded_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "composition-operation.recorded_origin_kind: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "operation_id": "operation_01J0000000000000000000000X",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_kind": "insert",
+        "client_action_id": "client-action-composition-0001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "operation_sequence": 1,
+        "source_range": null,
+        "destination_coordinate_system": "unicode_scalar",
+        "destination_start": 0,
+        "inserted_content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "deleted_content_sha256": null,
+        "source_record_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "invocation_id": null,
+        "disposition_id": null,
+        "actor_identity_status": "self_declared",
+        "transformation_relationships": [
+          "inserted"
+        ],
+        "lineage_reference_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "recorded_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "composition-operation.actor_identity_status: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "operation_id": "operation_01J0000000000000000000000X",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_kind": "insert",
+        "client_action_id": "client-action-composition-0001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "operation_sequence": 1,
+        "source_range": null,
+        "destination_coordinate_system": "unicode_scalar",
+        "destination_start": 0,
+        "inserted_content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "deleted_content_sha256": null,
+        "source_record_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "invocation_id": null,
+        "disposition_id": null,
+        "recorded_origin_kind": "recorded_direct_human_input",
+        "transformation_relationships": [
+          "inserted"
+        ],
+        "lineage_reference_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "recorded_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "composition-operation.transformation_relationships: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "operation_id": "operation_01J0000000000000000000000X",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_kind": "insert",
+        "client_action_id": "client-action-composition-0001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "operation_sequence": 1,
+        "source_range": null,
+        "destination_coordinate_system": "unicode_scalar",
+        "destination_start": 0,
+        "inserted_content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "deleted_content_sha256": null,
+        "source_record_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "invocation_id": null,
+        "disposition_id": null,
+        "recorded_origin_kind": "recorded_direct_human_input",
+        "actor_identity_status": "self_declared",
+        "lineage_reference_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "recorded_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "composition-operation.lineage_reference_ids: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "operation_id": "operation_01J0000000000000000000000X",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_kind": "insert",
+        "client_action_id": "client-action-composition-0001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "operation_sequence": 1,
+        "source_range": null,
+        "destination_coordinate_system": "unicode_scalar",
+        "destination_start": 0,
+        "inserted_content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "deleted_content_sha256": null,
+        "source_record_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "invocation_id": null,
+        "disposition_id": null,
+        "recorded_origin_kind": "recorded_direct_human_input",
+        "actor_identity_status": "self_declared",
+        "transformation_relationships": [
+          "inserted"
+        ],
+        "recorded_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "composition-operation.recorded_at: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "operation_id": "operation_01J0000000000000000000000X",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_kind": "insert",
+        "client_action_id": "client-action-composition-0001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "operation_sequence": 1,
+        "source_range": null,
+        "destination_coordinate_system": "unicode_scalar",
+        "destination_start": 0,
+        "inserted_content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "deleted_content_sha256": null,
+        "source_record_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "invocation_id": null,
+        "disposition_id": null,
+        "recorded_origin_kind": "recorded_direct_human_input",
+        "actor_identity_status": "self_declared",
+        "transformation_relationships": [
+          "inserted"
+        ],
+        "lineage_reference_ids": [
+          "turn_01J00000000000000000000007"
+        ]
+      }
+    },
+    {
+      "description": "composition-operation: reject unexpected property",
+      "instance": {
+        "schema_version": "1.0",
+        "operation_id": "operation_01J0000000000000000000000X",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_kind": "insert",
+        "client_action_id": "client-action-composition-0001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "operation_sequence": 1,
+        "source_range": null,
+        "destination_coordinate_system": "unicode_scalar",
+        "destination_start": 0,
+        "inserted_content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "deleted_content_sha256": null,
+        "source_record_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "invocation_id": null,
+        "disposition_id": null,
+        "recorded_origin_kind": "recorded_direct_human_input",
+        "actor_identity_status": "self_declared",
+        "transformation_relationships": [
+          "inserted"
+        ],
+        "lineage_reference_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "recorded_at": "2026-07-17T18:42:10.123Z",
+        "__unexpected": true
+      }
+    },
+    {
+      "description": "composition-operation.schema_version: reject value different from const",
+      "instance": {
+        "schema_version": "__INVALID_CONST__",
+        "operation_id": "operation_01J0000000000000000000000X",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_kind": "insert",
+        "client_action_id": "client-action-composition-0001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "operation_sequence": 1,
+        "source_range": null,
+        "destination_coordinate_system": "unicode_scalar",
+        "destination_start": 0,
+        "inserted_content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "deleted_content_sha256": null,
+        "source_record_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "invocation_id": null,
+        "disposition_id": null,
+        "recorded_origin_kind": "recorded_direct_human_input",
+        "actor_identity_status": "self_declared",
+        "transformation_relationships": [
+          "inserted"
+        ],
+        "lineage_reference_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "recorded_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "composition-operation.operation_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "operation_id": "invalid-id",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_kind": "insert",
+        "client_action_id": "client-action-composition-0001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "operation_sequence": 1,
+        "source_range": null,
+        "destination_coordinate_system": "unicode_scalar",
+        "destination_start": 0,
+        "inserted_content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "deleted_content_sha256": null,
+        "source_record_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "invocation_id": null,
+        "disposition_id": null,
+        "recorded_origin_kind": "recorded_direct_human_input",
+        "actor_identity_status": "self_declared",
+        "transformation_relationships": [
+          "inserted"
+        ],
+        "lineage_reference_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "recorded_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "composition-operation.project_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "operation_id": "operation_01J0000000000000000000000X",
+        "project_id": "invalid-id",
+        "operation_kind": "insert",
+        "client_action_id": "client-action-composition-0001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "operation_sequence": 1,
+        "source_range": null,
+        "destination_coordinate_system": "unicode_scalar",
+        "destination_start": 0,
+        "inserted_content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "deleted_content_sha256": null,
+        "source_record_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "invocation_id": null,
+        "disposition_id": null,
+        "recorded_origin_kind": "recorded_direct_human_input",
+        "actor_identity_status": "self_declared",
+        "transformation_relationships": [
+          "inserted"
+        ],
+        "lineage_reference_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "recorded_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "composition-operation.operation_kind: reject value outside enum",
+      "instance": {
+        "schema_version": "1.0",
+        "operation_id": "operation_01J0000000000000000000000X",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_kind": "__INVALID_ENUM__",
+        "client_action_id": "client-action-composition-0001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "operation_sequence": 1,
+        "source_range": null,
+        "destination_coordinate_system": "unicode_scalar",
+        "destination_start": 0,
+        "inserted_content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "deleted_content_sha256": null,
+        "source_record_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "invocation_id": null,
+        "disposition_id": null,
+        "recorded_origin_kind": "recorded_direct_human_input",
+        "actor_identity_status": "self_declared",
+        "transformation_relationships": [
+          "inserted"
+        ],
+        "lineage_reference_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "recorded_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "composition-operation.client_action_id: reject string below minLength",
+      "instance": {
+        "schema_version": "1.0",
+        "operation_id": "operation_01J0000000000000000000000X",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_kind": "insert",
+        "client_action_id": "",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "operation_sequence": 1,
+        "source_range": null,
+        "destination_coordinate_system": "unicode_scalar",
+        "destination_start": 0,
+        "inserted_content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "deleted_content_sha256": null,
+        "source_record_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "invocation_id": null,
+        "disposition_id": null,
+        "recorded_origin_kind": "recorded_direct_human_input",
+        "actor_identity_status": "self_declared",
+        "transformation_relationships": [
+          "inserted"
+        ],
+        "lineage_reference_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "recorded_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "composition-operation.client_action_id: reject string above maxLength",
+      "instance": {
+        "schema_version": "1.0",
+        "operation_id": "operation_01J0000000000000000000000X",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_kind": "insert",
+        "client_action_id": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "operation_sequence": 1,
+        "source_range": null,
+        "destination_coordinate_system": "unicode_scalar",
+        "destination_start": 0,
+        "inserted_content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "deleted_content_sha256": null,
+        "source_record_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "invocation_id": null,
+        "disposition_id": null,
+        "recorded_origin_kind": "recorded_direct_human_input",
+        "actor_identity_status": "self_declared",
+        "transformation_relationships": [
+          "inserted"
+        ],
+        "lineage_reference_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "recorded_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "composition-operation.base_revision_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "operation_id": "operation_01J0000000000000000000000X",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_kind": "insert",
+        "client_action_id": "client-action-composition-0001",
+        "base_revision_id": "invalid-id",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "operation_sequence": 1,
+        "source_range": null,
+        "destination_coordinate_system": "unicode_scalar",
+        "destination_start": 0,
+        "inserted_content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "deleted_content_sha256": null,
+        "source_record_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "invocation_id": null,
+        "disposition_id": null,
+        "recorded_origin_kind": "recorded_direct_human_input",
+        "actor_identity_status": "self_declared",
+        "transformation_relationships": [
+          "inserted"
+        ],
+        "lineage_reference_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "recorded_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "composition-operation.result_revision_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "operation_id": "operation_01J0000000000000000000000X",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_kind": "insert",
+        "client_action_id": "client-action-composition-0001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "invalid-id",
+        "operation_sequence": 1,
+        "source_range": null,
+        "destination_coordinate_system": "unicode_scalar",
+        "destination_start": 0,
+        "inserted_content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "deleted_content_sha256": null,
+        "source_record_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "invocation_id": null,
+        "disposition_id": null,
+        "recorded_origin_kind": "recorded_direct_human_input",
+        "actor_identity_status": "self_declared",
+        "transformation_relationships": [
+          "inserted"
+        ],
+        "lineage_reference_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "recorded_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "composition-operation.operation_sequence: reject value below minimum",
+      "instance": {
+        "schema_version": "1.0",
+        "operation_id": "operation_01J0000000000000000000000X",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_kind": "insert",
+        "client_action_id": "client-action-composition-0001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "operation_sequence": 0,
+        "source_range": null,
+        "destination_coordinate_system": "unicode_scalar",
+        "destination_start": 0,
+        "inserted_content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "deleted_content_sha256": null,
+        "source_record_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "invocation_id": null,
+        "disposition_id": null,
+        "recorded_origin_kind": "recorded_direct_human_input",
+        "actor_identity_status": "self_declared",
+        "transformation_relationships": [
+          "inserted"
+        ],
+        "lineage_reference_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "recorded_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "composition-operation.destination_coordinate_system: reject value outside enum",
+      "instance": {
+        "schema_version": "1.0",
+        "operation_id": "operation_01J0000000000000000000000X",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_kind": "insert",
+        "client_action_id": "client-action-composition-0001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "operation_sequence": 1,
+        "source_range": null,
+        "destination_coordinate_system": "__INVALID_ENUM__",
+        "destination_start": 0,
+        "inserted_content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "deleted_content_sha256": null,
+        "source_record_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "invocation_id": null,
+        "disposition_id": null,
+        "recorded_origin_kind": "recorded_direct_human_input",
+        "actor_identity_status": "self_declared",
+        "transformation_relationships": [
+          "inserted"
+        ],
+        "lineage_reference_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "recorded_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "composition-operation.destination_start: reject value below minimum",
+      "instance": {
+        "schema_version": "1.0",
+        "operation_id": "operation_01J0000000000000000000000X",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_kind": "insert",
+        "client_action_id": "client-action-composition-0001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "operation_sequence": 1,
+        "source_range": null,
+        "destination_coordinate_system": "unicode_scalar",
+        "destination_start": -1,
+        "inserted_content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "deleted_content_sha256": null,
+        "source_record_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "invocation_id": null,
+        "disposition_id": null,
+        "recorded_origin_kind": "recorded_direct_human_input",
+        "actor_identity_status": "self_declared",
+        "transformation_relationships": [
+          "inserted"
+        ],
+        "lineage_reference_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "recorded_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "composition-operation.inserted_content_sha256: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "operation_id": "operation_01J0000000000000000000000X",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_kind": "insert",
+        "client_action_id": "client-action-composition-0001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "operation_sequence": 1,
+        "source_range": null,
+        "destination_coordinate_system": "unicode_scalar",
+        "destination_start": 0,
+        "inserted_content_sha256": "sha256:INVALID",
+        "deleted_content_sha256": null,
+        "source_record_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "invocation_id": null,
+        "disposition_id": null,
+        "recorded_origin_kind": "recorded_direct_human_input",
+        "actor_identity_status": "self_declared",
+        "transformation_relationships": [
+          "inserted"
+        ],
+        "lineage_reference_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "recorded_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "composition-operation.source_record_ids[0]: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "operation_id": "operation_01J0000000000000000000000X",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_kind": "insert",
+        "client_action_id": "client-action-composition-0001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "operation_sequence": 1,
+        "source_range": null,
+        "destination_coordinate_system": "unicode_scalar",
+        "destination_start": 0,
+        "inserted_content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "deleted_content_sha256": null,
+        "source_record_ids": [
+          "invalid-id"
+        ],
+        "invocation_id": null,
+        "disposition_id": null,
+        "recorded_origin_kind": "recorded_direct_human_input",
+        "actor_identity_status": "self_declared",
+        "transformation_relationships": [
+          "inserted"
+        ],
+        "lineage_reference_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "recorded_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "composition-operation.recorded_origin_kind: reject value outside enum",
+      "instance": {
+        "schema_version": "1.0",
+        "operation_id": "operation_01J0000000000000000000000X",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_kind": "insert",
+        "client_action_id": "client-action-composition-0001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "operation_sequence": 1,
+        "source_range": null,
+        "destination_coordinate_system": "unicode_scalar",
+        "destination_start": 0,
+        "inserted_content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "deleted_content_sha256": null,
+        "source_record_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "invocation_id": null,
+        "disposition_id": null,
+        "recorded_origin_kind": "__INVALID_ENUM__",
+        "actor_identity_status": "self_declared",
+        "transformation_relationships": [
+          "inserted"
+        ],
+        "lineage_reference_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "recorded_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "composition-operation.actor_identity_status: reject value outside enum",
+      "instance": {
+        "schema_version": "1.0",
+        "operation_id": "operation_01J0000000000000000000000X",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_kind": "insert",
+        "client_action_id": "client-action-composition-0001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "operation_sequence": 1,
+        "source_range": null,
+        "destination_coordinate_system": "unicode_scalar",
+        "destination_start": 0,
+        "inserted_content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "deleted_content_sha256": null,
+        "source_record_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "invocation_id": null,
+        "disposition_id": null,
+        "recorded_origin_kind": "recorded_direct_human_input",
+        "actor_identity_status": "__INVALID_ENUM__",
+        "transformation_relationships": [
+          "inserted"
+        ],
+        "lineage_reference_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "recorded_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "composition-operation.transformation_relationships: reject array below minItems",
+      "instance": {
+        "schema_version": "1.0",
+        "operation_id": "operation_01J0000000000000000000000X",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_kind": "insert",
+        "client_action_id": "client-action-composition-0001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "operation_sequence": 1,
+        "source_range": null,
+        "destination_coordinate_system": "unicode_scalar",
+        "destination_start": 0,
+        "inserted_content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "deleted_content_sha256": null,
+        "source_record_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "invocation_id": null,
+        "disposition_id": null,
+        "recorded_origin_kind": "recorded_direct_human_input",
+        "actor_identity_status": "self_declared",
+        "transformation_relationships": [],
+        "lineage_reference_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "recorded_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "composition-operation.transformation_relationships[0]: reject value outside enum",
+      "instance": {
+        "schema_version": "1.0",
+        "operation_id": "operation_01J0000000000000000000000X",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_kind": "insert",
+        "client_action_id": "client-action-composition-0001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "operation_sequence": 1,
+        "source_range": null,
+        "destination_coordinate_system": "unicode_scalar",
+        "destination_start": 0,
+        "inserted_content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "deleted_content_sha256": null,
+        "source_record_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "invocation_id": null,
+        "disposition_id": null,
+        "recorded_origin_kind": "recorded_direct_human_input",
+        "actor_identity_status": "self_declared",
+        "transformation_relationships": [
+          "__INVALID_ENUM__"
+        ],
+        "lineage_reference_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "recorded_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "composition-operation.lineage_reference_ids: reject array below minItems",
+      "instance": {
+        "schema_version": "1.0",
+        "operation_id": "operation_01J0000000000000000000000X",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_kind": "insert",
+        "client_action_id": "client-action-composition-0001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "operation_sequence": 1,
+        "source_range": null,
+        "destination_coordinate_system": "unicode_scalar",
+        "destination_start": 0,
+        "inserted_content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "deleted_content_sha256": null,
+        "source_record_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "invocation_id": null,
+        "disposition_id": null,
+        "recorded_origin_kind": "recorded_direct_human_input",
+        "actor_identity_status": "self_declared",
+        "transformation_relationships": [
+          "inserted"
+        ],
+        "lineage_reference_ids": [],
+        "recorded_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "composition-operation.lineage_reference_ids[0]: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "operation_id": "operation_01J0000000000000000000000X",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_kind": "insert",
+        "client_action_id": "client-action-composition-0001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "operation_sequence": 1,
+        "source_range": null,
+        "destination_coordinate_system": "unicode_scalar",
+        "destination_start": 0,
+        "inserted_content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "deleted_content_sha256": null,
+        "source_record_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "invocation_id": null,
+        "disposition_id": null,
+        "recorded_origin_kind": "recorded_direct_human_input",
+        "actor_identity_status": "self_declared",
+        "transformation_relationships": [
+          "inserted"
+        ],
+        "lineage_reference_ids": [
+          "invalid-id"
+        ],
+        "recorded_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "composition-operation.recorded_at: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "operation_id": "operation_01J0000000000000000000000X",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_kind": "insert",
+        "client_action_id": "client-action-composition-0001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "operation_sequence": 1,
+        "source_range": null,
+        "destination_coordinate_system": "unicode_scalar",
+        "destination_start": 0,
+        "inserted_content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "deleted_content_sha256": null,
+        "source_record_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "invocation_id": null,
+        "disposition_id": null,
+        "recorded_origin_kind": "recorded_direct_human_input",
+        "actor_identity_status": "self_declared",
+        "transformation_relationships": [
+          "inserted"
+        ],
+        "lineage_reference_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "recorded_at": "not-a-timestamp"
+      }
+    },
+    {
+      "description": "composition-operation: paste cannot claim direct human-input origin",
+      "instance": {
+        "schema_version": "1.0",
+        "operation_id": "operation_01J0000000000000000000000X",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_kind": "paste",
+        "client_action_id": "client-action-composition-0001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "operation_sequence": 1,
+        "source_range": null,
+        "destination_coordinate_system": "unicode_scalar",
+        "destination_start": 0,
+        "inserted_content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "deleted_content_sha256": null,
+        "source_record_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "invocation_id": null,
+        "disposition_id": null,
+        "recorded_origin_kind": "recorded_direct_human_input",
+        "actor_identity_status": "self_declared",
+        "transformation_relationships": [
+          "inserted"
+        ],
+        "lineage_reference_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "recorded_at": "2026-07-17T18:42:10.123Z"
+      }
+    },
+    {
+      "description": "composition-operation: AI acceptance requires invocation and disposition",
+      "instance": {
+        "schema_version": "1.0",
+        "operation_id": "operation_01J0000000000000000000000X",
+        "project_id": "project_01J00000000000000000000001",
+        "operation_kind": "ai_acceptance",
+        "client_action_id": "client-action-composition-0001",
+        "base_revision_id": "revision_01J0000000000000000000000A",
+        "result_revision_id": "revision_01J0000000000000000000000B",
+        "operation_sequence": 1,
+        "source_range": null,
+        "destination_coordinate_system": "unicode_scalar",
+        "destination_start": 0,
+        "inserted_content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "deleted_content_sha256": null,
+        "source_record_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "invocation_id": null,
+        "disposition_id": null,
+        "recorded_origin_kind": "accepted_ai_output",
+        "actor_identity_status": "self_declared",
+        "transformation_relationships": [
+          "inserted"
+        ],
+        "lineage_reference_ids": [
+          "turn_01J00000000000000000000007"
+        ],
+        "recorded_at": "2026-07-17T18:42:10.123Z"
+      }
+    }
+  ]
+}

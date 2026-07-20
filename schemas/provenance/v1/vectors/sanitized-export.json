@@ -8,29 +8,68 @@
     "schema_version": "1.0",
     "export_id": "record_01J00000000000000000000005",
     "project_id": "project_01J00000000000000000000001",
+    "harp_id": "harp_01J00000000000000000000002",
+    "harp_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+    "deposit_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
     "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
     "profile": "sanitized",
+    "completeness_claim": "selective_disclosed_subset",
+    "verification_scope_statement": "Verified only against disclosed retained evidence; this archive is intentionally incomplete.",
     "omission_rules": [
       {
         "category": "private_conversation",
         "action": "exclude",
-        "count": 2
+        "count": 2,
+        "retained_binding_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "disclosure_sha256": "sha256:64ead691b41bafd27f9c7e7150bdb766e3cc3d2e164be3c6b399959598a4f57d"
+      },
+      {
+        "category": "rejected_model_output",
+        "action": "exclude",
+        "count": 1,
+        "retained_binding_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+        "disclosure_sha256": "sha256:00c0f1cf14c2bdba5b294841f8718f7642a007bd76151c5d3069fd8759821416"
+      },
+      {
+        "category": "credential_authorization_material",
+        "action": "exclude",
+        "count": 0,
+        "retained_binding_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "disclosure_sha256": "sha256:05967f8907578a38d3b081032d0983743d4c95fcb566d5d27e2c456cb1ba1356"
       },
       {
         "category": "personal_identifier",
         "action": "redact",
-        "count": 1
+        "count": 1,
+        "retained_binding_sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "disclosure_sha256": "sha256:f54dc437448c7d005fd0c6962a97bd22755dd0881b6859a2fcc7fbc060849f00"
       },
       {
-        "category": "provider_detail",
-        "action": "summarize",
-        "count": 1
+        "category": "internal_path",
+        "action": "exclude",
+        "count": 7,
+        "retained_binding_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "disclosure_sha256": "sha256:5a9f0f685ba0214dd28031540e39723c0b40400ee2bf26b1b377ab5e0e0154be"
+      },
+      {
+        "category": "provider_metadata_not_required",
+        "action": "exclude",
+        "count": 1,
+        "retained_binding_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "disclosure_sha256": "sha256:f8d42c231ae64ab0cfcdba2a35a0ee835855601b35da1c4951ad5ff798b63022"
+      },
+      {
+        "category": "protected_source_body",
+        "action": "exclude",
+        "count": 3,
+        "retained_binding_sha256": "sha256:7777777777777777777777777777777777777777777777777777777777777777",
+        "disclosure_sha256": "sha256:3d54ac69d716e9d4d42f552639cc4d2d485d653fd23bd952a600ea42808833b8"
       }
     ],
-    "rules_sha256": "sha256:352ccc3dde25000a1d6dd006a4c0376f73b7805736232b09458696928d3036f6",
+    "rules_sha256": "sha256:d5602e31249a5d9d78732f268b043df1c0c8b7bd769d41386dead89dcc9e553a",
     "files": [
       {
-        "path": "final-manuscript.md",
+        "path": "evidence/harp-binding.json",
         "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
         "size": 1024
       }

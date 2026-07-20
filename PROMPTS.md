@@ -1,18 +1,18 @@
 # Thinkloom prompt configuration
 
-Thinkloom 0.4.0 exposes every instruction sent to a language model as editable JSON. The desktop app creates a prompts folder in its operating-system configuration directory and shows its exact path under Settings → Prompt configuration. Use Open prompt folder to open it.
+Thinkloom 0.5.11 exposes every instruction sent to a language model as editable JSON. The desktop app creates a prompts folder in its operating-system configuration directory and shows its exact path under Settings → Prompt configuration. Use Open prompt folder to open it.
 
-Prompt files are loaded immediately before every model request. Save a valid edit, then make the next request; no restart or rebuild is required. Thinkloom never overwrites existing user prompt files during startup or an update.
+Prompt files are loaded immediately before every model request. Save a valid edit, then make the next request; no restart or rebuild is required. Thinkloom preserves existing prompt instructions. When a release introduces a required prompt field, it adds only the missing field and wraps legacy conversation instructions with the new modular context variables.
 
 ## Files and effects
 
 ### conversation.json
 
-Affects replies in Ideation. systemPrompt defines the overall role, userPromptTemplate defines the turn task, and challengeGuidance supplies the Gentle, Balanced, or Rigorous instruction. The {{challenge_guidance}} and {{context}} placeholders are required.
+Affects replies in Ideation. systemPrompt defines the overall role, userPromptTemplate defines the turn task, and challengeGuidance supplies the Gentle, Balanced, or Rigorous instruction. The {{persona_instruction}}, {{genre_instruction}}, {{lore_context}}, {{web_search_instruction}}, {{challenge_guidance}}, and {{context}} placeholders are required. Together they form the modular system instruction for each session.
 
 ### drafting.json
 
-Affects passage previews in Drafting and editorial previews in Finalization. systemPrompt defines the overall role, draftPromptTemplate is used by Draft a passage, and editorialPromptTemplate is used by the editorial actions. Available placeholders are {{relation}}, {{action}}, and {{context}}.
+Affects passage previews in Drafting and editorial previews in Finalization. systemPrompt defines the overall role, draftPromptTemplate is used by Draft a passage, editorialPromptTemplate is used by the editorial actions, and distillationPromptTemplate turns the Phase 1 drafting paper into a token-efficient handoff. Available placeholders are {{relation}}, {{action}}, and {{context}}.
 
 The description, effect, and variables objects document the configuration and are not sent to the model.
 

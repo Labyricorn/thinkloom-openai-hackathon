@@ -1,0 +1,63 @@
+{
+  "registry_version": "1.1",
+  "provenance_schema_version": "1.0",
+  "application_version": "0.5.2",
+  "introduced_in_application_version": "0.5.2",
+  "compatible_application_versions": [
+    "0.5.2",
+    "0.5.3",
+    "0.5.4",
+    "0.5.5",
+    "0.5.6",
+    "0.5.7",
+    "0.5.8",
+    "0.5.9",
+    "0.5.10",
+    "0.5.11",
+    "0.6.0"
+  ],
+  "name": "harp-limitation-codes",
+  "description": "Stable HARP limitation disclosures.",
+  "entries": [
+    {
+      "code": "SELF_DECLARED_IDENTITY",
+      "meaning": "HARP limitation: self declared identity."
+    },
+    {
+      "code": "UNKNOWN_IDENTITY",
+      "meaning": "HARP limitation: unknown identity."
+    },
+    {
+      "code": "UNKNOWN_ORIGIN",
+      "meaning": "HARP limitation: unknown origin."
+    },
+    {
+      "code": "UNKNOWN_GENERATION",
+      "meaning": "HARP limitation: unknown generation."
+    },
+    {
+      "code": "UNKNOWN_LINEAGE",
+      "meaning": "HARP limitation: unknown lineage."
+    },
+    {
+      "code": "UNATTESTED_EXPRESSION",
+      "meaning": "HARP limitation: unattested expression."
+    },
+    {
+      "code": "DEGRADED_COVERAGE",
+      "meaning": "HARP limitation: degraded coverage."
+    },
+    {
+      "code": "SUPERSEDED_POLICY_PROFILE",
+      "meaning": "HARP limitation: superseded policy profile."
+    },
+    {
+      "code": "SANITIZED_EVIDENCE",
+      "meaning": "HARP limitation: sanitized evidence."
+    },
+    {
+      "code": "COPYRIGHT_OFFICE_DETERMINES_SCOPE",
+      "meaning": "HARP limitation: copyright office determines scope."
+    }
+  ]
+}

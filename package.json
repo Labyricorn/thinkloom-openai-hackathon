@@ -1,6 +1,6 @@
 {
   "name": "thinkloom",
-  "version": "0.4.0",
+  "version": "0.5.11",
   "author": "Christopher Chambers",
   "license": "AGPL-3.0-only",
   "repository": "https://github.com/Labyricorn/thinkloom-openai-hackathon.git",
@@ -16,7 +16,9 @@
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "lint": "eslint src tests scripts vite.config.ts",
-    "test": "npm run typecheck && node tests/native-app.test.mjs && npm run provenance:schema:test",
+    "test": "npm run typecheck && node tests/native-app.test.mjs && node tests/native-cpl.test.mjs && node tests/project-format.test.mjs && node tests/phase1-provenance.test.mjs && node tests/composition-provenance.test.mjs && node tests/contribution-map.test.mjs && node tests/harp-generation.test.mjs && node tests/provenance-ui.test.mjs && node tests/harp-export.test.mjs && node tests/verification-matrix.test.mjs && npm run provenance:schema:test",
+    "test:windows-package": "node tests/windows-package.test.mjs",
+    "verify:windows-package": "npm run tauri build && npm run test:windows-package",
     "tauri": "tauri",
     "provenance:schema:generate": "node scripts/generate-provenance-stage2.mjs",
     "provenance:schema:test": "node tests/provenance-schema.test.mjs"

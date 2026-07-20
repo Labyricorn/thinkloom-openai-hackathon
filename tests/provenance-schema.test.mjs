@@ -24,42 +24,73 @@ function validator() {
 }
 
 const requiredSchemas = [
-  "assertion-evaluation", "backup-manifest", "chain-head", "content-reference", "conversation-session", "derived-index-manifest",
-  "disposition-revision", "edit-transaction", "encrypted-key-envelope", "idea", "idea-revision",
+  "assertion-evaluation", "backup-manifest", "chain-head", "composition-operation", "content-reference", "contribution-map",
+  "conversation-session", "deposit-snapshot", "derived-index-manifest", "disposition-revision", "edit-transaction",
+  "encrypted-key-envelope", "expression-segment", "harp-export-manifest", "human-authorship-record", "idea", "idea-revision",
   "invocation-failure", "invocation-request", "invocation-response", "invocation-state", "invocation-stream-state",
   "invocation-stream-summary", "ledger-segment-manifest", "manuscript-revision", "model-capability-snapshot",
   "model-configuration-snapshot", "project-key-manifest", "project-manifest", "prompt-template",
   "prompt-template-reference", "provenance-assertion", "provenance-event", "provenance-policy", "purge-manifest", "record-envelope",
-  "recovery-key-envelope", "release-manifest", "release-state", "sanitized-export-manifest", "text-fragment-reference",
-  "transcript-correction", "transcript-normalization", "transcript-turn", "verification-report", "write-intent",
+  "recovery-key-envelope", "registration-policy-profile", "release-manifest", "release-state", "sanitized-export-manifest",
+  "text-fragment-reference", "transcript-correction", "transcript-normalization", "transcript-turn", "verification-report", "write-intent",
 ];
 
 test("catalogs every approved Stage 2 schema under Draft 2020-12", () => {
-  assert.equal(catalog.catalog_version, "1.0");
+  assert.equal(catalog.catalog_version, "1.1");
+  assert.equal(catalog.package_version, "0.5.2");
   assert.equal(catalog.provenance_schema_version, "1.0");
-  assert.equal(catalog.application_version, "0.4.0");
-  assert.deepEqual(catalog.compatible_application_versions, ["0.4.0"]);
+  assert.equal(catalog.application_version, "0.5.2");
+  assert.deepEqual(catalog.compatible_application_versions, ["0.4.0", "0.5.0", "0.5.1", "0.5.2", "0.5.3", "0.5.4", "0.5.5", "0.5.6", "0.5.7", "0.5.8", "0.5.9", "0.5.10", "0.5.11", "0.6.0"]);
+  assert.equal(catalog.cpl_runtime_target, "0.6.0");
   assert.equal(catalog.native_writer_conformance, false);
+  assert.match(catalog.assertion_semantics_compatibility, /v0\.4.+remain valid/i);
   assert.equal(catalog.dialect, "https://json-schema.org/draft/2020-12/schema");
   assert.deepEqual(catalog.schemas.map(({ name }) => name), requiredSchemas);
   assert.equal(new Set(catalog.schemas.map(({ id }) => id)).size, requiredSchemas.length);
+  for (const entry of catalog.schemas) {
+    const isCompositionExtension = ["composition-operation", "expression-segment", "contribution-map", "deposit-snapshot", "registration-policy-profile", "human-authorship-record", "harp-export-manifest"].includes(entry.name);
+    assert.equal(entry.introduced_in_application_version, isCompositionExtension ? "0.5.2" : "0.4.0");
+    assert.ok(entry.compatible_application_versions.includes("0.5.3"));
+    assert.ok(entry.compatible_application_versions.includes("0.5.10"));
+    assert.ok(entry.compatible_application_versions.includes("0.5.11"));
+    assert.ok(entry.compatible_application_versions.includes("0.6.0"));
+    if (!isCompositionExtension) assert.ok(entry.compatible_application_versions.includes("0.4.0"));
+  }
   for (const { schema } of schemaEntries) {
     assert.equal(schema.additionalProperties, false, `${schema.$id} must be closed at its top level`);
   }
 });
 
-test("publishes complete versioned assertion registries", async () => {
-  const expected = ["assertion-boundary-kinds", "assertion-confidence-dimensions", "assertion-evaluation-statuses", "assertion-evidence-classes", "assertion-lifecycle-phases", "assertion-reason-codes"];
-  assert.deepEqual(catalog.registries.map(({ name }) => name).sort(), expected);
+test("publishes complete versioned assertion and composition registries", async () => {
+  const legacyExpected = ["assertion-boundary-kinds", "assertion-confidence-dimensions", "assertion-evaluation-statuses", "assertion-evidence-classes", "assertion-lifecycle-phases", "assertion-reason-codes"];
+  const compositionExpected = ["composition-assertion-predicates", "composition-operation-kinds", "contribution-map-layers", "harp-explanation-codes", "harp-limitation-codes", "recorded-origin-kinds", "registration-treatment-suggestions", "transformation-relationships"];
+  assert.deepEqual(catalog.registries.map(({ name }) => name).sort(), [...legacyExpected, ...compositionExpected].sort());
   for (const entry of catalog.registries) {
     const registry = await readJson(entry.file);
-    assert.equal(registry.registry_version, "1.0");
+    const isCompositionExtension = compositionExpected.includes(entry.name);
+    assert.equal(registry.registry_version, isCompositionExtension ? "1.1" : "1.0");
     assert.equal(registry.provenance_schema_version, "1.0");
-    assert.equal(registry.application_version, "0.4.0");
+    assert.equal(registry.application_version, isCompositionExtension ? "0.5.2" : "0.4.0");
+    assert.equal(registry.introduced_in_application_version, isCompositionExtension ? "0.5.2" : "0.4.0");
+    assert.ok(registry.compatible_application_versions.includes("0.5.3"));
+    assert.ok(registry.compatible_application_versions.includes("0.5.10"));
+    assert.ok(registry.compatible_application_versions.includes("0.5.11"));
+    assert.ok(registry.compatible_application_versions.includes("0.6.0"));
     assert.ok(registry.entries.length > 0);
     assert.ok(registry.entries.every(({ meaning }) => typeof meaning === "string" && meaning.length > 0));
     assert.equal(new Set(registry.entries.map(({ code }) => code)).size, registry.entries.length);
   }
+});
+
+test("keeps composition dimensions independent and preserves v0.4 assertion semantics", async () => {
+  const registries = Object.fromEntries(await Promise.all(catalog.registries.map(async (entry) => [entry.name, await readJson(entry.file)])));
+  assert.deepEqual(registries["composition-operation-kinds"].entries.map(({ code }) => code), ["insert", "delete", "replace", "move", "paste", "transcription", "ai_acceptance", "restoration"]);
+  assert.deepEqual(registries["recorded-origin-kinds"].entries.map(({ code }) => code), ["recorded_direct_human_input", "human_expressive_input_via_transcription", "accepted_ai_output", "imported_or_pasted", "system_restoration", "unattested"]);
+  assert.deepEqual(registries["composition-assertion-predicates"].entries.map(({ code }) => code), ["derived_from", "generated_by", "modified_by_human", "selected_by_human", "arranged_by_human", "included_in_deposit"]);
+  assert.ok(registries["contribution-map-layers"].entries.some(({ code }) => code === "selection_arrangement"));
+  assert.ok(registries["registration-treatment-suggestions"].entries.some(({ code }) => code === "manual_review_required"));
+  assert.deepEqual(registries["assertion-confidence-dimensions"].entries.map(({ code }) => code), ["integrity", "identity", "chronology", "derivation", "authorship", "completeness"]);
+  assert.equal(registries["assertion-confidence-dimensions"].application_version, "0.4.0");
 });
 test("accepts every valid fixture", async () => {
   const ajv = validator();
@@ -200,6 +231,11 @@ test("reproduces every defined self-digest identity", async () => {
   assert.equal(sha256(vector.protected_record.identity), vector.protected_record.digest);
   assert.equal(releaseMerkleRoot(vector.release_manifest.merkle_identity), vector.release_manifest.digest);
   assert.ok(vector.release_manifest.excluded_paths.includes("release-manifest.json"));
+  for (const [key, schemaName] of [["contribution_map", "contribution-map"], ["registration_policy_profile", "registration-policy-profile"], ["human_authorship_record", "human-authorship-record"], ["harp_export_manifest", "harp-export-manifest"]]) {
+    assert.equal(sha256(vector[key].identity), vector[key].digest, key);
+    const validate = ajv.getSchema(`https://thinkloom.app/schemas/provenance/1.0/${schemaName}.schema.json`);
+    assert.equal(validate(vector[key].complete_record), true, `${key}: ${ajv.errorsText(validate.errors)}`);
+  }
 });
 
 test("validates key recovery materials and sanitized non-mutating export disclosure", async () => {
@@ -215,6 +251,20 @@ test("validates key recovery materials and sanitized non-mutating export disclos
   const validateSanitized = ajv.getSchema("https://thinkloom.app/schemas/provenance/1.0/sanitized-export-manifest.schema.json");
   assert.equal(validateSanitized(sanitizedVector.manifest), true, ajv.errorsText(validateSanitized.errors));
   assert.equal(sha256(sanitizedVector.manifest.omission_rules), sanitizedVector.manifest.rules_sha256);
+  assert.equal(sanitizedVector.manifest.completeness_claim, "selective_disclosed_subset");
+  assert.deepEqual(sanitizedVector.manifest.omission_rules.map((rule) => rule.category), [
+    "private_conversation",
+    "rejected_model_output",
+    "credential_authorization_material",
+    "personal_identifier",
+    "internal_path",
+    "provider_metadata_not_required",
+    "protected_source_body",
+  ]);
+  for (const rule of sanitizedVector.manifest.omission_rules) {
+    const { disclosure_sha256, ...identity } = rule;
+    assert.equal(sha256(identity), disclosure_sha256);
+  }
   assert.equal(sanitizedVector.source_chain_head_before, sanitizedVector.source_chain_head_after);
   assert.ok(sanitizedVector.exported_record_count < sanitizedVector.source_record_count);
 });
@@ -318,4 +368,93 @@ test("keeps assertion status, reason, confidence, and evidence semantics registr
   }
   assert.deepEqual(evidenceRegistry.entries.map(({ code }) => code), ["mandatory_live", "mandatory_retained", "advisory", "shadow"]);
   assert.deepEqual(evidenceRegistry.entries.map(({ exact_effect }) => exact_effect), ["required", "required", "may_degrade", "no_authority"]);
+});
+test("enforces composition-operation origin rules and refuses unknown exact classifications", async () => {
+  const ajv = validator();
+  const vector = await readJson("vectors", "composition-and-harp-classification.json");
+  const validateOperation = ajv.getSchema("https://thinkloom.app/schemas/provenance/1.0/composition-operation.schema.json");
+  const validateSegment = ajv.getSchema("https://thinkloom.app/schemas/provenance/1.0/expression-segment.schema.json");
+  const validateHarp = ajv.getSchema("https://thinkloom.app/schemas/provenance/1.0/human-authorship-record.schema.json");
+
+  for (const [name, operation] of Object.entries(vector.operations)) {
+    assert.equal(validateOperation(operation), true, `${name}: ${ajv.errorsText(validateOperation.errors)}`);
+  }
+  assert.equal(vector.operations.paste.recorded_origin_kind, "imported_or_pasted");
+  assert.notEqual(vector.operations.paste.recorded_origin_kind, "recorded_direct_human_input");
+  assert.equal(vector.operations.ai_acceptance.recorded_origin_kind, "accepted_ai_output");
+  assert.ok(vector.operations.ai_acceptance.invocation_id);
+  assert.ok(vector.operations.ai_acceptance.disposition_id);
+
+  assert.equal(validateSegment(vector.exact_expression_segment), true, ajv.errorsText(validateSegment.errors));
+  assert.equal(validateHarp(vector.exact_harp), true, ajv.errorsText(validateHarp.errors));
+  for (const [name, instance] of Object.entries(vector.forbidden_exact_segments)) {
+    assert.equal(validateSegment(instance), false, `segment ${name} must not validate as exact`);
+  }
+  for (const [name, instance] of Object.entries(vector.forbidden_exact_harps)) {
+    assert.equal(validateHarp(instance), false, `HARP ${name} must not validate as exact`);
+  }
+  assert.deepEqual(vector.independent_dimensions, ["recorded_origin", "transformation", "selection_arrangement", "evidentiary_evaluation", "suggested_registration_treatment"]);
+  for (const field of vector.prohibited_claim_fields) assert.equal(Object.hasOwn(vector.exact_harp, field), false, field);
+});
+
+test("reproduces complete ordered contribution maps independently of input order", async () => {
+  const ajv = validator();
+  const vector = await readJson("vectors", "contribution-map-determinism.json");
+  const validate = ajv.getSchema("https://thinkloom.app/schemas/provenance/1.0/contribution-map.schema.json");
+  assert.equal(validate(vector.deterministic_map), true, ajv.errorsText(validate.errors));
+
+  const sortSegments = (segments) => [...segments].sort((left, right) => left.segment_sequence - right.segment_sequence || (left.segment_id < right.segment_id ? -1 : left.segment_id > right.segment_id ? 1 : 0));
+  const canonicalOrders = vector.input_orders.map((segments) => canonicalize(sortSegments(segments)));
+  assert.equal(canonicalOrders[0], canonicalOrders[1]);
+  assert.equal(sha256(canonicalize(vector.deterministic_map)), vector.canonical_map_sha256);
+  const { deterministic_map: map } = vector;
+  const mapIdentity = { ...map };
+  delete mapIdentity.contribution_map_sha256;
+  assert.equal(sha256(mapIdentity), map.contribution_map_sha256);
+  assert.equal(map.coverage.coverage_status, "complete");
+  assert.equal(map.coverage.recorded_positions, map.coverage.denominator);
+
+  let cursor = 0;
+  for (const segment of map.segments) {
+    assert.equal(segment.range.coordinate_system, "unicode_scalar");
+    assert.equal(segment.range.start, cursor, `${segment.segment_id} must begin at the prior end`);
+    assert.ok(segment.range.end > segment.range.start);
+    assert.equal(segment.range.end - segment.range.start, segment.normalized_unicode_scalar_length);
+    cursor = segment.range.end;
+  }
+  assert.equal(cursor, map.coverage.denominator);
+  assert.ok(map.layers.includes("selection_arrangement"));
+  assert.ok(map.layers.includes("recorded_origin"));
+});
+
+test("binds HARP to one exact deposit and makes later revisions stale without rewriting history", async () => {
+  const ajv = validator();
+  const vector = await readJson("vectors", "harp-deposit-staleness.json");
+  const validateDeposit = ajv.getSchema("https://thinkloom.app/schemas/provenance/1.0/deposit-snapshot.schema.json");
+  const validateHarp = ajv.getSchema("https://thinkloom.app/schemas/provenance/1.0/human-authorship-record.schema.json");
+  const validateManifest = ajv.getSchema("https://thinkloom.app/schemas/provenance/1.0/harp-export-manifest.schema.json");
+  assert.equal(validateDeposit(vector.deposit_snapshot), true, ajv.errorsText(validateDeposit.errors));
+  assert.equal(validateHarp(vector.current_harp), true, ajv.errorsText(validateHarp.errors));
+  assert.equal(validateHarp(vector.stale_after_edit), true, ajv.errorsText(validateHarp.errors));
+  assert.equal(validateManifest(vector.export_manifest), true, ajv.errorsText(validateManifest.errors));
+
+  assert.equal(vector.current_harp.deposit.deposit_sha256, vector.deposit_snapshot.deposit_sha256);
+  assert.equal(vector.current_harp.deposit.manuscript_revision_id, vector.deposit_snapshot.manuscript_revision_id);
+  assert.equal(vector.current_harp.cpl_binding.chain_head, vector.deposit_snapshot.cpl_chain_head);
+  assert.equal(vector.current_harp.applicability_status, "current");
+  assert.equal(vector.stale_after_edit.applicability_status, "stale");
+  assert.notEqual(vector.stale_after_edit.deposit.manuscript_revision_sha256, vector.current_harp.deposit.manuscript_revision_sha256);
+  assert.equal(vector.current_harp.suggested_registration_language.user_approved, true);
+
+  for (const [record, digestField] of [[vector.current_harp, "harp_sha256"], [vector.stale_after_edit, "harp_sha256"], [vector.export_manifest, "manifest_sha256"]]) {
+    const identity = { ...record };
+    delete identity[digestField];
+    assert.equal(sha256(identity), record[digestField]);
+  }
+  const fileByRole = Object.fromEntries(vector.export_manifest.files.map((file) => [file.role, file]));
+  assert.equal(fileByRole.machine_readable_harp.sha256, vector.current_harp.harp_sha256);
+  assert.equal(fileByRole.deposit_copy.sha256, vector.deposit_snapshot.deposit_sha256);
+  assert.equal(vector.export_manifest.harp_sha256, vector.current_harp.harp_sha256);
+  assert.equal(vector.export_manifest.deposit_sha256, vector.deposit_snapshot.deposit_sha256);
+  assert.doesNotMatch(JSON.stringify({ claim_summary: vector.current_harp.claim_summary, coverage: vector.current_harp.coverage, language: vector.current_harp.suggested_registration_language }), /human\s*(?:percentage|%)|ai\s*(?:percentage|%)|copyright verified|originality proven|authorship certified/i);
 });

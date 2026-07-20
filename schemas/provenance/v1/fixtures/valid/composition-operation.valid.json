@@ -1,0 +1,33 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/composition-operation.schema.json",
+  "description": "Valid Composition operation example.",
+  "instance": {
+    "schema_version": "1.0",
+    "operation_id": "operation_01J0000000000000000000000X",
+    "project_id": "project_01J00000000000000000000001",
+    "operation_kind": "insert",
+    "client_action_id": "client-action-composition-0001",
+    "base_revision_id": "revision_01J0000000000000000000000A",
+    "result_revision_id": "revision_01J0000000000000000000000B",
+    "operation_sequence": 1,
+    "source_range": null,
+    "destination_coordinate_system": "unicode_scalar",
+    "destination_start": 0,
+    "inserted_content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+    "deleted_content_sha256": null,
+    "source_record_ids": [
+      "turn_01J00000000000000000000007"
+    ],
+    "invocation_id": null,
+    "disposition_id": null,
+    "recorded_origin_kind": "recorded_direct_human_input",
+    "actor_identity_status": "self_declared",
+    "transformation_relationships": [
+      "inserted"
+    ],
+    "lineage_reference_ids": [
+      "turn_01J00000000000000000000007"
+    ],
+    "recorded_at": "2026-07-17T18:42:10.123Z"
+  }
+}

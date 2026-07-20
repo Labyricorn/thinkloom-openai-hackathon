@@ -1,0 +1,438 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://thinkloom.app/schemas/provenance/1.0/harp-export-manifest.schema.json",
+  "title": "HARP export manifest",
+  "description": "Immutable manifest binding the HARP, contribution map, exact deposit, verification report, archive artifacts, sanitization rules, omissions, and hashes. Its digest identity excludes manifest_sha256.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "manifest_id": {
+      "type": "string",
+      "pattern": "^manifest_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "project_id": {
+      "type": "string",
+      "pattern": "^project_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "harp_id": {
+      "type": "string",
+      "pattern": "^harp_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "harp_sha256": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "deposit_id": {
+      "type": "string",
+      "pattern": "^deposit_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "deposit_sha256": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "contribution_map_id": {
+      "type": "string",
+      "pattern": "^map_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "contribution_map_sha256": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "cpl_chain_head": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "report_metadata": {
+      "type": "object",
+      "properties": {
+        "deposit_sha256": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "manuscript_revision_id": {
+          "type": "string",
+          "pattern": "^revision_[0-9A-HJKMNP-TV-Z]{26}$"
+        },
+        "manuscript_revision_sha256": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "cpl_chain_head": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "cpl_event_sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "harp_schema_version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+$"
+        },
+        "harp_generator_version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "application_version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "policy_profile_id": {
+          "type": "string",
+          "pattern": "^policyprofile_[0-9A-HJKMNP-TV-Z]{26}$"
+        },
+        "policy_profile_version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "policy_profile_sha256": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "policy_retrieval_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "sanitization_profile": {
+          "enum": [
+            "full_private",
+            "sanitized"
+          ]
+        },
+        "legal_scope_statement": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "deposit_sha256",
+        "manuscript_revision_id",
+        "manuscript_revision_sha256",
+        "cpl_chain_head",
+        "cpl_event_sequence",
+        "harp_schema_version",
+        "harp_generator_version",
+        "application_version",
+        "policy_profile_id",
+        "policy_profile_version",
+        "policy_profile_sha256",
+        "policy_retrieval_date",
+        "sanitization_profile",
+        "legal_scope_statement"
+      ],
+      "additionalProperties": false
+    },
+    "verification_report_sha256": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "sanitization_profile": {
+      "enum": [
+        "full_private",
+        "sanitized"
+      ]
+    },
+    "sanitization_rules_sha256": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "omissions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "category": {
+            "enum": [
+              "private_conversation",
+              "rejected_output",
+              "rejected_model_output",
+              "credential",
+              "credential_authorization_material",
+              "personal_identifier",
+              "internal_path",
+              "provider_metadata",
+              "provider_metadata_not_required",
+              "protected_source_body",
+              "other"
+            ]
+          },
+          "action": {
+            "enum": [
+              "exclude",
+              "redact",
+              "summarize"
+            ]
+          },
+          "count": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "disclosure_sha256": {
+            "type": "string",
+            "pattern": "^sha256:[a-f0-9]{64}$"
+          }
+        },
+        "required": [
+          "category",
+          "action",
+          "count",
+          "disclosure_sha256"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "role": {
+            "enum": [
+              "human_readable_harp",
+              "machine_readable_harp",
+              "contribution_map",
+              "deposit_copy",
+              "verification_report",
+              "supporting_archive"
+            ]
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(?!/)(?![A-Za-z]:)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(?:/|$))[^\\u0000-\\u001f]+$"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^sha256:[a-f0-9]{64}$"
+          },
+          "size": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "privacy_classification": {
+            "enum": [
+              "registration",
+              "deposit",
+              "sanitized_evidence",
+              "private"
+            ]
+          }
+        },
+        "required": [
+          "role",
+          "path",
+          "sha256",
+          "size",
+          "privacy_classification"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 6,
+      "uniqueItems": true,
+      "allOf": [
+        {
+          "contains": {
+            "type": "object",
+            "properties": {
+              "role": {
+                "const": "human_readable_harp"
+              }
+            },
+            "required": [
+              "role"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "type": "object",
+            "properties": {
+              "role": {
+                "const": "machine_readable_harp"
+              }
+            },
+            "required": [
+              "role"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "type": "object",
+            "properties": {
+              "role": {
+                "const": "contribution_map"
+              }
+            },
+            "required": [
+              "role"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "type": "object",
+            "properties": {
+              "role": {
+                "const": "deposit_copy"
+              }
+            },
+            "required": [
+              "role"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "type": "object",
+            "properties": {
+              "role": {
+                "const": "verification_report"
+              }
+            },
+            "required": [
+              "role"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "type": "object",
+            "properties": {
+              "role": {
+                "const": "supporting_archive"
+              }
+            },
+            "required": [
+              "role"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        }
+      ]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+    },
+    "manifest_sha256": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    }
+  },
+  "required": [
+    "schema_version",
+    "manifest_id",
+    "project_id",
+    "harp_id",
+    "harp_sha256",
+    "deposit_id",
+    "deposit_sha256",
+    "contribution_map_id",
+    "contribution_map_sha256",
+    "cpl_chain_head",
+    "report_metadata",
+    "verification_report_sha256",
+    "sanitization_profile",
+    "sanitization_rules_sha256",
+    "omissions",
+    "files",
+    "created_at",
+    "manifest_sha256"
+  ],
+  "additionalProperties": false,
+  "examples": [
+    {
+      "schema_version": "1.0",
+      "manifest_id": "manifest_01J00000000000000000000003",
+      "project_id": "project_01J00000000000000000000001",
+      "harp_id": "harp_01J00000000000000000000002",
+      "harp_sha256": "sha256:20e3ba5bb0c6c25c8d047e0e8b82a17044193e0b8ce521612d48cc85fed5feb9",
+      "deposit_id": "deposit_01J00000000000000000000000",
+      "deposit_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+      "contribution_map_id": "map_01J0000000000000000000000Z",
+      "contribution_map_sha256": "sha256:28562ec310a4eda35436bf01ec534d0639939365af453e3c922c492ee0ebff00",
+      "cpl_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+      "report_metadata": {
+        "deposit_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "manuscript_revision_id": "revision_01J0000000000000000000000B",
+        "manuscript_revision_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+        "cpl_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "cpl_event_sequence": 42,
+        "harp_schema_version": "1.0",
+        "harp_generator_version": "1.0.0",
+        "application_version": "0.5.11",
+        "policy_profile_id": "policyprofile_01J00000000000000000000004",
+        "policy_profile_version": "1.0.0",
+        "policy_profile_sha256": "sha256:77bfc640282012169a92feb92b9539ca6826b798659cb3f7d07beb864e53abba",
+        "policy_retrieval_date": "2026-07-19",
+        "sanitization_profile": "full_private",
+        "legal_scope_statement": "Copyrightability and registration scope remain determinations of the U.S. Copyright Office."
+      },
+      "verification_report_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "sanitization_profile": "full_private",
+      "sanitization_rules_sha256": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+      "omissions": [],
+      "files": [
+        {
+          "role": "human_readable_harp",
+          "path": "reports/harp/harp.pdf",
+          "sha256": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+          "size": 2048,
+          "privacy_classification": "registration"
+        },
+        {
+          "role": "machine_readable_harp",
+          "path": "reports/harp/harp.json",
+          "sha256": "sha256:20e3ba5bb0c6c25c8d047e0e8b82a17044193e0b8ce521612d48cc85fed5feb9",
+          "size": 4096,
+          "privacy_classification": "registration"
+        },
+        {
+          "role": "contribution_map",
+          "path": "reports/harp/contribution-map.json",
+          "sha256": "sha256:28562ec310a4eda35436bf01ec534d0639939365af453e3c922c492ee0ebff00",
+          "size": 3072,
+          "privacy_classification": "registration"
+        },
+        {
+          "role": "deposit_copy",
+          "path": "deposits/registration-manuscript.pdf",
+          "sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+          "size": 4096,
+          "privacy_classification": "deposit"
+        },
+        {
+          "role": "verification_report",
+          "path": "reports/harp/verification.json",
+          "sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+          "size": 1024,
+          "privacy_classification": "registration"
+        },
+        {
+          "role": "supporting_archive",
+          "path": "reports/harp/supporting-archive.zip",
+          "sha256": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+          "size": 8192,
+          "privacy_classification": "private"
+        }
+      ],
+      "created_at": "2026-07-17T18:43:11.456Z",
+      "manifest_sha256": "sha256:50be7f8f16d6f83dc58ec26670499403ccc2f7f7655e28cd8e1bf7485d768324"
+    }
+  ]
+}

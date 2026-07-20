@@ -52,7 +52,7 @@ The same `client_action_id` with a materially different canonical command digest
 
 ## 2. Startup recovery
 
-Recovery begins before an editable project becomes active. It obtains the project writer lock and classifies the project:
+For a project already classified as CPL-conforming under §11, recovery begins before it becomes editable. Recovery obtains the project writer lock and classifies the project:
 
 ```text
 CLEAN
@@ -252,3 +252,59 @@ Content already discarded under minimal retention cannot be recreated. Content a
 Emergency purge is not ordinary recovery. It requires a separate confirmed state machine that freezes the source, identifies every affected record/reference/index/Git object/export, creates a purge manifest, rewrites retained evidence and Git history, establishes a new chain root, verifies the result, and records the superseded root when safe.
 
 The UI MUST disclose that earlier copies, backups, releases, and exports cannot be revoked.
+
+## 11. Project-format and CPL-conformance classification
+
+Project classification MUST complete without modifying the selected directory and before startup recovery, verification, or any other provenance command.
+
+```mermaid
+stateDiagram-v2
+    [*] --> INSPECTING: read marker and minimum structure only
+    INSPECTING --> LEGACY_PREVIEW_READ_ONLY: marker absent or v0.5.x-or-earlier preview
+    INSPECTING --> UNSUPPORTED_READ_ONLY: CPL marker present but unsupported
+    INSPECTING --> CPL_RECOVERY_REQUIRED: exact supported CPL marker
+    CPL_RECOVERY_REQUIRED --> CPL_EDITABLE: recovery and required verification pass
+    CPL_RECOVERY_REQUIRED --> CPL_BLOCKED: incomplete, failed, unsafe, or incompatible
+    LEGACY_PREVIEW_READ_ONLY --> PRESERVATION_ARCHIVE: explicit user request
+    PRESERVATION_ARCHIVE --> LEGACY_PREVIEW_READ_ONLY: byte-preserving archive complete
+```
+
+`LEGACY_PREVIEW_READ_ONLY` permits only explanation, Show Project Folder, and a byte-preserving preservation archive. It MUST NOT invoke CPL recovery, synthesize records, generate HARP, or write a marker. A `schemaVersion: 1.0` field is not a CPL marker. Only the exact supported marker in Specification §23 can enter `CPL_RECOVERY_REQUIRED`, and the marker alone never establishes conformance.
+
+## 12. Deposit and HARP lifecycle
+
+HARP applicability, HARP integrity verification, CPL verification, evidence-boundary status, policy-profile currency, and user approval are independent state dimensions.
+
+```mermaid
+stateDiagram-v2
+    [*] --> WORKING
+    WORKING --> DEPOSIT_FROZEN: select exact file; bind digest and manuscript revision
+    DEPOSIT_FROZEN --> EVIDENCE_PROJECTED: deterministic contribution map
+    EVIDENCE_PROJECTED --> USER_REVIEW: show facts, declarations, boundaries, and suggestions
+    USER_REVIEW --> LANGUAGE_APPROVED: user edits or accepts exact suggested strings
+    LANGUAGE_APPROVED --> GENERATED: generate immutable HARP and manifest
+    GENERATED --> CURRENT: native integrity verification succeeds
+    DEPOSIT_FROZEN --> STALE: manuscript edit or restore
+    EVIDENCE_PROJECTED --> STALE: manuscript edit, restore, or dependency change
+    USER_REVIEW --> STALE: manuscript edit, restore, or dependency change
+    LANGUAGE_APPROVED --> STALE: manuscript edit, restore, or dependency change
+    GENERATED --> STALE: current work or bound dependency changes
+    CURRENT --> STALE: current work or bound dependency changes
+    STALE --> DEPOSIT_FROZEN: select and freeze a new exact deposit
+```
+
+### 12.1 Deposit freeze
+
+Under the writer lock, Thinkloom MUST validate that the project is CPL-conforming, finish meaningful edit transactions, select the exact deposit file, compute its digest and byte length, and bind the manuscript revision, CPL chain head and sequence, and layout profile. It then records the immutable deposit snapshot and CPL event. Page, chapter, paragraph, and line locators are derived; stable expression-segment IDs, revision IDs, and digests remain authoritative.
+
+### 12.2 Projection and review
+
+Projection and report rendering occur outside the writer lock from frozen canonical inputs. Before generation, the user MUST be shown unattested, unknown, degraded, stale, and unverified boundaries; self-declared identity status; recorded AI-system disclosures; the policy-profile version; and editable suggested registration language. Selection/arrangement overlays MUST remain separate from recorded origin.
+
+The transition to `LANGUAGE_APPROVED` requires an explicit user action that binds the exact `Author Created`, `Material Excluded`, `New Material Included`, and optional `Note to CO` strings. Merely opening, previewing, or exporting a draft does not approve them.
+
+### 12.3 Generation, verification, and staleness
+
+Under the writer lock, Thinkloom revalidates every frozen dependency and the approval digest before recording the immutable HARP, manifest, and generation event. Native verification then checks the HARP artifact bindings and source CPL scope. Success produces `CURRENT` and the label **HARP integrity verified**, never **authorship verified**.
+
+Any later manuscript edit or restoration makes the HARP stale for the current work, even when the exact historical deposit and HARP remain byte-valid. A changed deposit, assertion, evaluation dependency, sanitization profile, or other bound input also makes the affected HARP stale. Publishing a new policy profile does not rewrite an existing HARP; its separately reported policy status becomes `superseded`. Regeneration always starts from a new immutable deposit snapshot and never mutates the prior HARP.

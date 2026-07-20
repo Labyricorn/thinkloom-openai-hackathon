@@ -2,6 +2,8 @@
 
 Status: **Normative traceability and handoff gate**
 
+Document release: **Thinkloom 0.5.1**
+
 Stage 1 is complete only when every item below is represented without contradiction in the normative specification and state-machine companion. This checklist also defines the minimum Stage 2 and later implementation test handoff.
 
 ## 1. Normative specification gate
@@ -9,6 +11,16 @@ Stage 1 is complete only when every item below is represented without contradict
 | Requirement | Normative location | Status |
 |---|---|---|
 | Correct tamper-evident claim and trust limitation | Specification §§3, 26 | Complete |
+| CPL is the product name for the one canonical ledger, not a second ledger | Specification §3.1 | Complete |
+| HARP is a non-authoritative reproducible projection bound to one exact deposit | Specification §§3.1, 15.2–15.4 | Complete |
+| Cryptographic verification is limited to integrity, not identity or authorship | Specification §§3, 15.4 | Complete |
+| Product and UI terms have one normative meaning | Specification §§3.1–3.2 | Complete |
+| Copyrightability, originality, ownership, and authorship conclusions are prohibited | Specification §§3.1–3.2, 15.3 | Complete |
+| Recorded origin, transformation, selection/arrangement, evaluation, and suggested treatment remain independent | Specification §§3.1, 10, 15.3 | Complete |
+| Deposit digest, revision, and stable segment ID outrank derived page locators | Specification §15.2 | Complete |
+| Post-deposit editing makes current-work HARP applicability stale without falsifying historical integrity | Specification §15.2; State Machines §12 | Complete |
+| Suggested registration language is editable and explicitly approved | Specification §15.3; State Machines §12 | Complete |
+| Initial U.S. literary-work Standard Application policy profile | Specification §15.5 | Complete |
 | Authority hierarchy | Specification §4 | Complete |
 | Self-contained repository boundaries | Specification §5 | Complete |
 | Stable IDs and contiguous event sequences | Specification §6 | Complete |
@@ -50,7 +62,7 @@ Stage 1 is complete only when every item below is represented without contradict
 | Pre-durable-write secret filtering | Specification §21 | Complete |
 | No audio retention | Specification §21 | Complete |
 | Sanitization versus emergency purge | Specification §22; State Machines §10 | Complete |
-| Explicit legacy preview-project policy | Specification §23 | Complete |
+| Explicit v0.5.x preview-project and CPL-marker boundary | Specification §23; State Machines §11 | Complete |
 | Stage 2 formal schema inventory | Specification §24 | Complete |
 | Migration deferred until after 1.0.0 | Specification §§23–24, 26 | Complete |
 
@@ -79,8 +91,14 @@ Required outputs:
 - Versioned assertion lifecycle, reason-code, confidence-dimension, evidence-class, and boundary-kind registries.
 - Assertion self-digest, dependency invalidation, superseding evaluation, and consumer-decision vectors.
 - Invalid fixtures proving unknown provenance, generation, compatibility, or confidence cannot validate as exact.
+- Additive composition schemas for composition operations, expression segments, contribution maps, deposit snapshots, registration policy profiles, human-authorship records, and HARP export manifests.
+- Versioned registries for composition-operation kinds, recorded-origin kinds, transformation relationships, contribution-map layers, suggested registration treatment, HARP limitation/explanation codes, and composition assertion predicates.
+- Fixtures proving unknown identity, origin, generation, or lineage cannot validate as an exact HARP classification.
+- Compatibility declarations preserve existing v0.4 assertion semantics and identify the v0.6 runtime target; project-format conformance requires the exact marker introduced by Milestone 4 / 0.5.4.
 
 Stage 2 must preserve the distinction between the provenance schema version and the Thinkloom application version.
+
+Thinkloom 0.5.2 fulfills this Stage 2 handoff with 47 schemas, 14 registries, exhaustive schema fixtures, and deterministic composition, contribution-map, deposit, HARP, staleness, and export-manifest vectors. This is schema-package completion only; CPL runtime conformance remains targeted to Thinkloom 0.6.0.
 
 ## 3. Durable-boundary fault-injection matrix
 
@@ -121,6 +139,8 @@ For each boundary, tests MUST prove one of:
 3. Recovery deterministically completes it.
 4. Recovery quarantines it without presenting false success.
 5. Authoritative contradiction is reported and editing remains blocked.
+
+Thinkloom 0.5.3 fulfills the native CPL writer subset of this matrix through immutable-record durability, ledger append, chain-head advancement, SQLite application, idempotent completion, and segment rotation. Git checkpoint, release, backup, and import-specific injection points remain assigned to their later implementation milestones.
 
 ## 4. Concurrency and idempotency tests
 
@@ -183,6 +203,18 @@ For each boundary, tests MUST prove one of:
 - Digest and generation changes deterministically invalidate dependent evaluations
 - Later evaluations supersede current usability without mutating earlier assertion or evaluation records
 - Derived projections never synthesize exact without an authoritative exact evaluation
+- Complete, ordered, non-overlapping contribution-map coverage for complex Unicode
+- Recorded origin remains independent of transformation and selection/arrangement overlays
+- Paste/import never defaults to recorded direct human input
+- Human revision of accepted AI output retains the AI preimage and later human operations
+- Coverage statements name their denominator and never express a human or AI percentage
+- Page locators change only with an identified layout profile and never replace stable segment identity
+- Identical canonical inputs produce byte-identical HARP and contribution-map content
+- Every HARP statement traces to its CPL event, record, assertion, evaluation, or user approval
+- Unknown or unattested boundaries remain visible and cannot validate as exact
+- Any post-deposit edit or restore deterministically makes current-work HARP applicability stale
+- Historical HARP integrity remains independently verifiable for its unchanged exact deposit
+- Policy-profile updates do not rewrite an existing HARP
 
 ## 7. Privacy, secret, and encryption tests
 
@@ -238,17 +270,25 @@ For each boundary, tests MUST prove one of:
 - Git-only damage yields warning when authoritative evidence remains valid.
 - Missing authoritative records yield `FAILED`.
 - Unsafe archive structure yields `UNSAFE`.
+- UI uses **HARP integrity verified**, never **authorship verified**.
+- UI visibly separates evidence facts, declarations, recorded origin, transformations, selection/arrangement, evaluations, suggestions, and Office determinations.
+- Prohibited-phrase tests reject human/AI percentages, authorship or originality scores, and legal-conclusion claims.
+- Registration suggestions remain editable and generation is blocked until the exact strings receive explicit approval.
+- A stale HARP shows both current-work staleness and historical deposit verification status.
 
-## 10. Legacy 1.0 behavior tests
+## 10. Legacy preview/CPL boundary tests
 
 - Known preview markers are detected without modifying the project.
 - Normal opening and editing are refused.
 - Show Project Folder remains available.
 - Raw archival ZIP preserves the selected legacy tree without conversion.
 - The archive is labeled as unverified and unconverted.
-- No 1.0 provenance verification or evidence report is offered.
+- No CPL 1.0 provenance verification, HARP, or CPL evidence report is offered.
 - Legacy Git history remains unchanged.
-- No migration schema or implied migration success appears in 1.0.
+- No migration schema or implied migration success appears before/at 1.0.0.
+- A v0.5.x project or `schemaVersion: 1.0` field cannot satisfy the CPL marker check.
+- No preview project can invoke CPL verification or HARP generation.
+- Only the exact supported CPL marker may proceed to recovery, and the marker alone does not establish conformance.
 
 ## 11. Stage 1 disposition
 
@@ -259,4 +299,4 @@ Stage 1 is **complete** when:
 - The Stage 2 schema work uses this checklist as its acceptance boundary.
 - Any future architectural change is recorded as a versioned normative amendment rather than an informal implementation choice.
 
-Completion of Stage 1 does not claim implementation conformance and does not change the current application version.
+Completion of the 0.5.1 normative amendment did not claim runtime implementation or CPL project conformance. Thinkloom 0.5.3 supplies the native service and its core writer fault-injection suite. Thinkloom 0.5.4 completes the project-format boundary: exact-marker projects must pass structure, recovery, and native verification gates, while unmarked preview projects remain untouched and preservation-only. Thinkloom 0.5.5 then routes Phase 1 through typed canonical commands, reconstructs the ideation UI by ledger replay, and records provider intent before I/O with response or failure afterward. Thinkloom 0.5.6 captures manuscript transactions through the shared TipTap path, preserves scalar-level expression lineage, and deterministically replays the manuscript from immutable composition commands. Thinkloom 0.5.7 freezes exact deposit revisions and deterministically projects complete scalar contribution maps with structural locators, independent assertions, current evaluations, and visible evidence boundaries. Thinkloom 0.5.8 then generates the complete explicitly approved HARP report set without LLM classification or legal conclusions and deterministically marks it stale after manuscript, deposit, policy, assertion, or dependency changes. Thinkloom 0.5.9 exposes that evidence through native-verifier-backed CPL exploration and a gated HARP preparation workflow in which every evidentiary statement traces through assertions, evaluations, and underlying records. Thinkloom 0.5.10 creates the six separate HARP export artifacts, discloses and hash-binds every sanitized omission category, verifies retained evidence against CPL/HARP/deposit bindings, and preserves the source chain without claiming sanitized completeness. Thinkloom 0.5.11 completes the executable verification matrix, origin-preserving arrangement checks, native release gate, prohibited-wording scans, and packaged Windows executable/MSI/NSIS end-to-end gate.

@@ -3,7 +3,7 @@
   "id": "conversation",
   "description": "Controls Thinkloom replies during the Ideation conversation.",
   "effect": "Changes how the assistant reflects on the writer's latest message and which single follow-up question it asks.",
-  "systemPrompt": "You are Thinkloom, a focused writing collaborator in an ideation conversation. Respond naturally to the writer's latest message, briefly reflect what is useful, and ask exactly one focused question. Do not force a stock interpretation, fabricate details, or draft prose unless asked.",
+  "systemPrompt": "{{persona_instruction}}\n\n{{genre_instruction}}\n\nProject lore and context:\n{{lore_context}}\n\n{{web_search_instruction}}\n\nYou are Thinkloom, a focused writing collaborator in an ideation conversation. Respond naturally to the writer's latest message, briefly reflect what is useful, and ask exactly one focused question. Do not force a stock interpretation, fabricate details, or draft prose unless asked.",
   "userPromptTemplate": "Continue this ideation conversation. Respond directly and naturally to the writer's latest message, then ask exactly one focused question that helps develop their writing. {{challenge_guidance}}\n\nConversation so far:\n{{context}}",
   "challengeGuidance": {
     "Gentle": "Be warm and exploratory; help the writer locate a concrete personal example.",
@@ -12,6 +12,10 @@
   },
   "variables": {
     "challenge_guidance": "Selected from challengeGuidance using the current Gentle, Balanced, or Rigorous setting.",
+    "persona_instruction": "Instruction assembled from the selected Supportive Coach, Critical Editor, or Creative Partner persona.",
+    "genre_instruction": "Instruction assembled from the selected writing genre.",
+    "lore_context": "The session-specific lore and background supplied by the writer.",
+    "web_search_instruction": "Requires web search for verification and current-data requests when the active provider supports it.",
     "context": "The ten most recent Writer and Thinkloom conversation turns."
   }
 }
