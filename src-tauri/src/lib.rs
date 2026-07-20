@@ -1,12 +1,14 @@
+pub mod project_format;
+pub mod provenance;
+
 use chrono::Utc;
-use rusqlite::{params, Connection};
+use rusqlite::Connection;
 use serde::{de::DeserializeOwned, Deserialize, Serialize};
 use serde_json::{json, Value};
-use sha2::{Digest, Sha256};
 use std::{
     collections::HashMap,
     fs,
-    io::Write,
+    io::{Read, Write},
     path::{Path, PathBuf},
     process::Command,
     sync::Mutex,
@@ -25,6 +27,13 @@ const PROMPT_GUIDE: &str = include_str!("../../PROMPTS.md");
 #[derive(Default)]
 struct RuntimeState {
     active_project: Mutex<Option<PathBuf>>,
+    read_only_project: Mutex<Option<ReadOnlyProject>>,
+}
+
+#[derive(Debug, Clone)]
+struct ReadOnlyProject {
+    path: PathBuf,
+    classification: project_format::ProjectClassification,
 }
 
 #[derive(Debug, Serialize)]
@@ -35,6 +44,12 @@ struct CommandError {
     recoverable: bool,
 }
 type CommandResult<T> = Result<T, CommandError>;
+
+impl From<provenance::CplError> for CommandError {
+    fn from(error: provenance::CplError) -> Self {
+        Self::new(&error.code, error.message, error.recoverable)
+    }
+}
 
 impl CommandError {
     fn new(code: &str, message: impl Into<String>, recoverable: bool) -> Self {
@@ -50,34 +65,24 @@ impl CommandError {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-#[serde(rename_all = "camelCase")]
 struct ProjectManifest {
+    #[serde(rename = "project_format")]
+    project_format: String,
+    #[serde(rename = "project_format_version")]
+    project_format_version: String,
+    #[serde(rename = "provenance_conformance")]
+    provenance_conformance: String,
     schema_version: String,
     application_version: String,
-    id: String,
+    project_id: String,
     title: String,
+    description: String,
     created_at: String,
     updated_at: String,
     current_phase: String,
     publication_status: String,
+    provenance_policy_id: String,
     audio_retained: bool,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-#[serde(rename_all = "camelCase")]
-struct ProvenanceEvent {
-    schema_version: String,
-    event_id: String,
-    project_id: String,
-    timestamp: String,
-    event_type: String,
-    actor: Value,
-    provider: Option<Value>,
-    inputs: Vec<Value>,
-    outputs: Vec<Value>,
-    metadata: Value,
-    previous_event_hash: Option<String>,
-    event_hash: String,
 }
 
 #[derive(Debug, Deserialize)]
@@ -125,9 +130,12 @@ struct ConnectionResult {
 #[serde(rename_all = "camelCase")]
 struct ProjectSummary {
     path: String,
-    manifest: ProjectManifest,
+    manifest: Option<ProjectManifest>,
+    classification: project_format::ProjectClassification,
+    editable: bool,
     provenance_valid: bool,
     recovery_available: bool,
+    message: String,
 }
 
 fn active_path(state: &State<RuntimeState>) -> CommandResult<PathBuf> {
@@ -167,16 +175,14 @@ fn atomic_write(path: &Path, bytes: &[u8]) -> CommandResult<()> {
         file.sync_all()
             .map_err(|e| CommandError::io("Could not flush temporary file", e))?;
     }
-    if path.exists() {
-        fs::remove_file(path)
-            .map_err(|e| CommandError::io("Could not replace canonical file", e))?;
-    }
-    fs::rename(&temp, path).map_err(|e| CommandError::io("Could not finalize canonical file", e))
+    provenance::ledger::atomic_replace(&temp, path)?;
+    provenance::ledger::sync_directory(parent)?;
+    Ok(())
 }
 fn write_json(path: &Path, value: &impl Serialize) -> CommandResult<()> {
-    let bytes = serde_json::to_vec_pretty(value)
+    let value = serde_json::to_value(value)
         .map_err(|e| CommandError::new("SERIALIZE_ERROR", e.to_string(), false))?;
-    atomic_write(path, &bytes)
+    atomic_write(path, &provenance::canonical::canonicalize(&value)?)
 }
 fn prompt_config_dir(app: &AppHandle) -> CommandResult<PathBuf> {
     app.path()
@@ -411,12 +417,12 @@ fn open_prompt_folder(app: AppHandle) -> CommandResult<String> {
 }
 
 fn init_db(root: &Path) -> CommandResult<Connection> {
-    let state_dir = root.join(".thinkloom");
+    let state_dir = root.join(".app");
     fs::create_dir_all(&state_dir)
         .map_err(|e| CommandError::io("Could not create live state folder", e))?;
     let db = Connection::open(state_dir.join("state.sqlite"))
         .map_err(|e| CommandError::new("DATABASE_ERROR", e.to_string(), true))?;
-    db.execute_batch("PRAGMA journal_mode=WAL; PRAGMA foreign_keys=ON; CREATE TABLE IF NOT EXISTS project_state (id INTEGER PRIMARY KEY CHECK(id=1), json TEXT NOT NULL, updated_at TEXT NOT NULL); CREATE TABLE IF NOT EXISTS provenance_events (event_id TEXT PRIMARY KEY, event_type TEXT NOT NULL, timestamp TEXT NOT NULL, event_hash TEXT NOT NULL, summary TEXT); CREATE TABLE IF NOT EXISTS staged_generations (id TEXT PRIMARY KEY, state TEXT NOT NULL, json TEXT NOT NULL, updated_at TEXT NOT NULL);").map_err(|e| CommandError::new("MIGRATION_ERROR", e.to_string(), false))?;
+    db.execute_batch("PRAGMA journal_mode=WAL; PRAGMA foreign_keys=ON; CREATE TABLE IF NOT EXISTS project_state (id INTEGER PRIMARY KEY CHECK(id=1), json TEXT NOT NULL, updated_at TEXT NOT NULL); CREATE TABLE IF NOT EXISTS staged_generations (id TEXT PRIMARY KEY, state TEXT NOT NULL, json TEXT NOT NULL, updated_at TEXT NOT NULL);").map_err(|e| CommandError::new("MIGRATION_ERROR", e.to_string(), false))?;
     Ok(db)
 }
 fn run_git(root: &Path, args: &[&str]) -> CommandResult<()> {
@@ -449,20 +455,7 @@ fn init_history(root: &Path) -> CommandResult<()> {
     }
     Ok(())
 }
-fn head_hash(root: &Path) -> CommandResult<Option<String>> {
-    let path = root.join("provenance/chain-head.json");
-    if !path.exists() {
-        return Ok(None);
-    }
-    let value: Value = serde_json::from_slice(
-        &fs::read(path).map_err(|e| CommandError::io("Could not read history head", e))?,
-    )
-    .map_err(|e| CommandError::new("PROVENANCE_INVALID", e.to_string(), true))?;
-    Ok(value
-        .get("eventHash")
-        .and_then(Value::as_str)
-        .map(str::to_owned))
-}
+
 fn append_event(
     root: &Path,
     project_id: &str,
@@ -470,108 +463,91 @@ fn append_event(
     actor: &str,
     summary: &str,
     metadata: Value,
-) -> CommandResult<ProvenanceEvent> {
-    let previous = head_hash(root)?;
-    let mut event = ProvenanceEvent {
-        schema_version: SCHEMA_VERSION.into(),
-        event_id: Uuid::new_v4().to_string(),
-        project_id: project_id.into(),
-        timestamp: Utc::now().to_rfc3339(),
-        event_type: event_type.into(),
-        actor: json!({"type": actor}),
-        provider: None,
-        inputs: vec![],
-        outputs: vec![],
+) -> CommandResult<provenance::WriteResult> {
+    let client_action_id = provenance::identifiers::sortable_id("action")?;
+    Ok(provenance::CplService::new(root, project_id).write(provenance::WriteCommand {
+        client_action_id,
+        project_id: project_id.to_owned(),
+        event_type: event_type.to_owned(),
+        actor: actor.to_owned(),
         metadata: json!({"summary": summary, "details": metadata}),
-        previous_event_hash: previous,
-        event_hash: String::new(),
-    };
-    let canonical = serde_json::to_vec(&json!({"schemaVersion":event.schema_version,"eventId":event.event_id,"projectId":event.project_id,"timestamp":event.timestamp,"eventType":event.event_type,"actor":event.actor,"provider":event.provider,"inputs":event.inputs,"outputs":event.outputs,"metadata":event.metadata,"previousEventHash":event.previous_event_hash})).map_err(|e| CommandError::new("SERIALIZE_ERROR", e.to_string(), false))?;
-    event.event_hash = hex::encode(Sha256::digest(canonical));
-    let journal = root.join("provenance/events.jsonl");
-    fs::create_dir_all(journal.parent().unwrap())
-        .map_err(|e| CommandError::io("Could not create history folder", e))?;
-    let mut file = fs::OpenOptions::new()
-        .create(true)
-        .append(true)
-        .open(&journal)
-        .map_err(|e| CommandError::io("Could not open history journal", e))?;
-    serde_json::to_writer(&mut file, &event)
-        .map_err(|e| CommandError::new("SERIALIZE_ERROR", e.to_string(), false))?;
-    file.write_all(b"\n")
-        .map_err(|e| CommandError::io("Could not append history event", e))?;
-    file.sync_all()
-        .map_err(|e| CommandError::io("Could not flush history event", e))?;
-    write_json(
-        &root.join("provenance/chain-head.json"),
-        &json!({"eventId":event.event_id,"eventHash":event.event_hash,"updatedAt":event.timestamp}),
-    )?;
-    let db = init_db(root)?;
-    db.execute("INSERT OR REPLACE INTO provenance_events(event_id,event_type,timestamp,event_hash,summary) VALUES(?1,?2,?3,?4,?5)", params![event.event_id,event.event_type,event.timestamp,event.event_hash,summary]).map_err(|e| CommandError::new("DATABASE_ERROR", e.to_string(), true))?;
-    Ok(event)
-}
-
-fn verify_chain_at(root: &Path) -> CommandResult<bool> {
-    let journal = root.join("provenance/events.jsonl");
-    if !journal.exists() {
-        return Ok(false);
-    }
-    let contents =
-        fs::read_to_string(&journal).map_err(|e| CommandError::io("Could not read history", e))?;
-    let mut previous: Option<String> = None;
-    let mut last = None;
-    for (index, line) in contents.lines().enumerate() {
-        if line.trim().is_empty() {
-            continue;
-        }
-        let event: ProvenanceEvent = serde_json::from_str(line).map_err(|e| {
-            CommandError::new(
-                "PROVENANCE_INVALID",
-                format!("Event {} is malformed: {e}", index + 1),
-                true,
-            )
-        })?;
-        if event.previous_event_hash != previous {
-            return Ok(false);
-        }
-        let canonical = serde_json::to_vec(&json!({"schemaVersion":event.schema_version,"eventId":event.event_id,"projectId":event.project_id,"timestamp":event.timestamp,"eventType":event.event_type,"actor":event.actor,"provider":event.provider,"inputs":event.inputs,"outputs":event.outputs,"metadata":event.metadata,"previousEventHash":event.previous_event_hash})).map_err(|e| CommandError::new("SERIALIZE_ERROR", e.to_string(), false))?;
-        if hex::encode(Sha256::digest(canonical)) != event.event_hash {
-            return Ok(false);
-        }
-        previous = Some(event.event_hash.clone());
-        last = previous.clone();
-    }
-    Ok(last == head_hash(root)?)
+        records: vec![provenance::RecordInput {
+            record_type: "native-action".to_owned(),
+            payload: json!({"event_type": event_type, "actor": actor, "summary": summary, "details": metadata}),
+        }],
+        operational_state: None,
+    })?)
 }
 fn project_layout(root: &Path) -> CommandResult<()> {
-    for folder in [
-        "manuscript/sections",
-        "ideas",
-        "conversations/transcripts",
-        "provenance/reports",
-        "style",
-        "assets",
-        "exports",
-        ".thinkloom",
-    ] {
+    project_format::initialize_conforming_layout(root)?;
+    for folder in ["style", "exports"] {
         fs::create_dir_all(root.join(folder))
-            .map_err(|e| CommandError::io("Could not create project structure", e))?;
+            .map_err(|error| CommandError::io("Could not create project structure", error))?;
     }
     atomic_write(
         &root.join(".gitignore"),
-        b".thinkloom/\nexports/*.pdf\nexports/*.zip\n*.tmp\n*.wav\n*.mp3\n",
+        b".app/\nreports/\nexports/*.pdf\nexports/*.zip\n*.tmp\n*.wav\n*.mp3\n",
     )?;
     Ok(())
 }
+
 fn read_manifest(root: &Path) -> CommandResult<ProjectManifest> {
     serde_json::from_slice(
         &fs::read(root.join("project.json"))
-            .map_err(|e| CommandError::io("Could not read project", e))?,
+            .map_err(|error| CommandError::io("Could not read project", error))?,
     )
-    .map_err(|e| CommandError::new("PROJECT_INVALID", e.to_string(), false))
+    .map_err(|error| CommandError::new("PROJECT_INVALID", error.to_string(), false))
 }
+
+fn set_read_only_project(
+    state: &State<RuntimeState>,
+    root: &Path,
+    classification: project_format::ProjectClassification,
+) -> CommandResult<()> {
+    *state
+        .active_project
+        .lock()
+        .map_err(|_| CommandError::new("STATE_LOCKED", "Project state is unavailable.", true))? =
+        None;
+    *state
+        .read_only_project
+        .lock()
+        .map_err(|_| CommandError::new("STATE_LOCKED", "Project state is unavailable.", true))? =
+        Some(ReadOnlyProject {
+            path: root.to_path_buf(),
+            classification,
+        });
+    Ok(())
+}
+
+fn set_editable_project(state: &State<RuntimeState>, root: &Path) -> CommandResult<()> {
+    *state
+        .read_only_project
+        .lock()
+        .map_err(|_| CommandError::new("STATE_LOCKED", "Project state is unavailable.", true))? =
+        None;
+    *state
+        .active_project
+        .lock()
+        .map_err(|_| CommandError::new("STATE_LOCKED", "Project state is unavailable.", true))? =
+        Some(root.to_path_buf());
+    Ok(())
+}
+
+fn read_only_summary(root: &Path, inspection: project_format::ProjectInspection) -> ProjectSummary {
+    ProjectSummary {
+        path: root.to_string_lossy().into_owned(),
+        manifest: None,
+        classification: inspection.classification,
+        editable: false,
+        provenance_valid: false,
+        recovery_available: false,
+        message: inspection.message,
+    }
+}
+
 fn snapshot(root: &Path) -> CommandResult<PathBuf> {
-    let db = root.join(".thinkloom/state.sqlite");
+    let db = root.join(".app/state.sqlite");
     if !db.exists() {
         return Err(CommandError::new(
             "NO_SNAPSHOT",
@@ -579,17 +555,17 @@ fn snapshot(root: &Path) -> CommandResult<PathBuf> {
             true,
         ));
     }
-    let snapshots = root.join(".thinkloom/snapshots");
+    let snapshots = root.join(".app/snapshots");
     fs::create_dir_all(&snapshots)
-        .map_err(|e| CommandError::io("Could not create snapshot folder", e))?;
+        .map_err(|error| CommandError::io("Could not create snapshot folder", error))?;
     let destination = snapshots.join(format!(
         "state-{}.sqlite",
         Utc::now().format("%Y%m%d-%H%M%S")
     ));
     fs::copy(&db, &destination)
-        .map_err(|e| CommandError::io("Could not create database snapshot", e))?;
+        .map_err(|error| CommandError::io("Could not create database snapshot", error))?;
     let mut existing: Vec<_> = fs::read_dir(&snapshots)
-        .map_err(|e| CommandError::io("Could not inspect snapshots", e))?
+        .map_err(|error| CommandError::io("Could not inspect snapshots", error))?
         .filter_map(Result::ok)
         .collect();
     existing.sort_by_key(|entry| entry.file_name());
@@ -616,11 +592,23 @@ fn create_project(
     state: State<RuntimeState>,
 ) -> CommandResult<ProjectSummary> {
     let base = PathBuf::from(path);
+    let title = title.trim().to_owned();
+    if title.is_empty() {
+        return Err(CommandError::new(
+            "PROJECT_TITLE_REQUIRED",
+            "Enter a project title before creating its CPL boundary.",
+            true,
+        ));
+    }
     let safe_name: String = title
         .chars()
-        .map(|c| {
-            if c.is_alphanumeric() || c == '-' || c == '_' || c == ' ' {
-                c
+        .map(|character| {
+            if character.is_alphanumeric()
+                || character == '-'
+                || character == '_'
+                || character == ' '
+            {
+                character
             } else {
                 '-'
             }
@@ -639,16 +627,21 @@ fn create_project(
         ));
     }
     project_layout(&root)?;
-    let timestamp = Utc::now().to_rfc3339();
+    let timestamp = provenance::identifiers::timestamp_millis();
     let manifest = ProjectManifest {
+        project_format: project_format::PROJECT_FORMAT.into(),
+        project_format_version: project_format::PROJECT_FORMAT_VERSION.into(),
+        provenance_conformance: project_format::PROVENANCE_CONFORMANCE.into(),
         schema_version: SCHEMA_VERSION.into(),
         application_version: APP_VERSION.into(),
-        id: Uuid::new_v4().to_string(),
+        project_id: provenance::identifiers::sortable_id("project")?,
+        description: String::new(),
         title: title.clone(),
         created_at: timestamp.clone(),
         updated_at: timestamp,
         current_phase: "ideation".into(),
         publication_status: "working".into(),
+        provenance_policy_id: provenance::identifiers::sortable_id("policy")?,
         audio_retained: false,
     };
     write_json(&root.join("project.json"), &manifest)?;
@@ -666,14 +659,40 @@ fn create_project(
     write_json(&root.join("style/sample-references.json"), &json!([]))?;
     init_db(&root)?;
     let history_ok = init_history(&root).is_ok();
-    append_event(
-        &root,
-        &manifest.id,
-        "PROJECT_CREATED",
-        "user",
-        &format!("Created {title}"),
-        json!({"historyAvailable":history_ok}),
-    )?;
+    provenance::CplService::new(&root, &manifest.project_id).write(provenance::WriteCommand {
+        client_action_id: provenance::identifiers::sortable_id("action")?,
+        project_id: manifest.project_id.clone(),
+        event_type: "PROJECT_CREATED".to_owned(),
+        actor: "user".to_owned(),
+        metadata: json!({
+            "summary": format!("Created {title}"),
+            "historyAvailable": history_ok,
+            "projectFormat": project_format::PROJECT_FORMAT,
+            "projectFormatVersion": project_format::PROJECT_FORMAT_VERSION,
+            "provenanceConformance": project_format::PROVENANCE_CONFORMANCE
+        }),
+        records: vec![
+            provenance::RecordInput {
+                record_type: "project-manifest".to_owned(),
+                payload: serde_json::to_value(&manifest).map_err(|error| {
+                    CommandError::new("SERIALIZE_ERROR", error.to_string(), false)
+                })?,
+            },
+            provenance::RecordInput {
+                record_type: "provenance-policy".to_owned(),
+                payload: json!({
+                    "schema_version": SCHEMA_VERSION,
+                    "policy_id": manifest.provenance_policy_id,
+                    "project_id": manifest.project_id,
+                    "retention_mode": "minimal",
+                    "encryption_mode": "none",
+                    "default_export_profile": "sanitized",
+                    "effective_at": manifest.created_at
+                }),
+            },
+        ],
+        operational_state: None,
+    })?;
     if history_ok {
         let _ = run_git(
             &root,
@@ -684,124 +703,450 @@ fn create_project(
                 "manuscript",
                 "ideas",
                 "conversations",
+                "records",
                 "provenance",
                 "style",
             ],
         );
         let _ = run_git(&root, &["commit", "--quiet", "-m", "Project created"]);
     }
-    *state
-        .active_project
-        .lock()
-        .map_err(|_| CommandError::new("STATE_LOCKED", "Project state is unavailable.", true))? =
-        Some(root.clone());
+    set_editable_project(&state, &root)?;
     Ok(ProjectSummary {
         path: root.to_string_lossy().into_owned(),
-        manifest,
+        manifest: Some(manifest),
+        classification: project_format::ProjectClassification::CplConforming,
+        editable: true,
         provenance_valid: true,
         recovery_available: false,
+        message: "Created a CPL 1.0-conforming project boundary.".to_owned(),
     })
 }
 
 #[tauri::command]
 fn open_project(path: String, state: State<RuntimeState>) -> CommandResult<ProjectSummary> {
     let root = PathBuf::from(path);
-    let manifest = read_manifest(&root)?;
-    if manifest.schema_version != SCHEMA_VERSION {
-        return Err(CommandError::new(
-            "SCHEMA_UNSUPPORTED",
-            format!(
-                "This project uses schema {}. Thinkloom supports {SCHEMA_VERSION}.",
+    let inspection = project_format::inspect_project(&root)?;
+    if inspection.classification != project_format::ProjectClassification::CplConforming {
+        set_read_only_project(&state, &root, inspection.classification)?;
+        return Ok(read_only_summary(&root, inspection));
+    }
+
+    set_read_only_project(
+        &state,
+        &root,
+        project_format::ProjectClassification::CplBlocked,
+    )?;
+    let manifest = match read_manifest(&root) {
+        Ok(manifest) => manifest,
+        Err(error) => {
+            return Ok(read_only_summary(
+                &root,
+                project_format::ProjectInspection {
+                    classification: project_format::ProjectClassification::UnsupportedReadOnly,
+                    message: format!(
+                        "The exact marker is present, but the project manifest is incompatible: {}. No recovery was attempted.",
+                        error.message
+                    ),
+                },
+            ));
+        }
+    };
+    if manifest.schema_version != SCHEMA_VERSION
+        || manifest.project_format != project_format::PROJECT_FORMAT
+        || manifest.project_format_version != project_format::PROJECT_FORMAT_VERSION
+        || manifest.provenance_conformance != project_format::PROVENANCE_CONFORMANCE
+    {
+        let inspection = project_format::ProjectInspection {
+            classification: project_format::ProjectClassification::CplBlocked,
+            message: format!(
+                "The project marker is recognized, but schema {} is incompatible with supported schema {SCHEMA_VERSION}. No recovery was attempted.",
                 manifest.schema_version
             ),
-            false,
-        ));
+        };
+        set_read_only_project(&state, &root, inspection.classification)?;
+        return Ok(read_only_summary(&root, inspection));
     }
-    init_db(&root)?;
-    *state
-        .active_project
-        .lock()
-        .map_err(|_| CommandError::new("STATE_LOCKED", "Project state is unavailable.", true))? =
-        Some(root.clone());
-    let valid = verify_chain_at(&root).unwrap_or(false);
-    let recovery = root.join(".thinkloom/snapshots").exists();
-    let _ = append_event(
-        &root,
-        &manifest.id,
-        "PROJECT_OPENED",
-        "user",
-        "Reopened project",
-        json!({"chainWasValid":valid}),
+
+    let recovery_report = match provenance::CplService::new(&root, &manifest.project_id).recover() {
+        Ok(report) => report,
+        Err(error) => {
+            return Ok(ProjectSummary {
+                path: root.to_string_lossy().into_owned(),
+                manifest: Some(manifest),
+                classification: project_format::ProjectClassification::CplBlocked,
+                editable: false,
+                provenance_valid: false,
+                recovery_available: true,
+                message: format!(
+                    "CPL recovery was unable to establish a safe editable state: {}",
+                    error.message
+                ),
+            });
+        }
+    };
+    let valid = matches!(
+        recovery_report.verification.status,
+        provenance::VerificationStatus::Verified
+            | provenance::VerificationStatus::VerifiedWithWarnings
     );
+    let recovery_available = !matches!(
+        recovery_report.classification,
+        provenance::RecoveryClassification::Clean
+    ) || root.join(".app/snapshots").exists();
+    if !valid {
+        let inspection = project_format::ProjectInspection {
+            classification: project_format::ProjectClassification::CplBlocked,
+            message: format!(
+                "CPL recovery completed with verification status {:?}; the project remains read-only.",
+                recovery_report.verification.status
+            ),
+        };
+        set_read_only_project(&state, &root, inspection.classification)?;
+        return Ok(ProjectSummary {
+            path: root.to_string_lossy().into_owned(),
+            manifest: Some(manifest),
+            classification: inspection.classification,
+            editable: false,
+            provenance_valid: false,
+            recovery_available,
+            message: inspection.message,
+        });
+    }
+
+    set_editable_project(&state, &root)?;
     Ok(ProjectSummary {
         path: root.to_string_lossy().into_owned(),
-        manifest,
-        provenance_valid: valid,
-        recovery_available: recovery,
+        manifest: Some(manifest),
+        classification: project_format::ProjectClassification::CplConforming,
+        editable: true,
+        provenance_valid: true,
+        recovery_available,
+        message: "CPL recovery and native verification passed; the project is editable.".to_owned(),
     })
 }
 
+fn selected_project_path(state: &State<RuntimeState>) -> CommandResult<PathBuf> {
+    if let Some(selection) = state
+        .read_only_project
+        .lock()
+        .map_err(|_| CommandError::new("STATE_LOCKED", "Project state is unavailable.", true))?
+        .as_ref()
+    {
+        return Ok(selection.path.clone());
+    }
+    active_path(state)
+}
+
 #[tauri::command]
-fn persist_state(app_state: Value, state: State<RuntimeState>) -> CommandResult<()> {
-    let root = active_path(&state)?;
-    let manifest = read_manifest(&root)?;
-    let serialized = serde_json::to_string(&app_state)
-        .map_err(|e| CommandError::new("SERIALIZE_ERROR", e.to_string(), false))?;
-    let mut db = init_db(&root)?;
-    let transaction = db
-        .transaction()
-        .map_err(|e| CommandError::new("DATABASE_ERROR", e.to_string(), true))?;
-    transaction.execute("INSERT INTO project_state(id,json,updated_at) VALUES(1,?1,?2) ON CONFLICT(id) DO UPDATE SET json=excluded.json,updated_at=excluded.updated_at", params![serialized,Utc::now().to_rfc3339()]).map_err(|e| CommandError::new("DATABASE_ERROR", e.to_string(), true))?;
-    transaction
-        .commit()
-        .map_err(|e| CommandError::new("DATABASE_ERROR", e.to_string(), true))?;
-    let event = app_state
-        .get("events")
-        .and_then(Value::as_array)
-        .and_then(|events| events.last())
-        .cloned()
-        .unwrap_or_else(|| json!({}));
-    let summary = event
-        .get("summary")
-        .and_then(Value::as_str)
-        .unwrap_or("Saved project change");
-    append_event(
-        &root,
-        &manifest.id,
-        event
-            .get("type")
-            .and_then(Value::as_str)
-            .unwrap_or("STATE_MUTATED"),
-        event.get("actor").and_then(Value::as_str).unwrap_or("user"),
-        summary,
-        json!({"clientEventId":event.get("id")}),
-    )?;
-    if let Some(manuscript) = app_state.get("manuscript").and_then(Value::as_str) {
-        atomic_write(
-            &root.join("manuscript/manuscript.md"),
-            manuscript.as_bytes(),
-        )?;
+fn show_project_folder(state: State<RuntimeState>) -> CommandResult<String> {
+    let directory = selected_project_path(&state)?;
+    #[cfg(target_os = "windows")]
+    let mut command = Command::new("explorer.exe");
+    #[cfg(target_os = "macos")]
+    let mut command = Command::new("open");
+    #[cfg(all(unix, not(target_os = "macos")))]
+    let mut command = Command::new("xdg-open");
+    command
+        .arg(&directory)
+        .spawn()
+        .map_err(|error| CommandError::io("Could not show the project folder", error))?;
+    Ok(directory.to_string_lossy().into_owned())
+}
+
+#[tauri::command]
+fn create_legacy_preservation_archive(state: State<RuntimeState>) -> CommandResult<Option<String>> {
+    let selection = state
+        .read_only_project
+        .lock()
+        .map_err(|_| CommandError::new("STATE_LOCKED", "Project state is unavailable.", true))?
+        .clone()
+        .ok_or_else(|| {
+            CommandError::new(
+                "NO_LEGACY_PROJECT",
+                "Select an unmarked legacy preview project first.",
+                true,
+            )
+        })?;
+    if selection.classification != project_format::ProjectClassification::LegacyPreviewReadOnly {
+        return Err(CommandError::new(
+            "LEGACY_ARCHIVE_NOT_PERMITTED",
+            "Only unmarked legacy preview projects can receive a preservation archive.",
+            false,
+        ));
     }
-    if let Some(ideas) = app_state.get("ideas") {
-        write_json(&root.join("ideas/ideas.json"), ideas)?;
+    let default_name = selection
+        .path
+        .file_name()
+        .and_then(|name| name.to_str())
+        .filter(|name| !name.is_empty())
+        .unwrap_or("legacy-preview-project");
+    let Some(destination) = rfd::FileDialog::new()
+        .set_title("Save legacy preview-project preservation archive")
+        .set_file_name(format!("{default_name}-preservation.zip"))
+        .add_filter("ZIP archive", &["zip"])
+        .save_file()
+    else {
+        return Ok(None);
+    };
+    project_format::create_legacy_preservation_archive(&selection.path, &destination)?;
+    Ok(Some(destination.to_string_lossy().into_owned()))
+}
+fn refresh_phase1_files(
+    root: &Path,
+    projection: &provenance::phase1::Phase1Projection,
+) -> CommandResult<()> {
+    write_json(&root.join("ideas/ideas.json"), &projection.ideas)?;
+    let mut sessions = projection.sessions.clone();
+    sessions.retain(|session| session.id != projection.active_session_id);
+    if !projection.active_session_id.is_empty() {
+        sessions.push(projection.current_session_snapshot());
     }
-    if let Some(turns) = app_state.get("turns") {
-        write_json(
-            &root.join("conversations/sessions.json"),
-            &json!([{"id":"active-session","mode":"typed","turns":turns}]),
-        )?;
-    }
-    write_json(
-        &root.join("style/profile.json"),
-        &json!({"schemaVersion":SCHEMA_VERSION,"traits":app_state.get("styleTraits"),"disallowedHabits":app_state.get("disallowedHabits")}),
-    )?;
-    let _ = snapshot(&root);
+    write_json(&root.join("conversations/sessions.json"), &sessions)?;
     Ok(())
 }
 
 #[tauri::command]
-fn verify_provenance(state: State<RuntimeState>) -> CommandResult<bool> {
-    verify_chain_at(&active_path(&state)?)
+fn apply_phase1_command(
+    command: provenance::phase1::Phase1Command,
+    state: State<RuntimeState>,
+) -> CommandResult<provenance::phase1::Phase1CommandResult> {
+    let root = active_path(&state)?;
+    let manifest = read_manifest(&root)?;
+    let result = provenance::phase1::apply_command(&root, &manifest.project_id, command)?;
+    refresh_phase1_files(&root, &result.projection)?;
+    Ok(result)
+}
+
+#[tauri::command]
+fn load_phase1_projection(
+    state: State<RuntimeState>,
+) -> CommandResult<provenance::phase1::Phase1Projection> {
+    let root = active_path(&state)?;
+    let manifest = read_manifest(&root)?;
+    Ok(provenance::phase1::reconstruct(
+        &root,
+        &manifest.project_id,
+    )?)
+}
+
+#[tauri::command]
+fn apply_composition_command(
+    command: provenance::composition::CompositionCommand,
+    state: State<RuntimeState>,
+) -> CommandResult<provenance::composition::CompositionCommandResult> {
+    let root = active_path(&state)?;
+    let manifest = read_manifest(&root)?;
+    let result = provenance::composition::apply_command(&root, &manifest.project_id, command)?;
+    atomic_write(
+        &root.join("manuscript/manuscript.md"),
+        result.projection.manuscript.as_bytes(),
+    )?;
+    Ok(result)
+}
+
+#[tauri::command]
+fn load_composition_projection(
+    state: State<RuntimeState>,
+) -> CommandResult<provenance::composition::CompositionProjection> {
+    let root = active_path(&state)?;
+    let manifest = read_manifest(&root)?;
+    Ok(provenance::composition::reconstruct(
+        &root,
+        &manifest.project_id,
+    )?)
+}
+
+#[tauri::command]
+fn ensure_composition_projection(
+    state: State<RuntimeState>,
+) -> CommandResult<provenance::composition::CompositionProjection> {
+    let root = active_path(&state)?;
+    let manifest = read_manifest(&root)?;
+    let projection = provenance::composition::reconstruct(&root, &manifest.project_id)?;
+    if projection.initialized {
+        return Ok(projection);
+    }
+    let manuscript =
+        fs::read_to_string(root.join("manuscript/manuscript.md")).map_err(|error| {
+            CommandError::io(
+                "Could not read the existing manuscript for unattested initialization",
+                error,
+            )
+        })?;
+    let digest = provenance::canonical::sha256_digest(manuscript.as_bytes());
+    let result = provenance::composition::apply_command(
+        &root,
+        &manifest.project_id,
+        provenance::composition::CompositionCommand {
+            client_action_id: format!(
+                "composition_initialize_{}",
+                digest.trim_start_matches("sha256:")
+            ),
+            actor: "system".to_owned(),
+            summary: "Initialized existing manuscript as unattested expression".to_owned(),
+            occurred_at: provenance::identifiers::timestamp_millis(),
+            action: provenance::composition::CompositionAction::Initialize {
+                text: manuscript,
+                origin: provenance::composition::RecordedOrigin::Unattested,
+            },
+        },
+    )?;
+    Ok(result.projection)
+}
+
+#[tauri::command]
+fn refresh_non_phase1_files(app_state: Value, state: State<RuntimeState>) -> CommandResult<()> {
+    let root = active_path(&state)?;
+    write_json(
+        &root.join("style/profile.json"),
+        &json!({"schemaVersion":SCHEMA_VERSION,"traits":app_state.get("styleTraits"),"disallowedHabits":app_state.get("disallowedHabits")}),
+    )?;
+    Ok(())
+}
+#[tauri::command]
+fn freeze_contribution_map(
+    request: Option<provenance::contribution_map::ContributionMapRequest>,
+    state: State<RuntimeState>,
+) -> CommandResult<provenance::contribution_map::ContributionMapProjection> {
+    let root = active_path(&state)?;
+    let manifest = read_manifest(&root)?;
+    Ok(provenance::contribution_map::freeze_current(
+        &root,
+        &manifest.project_id,
+        request.unwrap_or_default(),
+    )?)
+}
+
+#[tauri::command]
+fn load_contribution_map(
+    state: State<RuntimeState>,
+) -> CommandResult<Option<provenance::contribution_map::ContributionMapProjection>> {
+    let root = active_path(&state)?;
+    let manifest = read_manifest(&root)?;
+    Ok(provenance::contribution_map::load_latest(
+        &root,
+        &manifest.project_id,
+    )?)
+}
+#[tauri::command]
+fn load_cpl_explorer(
+    state: State<RuntimeState>,
+) -> CommandResult<provenance::explorer::CplExplorerProjection> {
+    let root = active_path(&state)?;
+    let manifest = read_manifest(&root)?;
+    Ok(provenance::explorer::load(&root, &manifest.project_id)?)
+}
+
+#[tauri::command]
+fn prepare_harp(state: State<RuntimeState>) -> CommandResult<provenance::harp::HarpPreparation> {
+    let root = active_path(&state)?;
+    let manifest = read_manifest(&root)?;
+    Ok(provenance::harp::prepare_current(
+        &root,
+        &manifest.project_id,
+    )?)
+}
+#[tauri::command]
+fn export_harp_artifacts(
+    request: provenance::export::HarpExportRequest,
+    state: State<RuntimeState>,
+) -> CommandResult<provenance::export::HarpExportResult> {
+    let root = active_path(&state)?;
+    let manifest = read_manifest(&root)?;
+    Ok(provenance::export::create_harp_exports(
+        &root,
+        &manifest.project_id,
+        request,
+    )?)
+}
+
+#[tauri::command]
+fn verify_harp_sanitized_archive(
+    archive_path: String,
+    state: State<RuntimeState>,
+) -> CommandResult<provenance::export::SanitizedArchiveVerification> {
+    let root = active_path(&state)?;
+    let manifest = read_manifest(&root)?;
+    let harp = provenance::harp::load_latest(&root, &manifest.project_id)?.ok_or_else(|| {
+        CommandError::new(
+            "HARP_EXPORT_REQUIRED",
+            "Generate HARP before verifying its sanitized archive.",
+            true,
+        )
+    })?;
+    let chain = harp.harp["cpl_binding"]["chain_head"]
+        .as_str()
+        .ok_or_else(|| {
+            CommandError::new(
+                "HARP_BINDING_INVALID",
+                "HARP has no CPL chain binding.",
+                false,
+            )
+        })?;
+    let harp_sha256 = harp.harp["harp_sha256"]
+        .as_str()
+        .ok_or_else(|| CommandError::new("HARP_BINDING_INVALID", "HARP has no digest.", false))?;
+    let deposit_sha256 = harp.harp["deposit"]["deposit_sha256"]
+        .as_str()
+        .ok_or_else(|| {
+            CommandError::new("HARP_BINDING_INVALID", "HARP has no deposit digest.", false)
+        })?;
+    let requested = PathBuf::from(archive_path);
+    let target = if requested.is_absolute() {
+        requested
+    } else {
+        root.join(requested)
+    };
+    let canonical_root = fs::canonicalize(&root)
+        .map_err(|error| CommandError::io("Could not resolve the project folder", error))?;
+    let canonical_target = fs::canonicalize(&target)
+        .map_err(|error| CommandError::io("Could not resolve the sanitized archive", error))?;
+    if !canonical_target.starts_with(canonical_root.join("exports").join("harp")) {
+        return Err(CommandError::new(
+            "HARP_ARCHIVE_PATH_REFUSED",
+            "Only sanitized HARP archives inside this project's export folder can be verified here.",
+            false,
+        ));
+    }
+    Ok(provenance::export::verify_sanitized_archive(
+        &canonical_target,
+        Some((chain, harp_sha256, deposit_sha256)),
+    )?)
+}
+#[tauri::command]
+fn generate_harp(
+    request: provenance::harp::HarpGenerationRequest,
+    state: State<RuntimeState>,
+) -> CommandResult<provenance::harp::HarpProjection> {
+    let root = active_path(&state)?;
+    let manifest = read_manifest(&root)?;
+    Ok(provenance::harp::generate_current(
+        &root,
+        &manifest.project_id,
+        request,
+    )?)
+}
+
+#[tauri::command]
+fn load_harp(
+    state: State<RuntimeState>,
+) -> CommandResult<Option<provenance::harp::HarpProjection>> {
+    let root = active_path(&state)?;
+    let manifest = read_manifest(&root)?;
+    Ok(provenance::harp::load_latest(&root, &manifest.project_id)?)
+}
+#[tauri::command]
+fn verify_provenance(state: State<RuntimeState>) -> CommandResult<provenance::VerificationReport> {
+    let root = active_path(&state)?;
+    let manifest = read_manifest(&root)?;
+    Ok(provenance::verify_project(&root, &manifest.project_id)?)
+}
+
+#[tauri::command]
+fn recover_provenance(state: State<RuntimeState>) -> CommandResult<provenance::RecoveryReport> {
+    let root = active_path(&state)?;
+    let manifest = read_manifest(&root)?;
+    Ok(provenance::recover_project(&root, &manifest.project_id)?)
 }
 
 #[tauri::command]
@@ -810,7 +1155,7 @@ fn create_checkpoint(name: String, state: State<RuntimeState>) -> CommandResult<
     let manifest = read_manifest(&root)?;
     append_event(
         &root,
-        &manifest.id,
+        &manifest.project_id,
         "CHECKPOINT_CREATED",
         "user",
         &format!("Saved version {name}"),
@@ -824,6 +1169,7 @@ fn create_checkpoint(name: String, state: State<RuntimeState>) -> CommandResult<
             "manuscript",
             "ideas",
             "conversations",
+            "deposits",
             "provenance",
             "style",
         ],
@@ -849,109 +1195,217 @@ fn store_provider_secret(profile_id: String, secret: String) -> CommandResult<()
             true,
         ));
     }
-    keyring::Entry::new("com.thinkloom.desktop", &profile_id)
+    keyring::Entry::new("com.app.desktop", &profile_id)
         .map_err(|e| CommandError::new("CREDENTIAL_ERROR", e.to_string(), true))?
         .set_password(&secret)
         .map_err(|e| CommandError::new("CREDENTIAL_ERROR", e.to_string(), true))
 }
 #[tauri::command]
 fn delete_provider_secret(profile_id: String) -> CommandResult<()> {
-    keyring::Entry::new("com.thinkloom.desktop", &profile_id)
+    keyring::Entry::new("com.app.desktop", &profile_id)
         .map_err(|e| CommandError::new("CREDENTIAL_ERROR", e.to_string(), true))?
         .delete_credential()
         .map_err(|e| CommandError::new("CREDENTIAL_ERROR", e.to_string(), true))
 }
 
 #[tauri::command]
-fn test_provider(profile: ProviderProfile) -> CommandResult<ConnectionResult> {
-    if profile.mode == "cloud" && profile.kind != "openai" {
-        return Ok(ConnectionResult {
-            ok: false,
-            message: "Cloud processing must be approved in the project before testing.".into(),
-        });
-    }
-    let endpoint = profile.endpoint.trim_end_matches('/');
-    let url = if profile.kind == "ollama" {
-        format!("{endpoint}/api/tags")
-    } else {
-        format!("{endpoint}/models")
+fn test_provider(
+    profile: ProviderProfile,
+    client_action_id: String,
+    invocation_id: String,
+    session_id: String,
+    state: State<RuntimeState>,
+) -> CommandResult<ConnectionResult> {
+    let root = active_path(&state)?;
+    let manifest = read_manifest(&root)?;
+    let requested_at = provenance::identifiers::timestamp_millis();
+    let provider = provenance::phase1::Phase1Provider {
+        kind: profile.kind.clone(),
+        name: profile.name.clone(),
+        endpoint: profile.endpoint.clone(),
+        model: profile.model.clone(),
+        mode: profile.mode.clone(),
+        connected: false,
     };
-    let mut request = reqwest::blocking::Client::builder()
-        .timeout(std::time::Duration::from_secs(8))
-        .build()
-        .map_err(|e| CommandError::new("PROVIDER_ERROR", e.to_string(), true))?
-        .get(url);
-    if profile.kind == "openai" {
-        let secret = keyring::Entry::new("com.thinkloom.desktop", "openai")
-            .ok()
-            .and_then(|entry| entry.get_password().ok())
-            .ok_or_else(|| {
-                CommandError::new(
-                    "CREDENTIAL_MISSING",
-                    "Save the OpenAI credential in the system vault first.",
-                    true,
-                )
-            })?;
-        request = request.bearer_auth(secret);
-    }
-    let response = match request.send() {
-        Ok(response) => response,
-        Err(error) => {
+    provenance::phase1::apply_command(
+        &root,
+        &manifest.project_id,
+        provenance::phase1::Phase1Command {
+            client_action_id: format!("{client_action_id}:request"),
+            actor: "user".to_owned(),
+            summary: "Requested provider connectivity test".to_owned(),
+            occurred_at: requested_at.clone(),
+            operation: provenance::phase1::Phase1Operation::ProviderInvocationRequested {
+                invocation: provenance::phase1::ProviderInvocation {
+                    invocation_id: invocation_id.clone(),
+                    purpose: "provider_test".to_owned(),
+                    session_id,
+                    provider,
+                    prompt_template_sha256: provenance::phase1::canonical_text_digest(
+                        "provider-connectivity-test",
+                    )?,
+                    input_sha256: provenance::phase1::canonical_text_digest(&profile.model)?,
+                    context_sha256: provenance::phase1::canonical_text_digest(&profile.endpoint)?,
+                    requested_at,
+                },
+            },
+        },
+    )?;
+
+    // The connectivity request runs after the durable request event and without a writer lock.
+    let outcome = (|| -> CommandResult<ConnectionResult> {
+        if profile.mode == "cloud" && profile.kind != "openai" {
             return Ok(ConnectionResult {
                 ok: false,
-                message: format!("Could not reach {}: {}", profile.name, error),
+                message: "Cloud processing must be approved in the project before testing.".into(),
             });
         }
-    };
-    if !response.status().is_success() {
-        return Ok(ConnectionResult {
-            ok: false,
-            message: format!(
-                "{} responded with status {}.",
-                profile.name,
-                response.status()
-            ),
-        });
-    }
-    if profile.kind == "ollama" {
-        let value: Value = response
-            .json()
-            .map_err(|error| CommandError::new("PROVIDER_RESPONSE", error.to_string(), true))?;
-        let requested = profile.model.trim();
-        let installed = value
-            .get("models")
-            .and_then(Value::as_array)
-            .into_iter()
-            .flatten()
-            .filter_map(|model| model.get("name").and_then(Value::as_str))
-            .collect::<Vec<_>>();
-        let available = installed.iter().any(|name| {
-            *name == requested
-                || name.strip_suffix(":latest") == Some(requested)
-                || requested.strip_suffix(":latest") == Some(*name)
-        });
-        if !available {
+        let endpoint = profile.endpoint.trim_end_matches('/');
+        let url = if profile.kind == "ollama" {
+            format!("{endpoint}/api/tags")
+        } else {
+            format!("{endpoint}/models")
+        };
+        let mut request = reqwest::blocking::Client::builder()
+            .timeout(std::time::Duration::from_secs(8))
+            .build()
+            .map_err(|e| CommandError::new("PROVIDER_ERROR", e.to_string(), true))?
+            .get(url);
+        if profile.kind == "openai" {
+            let secret = keyring::Entry::new("com.app.desktop", "openai")
+                .ok()
+                .and_then(|entry| entry.get_password().ok())
+                .ok_or_else(|| {
+                    CommandError::new(
+                        "CREDENTIAL_MISSING",
+                        "Save the OpenAI credential in the system vault first.",
+                        true,
+                    )
+                })?;
+            request = request.bearer_auth(secret);
+        }
+        let response = match request.send() {
+            Ok(response) => response,
+            Err(error) => {
+                return Ok(ConnectionResult {
+                    ok: false,
+                    message: format!("Could not reach {}: {}", profile.name, error),
+                });
+            }
+        };
+        if !response.status().is_success() {
             return Ok(ConnectionResult {
                 ok: false,
                 message: format!(
-                    "Ollama is running, but model '{}' is not installed. Available: {}.",
-                    requested,
-                    installed
-                        .iter()
-                        .take(5)
-                        .copied()
-                        .collect::<Vec<_>>()
-                        .join(", ")
+                    "{} responded with status {}.",
+                    profile.name,
+                    response.status()
                 ),
             });
         }
+        if profile.kind == "ollama" {
+            let value: Value = response
+                .json()
+                .map_err(|error| CommandError::new("PROVIDER_RESPONSE", error.to_string(), true))?;
+            let requested = profile.model.trim();
+            let installed = value
+                .get("models")
+                .and_then(Value::as_array)
+                .into_iter()
+                .flatten()
+                .filter_map(|model| model.get("name").and_then(Value::as_str))
+                .collect::<Vec<_>>();
+            let available = installed.iter().any(|name| {
+                *name == requested
+                    || name.strip_suffix(":latest") == Some(requested)
+                    || requested.strip_suffix(":latest") == Some(*name)
+            });
+            if !available {
+                return Ok(ConnectionResult {
+                    ok: false,
+                    message: format!(
+                        "Ollama is running, but model '{}' is not installed. Available: {}.",
+                        requested,
+                        installed
+                            .iter()
+                            .take(5)
+                            .copied()
+                            .collect::<Vec<_>>()
+                            .join(", ")
+                    ),
+                });
+            }
+        }
+        Ok(ConnectionResult {
+            ok: true,
+            message: format!("{} is ready with {}.", profile.name, profile.model),
+        })
+    })();
+    match outcome {
+        Ok(result) if result.ok => {
+            let created_at = provenance::identifiers::timestamp_millis();
+            provenance::phase1::apply_command(
+                &root,
+                &manifest.project_id,
+                provenance::phase1::Phase1Command {
+                    client_action_id: format!("{client_action_id}:response"),
+                    actor: "system".to_owned(),
+                    summary: "Provider connectivity test succeeded".to_owned(),
+                    occurred_at: created_at.clone(),
+                    operation: provenance::phase1::Phase1Operation::ProviderInvocationResponded {
+                        invocation_id,
+                        retained_text: result.message.clone(),
+                        content_sha256: provenance::phase1::canonical_text_digest(&result.message)?,
+                        created_at,
+                    },
+                },
+            )?;
+            Ok(result)
+        }
+        Ok(result) => {
+            let occurred_at = provenance::identifiers::timestamp_millis();
+            provenance::phase1::apply_command(
+                &root,
+                &manifest.project_id,
+                provenance::phase1::Phase1Command {
+                    client_action_id: format!("{client_action_id}:failure"),
+                    actor: "system".to_owned(),
+                    summary: "Provider connectivity test failed".to_owned(),
+                    occurred_at: occurred_at.clone(),
+                    operation: provenance::phase1::Phase1Operation::ProviderInvocationFailed {
+                        invocation_id,
+                        code: "PROVIDER_TEST_FAILED".to_owned(),
+                        bounded_summary: result.message.chars().take(512).collect(),
+                        recoverable: true,
+                        occurred_at,
+                    },
+                },
+            )?;
+            Ok(result)
+        }
+        Err(error) => {
+            let occurred_at = provenance::identifiers::timestamp_millis();
+            provenance::phase1::apply_command(
+                &root,
+                &manifest.project_id,
+                provenance::phase1::Phase1Command {
+                    client_action_id: format!("{client_action_id}:failure"),
+                    actor: "system".to_owned(),
+                    summary: "Provider connectivity test failed".to_owned(),
+                    occurred_at: occurred_at.clone(),
+                    operation: provenance::phase1::Phase1Operation::ProviderInvocationFailed {
+                        invocation_id,
+                        code: error.code.clone(),
+                        bounded_summary: error.message.chars().take(512).collect(),
+                        recoverable: error.recoverable,
+                        occurred_at,
+                    },
+                },
+            )?;
+            Err(error)
+        }
     }
-    Ok(ConnectionResult {
-        ok: true,
-        message: format!("{} is ready with {}.", profile.name, profile.model),
-    })
 }
-
 fn pdf_bytes(title: &str, manuscript: &str) -> Vec<u8> {
     let mut lines = vec![title.to_string()];
     lines.extend(
@@ -999,9 +1453,9 @@ fn pdf_bytes(title: &str, manuscript: &str) -> Vec<u8> {
     pdf
 }
 fn file_hash(path: &Path) -> CommandResult<String> {
-    Ok(hex::encode(Sha256::digest(fs::read(path).map_err(
-        |e| CommandError::io("Could not hash export", e),
-    )?)))
+    Ok(provenance::canonical::sha256_digest(
+        &fs::read(path).map_err(|e| CommandError::io("Could not hash export", e))?,
+    ))
 }
 
 #[tauri::command]
@@ -1069,7 +1523,32 @@ fn export_project(
             atomic_write(&p, &pdf_bytes(&manifest.title, &markdown))?;
             p
         }
-        "evidence" => create_evidence(&root, &manifest, sanitized)?,
+        "evidence" => {
+            let result = provenance::export::create_harp_exports(
+                &root,
+                &manifest.project_id,
+                provenance::export::HarpExportRequest {
+                    redact_personal_identifiers: sanitized,
+                },
+            )?;
+            let role = if sanitized {
+                "sanitized_supporting_archive"
+            } else {
+                "full_private_archive"
+            };
+            let artifact = result
+                .artifacts
+                .iter()
+                .find(|artifact| artifact.role == role)
+                .ok_or_else(|| {
+                    CommandError::new(
+                        "HARP_EXPORT_MISSING",
+                        "The requested HARP archive was not created.",
+                        false,
+                    )
+                })?;
+            root.join(artifact.path.replace('/', std::path::MAIN_SEPARATOR_STR))
+        }
         _ => {
             return Err(CommandError::new(
                 "FORMAT_UNSUPPORTED",
@@ -1080,7 +1559,7 @@ fn export_project(
     };
     append_event(
         &root,
-        &manifest.id,
+        &manifest.project_id,
         "EXPORT_CREATED",
         "user",
         &format!("Created {format} export"),
@@ -1094,58 +1573,6 @@ fn escape_html(value: &str) -> String {
         .replace('<', "&lt;")
         .replace('>', "&gt;")
 }
-fn create_evidence(
-    root: &Path,
-    manifest: &ProjectManifest,
-    sanitized: bool,
-) -> CommandResult<PathBuf> {
-    let destination = root
-        .join("exports")
-        .join(format!("{}-evidence.zip", manifest.id));
-    let temp = destination.with_extension("zip.tmp");
-    let file = fs::File::create(&temp)
-        .map_err(|e| CommandError::io("Could not create evidence package", e))?;
-    let mut zip = ZipWriter::new(file);
-    let options = SimpleFileOptions::default().compression_method(zip::CompressionMethod::Deflated);
-    let markdown = fs::read(root.join("manuscript/manuscript.md"))
-        .map_err(|e| CommandError::io("Could not read manuscript", e))?;
-    zip.start_file("final-manuscript.md", options)
-        .map_err(|e| CommandError::new("EXPORT_ERROR", e.to_string(), true))?;
-    zip.write_all(&markdown)
-        .map_err(|e| CommandError::io("Could not write evidence", e))?;
-    let report=format!("# Creative Process Record\n\nProject: {}\n\nThis package records creative-process relationships and is not a legal conclusion.\n\nSanitized subset: {}\n\nHistory events are hash-chained with SHA-256.\n",manifest.title,sanitized);
-    zip.start_file("creative-process-report.md", options)
-        .map_err(|e| CommandError::new("EXPORT_ERROR", e.to_string(), true))?;
-    zip.write_all(report.as_bytes())
-        .map_err(|e| CommandError::io("Could not write report", e))?;
-    if !sanitized {
-        let events = fs::read(root.join("provenance/events.jsonl"))
-            .map_err(|e| CommandError::io("Could not read provenance", e))?;
-        zip.start_file("provenance-events.jsonl", options)
-            .map_err(|e| CommandError::new("EXPORT_ERROR", e.to_string(), true))?;
-        zip.write_all(&events)
-            .map_err(|e| CommandError::io("Could not write provenance", e))?;
-    }
-    let export_manifest = json!({"schemaVersion":SCHEMA_VERSION,"projectId":manifest.id,"createdAt":Utc::now().to_rfc3339(),"applicationVersion":APP_VERSION,"sanitized":sanitized,"provenanceChainHead":head_hash(root)?,"files":[{"path":"final-manuscript.md","sha256":hex::encode(Sha256::digest(&markdown))}]});
-    zip.start_file("export-manifest.json", options)
-        .map_err(|e| CommandError::new("EXPORT_ERROR", e.to_string(), true))?;
-    zip.write_all(
-        serde_json::to_string_pretty(&export_manifest)
-            .unwrap()
-            .as_bytes(),
-    )
-    .map_err(|e| CommandError::io("Could not write manifest", e))?;
-    zip.finish()
-        .map_err(|e| CommandError::new("EXPORT_ERROR", e.to_string(), true))?;
-    if destination.exists() {
-        fs::remove_file(&destination)
-            .map_err(|e| CommandError::io("Could not replace evidence package", e))?;
-    }
-    fs::rename(&temp, &destination)
-        .map_err(|e| CommandError::io("Could not finalize evidence package", e))?;
-    Ok(destination)
-}
-
 fn add_tree_to_zip(zip: &mut ZipWriter<fs::File>, root: &Path) -> CommandResult<Vec<Value>> {
     let options = SimpleFileOptions::default().compression_method(zip::CompressionMethod::Deflated);
     let mut files = Vec::new();
@@ -1177,7 +1604,7 @@ fn add_tree_to_zip(zip: &mut ZipWriter<fs::File>, root: &Path) -> CommandResult<
         zip.write_all(&bytes)
             .map_err(|e| CommandError::io("Could not write backup file", e))?;
         files.push(
-            json!({"path":name,"sha256":hex::encode(Sha256::digest(&bytes)),"size":bytes.len()}),
+            json!({"path":name,"sha256":provenance::canonical::sha256_digest(&bytes),"size":bytes.len()}),
         );
     }
     Ok(files)
@@ -1190,7 +1617,7 @@ fn create_backup(state: State<RuntimeState>) -> CommandResult<String> {
     let _ = snapshot(&root);
     let destination = root
         .join("exports")
-        .join(format!("{}-backup.zip", manifest.id));
+        .join(format!("{}-backup.zip", manifest.project_id));
     let temp = destination.with_extension("zip.tmp");
     fs::create_dir_all(destination.parent().unwrap())
         .map_err(|e| CommandError::io("Could not create export folder", e))?;
@@ -1198,29 +1625,21 @@ fn create_backup(state: State<RuntimeState>) -> CommandResult<String> {
         fs::File::create(&temp).map_err(|e| CommandError::io("Could not create backup", e))?;
     let mut zip = ZipWriter::new(file);
     let files = add_tree_to_zip(&mut zip, &root)?;
-    let backup_manifest = json!({"schemaVersion":SCHEMA_VERSION,"applicationVersion":APP_VERSION,"projectId":manifest.id,"createdAt":Utc::now().to_rfc3339(),"files":files});
+    let backup_manifest = json!({"schemaVersion":SCHEMA_VERSION,"applicationVersion":APP_VERSION,"projectId":manifest.project_id,"createdAt":provenance::identifiers::timestamp_millis(),"files":files});
     zip.start_file(
         "backup-manifest.json",
         SimpleFileOptions::default().compression_method(zip::CompressionMethod::Deflated),
     )
     .map_err(|e| CommandError::new("BACKUP_ERROR", e.to_string(), true))?;
-    zip.write_all(
-        serde_json::to_string_pretty(&backup_manifest)
-            .unwrap()
-            .as_bytes(),
-    )
-    .map_err(|e| CommandError::io("Could not write backup manifest", e))?;
+    zip.write_all(&provenance::canonical::canonicalize(&backup_manifest)?)
+        .map_err(|e| CommandError::io("Could not write backup manifest", e))?;
     zip.finish()
         .map_err(|e| CommandError::new("BACKUP_ERROR", e.to_string(), true))?;
-    if destination.exists() {
-        fs::remove_file(&destination)
-            .map_err(|e| CommandError::io("Could not replace backup", e))?;
-    }
-    fs::rename(&temp, &destination)
-        .map_err(|e| CommandError::io("Could not finalize backup", e))?;
+    provenance::ledger::atomic_replace(&temp, &destination)?;
+    provenance::ledger::sync_directory(destination.parent().unwrap())?;
     append_event(
         &root,
-        &manifest.id,
+        &manifest.project_id,
         "BACKUP_CREATED",
         "user",
         "Created restorable project backup",
@@ -1235,6 +1654,25 @@ fn import_backup(archive_path: String, destination: String) -> CommandResult<Str
         fs::File::open(&archive_path).map_err(|e| CommandError::io("Could not open backup", e))?;
     let mut archive = ZipArchive::new(file)
         .map_err(|e| CommandError::new("BACKUP_INVALID", e.to_string(), false))?;
+    let mut archived_manifest = Vec::new();
+    archive
+        .by_name("project.json")
+        .map_err(|_| {
+            CommandError::new(
+                "BACKUP_INVALID",
+                "The backup has no root project.json.",
+                false,
+            )
+        })?
+        .read_to_end(&mut archived_manifest)
+        .map_err(|error| CommandError::io("Could not inspect the backup project marker", error))?;
+    if !project_format::manifest_has_supported_marker(&archived_manifest) {
+        return Err(CommandError::new(
+            "LEGACY_BACKUP_REFUSED",
+            "Legacy preview backups cannot be imported or converted before Thinkloom 1.0.0. Preserve the original bytes instead.",
+            false,
+        ));
+    }
     if archive.len() > 10_000 {
         return Err(CommandError::new(
             "BACKUP_LIMIT",
@@ -1330,6 +1768,7 @@ fn rebuild_repository(state: State<RuntimeState>) -> CommandResult<()> {
             "manuscript",
             "ideas",
             "conversations",
+            "deposits",
             "provenance",
             "style",
         ],
@@ -1341,7 +1780,7 @@ fn rebuild_repository(state: State<RuntimeState>) -> CommandResult<()> {
     let manifest = read_manifest(&root)?;
     append_event(
         &root,
-        &manifest.id,
+        &manifest.project_id,
         "PROVENANCE_REBUILT",
         "system",
         "Rebuilt project history from canonical files",
@@ -1364,17 +1803,24 @@ fn finalize_release(state: State<RuntimeState>) -> CommandResult<String> {
             true,
         ));
     }
+    let verification = provenance::verify_project(&root, &manifest.project_id)?;
+    provenance::verifier::require_release_verification(&verification)?;
     manifest.publication_status = "finalized".into();
-    manifest.updated_at = Utc::now().to_rfc3339();
+    manifest.updated_at = provenance::identifiers::timestamp_millis();
     write_json(&root.join("project.json"), &manifest)?;
     let release = format!("release-{}", Utc::now().format("%Y%m%d-%H%M%S"));
     append_event(
         &root,
-        &manifest.id,
+        &manifest.project_id,
         "RELEASE_FINALIZED",
         "user",
         &format!("Finalized {release}"),
         json!({"releaseId":release}),
+    )?;
+    provenance::contribution_map::freeze_current(
+        &root,
+        &manifest.project_id,
+        provenance::contribution_map::ContributionMapRequest::default(),
     )?;
     run_git(
         &root,
@@ -1384,6 +1830,7 @@ fn finalize_release(state: State<RuntimeState>) -> CommandResult<String> {
             "manuscript",
             "ideas",
             "conversations",
+            "deposits",
             "provenance",
             "style",
         ],
@@ -1416,37 +1863,16 @@ fn diagnostics(state: State<RuntimeState>) -> Value {
 }
 
 #[tauri::command]
-fn load_project_state(state: State<RuntimeState>) -> CommandResult<Option<Value>> {
-    let root = active_path(&state)?;
-    let db = init_db(&root)?;
-    let mut statement = db
-        .prepare("SELECT json FROM project_state WHERE id=1")
-        .map_err(|e| CommandError::new("DATABASE_ERROR", e.to_string(), true))?;
-    let mut rows = statement
-        .query([])
-        .map_err(|e| CommandError::new("DATABASE_ERROR", e.to_string(), true))?;
-    if let Some(row) = rows
-        .next()
-        .map_err(|e| CommandError::new("DATABASE_ERROR", e.to_string(), true))?
-    {
-        let raw: String = row
-            .get(0)
-            .map_err(|e| CommandError::new("DATABASE_ERROR", e.to_string(), true))?;
-        Ok(Some(serde_json::from_str(&raw).map_err(|e| {
-            CommandError::new("PROJECT_INVALID", e.to_string(), true)
-        })?))
-    } else {
-        Ok(None)
-    }
-}
-
-#[tauri::command]
 fn generate_text(
     app: AppHandle,
     profile: ProviderProfile,
     prompt_variables: HashMap<String, String>,
     cloud_approved: bool,
     purpose: String,
+    client_action_id: String,
+    invocation_id: String,
+    session_id: String,
+    state: State<RuntimeState>,
 ) -> CommandResult<String> {
     if profile.mode == "cloud" && !cloud_approved {
         return Err(CommandError::new(
@@ -1455,65 +1881,159 @@ fn generate_text(
             true,
         ));
     }
-    let (system, prompt) = prompts_for_request(&app, &purpose, prompt_variables)?;
-    let client = reqwest::blocking::Client::builder()
-        .timeout(std::time::Duration::from_secs(90))
-        .build()
-        .map_err(|e| CommandError::new("PROVIDER_ERROR", e.to_string(), true))?;
-    let (url, body) = if profile.kind == "ollama" {
-        (
-            format!("{}/api/chat", profile.endpoint.trim_end_matches('/')),
-            json!({"model":profile.model,"stream":false,"messages":[{"role":"system","content":system},{"role":"user","content":prompt}]}),
-        )
+    let root = active_path(&state)?;
+    let manifest = read_manifest(&root)?;
+    let context_value = serde_json::to_value(&prompt_variables)
+        .map_err(|error| CommandError::new("SERIALIZE_ERROR", error.to_string(), false))?;
+    let context_sha256 = provenance::canonical::canonical_digest(&context_value)?;
+    let prompt_purpose = if purpose == "distillation" {
+        "drafting"
     } else {
-        (
-            format!(
-                "{}/chat/completions",
-                profile.endpoint.trim_end_matches('/')
-            ),
-            json!({"model":profile.model,"stream":false,"messages":[{"role":"system","content":system},{"role":"user","content":prompt}]}),
-        )
+        &purpose
     };
-    let mut request = client.post(url).json(&body);
-    if profile.kind != "ollama" {
-        if let Ok(entry) = keyring::Entry::new("com.thinkloom.desktop", &profile.kind) {
-            if let Ok(secret) = entry.get_password() {
-                request = request.bearer_auth(secret);
+    let (system, prompt) = prompts_for_request(&app, prompt_purpose, prompt_variables)?;
+    let provider = provenance::phase1::Phase1Provider {
+        kind: profile.kind.clone(),
+        name: profile.name.clone(),
+        endpoint: profile.endpoint.clone(),
+        model: profile.model.clone(),
+        mode: profile.mode.clone(),
+        connected: true,
+    };
+    let requested_at = provenance::identifiers::timestamp_millis();
+    let request = provenance::phase1::Phase1Command {
+        client_action_id: format!("{client_action_id}:request"),
+        actor: "user".to_owned(),
+        summary: format!("Requested {purpose} provider invocation"),
+        occurred_at: requested_at.clone(),
+        operation: provenance::phase1::Phase1Operation::ProviderInvocationRequested {
+            invocation: provenance::phase1::ProviderInvocation {
+                invocation_id: invocation_id.clone(),
+                purpose: purpose.clone(),
+                session_id,
+                provider,
+                prompt_template_sha256: provenance::phase1::canonical_text_digest(&system)?,
+                input_sha256: provenance::phase1::canonical_text_digest(&prompt)?,
+                context_sha256,
+                requested_at,
+            },
+        },
+    };
+    let requested = provenance::phase1::apply_command(&root, &manifest.project_id, request)?;
+    if let Some(completed) = requested.projection.invocations.get(&invocation_id) {
+        if completed.status == "responded" {
+            if let Some(text) = &completed.retained_text {
+                return Ok(text.clone());
             }
         }
     }
-    let response = request.send().map_err(|e| {
-        CommandError::new(
-            "PROVIDER_UNAVAILABLE",
-            format!("The request is preserved and can be retried: {e}"),
-            true,
-        )
-    })?;
-    if !response.status().is_success() {
-        return Err(CommandError::new(
-            "PROVIDER_RESPONSE",
-            format!(
-                "The provider returned {}. The request is preserved for retry.",
-                response.status()
-            ),
-            true,
-        ));
-    }
-    let value: Value = response
-        .json()
-        .map_err(|e| CommandError::new("STRUCTURED_OUTPUT_INVALID", e.to_string(), true))?;
-    value
-        .pointer("/message/content")
-        .or_else(|| value.pointer("/choices/0/message/content"))
-        .and_then(Value::as_str)
-        .map(str::to_owned)
-        .ok_or_else(|| {
+
+    // No CPL writer lock is held while provider I/O runs.
+    let provider_outcome = (|| -> CommandResult<String> {
+        let client = reqwest::blocking::Client::builder()
+            .timeout(std::time::Duration::from_secs(90))
+            .build()
+            .map_err(|e| CommandError::new("PROVIDER_ERROR", e.to_string(), true))?;
+        let (url, body) = if profile.kind == "ollama" {
+            (
+                format!("{}/api/chat", profile.endpoint.trim_end_matches('/')),
+                json!({"model":profile.model,"stream":false,"messages":[{"role":"system","content":system},{"role":"user","content":prompt}]}),
+            )
+        } else {
+            (
+                format!(
+                    "{}/chat/completions",
+                    profile.endpoint.trim_end_matches('/')
+                ),
+                json!({"model":profile.model,"stream":false,"messages":[{"role":"system","content":system},{"role":"user","content":prompt}]}),
+            )
+        };
+        let mut request = client.post(url).json(&body);
+        if profile.kind != "ollama" {
+            if let Ok(entry) = keyring::Entry::new("com.app.desktop", &profile.kind) {
+                if let Ok(secret) = entry.get_password() {
+                    request = request.bearer_auth(secret);
+                }
+            }
+        }
+        let response = request.send().map_err(|e| {
             CommandError::new(
-                "STRUCTURED_OUTPUT_INVALID",
-                "The provider returned no usable passage. Retry or switch providers.",
+                "PROVIDER_UNAVAILABLE",
+                format!("The request is preserved and can be retried: {e}"),
                 true,
             )
-        })
+        })?;
+        if !response.status().is_success() {
+            return Err(CommandError::new(
+                "PROVIDER_RESPONSE",
+                format!(
+                    "The provider returned {}. The request is preserved for retry.",
+                    response.status()
+                ),
+                true,
+            ));
+        }
+        let value: Value = response
+            .json()
+            .map_err(|e| CommandError::new("STRUCTURED_OUTPUT_INVALID", e.to_string(), true))?;
+        value
+            .pointer("/message/content")
+            .or_else(|| value.pointer("/choices/0/message/content"))
+            .and_then(Value::as_str)
+            .map(str::to_owned)
+            .ok_or_else(|| {
+                CommandError::new(
+                    "STRUCTURED_OUTPUT_INVALID",
+                    "The provider returned no usable passage. Retry or switch providers.",
+                    true,
+                )
+            })
+    })();
+
+    match provider_outcome {
+        Ok(text) => {
+            let created_at = provenance::identifiers::timestamp_millis();
+            provenance::phase1::apply_command(
+                &root,
+                &manifest.project_id,
+                provenance::phase1::Phase1Command {
+                    client_action_id: format!("{client_action_id}:response"),
+                    actor: "assistant".to_owned(),
+                    summary: format!("Retained {purpose} provider response"),
+                    occurred_at: created_at.clone(),
+                    operation: provenance::phase1::Phase1Operation::ProviderInvocationResponded {
+                        invocation_id,
+                        retained_text: text.clone(),
+                        content_sha256: provenance::phase1::canonical_text_digest(&text)?,
+                        created_at,
+                    },
+                },
+            )?;
+            Ok(text)
+        }
+        Err(error) => {
+            let occurred_at = provenance::identifiers::timestamp_millis();
+            let bounded_summary = error.message.chars().take(512).collect::<String>();
+            provenance::phase1::apply_command(
+                &root,
+                &manifest.project_id,
+                provenance::phase1::Phase1Command {
+                    client_action_id: format!("{client_action_id}:failure"),
+                    actor: "system".to_owned(),
+                    summary: format!("Recorded failed {purpose} provider invocation"),
+                    occurred_at: occurred_at.clone(),
+                    operation: provenance::phase1::Phase1Operation::ProviderInvocationFailed {
+                        invocation_id,
+                        code: error.code.clone(),
+                        bounded_summary,
+                        recoverable: error.recoverable,
+                        occurred_at,
+                    },
+                },
+            )?;
+            Err(error)
+        }
+    }
 }
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
@@ -1523,9 +2043,24 @@ pub fn run() {
             choose_project_folder,
             create_project,
             open_project,
-            load_project_state,
-            persist_state,
+            show_project_folder,
+            create_legacy_preservation_archive,
+            load_phase1_projection,
+            apply_phase1_command,
+            refresh_non_phase1_files,
+            apply_composition_command,
+            load_composition_projection,
+            ensure_composition_projection,
+            freeze_contribution_map,
+            load_contribution_map,
+            load_cpl_explorer,
+            prepare_harp,
+            generate_harp,
+            export_harp_artifacts,
+            verify_harp_sanitized_archive,
+            load_harp,
             verify_provenance,
+            recover_provenance,
             create_checkpoint,
             store_provider_secret,
             delete_provider_secret,
@@ -1583,14 +2118,19 @@ mod tests {
         let temp = tempfile::tempdir().unwrap();
         project_layout(temp.path()).unwrap();
         let manifest = ProjectManifest {
+            project_format: project_format::PROJECT_FORMAT.into(),
+            project_format_version: project_format::PROJECT_FORMAT_VERSION.into(),
+            provenance_conformance: project_format::PROVENANCE_CONFORMANCE.into(),
             schema_version: SCHEMA_VERSION.into(),
             application_version: APP_VERSION.into(),
-            id: "test".into(),
+            project_id: "test".into(),
+            description: String::new(),
             title: "Test".into(),
-            created_at: Utc::now().to_rfc3339(),
-            updated_at: Utc::now().to_rfc3339(),
+            created_at: provenance::identifiers::timestamp_millis(),
+            updated_at: provenance::identifiers::timestamp_millis(),
             current_phase: "ideation".into(),
             publication_status: "working".into(),
+            provenance_policy_id: "policy_test".into(),
             audio_retained: false,
         };
         write_json(&temp.path().join("project.json"), &manifest).unwrap();
@@ -1603,13 +2143,25 @@ mod tests {
             json!({}),
         )
         .unwrap();
-        assert!(verify_chain_at(temp.path()).unwrap());
-        let journal = temp.path().join("provenance/events.jsonl");
+        assert!(matches!(
+            provenance::verify_project(temp.path(), "test")
+                .unwrap()
+                .status,
+            provenance::VerificationStatus::Verified
+        ));
+        let journal = temp
+            .path()
+            .join("provenance/ledger/active/segment-000001.jsonl");
         let changed = fs::read_to_string(&journal)
             .unwrap()
             .replace("Created", "Changed");
         fs::write(&journal, changed).unwrap();
-        assert!(!verify_chain_at(temp.path()).unwrap());
+        assert_eq!(
+            provenance::verify_project(temp.path(), "test")
+                .unwrap()
+                .status,
+            provenance::VerificationStatus::Failed
+        );
     }
     #[test]
     fn project_layout_never_creates_audio_files() {

@@ -1,0 +1,288 @@
+{
+  "vector_version": "1.1",
+  "input_orders": [
+    [
+      {
+        "schema_version": "1.0",
+        "segment_id": "segment_01J00000000000000000000006",
+        "project_id": "project_01J00000000000000000000001",
+        "revision_id": "revision_01J0000000000000000000000B",
+        "segment_sequence": 2,
+        "range": {
+          "schema_version": "1.0",
+          "document_revision_id": "revision_01J0000000000000000000000B",
+          "coordinate_system": "unicode_scalar",
+          "start": 12,
+          "end": 24,
+          "preimage_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+          "text_fragment_id": "fragment_01J00000000000000000000007"
+        },
+        "content_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "normalized_unicode_scalar_length": 12,
+        "recorded_origin_kind": "recorded_direct_human_input",
+        "actor_identity_status": "self_declared",
+        "generation_status": "recorded",
+        "lineage_status": "recorded",
+        "lineage_reference_ids": [
+          "operation_01J0000000000000000000000X"
+        ],
+        "operation_ids": [
+          "operation_01J0000000000000000000000X"
+        ],
+        "transformation_relationships": [
+          "inserted"
+        ],
+        "assertion_ids": [
+          "assertion_01J0000000000000000000000V"
+        ],
+        "selection_arrangement_assertion_ids": [],
+        "included_in_deposit_assertion_id": "assertion_01J0000000000000000000000V",
+        "classification_status": "exact"
+      },
+      {
+        "schema_version": "1.0",
+        "segment_id": "segment_01J0000000000000000000000Y",
+        "project_id": "project_01J00000000000000000000001",
+        "revision_id": "revision_01J0000000000000000000000B",
+        "segment_sequence": 1,
+        "range": {
+          "schema_version": "1.0",
+          "document_revision_id": "revision_01J0000000000000000000000B",
+          "coordinate_system": "unicode_scalar",
+          "start": 0,
+          "end": 12,
+          "preimage_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+          "text_fragment_id": "fragment_01J0000000000000000000000C"
+        },
+        "content_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+        "normalized_unicode_scalar_length": 12,
+        "recorded_origin_kind": "recorded_direct_human_input",
+        "actor_identity_status": "self_declared",
+        "generation_status": "recorded",
+        "lineage_status": "recorded",
+        "lineage_reference_ids": [
+          "operation_01J0000000000000000000000X"
+        ],
+        "operation_ids": [
+          "operation_01J0000000000000000000000X"
+        ],
+        "transformation_relationships": [
+          "inserted"
+        ],
+        "assertion_ids": [
+          "assertion_01J0000000000000000000000V"
+        ],
+        "selection_arrangement_assertion_ids": [],
+        "included_in_deposit_assertion_id": "assertion_01J0000000000000000000000V",
+        "classification_status": "exact"
+      }
+    ],
+    [
+      {
+        "schema_version": "1.0",
+        "segment_id": "segment_01J0000000000000000000000Y",
+        "project_id": "project_01J00000000000000000000001",
+        "revision_id": "revision_01J0000000000000000000000B",
+        "segment_sequence": 1,
+        "range": {
+          "schema_version": "1.0",
+          "document_revision_id": "revision_01J0000000000000000000000B",
+          "coordinate_system": "unicode_scalar",
+          "start": 0,
+          "end": 12,
+          "preimage_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+          "text_fragment_id": "fragment_01J0000000000000000000000C"
+        },
+        "content_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+        "normalized_unicode_scalar_length": 12,
+        "recorded_origin_kind": "recorded_direct_human_input",
+        "actor_identity_status": "self_declared",
+        "generation_status": "recorded",
+        "lineage_status": "recorded",
+        "lineage_reference_ids": [
+          "operation_01J0000000000000000000000X"
+        ],
+        "operation_ids": [
+          "operation_01J0000000000000000000000X"
+        ],
+        "transformation_relationships": [
+          "inserted"
+        ],
+        "assertion_ids": [
+          "assertion_01J0000000000000000000000V"
+        ],
+        "selection_arrangement_assertion_ids": [],
+        "included_in_deposit_assertion_id": "assertion_01J0000000000000000000000V",
+        "classification_status": "exact"
+      },
+      {
+        "schema_version": "1.0",
+        "segment_id": "segment_01J00000000000000000000006",
+        "project_id": "project_01J00000000000000000000001",
+        "revision_id": "revision_01J0000000000000000000000B",
+        "segment_sequence": 2,
+        "range": {
+          "schema_version": "1.0",
+          "document_revision_id": "revision_01J0000000000000000000000B",
+          "coordinate_system": "unicode_scalar",
+          "start": 12,
+          "end": 24,
+          "preimage_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+          "text_fragment_id": "fragment_01J00000000000000000000007"
+        },
+        "content_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "normalized_unicode_scalar_length": 12,
+        "recorded_origin_kind": "recorded_direct_human_input",
+        "actor_identity_status": "self_declared",
+        "generation_status": "recorded",
+        "lineage_status": "recorded",
+        "lineage_reference_ids": [
+          "operation_01J0000000000000000000000X"
+        ],
+        "operation_ids": [
+          "operation_01J0000000000000000000000X"
+        ],
+        "transformation_relationships": [
+          "inserted"
+        ],
+        "assertion_ids": [
+          "assertion_01J0000000000000000000000V"
+        ],
+        "selection_arrangement_assertion_ids": [],
+        "included_in_deposit_assertion_id": "assertion_01J0000000000000000000000V",
+        "classification_status": "exact"
+      }
+    ]
+  ],
+  "sorting_rule": "Sort by segment_sequence, then stable segment_id; never use locale-sensitive presentation order.",
+  "deterministic_map": {
+    "schema_version": "1.0",
+    "contribution_map_id": "map_01J0000000000000000000000Z",
+    "project_id": "project_01J00000000000000000000001",
+    "deposit_id": "deposit_01J00000000000000000000000",
+    "deposit_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+    "manuscript_revision_id": "revision_01J0000000000000000000000B",
+    "manuscript_revision_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+    "cpl_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+    "cpl_event_sequence": 42,
+    "coordinate_system": "unicode_scalar",
+    "coverage": {
+      "denominator": 24,
+      "recorded_positions": 24,
+      "coverage_status": "complete",
+      "denominator_unit": "normalized_unicode_scalar_position",
+      "denominator_definition": "All normalized Unicode scalar positions in the exact frozen deposit manuscript; this is provenance coverage, not a human-authorship percentage."
+    },
+    "layers": [
+      "recorded_origin",
+      "transformation",
+      "selection_arrangement",
+      "evidentiary_evaluation",
+      "suggested_registration_treatment"
+    ],
+    "segments": [
+      {
+        "schema_version": "1.0",
+        "segment_id": "segment_01J0000000000000000000000Y",
+        "project_id": "project_01J00000000000000000000001",
+        "revision_id": "revision_01J0000000000000000000000B",
+        "segment_sequence": 1,
+        "range": {
+          "schema_version": "1.0",
+          "document_revision_id": "revision_01J0000000000000000000000B",
+          "coordinate_system": "unicode_scalar",
+          "start": 0,
+          "end": 12,
+          "preimage_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+          "text_fragment_id": "fragment_01J0000000000000000000000C"
+        },
+        "content_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+        "normalized_unicode_scalar_length": 12,
+        "recorded_origin_kind": "recorded_direct_human_input",
+        "actor_identity_status": "self_declared",
+        "generation_status": "recorded",
+        "lineage_status": "recorded",
+        "lineage_reference_ids": [
+          "operation_01J0000000000000000000000X"
+        ],
+        "operation_ids": [
+          "operation_01J0000000000000000000000X"
+        ],
+        "transformation_relationships": [
+          "inserted"
+        ],
+        "assertion_ids": [
+          "assertion_01J0000000000000000000000V"
+        ],
+        "selection_arrangement_assertion_ids": [],
+        "included_in_deposit_assertion_id": "assertion_01J0000000000000000000000V",
+        "classification_status": "exact"
+      },
+      {
+        "schema_version": "1.0",
+        "segment_id": "segment_01J00000000000000000000006",
+        "project_id": "project_01J00000000000000000000001",
+        "revision_id": "revision_01J0000000000000000000000B",
+        "segment_sequence": 2,
+        "range": {
+          "schema_version": "1.0",
+          "document_revision_id": "revision_01J0000000000000000000000B",
+          "coordinate_system": "unicode_scalar",
+          "start": 12,
+          "end": 24,
+          "preimage_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+          "text_fragment_id": "fragment_01J00000000000000000000007"
+        },
+        "content_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "normalized_unicode_scalar_length": 12,
+        "recorded_origin_kind": "recorded_direct_human_input",
+        "actor_identity_status": "self_declared",
+        "generation_status": "recorded",
+        "lineage_status": "recorded",
+        "lineage_reference_ids": [
+          "operation_01J0000000000000000000000X"
+        ],
+        "operation_ids": [
+          "operation_01J0000000000000000000000X"
+        ],
+        "transformation_relationships": [
+          "inserted"
+        ],
+        "assertion_ids": [
+          "assertion_01J0000000000000000000000V"
+        ],
+        "selection_arrangement_assertion_ids": [],
+        "included_in_deposit_assertion_id": "assertion_01J0000000000000000000000V",
+        "classification_status": "exact"
+      }
+    ],
+    "structural_locators": [
+      {
+        "segment_id": "segment_01J0000000000000000000000Y",
+        "chapter": 1,
+        "paragraph": 1,
+        "page": 1
+      },
+      {
+        "segment_id": "segment_01J00000000000000000000006",
+        "chapter": 1,
+        "paragraph": 1,
+        "page": 1
+      }
+    ],
+    "layout_profile": {
+      "layout_profile_id": "layout_01J00000000000000000000005",
+      "layout_profile_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555"
+    },
+    "generator": {
+      "name": "thinkloom-contribution-map",
+      "version": "1.0.0",
+      "configuration_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666"
+    },
+    "classification_status": "exact",
+    "contribution_map_sha256": "sha256:568b3548bcb906577710b712fba674e0c53ec0abe55a2285b36b5eeeeb387501"
+  },
+  "canonical_map_sha256": "sha256:ec5fc311ca63f1c06d99519ef8a9be66cc22f7075bcfd60f410143f4cd821aac",
+  "coverage_invariant": "Ranges are ordered, non-overlapping, and cover every normalized Unicode scalar position from zero through the denominator.",
+  "locator_invariant": "Revision, deposit digest, and stable segment ID are authoritative; page, chapter, and paragraph are layout-derived."
+}

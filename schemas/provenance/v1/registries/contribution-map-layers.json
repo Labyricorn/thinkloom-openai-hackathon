@@ -1,0 +1,47 @@
+{
+  "registry_version": "1.1",
+  "provenance_schema_version": "1.0",
+  "application_version": "0.5.2",
+  "introduced_in_application_version": "0.5.2",
+  "compatible_application_versions": [
+    "0.5.2",
+    "0.5.3",
+    "0.5.4",
+    "0.5.5",
+    "0.5.6",
+    "0.5.7",
+    "0.5.8",
+    "0.5.9",
+    "0.5.10",
+    "0.5.11",
+    "0.6.0"
+  ],
+  "name": "contribution-map-layers",
+  "description": "Independent projection layers that must not be collapsed into recorded origin.",
+  "entries": [
+    {
+      "code": "recorded_origin",
+      "meaning": "Contribution-map layer: recorded origin."
+    },
+    {
+      "code": "transformation",
+      "meaning": "Contribution-map layer: transformation."
+    },
+    {
+      "code": "selection_arrangement",
+      "meaning": "Contribution-map layer: selection arrangement."
+    },
+    {
+      "code": "evidentiary_evaluation",
+      "meaning": "Contribution-map layer: evidentiary evaluation."
+    },
+    {
+      "code": "suggested_registration_treatment",
+      "meaning": "Contribution-map layer: suggested registration treatment."
+    },
+    {
+      "code": "structural_locator",
+      "meaning": "Contribution-map layer: structural locator."
+    }
+  ]
+}

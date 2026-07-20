@@ -79,7 +79,7 @@ cargo test
 Judges should not need to rebuild Thinkloom. A public Windows x64 installer release will be linked from [JUDGING.md](JUDGING.md) before submission. No Thinkloom account is required. The included sample project demonstrates the primary workflow without credentials; live model requests additionally require a local Ollama instance or an entrant-supplied OpenAI/OpenAI-compatible credential.
 ## Project storage
 
-A Thinkloom project is self-contained. Canonical files live under `manuscript/`, `ideas/`, `conversations/`, `provenance/`, and `style/`. Live SQLite state and rotating snapshots are under `.thinkloom/` and are excluded from the project's hidden Git history. Audio retention is always false; no audio file extension is created by the native service.
+A Thinkloom project is self-contained. Canonical publication files live under `manuscript/`, `ideas/`, `conversations/`, and `style/`; immutable native records and segmented ledger evidence live under `records/` and `provenance/ledger/`. Live SQLite state, rotating snapshots, writer locks, same-filesystem staging, and recovery quarantine live under `.app/`, which is excluded from the project's hidden Git history. Audio retention is always false; no audio file extension is created by the native service.
 
 ## Prompt configuration
 
@@ -89,9 +89,9 @@ See [PROMPTS.md](PROMPTS.md) for each file's effect, variables, editing workflow
 
 ## Provenance architecture
 
-The approved Thinkloom 1.0 provenance architecture is documented in the [Stage 1 normative provenance specification](docs/provenance/README.md). It defines the future single-writer subsystem, canonical records, segmented ledger, recovery protocol, retention policy, native verification, and release bindings.
+The Thinkloom 0.5.11 [provenance package](docs/provenance/README.md) combines the 0.5.1 normative HARP/CPL amendment, the additive 0.5.2 composition/HARP schemas, the 0.5.3 modular native CPL service, the 0.5.4 conforming project boundary, the 0.5.5 typed Phase 1 route, the 0.5.6 manuscript composition-lineage route, the 0.5.7 frozen-deposit contribution-map projection, the 0.5.8 deterministic HARP generator, the 0.5.9 connected HARP/CPL user interfaces, the 0.5.10 export/privacy/security boundary, and the 0.5.11 executable verification matrix and release gate.
 
-Thinkloom 0.5.0 extends the formal Stage 2 package with canonical provenance assertions, point-in-time evaluations, versioned semantic registries, and deterministic invalidation vectors. The current native provenance writer must not be represented as conforming until the later implementation and fault-injection stages are complete.
+Thinkloom 0.5.11 retains the six distinct 0.5.10 HARP artifacts and adds an executable verification matrix, origin-preserving selection/arrangement behavior, prohibited score/legal-claim scans, a native release-finalization gate, and a packaged Windows launch/installer gate. Sanitized output is allowlisted, supports user-selected identity redaction, discloses and hashes every required omission class, and verifies retained file hashes plus CPL/HARP/deposit bindings as a `selective_disclosed_subset`. It never claims completeness, a human-authorship percentage, or a legal determination. Export does not advance or rewrite the CPL chain. The 0.5.4 `thinkloom-cpl` boundary remains unchanged: unmarked v0.5.x projects are read-only previews and are never converted, regenerated, verified as CPL, or used to generate HARP.
 
 ## Provider setup
 

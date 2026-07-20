@@ -1,17 +1,21 @@
 # Thinkloom Stage 1 Normative Provenance Specification
 
 Status: **Approved architecture baseline for formal schema work**  
-Target: **Thinkloom 1.0.0**  
-Provenance schema family: **1.0**  
+Document release: **Thinkloom 0.5.1**
+
+Runtime conformance target: **Thinkloom 0.6.0; project-format conformance 1.0**
+
+Provenance schema family: **1.0**
+
 Migration support: **Deferred until after Thinkloom 1.0.0**
 
 ## 1. Purpose and precedence
 
-This specification defines the authority, persistence, integrity, privacy, recovery, verification, backup, and release contracts for Thinkloom provenance.
+This specification defines the authority, persistence, integrity, privacy, recovery, verification, backup, release, Composition Provenance Ledger (CPL), and Human Authorship Record of Provenance (HARP) contracts for Thinkloom provenance.
 
 It supersedes the provenance-specific transaction order, single-ledger layout, mutable-record assumptions, live-database snapshot method, and release-binding sequence in the earlier MVP architecture and implementation plans. It does not supersede their product requirements, native Tauri boundary, preview-first generation model, user-control requirements, accessibility requirements, or prohibition on retained audio.
 
-Thinkloom 0.4.0 includes the formal Stage 2 schemas, canonical assertion envelopes, and verification vectors, but its native writer is not represented as conforming to this specification. Full conformance begins only after the native implementation and required fault-injection tests are complete.
+Thinkloom 0.5.1 includes this normative HARP/CPL amendment and preserves the existing formal Stage 2 schemas, canonical assertion envelopes, and verification vectors, but its native writer is not represented as CPL-conforming. Full conformance begins only after the native implementation and required fault-injection tests are complete.
 
 ## 2. Normative language
 
@@ -27,24 +31,60 @@ Thinkloom provenance is:
 
 > A local, transactionally coordinated, tamper-evident creative-process record with configurable retention, native verification, recoverable storage, and reproducible release manifests.
 
+The correct HARP/CPL product claim is:
+
+> A Human Authorship Record of Provenance (HARP) is a reproducible evidence projection for an exact deposit, backed by cryptographically verifiable integrity evidence in Thinkloom's Composition Provenance Ledger (CPL).
+
 Thinkloom MUST NOT claim that local provenance is tamper-proof, an independently trusted timestamp, conclusive legal proof, or a quantitative measure of human versus AI authorship.
+
+Cryptographic verification establishes only the integrity and internal linkage of the retained bytes within the verifier's stated scope. It MUST NOT, without separately identified evidence, be represented as verification of a person's identity, the truth of a user declaration, legal authorship, originality, copyrightability, ownership, or registrability. A signature or local key proves control of that key; it proves identity only when the key has a separately verified identity binding.
 
 The strongest valid claim without an external anchor is:
 
 > The system can detect changes relative to a previously retained chain head, signed release, or external anchor.
 
+### 3.1 Normative product terms
+
+The following meanings are exclusive and binding throughout product copy, schemas, reports, tests, and implementation:
+
+- **Composition Provenance Ledger (CPL)** is the product-facing name for the single canonical provenance ledger defined by §§12–13. CPL is not a new ledger, side ledger, report, database, or replacement for the existing ledger. A conforming project has one CPL whose events bind immutable records, assertions, and evaluations under §4.
+- **CPL record** is an immutable authoritative record referenced by a CPL event. The term does not include SQLite rows, UI state, derived indexes, generated reports, or uncommitted temporary data.
+- **Deposit** is the exact file selected by the user for a registration submission or other declared evidentiary purpose and frozen in a deposit snapshot. A manuscript revision, editor state, export recipe, or filename alone is not a deposit.
+- **Human Authorship Record of Provenance (HARP)** is a non-authoritative, deterministic, reproducible projection of CPL records and evaluations bound to one exact deposit. The word “Authorship” in the product name describes the subject of the evidence record; it is not a Thinkloom determination that any expression is legally authored, original, or copyrightable.
+- **Recorded origin** describes what the CPL records about how expression entered the composition. It is an evidence classification, not a legal conclusion.
+- **Transformation relationship** describes how expression changed or derived from earlier expression.
+- **Selection/arrangement overlay** describes recorded relationships among surviving expression or structural units. It is independent of their recorded origin and MUST NOT be encoded as a text-origin category.
+- **Suggested registration treatment** is editable application language produced under a versioned policy profile. It is neither an evidence fact nor a legal determination.
+- **Legal determination** includes copyrightability, originality, authorship, ownership, and registrability. Thinkloom and HARP do not make these determinations.
+
+No second meaning, abbreviation expansion, or competing product label MAY be used for CPL or HARP in a conforming product surface.
+
+### 3.2 Prohibited claims and required UI terminology
+
+Thinkloom, CPL, HARP, exports, and marketing MUST NOT state or imply:
+
+- A “human percentage,” “AI percentage,” authorship score, originality score, copyrightability score, or equivalent quantitative legal proxy
+- “Copyright verified,” “copyrightable,” “originality proven,” “proven human author,” “legally human-authored,” “registration-ready,” “Copyright Office approved,” or “authorship certified”
+- That typing time, edit count, word count, retained-word ratio, prompt count, or any other activity metric determines originality or authorship
+- That a paste, import, self-declaration, cryptographic signature, or successful integrity check by itself proves identity or human authorship
+- That `VERIFIED` or `exact` means anything beyond the explicitly named integrity or evidentiary scope
+
+Product surfaces MUST distinguish and label these categories: **Evidence fact**, **User declaration**, **Recorded origin**, **Transformation relationship**, **Selection/arrangement overlay**, **Evidentiary evaluation**, **Suggested registration language**, and **Copyright Office determination**. The UI MAY use “integrity verified” only with the verified scope and chain head visible. It MUST use “self-declared identity” unless stronger identity evidence and its verification method are present.
+
 ## 4. Authority hierarchy
 
 The following hierarchy is binding:
 
-1. **Immutable filesystem records, canonical provenance assertions, point-in-time assertion evaluations, and the provenance ledger** are authoritative evidence when bound by ledger references.
+1. **Immutable filesystem records, canonical provenance assertions, point-in-time assertion evaluations, and the canonical provenance ledger (product name: CPL)** are authoritative evidence when bound by CPL event references.
 2. **Canonical publication files and manuscript revisions** are authoritative publication content when bound by ledger references.
 3. **Release manifests** are authoritative bindings for a completed release.
 4. **SQLite** stores operational state, UI state, write intents, idempotency indexes, and rebuildable query indexes.
 5. **Git** stores meaningful milestone history and release state but is not the provenance authority.
-6. **Derived indexes and generated reports** are disposable, reproducible caches or projections.
+6. **Derived indexes, contribution maps, HARP documents, and generated reports** are disposable, reproducible projections. They are non-authoritative even when their bytes and source bindings verify.
 
 SQLite MUST NOT be the only location of an evidentiary fact. A valid ledger MUST take precedence over contradictory SQLite state. Git failure MUST NOT invalidate an otherwise valid provenance ledger.
+
+A HARP MUST NOT add, promote, or repair an evidentiary fact. Every factual HARP statement MUST trace to a CPL record, assertion, evaluation, or explicit user declaration bound by a CPL event. If the required basis is unknown, unattested, stale, degraded, or unverified, the HARP MUST preserve that boundary rather than infer a favorable classification.
 
 ## 5. Repository boundaries
 
@@ -60,7 +100,8 @@ publication-project/
 │   ├── invocations/
 │   ├── prompt-templates/
 │   ├── sources/
-│   └── transformations/
+│   ├── transformations/
+│   └── composition/
 ├── provenance/
 │   ├── schema/
 │   ├── ledger/active/
@@ -69,7 +110,9 @@ publication-project/
 │   ├── integrity/
 │   └── report-config/
 ├── releases/
+├── deposits/
 ├── reports/
+│   └── harp/
 ├── assets/
 ├── .app/
 │   ├── state.sqlite
@@ -85,7 +128,7 @@ Large PDFs, ZIP packages, and regenerable binaries SHOULD remain outside ordinar
 
 ## 6. Identifiers and event ordering
 
-Stable sortable identifiers SHOULD use ULIDs with type prefixes, including `event_`, `record_`, `intent_`, `turn_`, `session_`, `invocation_`, `revision_`, `fragment_`, `checkpoint_`, `release_`, `assertion_`, and `evaluation_`.
+Stable sortable identifiers SHOULD use ULIDs with type prefixes, including `event_`, `record_`, `intent_`, `turn_`, `session_`, `invocation_`, `revision_`, `segment_`, `deposit_`, `harp_`, `policy_`, `fragment_`, `checkpoint_`, `release_`, `assertion_`, and `evaluation_`.
 
 Identifiers MAY be allocated before an operation commits. Abandoned identifiers MUST NOT be reused.
 
@@ -187,6 +230,16 @@ Supported coordinate systems MUST be explicit, such as `utf8_byte`, `unicode_sca
 
 Meaningful manual editing MUST be grouped into edit transactions rather than keystroke events. A transaction SHOULD close on focus loss, configured idle interval, section change, AI operation, checkpoint, phase change, document close, explicit save, or milestone.
 
+Composition provenance MUST keep these dimensions independent:
+
+1. Recorded origin
+2. Transformation relationship
+3. Selection/arrangement overlay
+4. Evidentiary evaluation
+5. Suggested registration treatment
+
+Recorded-origin values MUST distinguish at least recorded direct human input, human expressive input mediated by transcription, accepted AI output, imported or pasted material, system restoration, and unattested expression. Paste or import MUST NOT default to recorded direct human input. Human modification of AI-origin material MUST retain the AI preimage lineage and the later human operations; it MUST NOT rewrite the earlier origin as human. Unknown identity, generation, origin, or lineage MUST remain unknown or unattested and MUST NOT validate as an exact classification.
+
 ## 11. Retention, export, and encryption policies
 
 These are independent settings:
@@ -199,7 +252,7 @@ default_export_profile: full | sanitized
 
 ### 11.1 Minimal retention
 
-Minimal provenance is the REQUIRED default for Thinkloom 1.0. It retains final user-approved input, operation purpose, prompt-template identity/hash, input references/hashes, provider/model identity, accepted generated text, disposition metadata, manuscript lineage, checkpoints, and releases.
+Minimal provenance is the REQUIRED default for a CPL 1.0-conforming project. It retains final user-approved input, operation purpose, prompt-template identity/hash, input references/hashes, provider/model identity, accepted generated text, disposition metadata, manuscript lineage, checkpoints, and releases.
 
 It MUST NOT retain raw speech hypotheses, complete provider-facing prompts, complete supplied context, unaccepted raw model responses, or provider transport metadata.
 
@@ -357,6 +410,8 @@ Assertion evaluation statuses are:
 
 Every evaluation MUST assess these dimensions independently: `integrity`, `identity`, `chronology`, `derivation`, `authorship`, and `completeness`. Dimension values are `exact`, `degraded`, `unverified`, or `not_applicable`. Numeric confidence scores and human-versus-AI percentages MUST NOT be used.
 
+For compatibility with the existing v0.4 assertion registry, the wire-level dimension name `authorship` is retained. In this specification it means only the sufficiency of recorded evidence for the assertion's explicitly bounded authorship-related predicate. It MUST NOT be displayed or interpreted as legal authorship, copyrightability, originality, or a HARP conclusion; an `exact` value means only that the retained evidence satisfies that declared predicate and scope.
+
 An `exact` evaluation MUST have no uncertainty boundary, MUST contain valid results for every non-shadow dependency, and MUST contain no `degraded` or `unverified` confidence dimension. Shadow evidence never contributes authority and MAY remain unevaluated without changing exactness. A non-exact evaluation MUST identify the exact boundary, affected dimensions, dependencies when applicable, and a stable reason code. Unknown provenance, source generation, compatibility, or confidence MUST NOT silently produce an `exact` evaluation.
 
 Evidence classes are `mandatory_live`, `mandatory_retained`, `advisory`, and `shadow`. Missing or incompatible mandatory evidence prohibits `exact`. Advisory or shadow evidence MAY degrade completeness or another named dimension but MUST NOT silently change an authoritative assertion.
@@ -364,6 +419,78 @@ Evidence classes are `mandatory_live`, `mandatory_retained`, `advisory`, and `sh
 Assertion and evaluation reason codes, lifecycle phases, statuses, dimensions, evidence classes, and boundary kinds MUST come from versioned machine-readable registries included in the schema package. Consumers MUST decide usability from these canonical records and registries rather than reopening producer-specific internal state.
 
 Derived indexes and reports MAY project assertions and the latest applicable evaluations, but remain non-authoritative consumers. They MUST NOT synthesize an `exact` result when no valid authoritative evaluation exists.
+
+### 15.2 Deposit snapshots and authoritative locators
+
+A HARP MUST bind one immutable deposit snapshot containing at least:
+
+- Deposit ID and deposit-snapshot schema version
+- Exact deposit-file digest and byte length
+- Deposit media type and sanitized display name
+- Bound manuscript revision ID and revision digest
+- CPL chain head digest and event sequence used for the projection
+- Layout-profile ID and digest when page locators are emitted
+- Creation timestamp, application version, and schema versions
+
+The deposit revision, deposit digest, and stable expression-segment ID are authoritative locators. Chapter, paragraph, line, and page numbers are derived locators. A page number MUST identify its layout profile and MUST NOT be used as the sole identity of expression or as an authoritative range boundary.
+
+Freezing a deposit does not freeze the working manuscript. Any edit or restoration after the bound deposit snapshot, or any change to the selected deposit bytes, creates a newer dependency state and MUST make the HARP `stale` for the current work. Staleness does not falsify or invalidate a previously verified historical HARP for its exact bound deposit; the UI MUST show both facts. A stale HARP is immutable and MUST be regenerated from a new deposit snapshot rather than updated in place.
+
+### 15.3 HARP content and generation
+
+HARP generation MUST be deterministic and MUST NOT use an LLM to classify authorship, decide originality or copyrightability, fill an evidence gap, or formulate a legal conclusion. Identical canonical inputs, policy profile, generator version, and sanitization profile MUST produce byte-identical machine-readable HARP content.
+
+A canonical HARP MUST include:
+
+- HARP ID, schema version, application version, and generator version
+- Exact deposit binding required by §15.2
+- CPL chain head and sequence used for projection
+- A complete contribution-map coverage statement with an explicit denominator and coordinate unit
+- Recorded-origin, transformation, and selection/arrangement layers kept separate
+- Current applicable assertion evaluations and visible exact, degraded, stale, unverified, unknown, and unattested boundaries
+- AI systems and models recorded as used for included expression, with unavailable identity represented as unknown
+- Representative transformations linked to their CPL basis
+- Suggested `Author Created`, `Material Excluded`, and `New Material Included` language when supported by the selected policy profile
+- Every user declaration, including author identity, labeled as a declaration and identified as self-declared unless stronger evidence is present
+- Limitation, sanitization, and omission disclosures
+- The policy-profile ID, version, source retrieval date, and source digests or stable source references
+- A verification report and manifest binding every emitted artifact and digest
+- A clear statement that the U.S. Copyright Office, not Thinkloom, determines copyrightability and registration scope
+
+Coverage MUST describe only the scope of recorded evidence. For example, it MAY state that a percentage of normalized Unicode scalar positions has recorded origin. It MUST NOT relabel that denominator as “human,” “human-authored,” “original,” or “copyrightable.” Selection and arrangement MUST appear as relationship overlays and MUST NOT change the recorded-origin layer.
+
+Suggested registration language MUST be generated only after the user selects a deposit and policy profile, reviews the evidence classifications and limitations, edits or accepts the proposed text, and explicitly approves generation. Approval MUST bind the exact approved strings and their source HARP inputs in CPL. Thinkloom MUST NOT submit an application, assert that the language is legally sufficient, or silently replace user-approved language when a policy profile changes.
+
+### 15.4 HARP verification and traceability
+
+HARP verification is a scoped integrity operation. It MUST verify artifact hashes, manifest bindings, deposit bytes, CPL source head and records, schema and generator compatibility, policy-profile binding, sanitization disclosures, and deterministic regeneration when the required generator is available.
+
+Every factual claim and suggested treatment in a HARP MUST expose a trace path to the supporting CPL event, record, assertion, evaluation, and any user approval. A successful verification MUST be labeled **HARP integrity verified** and MUST show the exact deposit digest. It MUST NOT be labeled **authorship verified**.
+
+The following states are independent and MUST NOT be collapsed:
+
+- CPL verification status under §15
+- HARP integrity verification status
+- HARP applicability: `current` or `stale`
+- Evidence boundary: `exact`, `degraded`, `stale`, `unverified`, `unknown`, or `unattested`
+- Policy-profile currency: `current`, `superseded`, or `unavailable`
+- User approval status for suggested registration language
+
+### 15.5 Initial U.S. Copyright Office policy profile
+
+The initial policy profile MUST be a versioned, read-only profile scoped to **United States / literary work / Standard Application**. It MUST identify its effective application scope and MUST refuse to produce application-field suggestions for unsupported jurisdictions, work classes, group registrations, or application types.
+
+The initial profile MUST cite, at minimum, the following official sources with retrieval date `2026-07-19`:
+
+- [Copyright Registration Guidance: Works Containing Material Generated by Artificial Intelligence](https://www.copyright.gov/ai/ai_policy_guidance.pdf), effective March 16, 2023
+- [Copyright and Artificial Intelligence, Part 2: Copyrightability](https://www.copyright.gov/ai/Copyright-and-Artificial-Intelligence-Part-2-Copyrightability-Report.pdf), January 2025
+- [Standard Application Help: Author](https://www.copyright.gov/eco/help-author.html)
+- [Standard Application Help: Limitation of Claim](https://www.copyright.gov/eco/help-limitation.html)
+- [37 C.F.R. § 202.3](https://www.copyright.gov/title37/202/37cfr202-3.html)
+
+The profile MUST encode field terminology separately from evidentiary classifications and MUST support suggested text for `Author Created`, `Material Excluded`, `New Material Included`, and, when appropriate, `Note to CO`. The `Author Created` and `New Material Included` suggestions MUST remain mutually consistent. The profile MUST disclose recorded use of AI and MUST support describing human contributions and excluding more-than-de-minimis AI-generated content as directed by the cited guidance, while leaving case-specific judgment and the final wording to the user and the Office. Every suggestion screen and generated worksheet MUST state that the text is suggested, editable, not legal advice, and subject to Copyright Office review.
+
+Policy rules MUST NOT convert CPL activity metrics or recorded-origin categories into copyrightability conclusions. Prompts, selection/arrangement, and modifications MAY be described as evidence only; their legal sufficiency MUST remain undetermined. A published profile is immutable. A policy update creates a new profile version; it MUST NOT silently change or regenerate an existing HARP. A HARP bound to a superseded profile remains historically reproducible and MUST visibly disclose that profile status.
 
 ## 16. Derived indexes
 
@@ -444,16 +571,28 @@ A purge MAY rewrite affected records, ledger hashes, and Git history only throug
 
 Ordinary editing MUST NOT invoke purge behavior.
 
-## 23. Legacy preview projects
+## 23. Legacy preview projects and CPL conformance boundary
 
-Thinkloom 1.0 MUST detect known preview/experimental project markers and refuse normal opening or editing. It MUST preserve the original project untouched, explain that migration is deferred, offer Show Project Folder, and permit a byte-preserving raw archival ZIP labeled:
+Only a project with the exact, supported conformance marker below MAY be treated as CPL-conforming:
 
-```text
-Legacy project preservation archive
-Not verified or converted by Thinkloom 1.0.0
+```json
+{
+  "project_format": "thinkloom-cpl",
+  "project_format_version": "1.0",
+  "provenance_conformance": "cpl-1.0"
+}
 ```
 
-Thinkloom 1.0 MUST NOT import legacy records into schema 1.0, regenerate or verify their provenance under 1.0 rules, create a 1.0 evidence report, modify their Git history, or present them as migrated. Formal legacy reading, conversion, and migration begin after 1.0.0.
+The marker is necessary but not sufficient: schema compatibility, required CPL structure, startup recovery, and native verification gates still apply. A `schemaVersion: 1.0` field or any preview-era marker MUST NOT be interpreted as this conformance marker.
+
+Thinkloom 0.6 and later MUST detect projects created by any v0.5.x release or earlier and other known preview/experimental project markers before any project mutation. It MUST refuse normal opening, editing, provenance regeneration, CPL verification, and HARP generation. It MUST preserve the original project untouched, explain that migration is deferred until after Thinkloom 1.0.0, offer Show Project Folder, and permit a byte-preserving raw archival ZIP labeled:
+
+```text
+Legacy preview-project preservation archive
+Not verified, converted, or CPL-conforming
+```
+
+Thinkloom MUST NOT import legacy records into CPL schema 1.0, synthesize CPL events from legacy state, regenerate or verify their provenance under CPL rules, create a HARP or CPL evidence report, modify their Git history, or present them as migrated or partially conforming. Formal legacy reading, conversion, and migration begin only after Thinkloom 1.0.0 and require a future normative migration specification.
 
 ## 24. Formal schema inventory for Stage 2
 
@@ -500,9 +639,16 @@ release-manifest.schema.json
 release-state.schema.json
 sanitized-export-manifest.schema.json
 purge-manifest.schema.json
+composition-operation.schema.json
+expression-segment.schema.json
+contribution-map.schema.json
+deposit-snapshot.schema.json
+registration-policy-profile.schema.json
+human-authorship-record.schema.json
+harp-export-manifest.schema.json
 ```
 
-Prompt-template, provenance-assertion, and other self-digesting schemas MUST define exact digest identity objects. Migration schemas are deferred until after Thinkloom 1.0.0.
+Prompt-template, provenance-assertion, contribution-map, registration-policy-profile, human-authorship-record, HARP export-manifest, and other self-digesting schemas MUST define exact digest identity objects. Migration schemas are deferred until after Thinkloom 1.0.0.
 
 ## 25. Required implementation characteristics
 

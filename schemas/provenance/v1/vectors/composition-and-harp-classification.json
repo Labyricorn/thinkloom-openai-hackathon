@@ -1,0 +1,881 @@
+{
+  "vector_version": "1.1",
+  "operations": {
+    "direct_human_insert": {
+      "schema_version": "1.0",
+      "operation_id": "operation_01J0000000000000000000000X",
+      "project_id": "project_01J00000000000000000000001",
+      "operation_kind": "insert",
+      "client_action_id": "client-action-composition-0001",
+      "base_revision_id": "revision_01J0000000000000000000000A",
+      "result_revision_id": "revision_01J0000000000000000000000B",
+      "operation_sequence": 1,
+      "source_range": null,
+      "destination_coordinate_system": "unicode_scalar",
+      "destination_start": 0,
+      "inserted_content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+      "deleted_content_sha256": null,
+      "source_record_ids": [
+        "turn_01J00000000000000000000007"
+      ],
+      "invocation_id": null,
+      "disposition_id": null,
+      "recorded_origin_kind": "recorded_direct_human_input",
+      "actor_identity_status": "self_declared",
+      "transformation_relationships": [
+        "inserted"
+      ],
+      "lineage_reference_ids": [
+        "turn_01J00000000000000000000007"
+      ],
+      "recorded_at": "2026-07-17T18:42:10.123Z"
+    },
+    "paste": {
+      "schema_version": "1.0",
+      "operation_id": "operation_01J00000000000000000000007",
+      "project_id": "project_01J00000000000000000000001",
+      "operation_kind": "paste",
+      "client_action_id": "client-action-composition-0001",
+      "base_revision_id": "revision_01J0000000000000000000000A",
+      "result_revision_id": "revision_01J0000000000000000000000B",
+      "operation_sequence": 1,
+      "source_range": null,
+      "destination_coordinate_system": "unicode_scalar",
+      "destination_start": 0,
+      "inserted_content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+      "deleted_content_sha256": null,
+      "source_record_ids": [
+        "record_01J00000000000000000000005"
+      ],
+      "invocation_id": null,
+      "disposition_id": null,
+      "recorded_origin_kind": "imported_or_pasted",
+      "actor_identity_status": "self_declared",
+      "transformation_relationships": [
+        "pasted_from_external"
+      ],
+      "lineage_reference_ids": [
+        "record_01J00000000000000000000005"
+      ],
+      "recorded_at": "2026-07-17T18:42:10.123Z"
+    },
+    "transcription": {
+      "schema_version": "1.0",
+      "operation_id": "operation_01J00000000000000000000008",
+      "project_id": "project_01J00000000000000000000001",
+      "operation_kind": "transcription",
+      "client_action_id": "client-action-composition-0001",
+      "base_revision_id": "revision_01J0000000000000000000000A",
+      "result_revision_id": "revision_01J0000000000000000000000B",
+      "operation_sequence": 1,
+      "source_range": null,
+      "destination_coordinate_system": "unicode_scalar",
+      "destination_start": 0,
+      "inserted_content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+      "deleted_content_sha256": null,
+      "source_record_ids": [
+        "turn_01J00000000000000000000007"
+      ],
+      "invocation_id": null,
+      "disposition_id": null,
+      "recorded_origin_kind": "human_expressive_input_via_transcription",
+      "actor_identity_status": "self_declared",
+      "transformation_relationships": [
+        "transcribed_from_human_speech"
+      ],
+      "lineage_reference_ids": [
+        "turn_01J00000000000000000000007"
+      ],
+      "recorded_at": "2026-07-17T18:42:10.123Z"
+    },
+    "ai_acceptance": {
+      "schema_version": "1.0",
+      "operation_id": "operation_01J00000000000000000000009",
+      "project_id": "project_01J00000000000000000000001",
+      "operation_kind": "ai_acceptance",
+      "client_action_id": "client-action-composition-0001",
+      "base_revision_id": "revision_01J0000000000000000000000A",
+      "result_revision_id": "revision_01J0000000000000000000000B",
+      "operation_sequence": 1,
+      "source_range": null,
+      "destination_coordinate_system": "unicode_scalar",
+      "destination_start": 0,
+      "inserted_content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+      "deleted_content_sha256": null,
+      "source_record_ids": [
+        "turn_01J00000000000000000000007"
+      ],
+      "invocation_id": "invocation_01J00000000000000000000008",
+      "disposition_id": "disposition_01J0000000000000000000000M",
+      "recorded_origin_kind": "accepted_ai_output",
+      "actor_identity_status": "self_declared",
+      "transformation_relationships": [
+        "generated_by_ai"
+      ],
+      "lineage_reference_ids": [
+        "turn_01J00000000000000000000007"
+      ],
+      "recorded_at": "2026-07-17T18:42:10.123Z"
+    },
+    "restoration": {
+      "schema_version": "1.0",
+      "operation_id": "operation_01J0000000000000000000000A",
+      "project_id": "project_01J00000000000000000000001",
+      "operation_kind": "restoration",
+      "client_action_id": "client-action-composition-0001",
+      "base_revision_id": "revision_01J0000000000000000000000A",
+      "result_revision_id": "revision_01J0000000000000000000000B",
+      "operation_sequence": 1,
+      "source_range": null,
+      "destination_coordinate_system": "unicode_scalar",
+      "destination_start": 0,
+      "inserted_content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+      "deleted_content_sha256": null,
+      "source_record_ids": [
+        "turn_01J00000000000000000000007"
+      ],
+      "invocation_id": null,
+      "disposition_id": null,
+      "recorded_origin_kind": "system_restoration",
+      "actor_identity_status": "self_declared",
+      "transformation_relationships": [
+        "restored_from_revision"
+      ],
+      "lineage_reference_ids": [
+        "revision_01J0000000000000000000000A"
+      ],
+      "recorded_at": "2026-07-17T18:42:10.123Z"
+    }
+  },
+  "exact_expression_segment": {
+    "schema_version": "1.0",
+    "segment_id": "segment_01J0000000000000000000000Y",
+    "project_id": "project_01J00000000000000000000001",
+    "revision_id": "revision_01J0000000000000000000000B",
+    "segment_sequence": 1,
+    "range": {
+      "schema_version": "1.0",
+      "document_revision_id": "revision_01J0000000000000000000000B",
+      "coordinate_system": "unicode_scalar",
+      "start": 0,
+      "end": 12,
+      "preimage_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+      "text_fragment_id": "fragment_01J0000000000000000000000C"
+    },
+    "content_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+    "normalized_unicode_scalar_length": 12,
+    "recorded_origin_kind": "recorded_direct_human_input",
+    "actor_identity_status": "self_declared",
+    "generation_status": "recorded",
+    "lineage_status": "recorded",
+    "lineage_reference_ids": [
+      "operation_01J0000000000000000000000X"
+    ],
+    "operation_ids": [
+      "operation_01J0000000000000000000000X"
+    ],
+    "transformation_relationships": [
+      "inserted"
+    ],
+    "assertion_ids": [
+      "assertion_01J0000000000000000000000V"
+    ],
+    "selection_arrangement_assertion_ids": [],
+    "included_in_deposit_assertion_id": "assertion_01J0000000000000000000000V",
+    "classification_status": "exact"
+  },
+  "exact_harp": {
+    "schema_version": "1.0",
+    "harp_id": "harp_01J00000000000000000000002",
+    "project_id": "project_01J00000000000000000000001",
+    "application_version": "0.5.2",
+    "generator_version": "1.0.0",
+    "deposit": {
+      "deposit_id": "deposit_01J00000000000000000000000",
+      "deposit_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+      "manuscript_revision_id": "revision_01J0000000000000000000000B",
+      "manuscript_revision_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222"
+    },
+    "cpl_binding": {
+      "chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+      "event_sequence": 42
+    },
+    "contribution_map": {
+      "contribution_map_id": "map_01J0000000000000000000000Z",
+      "contribution_map_sha256": "sha256:28562ec310a4eda35436bf01ec534d0639939365af453e3c922c492ee0ebff00"
+    },
+    "policy_profile": {
+      "policy_profile_id": "policyprofile_01J00000000000000000000004",
+      "profile_version": "1.0.0",
+      "profile_sha256": "sha256:77bfc640282012169a92feb92b9539ca6826b798659cb3f7d07beb864e53abba",
+      "retrieved_on": "2026-07-19",
+      "status": "current"
+    },
+    "evidentiary_status": "exact",
+    "applicability_status": "current",
+    "generation_status": "recorded",
+    "origin_coverage_status": "complete",
+    "lineage_coverage_status": "complete",
+    "identity_declaration": {
+      "declared_name": "Example Author",
+      "identity_status": "self_declared",
+      "evidence_reference_ids": [
+        "assertion_01J0000000000000000000000V"
+      ],
+      "user_approved": true
+    },
+    "claim_summary": "CPL records direct human input, accepted AI output, and subsequent recorded transformations for the exact deposit.",
+    "ai_system_disclosures": [
+      {
+        "provider_id": "openai",
+        "model_id": "gpt-example",
+        "identity_status": "recorded",
+        "included_expression_segment_ids": [
+          "segment_01J0000000000000000000000Y"
+        ]
+      }
+    ],
+    "coverage": {
+      "unit": "normalized_unicode_scalar_positions",
+      "denominator": 12,
+      "recorded_positions": 12,
+      "statement": "12 of 12 normalized Unicode scalar positions have recorded origin."
+    },
+    "suggested_registration_language": {
+      "author_created": "Text and revisions described in the attached provenance record",
+      "material_excluded": "AI-generated text identified in the attached provenance record",
+      "new_material_included": "Human-authored text and revisions",
+      "note_to_co": "This work contains disclosed AI-generated material.",
+      "registration_treatment_suggestions": [
+        "disclose_ai_use",
+        "manual_review_required"
+      ],
+      "user_approved": true,
+      "approval_event_id": "event_01J00000000000000000000004",
+      "approved_language_sha256": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+    },
+    "representative_transformation_operation_ids": [
+      "operation_01J0000000000000000000000X"
+    ],
+    "limitation_codes": [
+      "SELF_DECLARED_IDENTITY",
+      "COPYRIGHT_OFFICE_DETERMINES_SCOPE"
+    ],
+    "explanation_codes": [
+      "INTEGRITY_ONLY_VERIFICATION",
+      "RECORDED_ORIGIN_NOT_LEGAL_AUTHORSHIP",
+      "SELECTION_ARRANGEMENT_IS_OVERLAY",
+      "PAGE_LOCATORS_ARE_DERIVED",
+      "REGISTRATION_LANGUAGE_IS_SUGGESTED",
+      "HARP_STALE_AFTER_EDIT"
+    ],
+    "sanitization_profile": "full_private",
+    "harp_sha256": "sha256:20e3ba5bb0c6c25c8d047e0e8b82a17044193e0b8ce521612d48cc85fed5feb9"
+  },
+  "forbidden_exact_segments": {
+    "unknown_origin": {
+      "schema_version": "1.0",
+      "segment_id": "segment_01J0000000000000000000000Y",
+      "project_id": "project_01J00000000000000000000001",
+      "revision_id": "revision_01J0000000000000000000000B",
+      "segment_sequence": 1,
+      "range": {
+        "schema_version": "1.0",
+        "document_revision_id": "revision_01J0000000000000000000000B",
+        "coordinate_system": "unicode_scalar",
+        "start": 0,
+        "end": 12,
+        "preimage_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+        "text_fragment_id": "fragment_01J0000000000000000000000C"
+      },
+      "content_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+      "normalized_unicode_scalar_length": 12,
+      "recorded_origin_kind": "unattested",
+      "actor_identity_status": "self_declared",
+      "generation_status": "recorded",
+      "lineage_status": "recorded",
+      "lineage_reference_ids": [
+        "operation_01J0000000000000000000000X"
+      ],
+      "operation_ids": [
+        "operation_01J0000000000000000000000X"
+      ],
+      "transformation_relationships": [
+        "inserted"
+      ],
+      "assertion_ids": [
+        "assertion_01J0000000000000000000000V"
+      ],
+      "selection_arrangement_assertion_ids": [],
+      "included_in_deposit_assertion_id": "assertion_01J0000000000000000000000V",
+      "classification_status": "exact"
+    },
+    "unknown_identity": {
+      "schema_version": "1.0",
+      "segment_id": "segment_01J0000000000000000000000Y",
+      "project_id": "project_01J00000000000000000000001",
+      "revision_id": "revision_01J0000000000000000000000B",
+      "segment_sequence": 1,
+      "range": {
+        "schema_version": "1.0",
+        "document_revision_id": "revision_01J0000000000000000000000B",
+        "coordinate_system": "unicode_scalar",
+        "start": 0,
+        "end": 12,
+        "preimage_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+        "text_fragment_id": "fragment_01J0000000000000000000000C"
+      },
+      "content_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+      "normalized_unicode_scalar_length": 12,
+      "recorded_origin_kind": "recorded_direct_human_input",
+      "actor_identity_status": "unknown",
+      "generation_status": "recorded",
+      "lineage_status": "recorded",
+      "lineage_reference_ids": [
+        "operation_01J0000000000000000000000X"
+      ],
+      "operation_ids": [
+        "operation_01J0000000000000000000000X"
+      ],
+      "transformation_relationships": [
+        "inserted"
+      ],
+      "assertion_ids": [
+        "assertion_01J0000000000000000000000V"
+      ],
+      "selection_arrangement_assertion_ids": [],
+      "included_in_deposit_assertion_id": "assertion_01J0000000000000000000000V",
+      "classification_status": "exact"
+    },
+    "unknown_generation": {
+      "schema_version": "1.0",
+      "segment_id": "segment_01J0000000000000000000000Y",
+      "project_id": "project_01J00000000000000000000001",
+      "revision_id": "revision_01J0000000000000000000000B",
+      "segment_sequence": 1,
+      "range": {
+        "schema_version": "1.0",
+        "document_revision_id": "revision_01J0000000000000000000000B",
+        "coordinate_system": "unicode_scalar",
+        "start": 0,
+        "end": 12,
+        "preimage_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+        "text_fragment_id": "fragment_01J0000000000000000000000C"
+      },
+      "content_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+      "normalized_unicode_scalar_length": 12,
+      "recorded_origin_kind": "recorded_direct_human_input",
+      "actor_identity_status": "self_declared",
+      "generation_status": "unknown",
+      "lineage_status": "recorded",
+      "lineage_reference_ids": [
+        "operation_01J0000000000000000000000X"
+      ],
+      "operation_ids": [
+        "operation_01J0000000000000000000000X"
+      ],
+      "transformation_relationships": [
+        "inserted"
+      ],
+      "assertion_ids": [
+        "assertion_01J0000000000000000000000V"
+      ],
+      "selection_arrangement_assertion_ids": [],
+      "included_in_deposit_assertion_id": "assertion_01J0000000000000000000000V",
+      "classification_status": "exact"
+    },
+    "unknown_lineage": {
+      "schema_version": "1.0",
+      "segment_id": "segment_01J0000000000000000000000Y",
+      "project_id": "project_01J00000000000000000000001",
+      "revision_id": "revision_01J0000000000000000000000B",
+      "segment_sequence": 1,
+      "range": {
+        "schema_version": "1.0",
+        "document_revision_id": "revision_01J0000000000000000000000B",
+        "coordinate_system": "unicode_scalar",
+        "start": 0,
+        "end": 12,
+        "preimage_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+        "text_fragment_id": "fragment_01J0000000000000000000000C"
+      },
+      "content_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+      "normalized_unicode_scalar_length": 12,
+      "recorded_origin_kind": "recorded_direct_human_input",
+      "actor_identity_status": "self_declared",
+      "generation_status": "recorded",
+      "lineage_status": "unknown",
+      "lineage_reference_ids": [
+        "operation_01J0000000000000000000000X"
+      ],
+      "operation_ids": [
+        "operation_01J0000000000000000000000X"
+      ],
+      "transformation_relationships": [
+        "inserted"
+      ],
+      "assertion_ids": [
+        "assertion_01J0000000000000000000000V"
+      ],
+      "selection_arrangement_assertion_ids": [],
+      "included_in_deposit_assertion_id": "assertion_01J0000000000000000000000V",
+      "classification_status": "exact"
+    }
+  },
+  "forbidden_exact_harps": {
+    "unknown_origin": {
+      "schema_version": "1.0",
+      "harp_id": "harp_01J00000000000000000000002",
+      "project_id": "project_01J00000000000000000000001",
+      "application_version": "0.5.2",
+      "generator_version": "1.0.0",
+      "deposit": {
+        "deposit_id": "deposit_01J00000000000000000000000",
+        "deposit_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "manuscript_revision_id": "revision_01J0000000000000000000000B",
+        "manuscript_revision_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222"
+      },
+      "cpl_binding": {
+        "chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "event_sequence": 42
+      },
+      "contribution_map": {
+        "contribution_map_id": "map_01J0000000000000000000000Z",
+        "contribution_map_sha256": "sha256:28562ec310a4eda35436bf01ec534d0639939365af453e3c922c492ee0ebff00"
+      },
+      "policy_profile": {
+        "policy_profile_id": "policyprofile_01J00000000000000000000004",
+        "profile_version": "1.0.0",
+        "profile_sha256": "sha256:77bfc640282012169a92feb92b9539ca6826b798659cb3f7d07beb864e53abba",
+        "retrieved_on": "2026-07-19",
+        "status": "current"
+      },
+      "evidentiary_status": "exact",
+      "applicability_status": "current",
+      "generation_status": "recorded",
+      "origin_coverage_status": "unknown",
+      "lineage_coverage_status": "complete",
+      "identity_declaration": {
+        "declared_name": "Example Author",
+        "identity_status": "self_declared",
+        "evidence_reference_ids": [
+          "assertion_01J0000000000000000000000V"
+        ],
+        "user_approved": true
+      },
+      "claim_summary": "CPL records direct human input, accepted AI output, and subsequent recorded transformations for the exact deposit.",
+      "ai_system_disclosures": [
+        {
+          "provider_id": "openai",
+          "model_id": "gpt-example",
+          "identity_status": "recorded",
+          "included_expression_segment_ids": [
+            "segment_01J0000000000000000000000Y"
+          ]
+        }
+      ],
+      "coverage": {
+        "unit": "normalized_unicode_scalar_positions",
+        "denominator": 12,
+        "recorded_positions": 12,
+        "statement": "12 of 12 normalized Unicode scalar positions have recorded origin."
+      },
+      "suggested_registration_language": {
+        "author_created": "Text and revisions described in the attached provenance record",
+        "material_excluded": "AI-generated text identified in the attached provenance record",
+        "new_material_included": "Human-authored text and revisions",
+        "note_to_co": "This work contains disclosed AI-generated material.",
+        "registration_treatment_suggestions": [
+          "disclose_ai_use",
+          "manual_review_required"
+        ],
+        "user_approved": true,
+        "approval_event_id": "event_01J00000000000000000000004",
+        "approved_language_sha256": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+      },
+      "representative_transformation_operation_ids": [
+        "operation_01J0000000000000000000000X"
+      ],
+      "limitation_codes": [
+        "SELF_DECLARED_IDENTITY",
+        "COPYRIGHT_OFFICE_DETERMINES_SCOPE"
+      ],
+      "explanation_codes": [
+        "INTEGRITY_ONLY_VERIFICATION",
+        "RECORDED_ORIGIN_NOT_LEGAL_AUTHORSHIP",
+        "SELECTION_ARRANGEMENT_IS_OVERLAY",
+        "PAGE_LOCATORS_ARE_DERIVED",
+        "REGISTRATION_LANGUAGE_IS_SUGGESTED",
+        "HARP_STALE_AFTER_EDIT"
+      ],
+      "sanitization_profile": "full_private",
+      "harp_sha256": "sha256:20e3ba5bb0c6c25c8d047e0e8b82a17044193e0b8ce521612d48cc85fed5feb9"
+    },
+    "unknown_identity": {
+      "schema_version": "1.0",
+      "harp_id": "harp_01J00000000000000000000002",
+      "project_id": "project_01J00000000000000000000001",
+      "application_version": "0.5.2",
+      "generator_version": "1.0.0",
+      "deposit": {
+        "deposit_id": "deposit_01J00000000000000000000000",
+        "deposit_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "manuscript_revision_id": "revision_01J0000000000000000000000B",
+        "manuscript_revision_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222"
+      },
+      "cpl_binding": {
+        "chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "event_sequence": 42
+      },
+      "contribution_map": {
+        "contribution_map_id": "map_01J0000000000000000000000Z",
+        "contribution_map_sha256": "sha256:28562ec310a4eda35436bf01ec534d0639939365af453e3c922c492ee0ebff00"
+      },
+      "policy_profile": {
+        "policy_profile_id": "policyprofile_01J00000000000000000000004",
+        "profile_version": "1.0.0",
+        "profile_sha256": "sha256:77bfc640282012169a92feb92b9539ca6826b798659cb3f7d07beb864e53abba",
+        "retrieved_on": "2026-07-19",
+        "status": "current"
+      },
+      "evidentiary_status": "exact",
+      "applicability_status": "current",
+      "generation_status": "recorded",
+      "origin_coverage_status": "complete",
+      "lineage_coverage_status": "complete",
+      "identity_declaration": {
+        "declared_name": null,
+        "identity_status": "unknown",
+        "evidence_reference_ids": [
+          "assertion_01J0000000000000000000000V"
+        ],
+        "user_approved": true
+      },
+      "claim_summary": "CPL records direct human input, accepted AI output, and subsequent recorded transformations for the exact deposit.",
+      "ai_system_disclosures": [
+        {
+          "provider_id": "openai",
+          "model_id": "gpt-example",
+          "identity_status": "recorded",
+          "included_expression_segment_ids": [
+            "segment_01J0000000000000000000000Y"
+          ]
+        }
+      ],
+      "coverage": {
+        "unit": "normalized_unicode_scalar_positions",
+        "denominator": 12,
+        "recorded_positions": 12,
+        "statement": "12 of 12 normalized Unicode scalar positions have recorded origin."
+      },
+      "suggested_registration_language": {
+        "author_created": "Text and revisions described in the attached provenance record",
+        "material_excluded": "AI-generated text identified in the attached provenance record",
+        "new_material_included": "Human-authored text and revisions",
+        "note_to_co": "This work contains disclosed AI-generated material.",
+        "registration_treatment_suggestions": [
+          "disclose_ai_use",
+          "manual_review_required"
+        ],
+        "user_approved": true,
+        "approval_event_id": "event_01J00000000000000000000004",
+        "approved_language_sha256": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+      },
+      "representative_transformation_operation_ids": [
+        "operation_01J0000000000000000000000X"
+      ],
+      "limitation_codes": [
+        "SELF_DECLARED_IDENTITY",
+        "COPYRIGHT_OFFICE_DETERMINES_SCOPE"
+      ],
+      "explanation_codes": [
+        "INTEGRITY_ONLY_VERIFICATION",
+        "RECORDED_ORIGIN_NOT_LEGAL_AUTHORSHIP",
+        "SELECTION_ARRANGEMENT_IS_OVERLAY",
+        "PAGE_LOCATORS_ARE_DERIVED",
+        "REGISTRATION_LANGUAGE_IS_SUGGESTED",
+        "HARP_STALE_AFTER_EDIT"
+      ],
+      "sanitization_profile": "full_private",
+      "harp_sha256": "sha256:20e3ba5bb0c6c25c8d047e0e8b82a17044193e0b8ce521612d48cc85fed5feb9"
+    },
+    "unknown_generation": {
+      "schema_version": "1.0",
+      "harp_id": "harp_01J00000000000000000000002",
+      "project_id": "project_01J00000000000000000000001",
+      "application_version": "0.5.2",
+      "generator_version": "1.0.0",
+      "deposit": {
+        "deposit_id": "deposit_01J00000000000000000000000",
+        "deposit_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "manuscript_revision_id": "revision_01J0000000000000000000000B",
+        "manuscript_revision_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222"
+      },
+      "cpl_binding": {
+        "chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "event_sequence": 42
+      },
+      "contribution_map": {
+        "contribution_map_id": "map_01J0000000000000000000000Z",
+        "contribution_map_sha256": "sha256:28562ec310a4eda35436bf01ec534d0639939365af453e3c922c492ee0ebff00"
+      },
+      "policy_profile": {
+        "policy_profile_id": "policyprofile_01J00000000000000000000004",
+        "profile_version": "1.0.0",
+        "profile_sha256": "sha256:77bfc640282012169a92feb92b9539ca6826b798659cb3f7d07beb864e53abba",
+        "retrieved_on": "2026-07-19",
+        "status": "current"
+      },
+      "evidentiary_status": "exact",
+      "applicability_status": "current",
+      "generation_status": "unknown",
+      "origin_coverage_status": "complete",
+      "lineage_coverage_status": "complete",
+      "identity_declaration": {
+        "declared_name": "Example Author",
+        "identity_status": "self_declared",
+        "evidence_reference_ids": [
+          "assertion_01J0000000000000000000000V"
+        ],
+        "user_approved": true
+      },
+      "claim_summary": "CPL records direct human input, accepted AI output, and subsequent recorded transformations for the exact deposit.",
+      "ai_system_disclosures": [
+        {
+          "provider_id": "openai",
+          "model_id": "gpt-example",
+          "identity_status": "recorded",
+          "included_expression_segment_ids": [
+            "segment_01J0000000000000000000000Y"
+          ]
+        }
+      ],
+      "coverage": {
+        "unit": "normalized_unicode_scalar_positions",
+        "denominator": 12,
+        "recorded_positions": 12,
+        "statement": "12 of 12 normalized Unicode scalar positions have recorded origin."
+      },
+      "suggested_registration_language": {
+        "author_created": "Text and revisions described in the attached provenance record",
+        "material_excluded": "AI-generated text identified in the attached provenance record",
+        "new_material_included": "Human-authored text and revisions",
+        "note_to_co": "This work contains disclosed AI-generated material.",
+        "registration_treatment_suggestions": [
+          "disclose_ai_use",
+          "manual_review_required"
+        ],
+        "user_approved": true,
+        "approval_event_id": "event_01J00000000000000000000004",
+        "approved_language_sha256": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+      },
+      "representative_transformation_operation_ids": [
+        "operation_01J0000000000000000000000X"
+      ],
+      "limitation_codes": [
+        "SELF_DECLARED_IDENTITY",
+        "COPYRIGHT_OFFICE_DETERMINES_SCOPE"
+      ],
+      "explanation_codes": [
+        "INTEGRITY_ONLY_VERIFICATION",
+        "RECORDED_ORIGIN_NOT_LEGAL_AUTHORSHIP",
+        "SELECTION_ARRANGEMENT_IS_OVERLAY",
+        "PAGE_LOCATORS_ARE_DERIVED",
+        "REGISTRATION_LANGUAGE_IS_SUGGESTED",
+        "HARP_STALE_AFTER_EDIT"
+      ],
+      "sanitization_profile": "full_private",
+      "harp_sha256": "sha256:20e3ba5bb0c6c25c8d047e0e8b82a17044193e0b8ce521612d48cc85fed5feb9"
+    },
+    "unknown_lineage": {
+      "schema_version": "1.0",
+      "harp_id": "harp_01J00000000000000000000002",
+      "project_id": "project_01J00000000000000000000001",
+      "application_version": "0.5.2",
+      "generator_version": "1.0.0",
+      "deposit": {
+        "deposit_id": "deposit_01J00000000000000000000000",
+        "deposit_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "manuscript_revision_id": "revision_01J0000000000000000000000B",
+        "manuscript_revision_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222"
+      },
+      "cpl_binding": {
+        "chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "event_sequence": 42
+      },
+      "contribution_map": {
+        "contribution_map_id": "map_01J0000000000000000000000Z",
+        "contribution_map_sha256": "sha256:28562ec310a4eda35436bf01ec534d0639939365af453e3c922c492ee0ebff00"
+      },
+      "policy_profile": {
+        "policy_profile_id": "policyprofile_01J00000000000000000000004",
+        "profile_version": "1.0.0",
+        "profile_sha256": "sha256:77bfc640282012169a92feb92b9539ca6826b798659cb3f7d07beb864e53abba",
+        "retrieved_on": "2026-07-19",
+        "status": "current"
+      },
+      "evidentiary_status": "exact",
+      "applicability_status": "current",
+      "generation_status": "recorded",
+      "origin_coverage_status": "complete",
+      "lineage_coverage_status": "unknown",
+      "identity_declaration": {
+        "declared_name": "Example Author",
+        "identity_status": "self_declared",
+        "evidence_reference_ids": [
+          "assertion_01J0000000000000000000000V"
+        ],
+        "user_approved": true
+      },
+      "claim_summary": "CPL records direct human input, accepted AI output, and subsequent recorded transformations for the exact deposit.",
+      "ai_system_disclosures": [
+        {
+          "provider_id": "openai",
+          "model_id": "gpt-example",
+          "identity_status": "recorded",
+          "included_expression_segment_ids": [
+            "segment_01J0000000000000000000000Y"
+          ]
+        }
+      ],
+      "coverage": {
+        "unit": "normalized_unicode_scalar_positions",
+        "denominator": 12,
+        "recorded_positions": 12,
+        "statement": "12 of 12 normalized Unicode scalar positions have recorded origin."
+      },
+      "suggested_registration_language": {
+        "author_created": "Text and revisions described in the attached provenance record",
+        "material_excluded": "AI-generated text identified in the attached provenance record",
+        "new_material_included": "Human-authored text and revisions",
+        "note_to_co": "This work contains disclosed AI-generated material.",
+        "registration_treatment_suggestions": [
+          "disclose_ai_use",
+          "manual_review_required"
+        ],
+        "user_approved": true,
+        "approval_event_id": "event_01J00000000000000000000004",
+        "approved_language_sha256": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+      },
+      "representative_transformation_operation_ids": [
+        "operation_01J0000000000000000000000X"
+      ],
+      "limitation_codes": [
+        "SELF_DECLARED_IDENTITY",
+        "COPYRIGHT_OFFICE_DETERMINES_SCOPE"
+      ],
+      "explanation_codes": [
+        "INTEGRITY_ONLY_VERIFICATION",
+        "RECORDED_ORIGIN_NOT_LEGAL_AUTHORSHIP",
+        "SELECTION_ARRANGEMENT_IS_OVERLAY",
+        "PAGE_LOCATORS_ARE_DERIVED",
+        "REGISTRATION_LANGUAGE_IS_SUGGESTED",
+        "HARP_STALE_AFTER_EDIT"
+      ],
+      "sanitization_profile": "full_private",
+      "harp_sha256": "sha256:20e3ba5bb0c6c25c8d047e0e8b82a17044193e0b8ce521612d48cc85fed5feb9"
+    },
+    "unknown_ai_system": {
+      "schema_version": "1.0",
+      "harp_id": "harp_01J00000000000000000000002",
+      "project_id": "project_01J00000000000000000000001",
+      "application_version": "0.5.2",
+      "generator_version": "1.0.0",
+      "deposit": {
+        "deposit_id": "deposit_01J00000000000000000000000",
+        "deposit_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "manuscript_revision_id": "revision_01J0000000000000000000000B",
+        "manuscript_revision_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222"
+      },
+      "cpl_binding": {
+        "chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "event_sequence": 42
+      },
+      "contribution_map": {
+        "contribution_map_id": "map_01J0000000000000000000000Z",
+        "contribution_map_sha256": "sha256:28562ec310a4eda35436bf01ec534d0639939365af453e3c922c492ee0ebff00"
+      },
+      "policy_profile": {
+        "policy_profile_id": "policyprofile_01J00000000000000000000004",
+        "profile_version": "1.0.0",
+        "profile_sha256": "sha256:77bfc640282012169a92feb92b9539ca6826b798659cb3f7d07beb864e53abba",
+        "retrieved_on": "2026-07-19",
+        "status": "current"
+      },
+      "evidentiary_status": "exact",
+      "applicability_status": "current",
+      "generation_status": "recorded",
+      "origin_coverage_status": "complete",
+      "lineage_coverage_status": "complete",
+      "identity_declaration": {
+        "declared_name": "Example Author",
+        "identity_status": "self_declared",
+        "evidence_reference_ids": [
+          "assertion_01J0000000000000000000000V"
+        ],
+        "user_approved": true
+      },
+      "claim_summary": "CPL records direct human input, accepted AI output, and subsequent recorded transformations for the exact deposit.",
+      "ai_system_disclosures": [
+        {
+          "provider_id": null,
+          "model_id": null,
+          "identity_status": "unknown",
+          "included_expression_segment_ids": [
+            "segment_01J0000000000000000000000Y"
+          ]
+        }
+      ],
+      "coverage": {
+        "unit": "normalized_unicode_scalar_positions",
+        "denominator": 12,
+        "recorded_positions": 12,
+        "statement": "12 of 12 normalized Unicode scalar positions have recorded origin."
+      },
+      "suggested_registration_language": {
+        "author_created": "Text and revisions described in the attached provenance record",
+        "material_excluded": "AI-generated text identified in the attached provenance record",
+        "new_material_included": "Human-authored text and revisions",
+        "note_to_co": "This work contains disclosed AI-generated material.",
+        "registration_treatment_suggestions": [
+          "disclose_ai_use",
+          "manual_review_required"
+        ],
+        "user_approved": true,
+        "approval_event_id": "event_01J00000000000000000000004",
+        "approved_language_sha256": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+      },
+      "representative_transformation_operation_ids": [
+        "operation_01J0000000000000000000000X"
+      ],
+      "limitation_codes": [
+        "SELF_DECLARED_IDENTITY",
+        "COPYRIGHT_OFFICE_DETERMINES_SCOPE"
+      ],
+      "explanation_codes": [
+        "INTEGRITY_ONLY_VERIFICATION",
+        "RECORDED_ORIGIN_NOT_LEGAL_AUTHORSHIP",
+        "SELECTION_ARRANGEMENT_IS_OVERLAY",
+        "PAGE_LOCATORS_ARE_DERIVED",
+        "REGISTRATION_LANGUAGE_IS_SUGGESTED",
+        "HARP_STALE_AFTER_EDIT"
+      ],
+      "sanitization_profile": "full_private",
+      "harp_sha256": "sha256:20e3ba5bb0c6c25c8d047e0e8b82a17044193e0b8ce521612d48cc85fed5feb9"
+    }
+  },
+  "independent_dimensions": [
+    "recorded_origin",
+    "transformation",
+    "selection_arrangement",
+    "evidentiary_evaluation",
+    "suggested_registration_treatment"
+  ],
+  "prohibited_claim_fields": [
+    "human_percentage",
+    "ai_percentage",
+    "authorship_score",
+    "originality_score",
+    "copyrightability_score"
+  ]
+}

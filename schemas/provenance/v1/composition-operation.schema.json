@@ -1,0 +1,374 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://thinkloom.app/schemas/provenance/1.0/composition-operation.schema.json",
+  "title": "Composition operation",
+  "description": "Immutable composition-specific insertion, deletion, replacement, movement, paste, transcription, AI acceptance, or restoration operation; it does not overload edit transactions or assertions.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "operation_id": {
+      "type": "string",
+      "pattern": "^operation_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "project_id": {
+      "type": "string",
+      "pattern": "^project_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "operation_kind": {
+      "enum": [
+        "insert",
+        "delete",
+        "replace",
+        "move",
+        "paste",
+        "transcription",
+        "ai_acceptance",
+        "restoration"
+      ]
+    },
+    "client_action_id": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 200
+    },
+    "base_revision_id": {
+      "type": "string",
+      "pattern": "^revision_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "result_revision_id": {
+      "type": "string",
+      "pattern": "^revision_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "operation_sequence": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "source_range": {
+      "anyOf": [
+        {
+          "$ref": "https://thinkloom.app/schemas/provenance/1.0/text-fragment-reference.schema.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "destination_coordinate_system": {
+      "enum": [
+        "utf8_byte",
+        "unicode_scalar",
+        "utf16_code_unit",
+        "editor_position"
+      ]
+    },
+    "destination_start": {
+      "anyOf": [
+        {
+          "type": "integer",
+          "minimum": 0
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "inserted_content_sha256": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "deleted_content_sha256": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "source_record_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9_]*_[0-9A-HJKMNP-TV-Z]{26}$"
+      },
+      "uniqueItems": true
+    },
+    "invocation_id": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^invocation_[0-9A-HJKMNP-TV-Z]{26}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "disposition_id": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^disposition_[0-9A-HJKMNP-TV-Z]{26}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "recorded_origin_kind": {
+      "enum": [
+        "recorded_direct_human_input",
+        "human_expressive_input_via_transcription",
+        "accepted_ai_output",
+        "imported_or_pasted",
+        "system_restoration",
+        "unattested"
+      ]
+    },
+    "actor_identity_status": {
+      "enum": [
+        "verified",
+        "self_declared",
+        "unknown",
+        "not_applicable"
+      ]
+    },
+    "transformation_relationships": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "inserted",
+          "deleted",
+          "replaced",
+          "moved",
+          "pasted_from_external",
+          "transcribed_from_human_speech",
+          "generated_by_ai",
+          "modified_by_human",
+          "restored_from_revision",
+          "derived_from"
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "lineage_reference_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9_]*_[0-9A-HJKMNP-TV-Z]{26}$"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "recorded_at": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+    }
+  },
+  "required": [
+    "schema_version",
+    "operation_id",
+    "project_id",
+    "operation_kind",
+    "client_action_id",
+    "base_revision_id",
+    "result_revision_id",
+    "operation_sequence",
+    "source_range",
+    "destination_coordinate_system",
+    "destination_start",
+    "inserted_content_sha256",
+    "deleted_content_sha256",
+    "source_record_ids",
+    "invocation_id",
+    "disposition_id",
+    "recorded_origin_kind",
+    "actor_identity_status",
+    "transformation_relationships",
+    "lineage_reference_ids",
+    "recorded_at"
+  ],
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "operation_kind": {
+            "const": "paste"
+          }
+        },
+        "required": [
+          "operation_kind"
+        ]
+      },
+      "then": {
+        "properties": {
+          "recorded_origin_kind": {
+            "const": "imported_or_pasted"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation_kind": {
+            "const": "transcription"
+          }
+        },
+        "required": [
+          "operation_kind"
+        ]
+      },
+      "then": {
+        "properties": {
+          "recorded_origin_kind": {
+            "const": "human_expressive_input_via_transcription"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation_kind": {
+            "const": "ai_acceptance"
+          }
+        },
+        "required": [
+          "operation_kind"
+        ]
+      },
+      "then": {
+        "properties": {
+          "recorded_origin_kind": {
+            "const": "accepted_ai_output"
+          },
+          "invocation_id": {
+            "type": "string",
+            "pattern": "^invocation_[0-9A-HJKMNP-TV-Z]{26}$"
+          },
+          "disposition_id": {
+            "type": "string",
+            "pattern": "^disposition_[0-9A-HJKMNP-TV-Z]{26}$"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation_kind": {
+            "const": "restoration"
+          }
+        },
+        "required": [
+          "operation_kind"
+        ]
+      },
+      "then": {
+        "properties": {
+          "recorded_origin_kind": {
+            "const": "system_restoration"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation_kind": {
+            "const": "delete"
+          }
+        },
+        "required": [
+          "operation_kind"
+        ]
+      },
+      "then": {
+        "properties": {
+          "source_range": {
+            "$ref": "https://thinkloom.app/schemas/provenance/1.0/text-fragment-reference.schema.json"
+          },
+          "inserted_content_sha256": {
+            "type": "null"
+          },
+          "deleted_content_sha256": {
+            "type": "string",
+            "pattern": "^sha256:[a-f0-9]{64}$"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation_kind": {
+            "enum": [
+              "insert",
+              "paste",
+              "transcription",
+              "ai_acceptance",
+              "restoration"
+            ]
+          }
+        },
+        "required": [
+          "operation_kind"
+        ]
+      },
+      "then": {
+        "properties": {
+          "inserted_content_sha256": {
+            "type": "string",
+            "pattern": "^sha256:[a-f0-9]{64}$"
+          }
+        }
+      }
+    }
+  ],
+  "examples": [
+    {
+      "schema_version": "1.0",
+      "operation_id": "operation_01J0000000000000000000000X",
+      "project_id": "project_01J00000000000000000000001",
+      "operation_kind": "insert",
+      "client_action_id": "client-action-composition-0001",
+      "base_revision_id": "revision_01J0000000000000000000000A",
+      "result_revision_id": "revision_01J0000000000000000000000B",
+      "operation_sequence": 1,
+      "source_range": null,
+      "destination_coordinate_system": "unicode_scalar",
+      "destination_start": 0,
+      "inserted_content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+      "deleted_content_sha256": null,
+      "source_record_ids": [
+        "turn_01J00000000000000000000007"
+      ],
+      "invocation_id": null,
+      "disposition_id": null,
+      "recorded_origin_kind": "recorded_direct_human_input",
+      "actor_identity_status": "self_declared",
+      "transformation_relationships": [
+        "inserted"
+      ],
+      "lineage_reference_ids": [
+        "turn_01J00000000000000000000007"
+      ],
+      "recorded_at": "2026-07-17T18:42:10.123Z"
+    }
+  ]
+}

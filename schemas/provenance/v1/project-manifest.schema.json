@@ -2,9 +2,18 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://thinkloom.app/schemas/provenance/1.0/project-manifest.schema.json",
   "title": "Project manifest",
-  "description": "Canonical identity and lifecycle metadata for a 1.0 project.",
+  "description": "Canonical identity, exact CPL conformance marker, and lifecycle metadata for a 1.0 project.",
   "type": "object",
   "properties": {
+    "project_format": {
+      "const": "thinkloom-cpl"
+    },
+    "project_format_version": {
+      "const": "1.0"
+    },
+    "provenance_conformance": {
+      "const": "cpl-1.0"
+    },
     "schema_version": {
       "const": "1.0"
     },
@@ -56,6 +65,9 @@
     }
   },
   "required": [
+    "project_format",
+    "project_format_version",
+    "provenance_conformance",
     "schema_version",
     "application_version",
     "project_id",
@@ -70,8 +82,11 @@
   "additionalProperties": false,
   "examples": [
     {
+      "project_format": "thinkloom-cpl",
+      "project_format_version": "1.0",
+      "provenance_conformance": "cpl-1.0",
       "schema_version": "1.0",
-      "application_version": "0.4.0",
+      "application_version": "0.5.11",
       "project_id": "project_01J00000000000000000000001",
       "title": "The Attention Commons",
       "created_at": "2026-07-17T18:42:10.123Z",

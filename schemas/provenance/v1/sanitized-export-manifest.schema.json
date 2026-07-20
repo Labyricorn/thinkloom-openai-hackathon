@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://thinkloom.app/schemas/provenance/1.0/sanitized-export-manifest.schema.json",
   "title": "Sanitized export manifest",
-  "description": "Disclosure and file inventory for a non-mutating sanitized evidence export.",
+  "description": "Disclosure, retained-evidence bindings, completeness boundary, and file inventory for a non-mutating sanitized HARP export.",
   "type": "object",
   "properties": {
     "schema_version": {
@@ -16,12 +16,31 @@
       "type": "string",
       "pattern": "^project_[0-9A-HJKMNP-TV-Z]{26}$"
     },
+    "harp_id": {
+      "type": "string",
+      "pattern": "^harp_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "harp_sha256": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "deposit_sha256": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
     "source_chain_head": {
       "type": "string",
       "pattern": "^sha256:[a-f0-9]{64}$"
     },
     "profile": {
       "const": "sanitized"
+    },
+    "completeness_claim": {
+      "const": "selective_disclosed_subset"
+    },
+    "verification_scope_statement": {
+      "type": "string",
+      "minLength": 1
     },
     "omission_rules": {
       "type": "array",
@@ -32,10 +51,14 @@
             "enum": [
               "private_conversation",
               "rejected_output",
+              "rejected_model_output",
               "provider_detail",
+              "provider_metadata_not_required",
+              "credential_authorization_material",
               "personal_identifier",
               "internal_path",
               "source_body",
+              "protected_source_body",
               "other"
             ]
           },
@@ -49,12 +72,22 @@
           "count": {
             "type": "integer",
             "minimum": 0
+          },
+          "retained_binding_sha256": {
+            "type": "string",
+            "pattern": "^sha256:[a-f0-9]{64}$"
+          },
+          "disclosure_sha256": {
+            "type": "string",
+            "pattern": "^sha256:[a-f0-9]{64}$"
           }
         },
         "required": [
           "category",
           "action",
-          "count"
+          "count",
+          "retained_binding_sha256",
+          "disclosure_sha256"
         ],
         "additionalProperties": false
       }
@@ -101,8 +134,13 @@
     "schema_version",
     "export_id",
     "project_id",
+    "harp_id",
+    "harp_sha256",
+    "deposit_sha256",
     "source_chain_head",
     "profile",
+    "completeness_claim",
+    "verification_scope_statement",
     "omission_rules",
     "rules_sha256",
     "files",
@@ -114,19 +152,26 @@
       "schema_version": "1.0",
       "export_id": "record_01J00000000000000000000005",
       "project_id": "project_01J00000000000000000000001",
+      "harp_id": "harp_01J00000000000000000000002",
+      "harp_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+      "deposit_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
       "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
       "profile": "sanitized",
+      "completeness_claim": "selective_disclosed_subset",
+      "verification_scope_statement": "Verified only against disclosed retained evidence; this archive is intentionally incomplete.",
       "omission_rules": [
         {
           "category": "private_conversation",
           "action": "exclude",
-          "count": 2
+          "count": 2,
+          "retained_binding_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+          "disclosure_sha256": "sha256:b58311ab980eecb4da1b7af0b80a6151eb0f90e287c6b30352e0b91eab8cb59b"
         }
       ],
       "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
       "files": [
         {
-          "path": "final-manuscript.md",
+          "path": "evidence/harp-binding.json",
           "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
           "size": 1024
         }

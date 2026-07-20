@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://thinkloom.app/schemas/provenance/1.0/deposit-snapshot.schema.json",
+  "title": "Exact deposit snapshot",
+  "description": "Immutable binding of the exact selected deposit file, manuscript revision, CPL head, and optional layout profile.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "deposit_id": {
+      "type": "string",
+      "pattern": "^deposit_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "project_id": {
+      "type": "string",
+      "pattern": "^project_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "application_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "deposit_path": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?![A-Za-z]:)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(?:/|$))[^\\u0000-\\u001f]+$"
+    },
+    "media_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "byte_length": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "deposit_sha256": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "manuscript_revision_id": {
+      "type": "string",
+      "pattern": "^revision_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "manuscript_revision_sha256": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "cpl_chain_head": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "cpl_event_sequence": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "layout_profile": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "layout_profile_id": {
+              "type": "string",
+              "pattern": "^layout_[0-9A-HJKMNP-TV-Z]{26}$"
+            },
+            "layout_profile_sha256": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            }
+          },
+          "required": [
+            "layout_profile_id",
+            "layout_profile_sha256"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+    }
+  },
+  "required": [
+    "schema_version",
+    "deposit_id",
+    "project_id",
+    "application_version",
+    "deposit_path",
+    "media_type",
+    "byte_length",
+    "deposit_sha256",
+    "manuscript_revision_id",
+    "manuscript_revision_sha256",
+    "cpl_chain_head",
+    "cpl_event_sequence",
+    "layout_profile",
+    "created_at"
+  ],
+  "additionalProperties": false,
+  "examples": [
+    {
+      "schema_version": "1.0",
+      "deposit_id": "deposit_01J00000000000000000000000",
+      "project_id": "project_01J00000000000000000000001",
+      "application_version": "0.5.2",
+      "deposit_path": "deposits/registration-manuscript.pdf",
+      "media_type": "application/pdf",
+      "byte_length": 4096,
+      "deposit_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+      "manuscript_revision_id": "revision_01J0000000000000000000000B",
+      "manuscript_revision_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+      "cpl_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+      "cpl_event_sequence": 42,
+      "layout_profile": {
+        "layout_profile_id": "layout_01J00000000000000000000005",
+        "layout_profile_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555"
+      },
+      "created_at": "2026-07-17T18:42:10.123Z"
+    }
+  ]
+}

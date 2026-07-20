@@ -1,0 +1,588 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://thinkloom.app/schemas/provenance/1.0/human-authorship-record.schema.json",
+  "title": "Human Authorship Record of Provenance",
+  "description": "Canonical machine-readable, non-authoritative, exact-deposit HARP projection. Exact status is evidentiary only and cannot determine legal authorship, originality, copyrightability, or a human percentage. Its digest identity excludes harp_sha256.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "harp_id": {
+      "type": "string",
+      "pattern": "^harp_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "project_id": {
+      "type": "string",
+      "pattern": "^project_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "application_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "generator_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "deposit": {
+      "type": "object",
+      "properties": {
+        "deposit_id": {
+          "type": "string",
+          "pattern": "^deposit_[0-9A-HJKMNP-TV-Z]{26}$"
+        },
+        "deposit_sha256": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "manuscript_revision_id": {
+          "type": "string",
+          "pattern": "^revision_[0-9A-HJKMNP-TV-Z]{26}$"
+        },
+        "manuscript_revision_sha256": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "deposit_id",
+        "deposit_sha256",
+        "manuscript_revision_id",
+        "manuscript_revision_sha256"
+      ],
+      "additionalProperties": false
+    },
+    "cpl_binding": {
+      "type": "object",
+      "properties": {
+        "chain_head": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "event_sequence": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "chain_head",
+        "event_sequence"
+      ],
+      "additionalProperties": false
+    },
+    "contribution_map": {
+      "type": "object",
+      "properties": {
+        "contribution_map_id": {
+          "type": "string",
+          "pattern": "^map_[0-9A-HJKMNP-TV-Z]{26}$"
+        },
+        "contribution_map_sha256": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "contribution_map_id",
+        "contribution_map_sha256"
+      ],
+      "additionalProperties": false
+    },
+    "policy_profile": {
+      "type": "object",
+      "properties": {
+        "policy_profile_id": {
+          "type": "string",
+          "pattern": "^policyprofile_[0-9A-HJKMNP-TV-Z]{26}$"
+        },
+        "profile_version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "profile_sha256": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "retrieved_on": {
+          "type": "string",
+          "format": "date"
+        },
+        "status": {
+          "enum": [
+            "current",
+            "superseded",
+            "unavailable"
+          ]
+        }
+      },
+      "required": [
+        "policy_profile_id",
+        "profile_version",
+        "profile_sha256",
+        "retrieved_on",
+        "status"
+      ],
+      "additionalProperties": false
+    },
+    "evidentiary_status": {
+      "enum": [
+        "exact",
+        "degraded",
+        "stale",
+        "unverified"
+      ]
+    },
+    "applicability_status": {
+      "enum": [
+        "current",
+        "stale"
+      ]
+    },
+    "generation_status": {
+      "enum": [
+        "recorded",
+        "unknown"
+      ]
+    },
+    "origin_coverage_status": {
+      "enum": [
+        "complete",
+        "partial",
+        "unknown"
+      ]
+    },
+    "lineage_coverage_status": {
+      "enum": [
+        "complete",
+        "partial",
+        "unknown"
+      ]
+    },
+    "identity_declaration": {
+      "type": "object",
+      "properties": {
+        "declared_name": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "identity_status": {
+          "enum": [
+            "verified",
+            "self_declared",
+            "unknown"
+          ]
+        },
+        "evidence_reference_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*_[0-9A-HJKMNP-TV-Z]{26}$"
+          },
+          "uniqueItems": true
+        },
+        "user_approved": {
+          "const": true
+        }
+      },
+      "required": [
+        "declared_name",
+        "identity_status",
+        "evidence_reference_ids",
+        "user_approved"
+      ],
+      "additionalProperties": false
+    },
+    "claim_summary": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4000
+    },
+    "ai_system_disclosures": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "provider_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "model_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "identity_status": {
+            "enum": [
+              "recorded",
+              "unknown"
+            ]
+          },
+          "included_expression_segment_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^segment_[0-9A-HJKMNP-TV-Z]{26}$"
+            },
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "provider_id",
+          "model_id",
+          "identity_status",
+          "included_expression_segment_ids"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "coverage": {
+      "type": "object",
+      "properties": {
+        "unit": {
+          "const": "normalized_unicode_scalar_positions"
+        },
+        "denominator": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "recorded_positions": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "statement": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "unit",
+        "denominator",
+        "recorded_positions",
+        "statement"
+      ],
+      "additionalProperties": false
+    },
+    "suggested_registration_language": {
+      "type": "object",
+      "properties": {
+        "author_created": {
+          "type": "string",
+          "maxLength": 1000
+        },
+        "material_excluded": {
+          "type": "string",
+          "maxLength": 1000
+        },
+        "new_material_included": {
+          "type": "string",
+          "maxLength": 1000
+        },
+        "note_to_co": {
+          "anyOf": [
+            {
+              "type": "string",
+              "maxLength": 2000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "registration_treatment_suggestions": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "claim_as_human_contribution",
+              "exclude_ai_generated_material",
+              "describe_new_human_material",
+              "disclose_ai_use",
+              "manual_review_required",
+              "no_suggestion"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "user_approved": {
+          "const": true
+        },
+        "approval_event_id": {
+          "type": "string",
+          "pattern": "^event_[0-9A-HJKMNP-TV-Z]{26}$"
+        },
+        "approved_language_sha256": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "author_created",
+        "material_excluded",
+        "new_material_included",
+        "note_to_co",
+        "registration_treatment_suggestions",
+        "user_approved",
+        "approval_event_id",
+        "approved_language_sha256"
+      ],
+      "additionalProperties": false
+    },
+    "representative_transformation_operation_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^operation_[0-9A-HJKMNP-TV-Z]{26}$"
+      },
+      "uniqueItems": true
+    },
+    "limitation_codes": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "SELF_DECLARED_IDENTITY",
+          "UNKNOWN_IDENTITY",
+          "UNKNOWN_ORIGIN",
+          "UNKNOWN_GENERATION",
+          "UNKNOWN_LINEAGE",
+          "UNATTESTED_EXPRESSION",
+          "DEGRADED_COVERAGE",
+          "SUPERSEDED_POLICY_PROFILE",
+          "SANITIZED_EVIDENCE",
+          "COPYRIGHT_OFFICE_DETERMINES_SCOPE"
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "explanation_codes": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "INTEGRITY_ONLY_VERIFICATION",
+          "RECORDED_ORIGIN_NOT_LEGAL_AUTHORSHIP",
+          "SELECTION_ARRANGEMENT_IS_OVERLAY",
+          "PAGE_LOCATORS_ARE_DERIVED",
+          "REGISTRATION_LANGUAGE_IS_SUGGESTED",
+          "HARP_STALE_AFTER_EDIT"
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "sanitization_profile": {
+      "enum": [
+        "full_private",
+        "sanitized"
+      ]
+    },
+    "harp_sha256": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    }
+  },
+  "required": [
+    "schema_version",
+    "harp_id",
+    "project_id",
+    "application_version",
+    "generator_version",
+    "deposit",
+    "cpl_binding",
+    "contribution_map",
+    "policy_profile",
+    "evidentiary_status",
+    "applicability_status",
+    "generation_status",
+    "origin_coverage_status",
+    "lineage_coverage_status",
+    "identity_declaration",
+    "claim_summary",
+    "ai_system_disclosures",
+    "coverage",
+    "suggested_registration_language",
+    "representative_transformation_operation_ids",
+    "limitation_codes",
+    "explanation_codes",
+    "sanitization_profile",
+    "harp_sha256"
+  ],
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "evidentiary_status": {
+            "const": "exact"
+          }
+        },
+        "required": [
+          "evidentiary_status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "applicability_status": {
+            "const": "current"
+          },
+          "generation_status": {
+            "const": "recorded"
+          },
+          "origin_coverage_status": {
+            "const": "complete"
+          },
+          "lineage_coverage_status": {
+            "const": "complete"
+          },
+          "identity_declaration": {
+            "type": "object",
+            "properties": {
+              "identity_status": {
+                "enum": [
+                  "verified",
+                  "self_declared"
+                ]
+              }
+            },
+            "required": [
+              "identity_status"
+            ]
+          },
+          "ai_system_disclosures": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "identity_status": {
+                  "const": "recorded"
+                }
+              },
+              "required": [
+                "identity_status"
+              ]
+            }
+          },
+          "policy_profile": {
+            "type": "object",
+            "properties": {
+              "status": {
+                "const": "current"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "examples": [
+    {
+      "schema_version": "1.0",
+      "harp_id": "harp_01J00000000000000000000002",
+      "project_id": "project_01J00000000000000000000001",
+      "application_version": "0.5.2",
+      "generator_version": "1.0.0",
+      "deposit": {
+        "deposit_id": "deposit_01J00000000000000000000000",
+        "deposit_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "manuscript_revision_id": "revision_01J0000000000000000000000B",
+        "manuscript_revision_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222"
+      },
+      "cpl_binding": {
+        "chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "event_sequence": 42
+      },
+      "contribution_map": {
+        "contribution_map_id": "map_01J0000000000000000000000Z",
+        "contribution_map_sha256": "sha256:28562ec310a4eda35436bf01ec534d0639939365af453e3c922c492ee0ebff00"
+      },
+      "policy_profile": {
+        "policy_profile_id": "policyprofile_01J00000000000000000000004",
+        "profile_version": "1.0.0",
+        "profile_sha256": "sha256:77bfc640282012169a92feb92b9539ca6826b798659cb3f7d07beb864e53abba",
+        "retrieved_on": "2026-07-19",
+        "status": "current"
+      },
+      "evidentiary_status": "exact",
+      "applicability_status": "current",
+      "generation_status": "recorded",
+      "origin_coverage_status": "complete",
+      "lineage_coverage_status": "complete",
+      "identity_declaration": {
+        "declared_name": "Example Author",
+        "identity_status": "self_declared",
+        "evidence_reference_ids": [
+          "assertion_01J0000000000000000000000V"
+        ],
+        "user_approved": true
+      },
+      "claim_summary": "CPL records direct human input, accepted AI output, and subsequent recorded transformations for the exact deposit.",
+      "ai_system_disclosures": [
+        {
+          "provider_id": "openai",
+          "model_id": "gpt-example",
+          "identity_status": "recorded",
+          "included_expression_segment_ids": [
+            "segment_01J0000000000000000000000Y"
+          ]
+        }
+      ],
+      "coverage": {
+        "unit": "normalized_unicode_scalar_positions",
+        "denominator": 12,
+        "recorded_positions": 12,
+        "statement": "12 of 12 normalized Unicode scalar positions have recorded origin."
+      },
+      "suggested_registration_language": {
+        "author_created": "Text and revisions described in the attached provenance record",
+        "material_excluded": "AI-generated text identified in the attached provenance record",
+        "new_material_included": "Human-authored text and revisions",
+        "note_to_co": "This work contains disclosed AI-generated material.",
+        "registration_treatment_suggestions": [
+          "disclose_ai_use",
+          "manual_review_required"
+        ],
+        "user_approved": true,
+        "approval_event_id": "event_01J00000000000000000000004",
+        "approved_language_sha256": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+      },
+      "representative_transformation_operation_ids": [
+        "operation_01J0000000000000000000000X"
+      ],
+      "limitation_codes": [
+        "SELF_DECLARED_IDENTITY",
+        "COPYRIGHT_OFFICE_DETERMINES_SCOPE"
+      ],
+      "explanation_codes": [
+        "INTEGRITY_ONLY_VERIFICATION",
+        "RECORDED_ORIGIN_NOT_LEGAL_AUTHORSHIP",
+        "SELECTION_ARRANGEMENT_IS_OVERLAY",
+        "PAGE_LOCATORS_ARE_DERIVED",
+        "REGISTRATION_LANGUAGE_IS_SUGGESTED",
+        "HARP_STALE_AFTER_EDIT"
+      ],
+      "sanitization_profile": "full_private",
+      "harp_sha256": "sha256:20e3ba5bb0c6c25c8d047e0e8b82a17044193e0b8ce521612d48cc85fed5feb9"
+    }
+  ]
+}

@@ -24,6 +24,9 @@ const ids = {
   policy: typedId("policy", "H"), correction: typedId("correction", "J"), normalization: typedId("normalization", "K"), disposition: typedId("disposition", "M"),
   transaction: typedId("transaction", "N"), failure: typedId("failure", "P"), stream: typedId("stream", "Q"), purge: typedId("purge", "R"),
   assertion: typedId("assertion", "V"), evaluation: typedId("evaluation", "W"),
+  operation: typedId("operation", "X"), segment: typedId("segment", "Y"), map: typedId("map", "Z"),
+  deposit: typedId("deposit", "0"), harp: typedId("harp", "2"), manifest: typedId("manifest", "3"),
+  policyProfile: typedId("policyprofile", "4"), layout: typedId("layout", "5"),
 };
 
 if (!Object.values(ids).every((value) => /^[a-z]+_[0-9A-HJKMNP-TV-Z]{26}$/.test(value))) throw new Error("Generated fixture identifier is invalid.");
@@ -50,6 +53,14 @@ const confidenceValues = ["exact", "degraded", "unverified", "not_applicable"];
 const evidenceClasses = ["mandatory_live", "mandatory_retained", "advisory", "shadow"];
 const assertionBoundaryKinds = ["missing_provenance", "unknown_generation", "evidence_access", "compatibility", "dependency_change", "policy", "interpretation", "coverage"];
 const dependencyResultStatuses = ["valid", "missing", "changed", "inaccessible", "incompatible", "not_evaluated"];
+const compositionOperationKinds = ["insert", "delete", "replace", "move", "paste", "transcription", "ai_acceptance", "restoration"];
+const recordedOriginKinds = ["recorded_direct_human_input", "human_expressive_input_via_transcription", "accepted_ai_output", "imported_or_pasted", "system_restoration", "unattested"];
+const transformationRelationships = ["inserted", "deleted", "replaced", "moved", "pasted_from_external", "transcribed_from_human_speech", "generated_by_ai", "modified_by_human", "restored_from_revision", "derived_from"];
+const contributionMapLayers = ["recorded_origin", "transformation", "selection_arrangement", "evidentiary_evaluation", "suggested_registration_treatment", "structural_locator"];
+const registrationTreatmentSuggestions = ["claim_as_human_contribution", "exclude_ai_generated_material", "describe_new_human_material", "disclose_ai_use", "manual_review_required", "no_suggestion"];
+const harpLimitationCodes = ["SELF_DECLARED_IDENTITY", "UNKNOWN_IDENTITY", "UNKNOWN_ORIGIN", "UNKNOWN_GENERATION", "UNKNOWN_LINEAGE", "UNATTESTED_EXPRESSION", "DEGRADED_COVERAGE", "SUPERSEDED_POLICY_PROFILE", "SANITIZED_EVIDENCE", "COPYRIGHT_OFFICE_DETERMINES_SCOPE"];
+const harpExplanationCodes = ["INTEGRITY_ONLY_VERIFICATION", "RECORDED_ORIGIN_NOT_LEGAL_AUTHORSHIP", "SELECTION_ARRANGEMENT_IS_OVERLAY", "PAGE_LOCATORS_ARE_DERIVED", "REGISTRATION_LANGUAGE_IS_SUGGESTED", "HARP_STALE_AFTER_EDIT"];
+const compositionAssertionPredicates = ["derived_from", "generated_by", "modified_by_human", "selected_by_human", "arranged_by_human", "included_in_deposit"];
 const assertionReasonCodes = [
   "DIRECT_HASH_LINKED_DERIVATION",
   "VERIFIED_TRANSITIVE_DERIVATION",
@@ -141,7 +152,7 @@ const contentReferenceExample = {
 add("content-reference", "Content reference", closed({
   schema_version: schemaVersion,
   record_id: typedIdentifier,
-  record_type: { enum: ["conversation_turn", "invocation_request", "invocation_response", "invocation_failure", "idea_revision", "manuscript_revision", "edit_transaction", "prompt_template", "model_configuration", "provenance_assertion", "assertion_evaluation", "release_file", "source", "other"] },
+  record_type: { enum: ["conversation_turn", "invocation_request", "invocation_response", "invocation_failure", "idea_revision", "manuscript_revision", "edit_transaction", "composition_operation", "expression_segment", "contribution_map", "deposit_snapshot", "registration_policy_profile", "human_authorship_record", "harp_export_manifest", "prompt_template", "model_configuration", "provenance_assertion", "assertion_evaluation", "release_file", "source", "other"] },
   sha256: sha,
   path: nullable(repositoryPath),
   revision_id: nullable(identifier("revision")),
@@ -156,11 +167,11 @@ add("provenance-policy", "Provenance policy", closed({
 }), policyExample, "Prospective project retention, protection, and export defaults.");
 
 const projectExample = {
-  schema_version: "1.0", application_version: "0.4.0", project_id: ids.project, title: "The Attention Commons", created_at: timestampValue, updated_at: laterTimestamp, current_phase: "ideation", publication_status: "working", provenance_policy_id: ids.policy, audio_retained: false,
+  project_format: "thinkloom-cpl", project_format_version: "1.0", provenance_conformance: "cpl-1.0", schema_version: "1.0", application_version: "0.5.11", project_id: ids.project, title: "The Attention Commons", created_at: timestampValue, updated_at: laterTimestamp, current_phase: "ideation", publication_status: "working", provenance_policy_id: ids.policy, audio_retained: false,
 };
 add("project-manifest", "Project manifest", closed({
-  schema_version: schemaVersion, application_version: { type: "string", pattern: "^\\d+\\.\\d+\\.\\d+$" }, project_id: identifier("project"), title: nonEmptyString, description: { type: "string" }, created_at: timestamp, updated_at: timestamp, current_phase: { enum: ["ideation", "drafting", "finalization"] }, publication_status: { enum: ["working", "finalized", "published"] }, provenance_policy_id: identifier("policy"), audio_retained: { const: false },
-}, ["schema_version", "application_version", "project_id", "title", "created_at", "updated_at", "current_phase", "publication_status", "provenance_policy_id", "audio_retained"]), projectExample, "Canonical identity and lifecycle metadata for a 1.0 project.");
+  project_format: { const: "thinkloom-cpl" }, project_format_version: { const: "1.0" }, provenance_conformance: { const: "cpl-1.0" }, schema_version: schemaVersion, application_version: { type: "string", pattern: "^\\d+\\.\\d+\\.\\d+$" }, project_id: identifier("project"), title: nonEmptyString, description: { type: "string" }, created_at: timestamp, updated_at: timestamp, current_phase: { enum: ["ideation", "drafting", "finalization"] }, publication_status: { enum: ["working", "finalized", "published"] }, provenance_policy_id: identifier("policy"), audio_retained: { const: false },
+}, ["project_format", "project_format_version", "provenance_conformance", "schema_version", "application_version", "project_id", "title", "created_at", "updated_at", "current_phase", "publication_status", "provenance_policy_id", "audio_retained"]), projectExample, "Canonical identity, exact CPL conformance marker, and lifecycle metadata for a 1.0 project.");
 
 const writeIntentExample = {
   schema_version: "1.0", intent_id: ids.intent, client_action_id: "client-action-0001", project_id: ids.project, operation_type: "IDEA_ACCEPTED", phase: "PREPARED", event_id: null, event_sequence: null, staged_path: ".app/temp/intents/intent.json", command_sha256: digest("3"), result: null, created_at: timestampValue, updated_at: timestampValue,
@@ -478,12 +489,127 @@ const releaseFiles = [{ path: "manuscript/final-manuscript.md", sha256: digest("
 const releaseExample = { schema_version: "1.0", application_version: "0.4.0", release_id: ids.release, project_id: ids.project, version: "1.0.0", created_at: laterTimestamp, source_commit: "0123456789abcdef0123456789abcdef01234567", source_chain_head: digest("4"), source_manuscript: { path: "manuscript/final-manuscript.md", sha256: digest("4") }, sanitized: false, files: releaseFiles, release_files_merkle_root: releaseMerkleRoot(releaseFiles), merkle_algorithm: "thinkloom-release-merkle-v1" };
 add("release-manifest", "Release manifest", closed({ schema_version: schemaVersion, application_version: { type: "string", pattern: "^\\d+\\.\\d+\\.\\d+$" }, release_id: identifier("release"), project_id: identifier("project"), version: { type: "string", pattern: "^\\d+\\.\\d+\\.\\d+$" }, created_at: timestamp, source_commit: { type: "string", pattern: "^[a-f0-9]{40,64}$" }, source_chain_head: sha, source_manuscript: closed({ path: repositoryPath, sha256: sha }), sanitized: { type: "boolean" }, files: arrayOf(fileEntry, { minItems: 1 }), release_files_merkle_root: sha, merkle_algorithm: { const: "thinkloom-release-merkle-v1" } }), releaseExample, "Non-self-referential binding of a frozen source to verified release files.");
 
-const sanitizedExample = { schema_version: "1.0", export_id: ids.record, project_id: ids.project, source_chain_head: digest("4"), profile: "sanitized", omission_rules: [{ category: "private_conversation", action: "exclude", count: 2 }], rules_sha256: digest("6"), files: [{ path: "final-manuscript.md", sha256: digest("4"), size: 1024 }], created_at: laterTimestamp };
-add("sanitized-export-manifest", "Sanitized export manifest", closed({ schema_version: schemaVersion, export_id: identifier("record"), project_id: identifier("project"), source_chain_head: sha, profile: { const: "sanitized" }, omission_rules: arrayOf(closed({ category: { enum: ["private_conversation", "rejected_output", "provider_detail", "personal_identifier", "internal_path", "source_body", "other"] }, action: { enum: ["exclude", "redact", "summarize"] }, count: { type: "integer", minimum: 0 } })), rules_sha256: sha, files: arrayOf(fileEntry, { minItems: 1 }), created_at: timestamp }), sanitizedExample, "Disclosure and file inventory for a non-mutating sanitized evidence export.");
+const sanitizedExampleIdentity = { category: "private_conversation", action: "exclude", count: 2, retained_binding_sha256: digest("5") };
+const sanitizedExample = {
+  schema_version: "1.0", export_id: ids.record, project_id: ids.project, harp_id: ids.harp, harp_sha256: digest("3"), deposit_sha256: digest("2"), source_chain_head: digest("4"), profile: "sanitized", completeness_claim: "selective_disclosed_subset", verification_scope_statement: "Verified only against disclosed retained evidence; this archive is intentionally incomplete.", omission_rules: [{ ...sanitizedExampleIdentity, disclosure_sha256: sha256(sanitizedExampleIdentity) }], rules_sha256: digest("6"), files: [{ path: "evidence/harp-binding.json", sha256: digest("4"), size: 1024 }], created_at: laterTimestamp,
+};
+add("sanitized-export-manifest", "Sanitized export manifest", closed({
+  schema_version: schemaVersion, export_id: identifier("record"), project_id: identifier("project"), harp_id: identifier("harp"), harp_sha256: sha, deposit_sha256: sha, source_chain_head: sha, profile: { const: "sanitized" }, completeness_claim: { const: "selective_disclosed_subset" }, verification_scope_statement: nonEmptyString,
+  omission_rules: arrayOf(closed({ category: { enum: ["private_conversation", "rejected_output", "rejected_model_output", "provider_detail", "provider_metadata_not_required", "credential_authorization_material", "personal_identifier", "internal_path", "source_body", "protected_source_body", "other"] }, action: { enum: ["exclude", "redact", "summarize"] }, count: { type: "integer", minimum: 0 }, retained_binding_sha256: sha, disclosure_sha256: sha })), rules_sha256: sha, files: arrayOf(fileEntry, { minItems: 1 }), created_at: timestamp,
+}), sanitizedExample, "Disclosure, retained-evidence bindings, completeness boundary, and file inventory for a non-mutating sanitized HARP export.");
+const compositionOperationExample = {
+  schema_version: "1.0", operation_id: ids.operation, project_id: ids.project, operation_kind: "insert", client_action_id: "client-action-composition-0001", base_revision_id: ids.revision, result_revision_id: ids.revision2, operation_sequence: 1, source_range: null, destination_coordinate_system: "unicode_scalar", destination_start: 0, inserted_content_sha256: digest("1"), deleted_content_sha256: null, source_record_ids: [ids.turn], invocation_id: null, disposition_id: null, recorded_origin_kind: "recorded_direct_human_input", actor_identity_status: "self_declared", transformation_relationships: ["inserted"], lineage_reference_ids: [ids.turn], recorded_at: timestampValue,
+};
+const compositionOperationRules = { allOf: [
+  { if: { properties: { operation_kind: { const: "paste" } }, required: ["operation_kind"] }, then: { properties: { recorded_origin_kind: { const: "imported_or_pasted" } } } },
+  { if: { properties: { operation_kind: { const: "transcription" } }, required: ["operation_kind"] }, then: { properties: { recorded_origin_kind: { const: "human_expressive_input_via_transcription" } } } },
+  { if: { properties: { operation_kind: { const: "ai_acceptance" } }, required: ["operation_kind"] }, then: { properties: { recorded_origin_kind: { const: "accepted_ai_output" }, invocation_id: identifier("invocation"), disposition_id: identifier("disposition") } } },
+  { if: { properties: { operation_kind: { const: "restoration" } }, required: ["operation_kind"] }, then: { properties: { recorded_origin_kind: { const: "system_restoration" } } } },
+  { if: { properties: { operation_kind: { const: "delete" } }, required: ["operation_kind"] }, then: { properties: { source_range: ref("text-fragment-reference"), inserted_content_sha256: { type: "null" }, deleted_content_sha256: sha } } },
+  { if: { properties: { operation_kind: { enum: ["insert", "paste", "transcription", "ai_acceptance", "restoration"] } }, required: ["operation_kind"] }, then: { properties: { inserted_content_sha256: sha } } },
+] };
+add("composition-operation", "Composition operation", closed({
+  schema_version: schemaVersion, operation_id: identifier("operation"), project_id: identifier("project"), operation_kind: { enum: compositionOperationKinds }, client_action_id: { type: "string", minLength: 8, maxLength: 200 }, base_revision_id: identifier("revision"), result_revision_id: identifier("revision"), operation_sequence: { type: "integer", minimum: 1 }, source_range: nullable(ref("text-fragment-reference")), destination_coordinate_system: { enum: ["utf8_byte", "unicode_scalar", "utf16_code_unit", "editor_position"] }, destination_start: nullable({ type: "integer", minimum: 0 }), inserted_content_sha256: nullable(sha), deleted_content_sha256: nullable(sha), source_record_ids: arrayOf(typedIdentifier, { uniqueItems: true }), invocation_id: nullable(identifier("invocation")), disposition_id: nullable(identifier("disposition")), recorded_origin_kind: { enum: recordedOriginKinds }, actor_identity_status: { enum: ["verified", "self_declared", "unknown", "not_applicable"] }, transformation_relationships: arrayOf({ enum: transformationRelationships }, { minItems: 1, uniqueItems: true }), lineage_reference_ids: arrayOf(typedIdentifier, { minItems: 1, uniqueItems: true }), recorded_at: timestamp,
+}, undefined, compositionOperationRules), compositionOperationExample, "Immutable composition-specific insertion, deletion, replacement, movement, paste, transcription, AI acceptance, or restoration operation; it does not overload edit transactions or assertions.");
 
+const expressionRangeExample = { ...textRangeExample, document_revision_id: ids.revision2, coordinate_system: "unicode_scalar", start: 0, end: 12, preimage_sha256: digest("2"), text_fragment_id: ids.fragment };
+const expressionSegmentExample = {
+  schema_version: "1.0", segment_id: ids.segment, project_id: ids.project, revision_id: ids.revision2, segment_sequence: 1, range: expressionRangeExample, content_sha256: digest("2"), normalized_unicode_scalar_length: 12, recorded_origin_kind: "recorded_direct_human_input", actor_identity_status: "self_declared", generation_status: "recorded", lineage_status: "recorded", lineage_reference_ids: [ids.operation], operation_ids: [ids.operation], transformation_relationships: ["inserted"], assertion_ids: [ids.assertion], selection_arrangement_assertion_ids: [], included_in_deposit_assertion_id: ids.assertion, classification_status: "exact",
+};
+const expressionSegmentRules = { allOf: [{
+  if: { properties: { classification_status: { const: "exact" } }, required: ["classification_status"] },
+  then: { properties: {
+    recorded_origin_kind: { enum: recordedOriginKinds.filter((value) => value !== "unattested") },
+    actor_identity_status: { enum: ["verified", "self_declared", "not_applicable"] },
+    generation_status: { const: "recorded" }, lineage_status: { const: "recorded" },
+    lineage_reference_ids: { type: "array", minItems: 1 }, operation_ids: { type: "array", minItems: 1 }, assertion_ids: { type: "array", minItems: 1 }, included_in_deposit_assertion_id: identifier("assertion"),
+  } },
+}] };
+add("expression-segment", "Surviving expression segment", closed({
+  schema_version: schemaVersion, segment_id: identifier("segment"), project_id: identifier("project"), revision_id: identifier("revision"), segment_sequence: { type: "integer", minimum: 1 }, range: ref("text-fragment-reference"), content_sha256: sha, normalized_unicode_scalar_length: { type: "integer", minimum: 1 }, recorded_origin_kind: { enum: recordedOriginKinds }, actor_identity_status: { enum: ["verified", "self_declared", "unknown", "not_applicable"] }, generation_status: { enum: ["recorded", "unknown"] }, lineage_status: { enum: ["recorded", "unattested", "unknown"] }, lineage_reference_ids: arrayOf(typedIdentifier, { uniqueItems: true }), operation_ids: arrayOf(identifier("operation"), { uniqueItems: true }), transformation_relationships: arrayOf({ enum: transformationRelationships }, { uniqueItems: true }), assertion_ids: arrayOf(identifier("assertion"), { uniqueItems: true }), selection_arrangement_assertion_ids: arrayOf(identifier("assertion"), { uniqueItems: true }), included_in_deposit_assertion_id: nullable(identifier("assertion")), classification_status: { enum: ["exact", "degraded", "stale", "unverified"] },
+}, undefined, expressionSegmentRules), expressionSegmentExample, "Stable surviving deposit expression with revision-bound range, digest, recorded origin, lineage, transformations, and separate selection/arrangement assertions.");
+
+const depositSnapshotExample = {
+  schema_version: "1.0", deposit_id: ids.deposit, project_id: ids.project, application_version: "0.5.2", deposit_path: "deposits/registration-manuscript.pdf", media_type: "application/pdf", byte_length: 4096, deposit_sha256: digest("3"), manuscript_revision_id: ids.revision2, manuscript_revision_sha256: digest("2"), cpl_chain_head: digest("4"), cpl_event_sequence: 42, layout_profile: { layout_profile_id: ids.layout, layout_profile_sha256: digest("5") }, created_at: timestampValue,
+};
+add("deposit-snapshot", "Exact deposit snapshot", closed({
+  schema_version: schemaVersion, deposit_id: identifier("deposit"), project_id: identifier("project"), application_version: { type: "string", pattern: "^\\d+\\.\\d+\\.\\d+$" }, deposit_path: repositoryPath, media_type: nonEmptyString, byte_length: { type: "integer", minimum: 1 }, deposit_sha256: sha, manuscript_revision_id: identifier("revision"), manuscript_revision_sha256: sha, cpl_chain_head: sha, cpl_event_sequence: { type: "integer", minimum: 1 }, layout_profile: nullable(closed({ layout_profile_id: identifier("layout"), layout_profile_sha256: sha })), created_at: timestamp,
+}), depositSnapshotExample, "Immutable binding of the exact selected deposit file, manuscript revision, CPL head, and optional layout profile.");
+
+const contributionCoverageDefinition = "All normalized Unicode scalar positions in the exact frozen deposit manuscript; this is provenance coverage, not a human-authorship percentage.";
+const requiredContributionLayers = ["recorded_origin", "transformation", "selection_arrangement", "evidentiary_evaluation", "suggested_registration_treatment"];
+const contributionLayersSchema = arrayOf({ enum: contributionMapLayers }, { minItems: requiredContributionLayers.length, uniqueItems: true, allOf: requiredContributionLayers.map((layer) => ({ contains: { const: layer }, minContains: 1, maxContains: 1 })) });
+const contributionMapIdentity = {
+  schema_version: "1.0", contribution_map_id: ids.map, project_id: ids.project, deposit_id: ids.deposit, deposit_sha256: depositSnapshotExample.deposit_sha256, manuscript_revision_id: ids.revision2, manuscript_revision_sha256: digest("2"), cpl_chain_head: digest("4"), cpl_event_sequence: 42, coordinate_system: "unicode_scalar", coverage: { denominator: 12, recorded_positions: 12, coverage_status: "complete", denominator_unit: "normalized_unicode_scalar_position", denominator_definition: contributionCoverageDefinition }, layers: requiredContributionLayers, segments: [expressionSegmentExample], structural_locators: [{ segment_id: ids.segment, chapter: 1, paragraph: 1, page: 1 }], layout_profile: depositSnapshotExample.layout_profile, generator: { name: "thinkloom-contribution-map", version: "1.0.0", configuration_sha256: digest("6") }, classification_status: "exact",
+};
+const contributionMapExample = { ...contributionMapIdentity, contribution_map_sha256: sha256(contributionMapIdentity) };
+const contributionMapRules = { allOf: [{
+  if: { properties: { classification_status: { const: "exact" } }, required: ["classification_status"] },
+  then: { properties: { coverage: { type: "object", properties: { coverage_status: { const: "complete" } }, required: ["coverage_status"] }, segments: { type: "array", items: { allOf: [ref("expression-segment"), { type: "object", properties: { classification_status: { const: "exact" } }, required: ["classification_status"] }] } } } },
+}] };
+add("contribution-map", "Deposit contribution map", closed({
+  schema_version: schemaVersion, contribution_map_id: identifier("map"), project_id: identifier("project"), deposit_id: identifier("deposit"), deposit_sha256: sha, manuscript_revision_id: identifier("revision"), manuscript_revision_sha256: sha, cpl_chain_head: sha, cpl_event_sequence: { type: "integer", minimum: 1 }, coordinate_system: { const: "unicode_scalar" }, coverage: closed({ denominator: { type: "integer", minimum: 0 }, recorded_positions: { type: "integer", minimum: 0 }, coverage_status: { enum: ["complete", "partial"] }, denominator_unit: { const: "normalized_unicode_scalar_position" }, denominator_definition: nonEmptyString }), layers: contributionLayersSchema, segments: arrayOf(ref("expression-segment"), { minItems: 1 }), structural_locators: arrayOf(closed({ segment_id: identifier("segment"), chapter: nullable({ type: "integer", minimum: 1 }), paragraph: nullable({ type: "integer", minimum: 1 }), page: nullable({ type: "integer", minimum: 1 }) })), layout_profile: nullable(closed({ layout_profile_id: identifier("layout"), layout_profile_sha256: sha })), generator: closed({ name: nonEmptyString, version: { type: "string", pattern: "^\\d+\\.\\d+\\.\\d+$" }, configuration_sha256: sha }), classification_status: { enum: ["exact", "degraded", "stale", "unverified"] }, contribution_map_sha256: sha,
+}, undefined, contributionMapRules), contributionMapExample, "Deterministic non-authoritative projection providing complete ordered deposit coverage while keeping origin, transformation, selection/arrangement, evaluation, and registration treatment independent. Its digest identity excludes contribution_map_sha256.");
+
+const policyProfileIdentity = {
+  schema_version: "1.0", policy_profile_id: ids.policyProfile, profile_version: "1.0.0", application_version: "0.5.2", compatible_application_versions: ["0.5.2", "0.5.3", "0.5.4", "0.5.5", "0.5.6", "0.5.7", "0.5.8", "0.5.9", "0.5.10", "0.5.11", "0.6.0"], jurisdiction: "US", work_class: "literary_work", application_type: "standard_application", official_sources: [
+    { title: "Copyright Registration Guidance: Works Containing Material Generated by Artificial Intelligence", source_url: "https://www.copyright.gov/ai/ai_policy_guidance.pdf", source_sha256: digest("7"), published_on: "2023-03-16", retrieved_on: "2026-07-19" },
+    { title: "Copyright and Artificial Intelligence, Part 2: Copyrightability", source_url: "https://www.copyright.gov/ai/Copyright-and-Artificial-Intelligence-Part-2-Copyrightability-Report.pdf", source_sha256: digest("8"), published_on: "2025-01-29", retrieved_on: "2026-07-19" },
+    { title: "Standard Application Help: Author", source_url: "https://www.copyright.gov/eco/help-author.html", source_sha256: digest("9"), published_on: null, retrieved_on: "2026-07-19" },
+    { title: "Standard Application Help: Limitation of Claim", source_url: "https://www.copyright.gov/eco/help-limitation.html", source_sha256: digest("a"), published_on: null, retrieved_on: "2026-07-19" },
+    { title: "37 C.F.R. 202.3", source_url: "https://www.copyright.gov/title37/202/37cfr202-3.html", source_sha256: digest("b"), published_on: null, retrieved_on: "2026-07-19" },
+  ], field_terminology: { author_created: "Author Created", material_excluded: "Material Excluded", new_material_included: "New Material Included", note_to_co: "Note to CO" }, supported_treatment_suggestions: registrationTreatmentSuggestions, disclaimer_text: "Suggested, editable language; not legal advice. The U.S. Copyright Office determines copyrightability and registration scope.", copyright_office_determination_required: true, read_only: true,
+};
+const policyProfileExample = { ...policyProfileIdentity, profile_sha256: sha256(policyProfileIdentity) };
+add("registration-policy-profile", "Registration policy profile", closed({
+  schema_version: schemaVersion, policy_profile_id: identifier("policyprofile"), profile_version: { type: "string", pattern: "^\\d+\\.\\d+\\.\\d+$" }, application_version: { type: "string", pattern: "^\\d+\\.\\d+\\.\\d+$" }, compatible_application_versions: arrayOf({ type: "string", pattern: "^\\d+\\.\\d+\\.\\d+$" }, { minItems: 1, uniqueItems: true }), jurisdiction: { const: "US" }, work_class: { const: "literary_work" }, application_type: { const: "standard_application" }, official_sources: arrayOf(closed({ title: nonEmptyString, source_url: { type: "string", format: "uri" }, source_sha256: sha, published_on: nullable({ type: "string", format: "date" }), retrieved_on: { type: "string", format: "date" } }), { minItems: 5 }), field_terminology: closed({ author_created: { const: "Author Created" }, material_excluded: { const: "Material Excluded" }, new_material_included: { const: "New Material Included" }, note_to_co: { const: "Note to CO" } }), supported_treatment_suggestions: arrayOf({ enum: registrationTreatmentSuggestions }, { minItems: 1, uniqueItems: true }), disclaimer_text: nonEmptyString, copyright_office_determination_required: { const: true }, read_only: { const: true }, profile_sha256: sha,
+}), policyProfileExample, "Immutable read-only U.S. literary-work Standard Application terminology and disclaimer profile. Its digest identity excludes profile_sha256.");
+
+const harpIdentity = {
+  schema_version: "1.0", harp_id: ids.harp, project_id: ids.project, application_version: "0.5.2", generator_version: "1.0.0", deposit: { deposit_id: ids.deposit, deposit_sha256: depositSnapshotExample.deposit_sha256, manuscript_revision_id: ids.revision2, manuscript_revision_sha256: digest("2") }, cpl_binding: { chain_head: digest("4"), event_sequence: 42 }, contribution_map: { contribution_map_id: ids.map, contribution_map_sha256: contributionMapExample.contribution_map_sha256 }, policy_profile: { policy_profile_id: ids.policyProfile, profile_version: policyProfileIdentity.profile_version, profile_sha256: policyProfileExample.profile_sha256, retrieved_on: "2026-07-19", status: "current" }, evidentiary_status: "exact", applicability_status: "current", generation_status: "recorded", origin_coverage_status: "complete", lineage_coverage_status: "complete", identity_declaration: { declared_name: "Example Author", identity_status: "self_declared", evidence_reference_ids: [ids.assertion], user_approved: true }, claim_summary: "CPL records direct human input, accepted AI output, and subsequent recorded transformations for the exact deposit.", ai_system_disclosures: [{ provider_id: "openai", model_id: "gpt-example", identity_status: "recorded", included_expression_segment_ids: [ids.segment] }], coverage: { unit: "normalized_unicode_scalar_positions", denominator: 12, recorded_positions: 12, statement: "12 of 12 normalized Unicode scalar positions have recorded origin." }, suggested_registration_language: { author_created: "Text and revisions described in the attached provenance record", material_excluded: "AI-generated text identified in the attached provenance record", new_material_included: "Human-authored text and revisions", note_to_co: "This work contains disclosed AI-generated material.", registration_treatment_suggestions: ["disclose_ai_use", "manual_review_required"], user_approved: true, approval_event_id: ids.event2, approved_language_sha256: digest("c") }, representative_transformation_operation_ids: [ids.operation], limitation_codes: ["SELF_DECLARED_IDENTITY", "COPYRIGHT_OFFICE_DETERMINES_SCOPE"], explanation_codes: harpExplanationCodes, sanitization_profile: "full_private",
+};
+const harpExample = { ...harpIdentity, harp_sha256: sha256(harpIdentity) };
+const harpRules = { allOf: [{
+  if: { properties: { evidentiary_status: { const: "exact" } }, required: ["evidentiary_status"] },
+  then: { properties: {
+    applicability_status: { const: "current" }, generation_status: { const: "recorded" }, origin_coverage_status: { const: "complete" }, lineage_coverage_status: { const: "complete" },
+    identity_declaration: { type: "object", properties: { identity_status: { enum: ["verified", "self_declared"] } }, required: ["identity_status"] },
+    ai_system_disclosures: { type: "array", items: { type: "object", properties: { identity_status: { const: "recorded" } }, required: ["identity_status"] } },
+    policy_profile: { type: "object", properties: { status: { const: "current" } }, required: ["status"] },
+  } },
+}] };
+add("human-authorship-record", "Human Authorship Record of Provenance", closed({
+  schema_version: schemaVersion, harp_id: identifier("harp"), project_id: identifier("project"), application_version: { type: "string", pattern: "^\\d+\\.\\d+\\.\\d+$" }, generator_version: { type: "string", pattern: "^\\d+\\.\\d+\\.\\d+$" }, deposit: closed({ deposit_id: identifier("deposit"), deposit_sha256: sha, manuscript_revision_id: identifier("revision"), manuscript_revision_sha256: sha }), cpl_binding: closed({ chain_head: sha, event_sequence: { type: "integer", minimum: 1 } }), contribution_map: closed({ contribution_map_id: identifier("map"), contribution_map_sha256: sha }), policy_profile: closed({ policy_profile_id: identifier("policyprofile"), profile_version: { type: "string", pattern: "^\\d+\\.\\d+\\.\\d+$" }, profile_sha256: sha, retrieved_on: { type: "string", format: "date" }, status: { enum: ["current", "superseded", "unavailable"] } }), evidentiary_status: { enum: ["exact", "degraded", "stale", "unverified"] }, applicability_status: { enum: ["current", "stale"] }, generation_status: { enum: ["recorded", "unknown"] }, origin_coverage_status: { enum: ["complete", "partial", "unknown"] }, lineage_coverage_status: { enum: ["complete", "partial", "unknown"] }, identity_declaration: closed({ declared_name: nullable(nonEmptyString), identity_status: { enum: ["verified", "self_declared", "unknown"] }, evidence_reference_ids: arrayOf(typedIdentifier, { uniqueItems: true }), user_approved: { const: true } }), claim_summary: { type: "string", minLength: 1, maxLength: 4000 }, ai_system_disclosures: arrayOf(closed({ provider_id: nullable(nonEmptyString), model_id: nullable(nonEmptyString), identity_status: { enum: ["recorded", "unknown"] }, included_expression_segment_ids: arrayOf(identifier("segment"), { uniqueItems: true }) })), coverage: closed({ unit: { const: "normalized_unicode_scalar_positions" }, denominator: { type: "integer", minimum: 0 }, recorded_positions: { type: "integer", minimum: 0 }, statement: nonEmptyString }), suggested_registration_language: closed({ author_created: { type: "string", maxLength: 1000 }, material_excluded: { type: "string", maxLength: 1000 }, new_material_included: { type: "string", maxLength: 1000 }, note_to_co: nullable({ type: "string", maxLength: 2000 }), registration_treatment_suggestions: arrayOf({ enum: registrationTreatmentSuggestions }, { uniqueItems: true }), user_approved: { const: true }, approval_event_id: identifier("event"), approved_language_sha256: sha }), representative_transformation_operation_ids: arrayOf(identifier("operation"), { uniqueItems: true }), limitation_codes: arrayOf({ enum: harpLimitationCodes }, { minItems: 1, uniqueItems: true }), explanation_codes: arrayOf({ enum: harpExplanationCodes }, { minItems: 1, uniqueItems: true }), sanitization_profile: { enum: ["full_private", "sanitized"] }, harp_sha256: sha,
+}, undefined, harpRules), harpExample, "Canonical machine-readable, non-authoritative, exact-deposit HARP projection. Exact status is evidentiary only and cannot determine legal authorship, originality, copyrightability, or a human percentage. Its digest identity excludes harp_sha256.");
+
+const harpArtifactRoles = ["human_readable_harp", "machine_readable_harp", "contribution_map", "deposit_copy", "verification_report", "supporting_archive"];
+const manifestFiles = [
+  { role: "human_readable_harp", path: "reports/harp/harp.pdf", sha256: digest("d"), size: 2048, privacy_classification: "registration" },
+  { role: "machine_readable_harp", path: "reports/harp/harp.json", sha256: harpExample.harp_sha256, size: 4096, privacy_classification: "registration" },
+  { role: "contribution_map", path: "reports/harp/contribution-map.json", sha256: contributionMapExample.contribution_map_sha256, size: 3072, privacy_classification: "registration" },
+  { role: "deposit_copy", path: "deposits/registration-manuscript.pdf", sha256: depositSnapshotExample.deposit_sha256, size: 4096, privacy_classification: "deposit" },
+  { role: "verification_report", path: "reports/harp/verification.json", sha256: digest("e"), size: 1024, privacy_classification: "registration" },
+  { role: "supporting_archive", path: "reports/harp/supporting-archive.zip", sha256: digest("f"), size: 8192, privacy_classification: "private" },
+];
+const harpReportMetadataExample = {
+  deposit_sha256: depositSnapshotExample.deposit_sha256, manuscript_revision_id: ids.revision2, manuscript_revision_sha256: digest("2"), cpl_chain_head: digest("4"), cpl_event_sequence: 42, harp_schema_version: "1.0", harp_generator_version: "1.0.0", application_version: "0.5.11", policy_profile_id: ids.policyProfile, policy_profile_version: policyProfileIdentity.profile_version, policy_profile_sha256: policyProfileExample.profile_sha256, policy_retrieval_date: "2026-07-19", sanitization_profile: "full_private", legal_scope_statement: "Copyrightability and registration scope remain determinations of the U.S. Copyright Office.",
+};
+const harpReportMetadataSchema = closed({
+  deposit_sha256: sha, manuscript_revision_id: identifier("revision"), manuscript_revision_sha256: sha, cpl_chain_head: sha, cpl_event_sequence: { type: "integer", minimum: 1 }, harp_schema_version: { type: "string", pattern: "^\\d+\\.\\d+$" }, harp_generator_version: { type: "string", pattern: "^\\d+\\.\\d+\\.\\d+$" }, application_version: { type: "string", pattern: "^\\d+\\.\\d+\\.\\d+$" }, policy_profile_id: identifier("policyprofile"), policy_profile_version: { type: "string", pattern: "^\\d+\\.\\d+\\.\\d+$" }, policy_profile_sha256: sha, policy_retrieval_date: { type: "string", format: "date" }, sanitization_profile: { enum: ["full_private", "sanitized"] }, legal_scope_statement: nonEmptyString,
+});
+const harpManifestIdentity = {
+  schema_version: "1.0", manifest_id: ids.manifest, project_id: ids.project, harp_id: ids.harp, harp_sha256: harpExample.harp_sha256, deposit_id: ids.deposit, deposit_sha256: depositSnapshotExample.deposit_sha256, contribution_map_id: ids.map, contribution_map_sha256: contributionMapExample.contribution_map_sha256, cpl_chain_head: digest("4"), report_metadata: harpReportMetadataExample, verification_report_sha256: digest("e"), sanitization_profile: "full_private", sanitization_rules_sha256: digest("0"), omissions: [], files: manifestFiles, created_at: laterTimestamp,
+};
+const harpManifestExample = { ...harpManifestIdentity, manifest_sha256: sha256(harpManifestIdentity) };
+const manifestFilesSchema = arrayOf(closed({ role: { enum: harpArtifactRoles }, path: repositoryPath, sha256: sha, size: { type: "integer", minimum: 1 }, privacy_classification: { enum: ["registration", "deposit", "sanitized_evidence", "private"] } }), { minItems: harpArtifactRoles.length, uniqueItems: true, allOf: harpArtifactRoles.map((role) => ({ contains: { type: "object", properties: { role: { const: role } }, required: ["role"] }, minContains: 1, maxContains: 1 })) });
+add("harp-export-manifest", "HARP export manifest", closed({
+  schema_version: schemaVersion, manifest_id: identifier("manifest"), project_id: identifier("project"), harp_id: identifier("harp"), harp_sha256: sha, deposit_id: identifier("deposit"), deposit_sha256: sha, contribution_map_id: identifier("map"), contribution_map_sha256: sha, cpl_chain_head: sha, report_metadata: harpReportMetadataSchema, verification_report_sha256: sha, sanitization_profile: { enum: ["full_private", "sanitized"] }, sanitization_rules_sha256: sha, omissions: arrayOf(closed({ category: { enum: ["private_conversation", "rejected_output", "rejected_model_output", "credential", "credential_authorization_material", "personal_identifier", "internal_path", "provider_metadata", "provider_metadata_not_required", "protected_source_body", "other"] }, action: { enum: ["exclude", "redact", "summarize"] }, count: { type: "integer", minimum: 1 }, disclosure_sha256: sha })), files: manifestFilesSchema, created_at: timestamp, manifest_sha256: sha,
+}), harpManifestExample, "Immutable manifest binding the HARP, contribution map, exact deposit, verification report, archive artifacts, sanitization rules, omissions, and hashes. Its digest identity excludes manifest_sha256.");
 const purgeExample = { schema_version: "1.0", purge_id: ids.purge, project_id: ids.project, requested_at: timestampValue, completed_at: laterTimestamp, reason: "Remove accidentally retained credential", superseded_chain_head: digest("4"), new_chain_root: digest("5"), affected_record_ids: [ids.record], affected_paths: ["records/invocations/request.json"], git_history_rewritten: true, prior_copies_revocable: false, confirmation_phrase_sha256: digest("6") };
 add("purge-manifest", "Emergency purge manifest", closed({ schema_version: schemaVersion, purge_id: identifier("purge"), project_id: identifier("project"), requested_at: timestamp, completed_at: timestamp, reason: nonEmptyString, superseded_chain_head: sha, new_chain_root: sha, affected_record_ids: arrayOf(identifier("record"), { minItems: 1, uniqueItems: true }), affected_paths: arrayOf(repositoryPath, { uniqueItems: true }), git_history_rewritten: { const: true }, prior_copies_revocable: { const: false }, confirmation_phrase_sha256: sha }), purgeExample, "Explicit disclosure of a destructive provenance and Git reconstitution.");
 const schemaNames = [...schemas.keys()].sort();
+const compositionSchemaNames = new Set(["composition-operation", "expression-segment", "contribution-map", "deposit-snapshot", "registration-policy-profile", "human-authorship-record", "harp-export-manifest"]);
+const compositionRegistryNames = new Set(["composition-operation-kinds", "recorded-origin-kinds", "transformation-relationships", "contribution-map-layers", "registration-treatment-suggestions", "harp-limitation-codes", "harp-explanation-codes", "composition-assertion-predicates"]);
 
 function clone(value) {
   return structuredClone(value);
@@ -643,7 +769,36 @@ function invalidCases(name, schema, example) {
       instance.reason_code = "DEPENDENCY_DIGEST_MISMATCH";
     });
   }
-  if (!cases.length) throw new Error(`No invalid fixture cases generated for ${name}.`);
+  if (name === "composition-operation") {
+    push("composition-operation: paste cannot claim direct human-input origin", (instance) => {
+      instance.operation_kind = "paste";
+      instance.recorded_origin_kind = "recorded_direct_human_input";
+    });
+    push("composition-operation: AI acceptance requires invocation and disposition", (instance) => {
+      instance.operation_kind = "ai_acceptance";
+      instance.recorded_origin_kind = "accepted_ai_output";
+      instance.invocation_id = null;
+      instance.disposition_id = null;
+    });
+  }
+  if (name === "expression-segment") {
+    push("expression-segment: unattested origin cannot be exact", (instance) => { instance.recorded_origin_kind = "unattested"; });
+    push("expression-segment: unknown identity cannot be exact", (instance) => { instance.actor_identity_status = "unknown"; });
+    push("expression-segment: unknown generation cannot be exact", (instance) => { instance.generation_status = "unknown"; });
+    push("expression-segment: unknown lineage cannot be exact", (instance) => { instance.lineage_status = "unknown"; });
+  }
+  if (name === "contribution-map") {
+    push("contribution-map: partial coverage cannot be exact", (instance) => { instance.coverage.coverage_status = "partial"; });
+    push("contribution-map: non-exact segment cannot produce exact map", (instance) => { instance.segments[0].classification_status = "unverified"; });
+  }
+  if (name === "human-authorship-record") {
+    push("human-authorship-record: unknown identity cannot be exact", (instance) => { instance.identity_declaration.identity_status = "unknown"; instance.identity_declaration.declared_name = null; });
+    push("human-authorship-record: unknown generation cannot be exact", (instance) => { instance.generation_status = "unknown"; });
+    push("human-authorship-record: unknown origin cannot be exact", (instance) => { instance.origin_coverage_status = "unknown"; });
+    push("human-authorship-record: unknown lineage cannot be exact", (instance) => { instance.lineage_coverage_status = "unknown"; });
+    push("human-authorship-record: unknown AI-system identity cannot be exact", (instance) => { instance.ai_system_disclosures[0].identity_status = "unknown"; instance.ai_system_disclosures[0].provider_id = null; instance.ai_system_disclosures[0].model_id = null; });
+    push("human-authorship-record: human percentage is a prohibited field", (instance) => { instance.human_percentage = 100; });
+  }  if (!cases.length) throw new Error(`No invalid fixture cases generated for ${name}.`);
   return cases;
 }
 
@@ -744,25 +899,88 @@ const registries = [
       { code: "CHRONOLOGY_INCOMPLETE", permitted_statuses: ["degraded", "unverified"] },
       { code: "COMPLETENESS_INCOMPLETE", permitted_statuses: ["degraded", "unverified"] },
     ],
+  },  {
+    name: "composition-operation-kinds",
+    description: "Composition-specific immutable operation kinds.",
+    entries: [
+      { code: "insert", meaning: "Insert expression at a revision-bound destination." },
+      { code: "delete", meaning: "Delete expression identified by an exact preimage range." },
+      { code: "replace", meaning: "Replace an exact preimage range with new expression." },
+      { code: "move", meaning: "Move expression while retaining stable lineage." },
+      { code: "paste", meaning: "Insert pasted material whose human authorship is not inferred." },
+      { code: "transcription", meaning: "Insert human expressive input mediated by transcription without retaining audio." },
+      { code: "ai_acceptance", meaning: "Accept expression from a recorded model invocation and disposition." },
+      { code: "restoration", meaning: "Restore expression from a recorded earlier revision." },
+    ],
+  },
+  {
+    name: "recorded-origin-kinds",
+    description: "Evidence classifications for how expression entered the composition, never legal authorship categories.",
+    entries: [
+      { code: "recorded_direct_human_input", meaning: "CPL records direct human expressive input." },
+      { code: "human_expressive_input_via_transcription", meaning: "CPL records human expressive input mediated by transcription." },
+      { code: "accepted_ai_output", meaning: "Expression was accepted from a recorded AI-system output." },
+      { code: "imported_or_pasted", meaning: "Expression entered through import or paste without inferred authorship." },
+      { code: "system_restoration", meaning: "Expression was restored from a recorded project revision." },
+      { code: "unattested", meaning: "No exact recorded origin is available for the expression." },
+    ],
+  },
+  {
+    name: "transformation-relationships",
+    description: "Independent relationships describing how expression changed or derived.",
+    entries: transformationRelationships.map((code) => ({ code, meaning: `Recorded composition transformation: ${code.replaceAll("_", " ")}.` })),
+  },
+  {
+    name: "contribution-map-layers",
+    description: "Independent projection layers that must not be collapsed into recorded origin.",
+    entries: contributionMapLayers.map((code) => ({ code, meaning: `Contribution-map layer: ${code.replaceAll("_", " ")}.` })),
+  },
+  {
+    name: "registration-treatment-suggestions",
+    description: "Editable policy-profile suggestions, not evidence facts or legal determinations.",
+    entries: registrationTreatmentSuggestions.map((code) => ({ code, meaning: `Suggested registration treatment: ${code.replaceAll("_", " ")}.` })),
+  },
+  {
+    name: "harp-limitation-codes",
+    description: "Stable HARP limitation disclosures.",
+    entries: harpLimitationCodes.map((code) => ({ code, meaning: `HARP limitation: ${code.toLowerCase().replaceAll("_", " ")}.` })),
+  },
+  {
+    name: "harp-explanation-codes",
+    description: "Stable explanations of HARP scope and interpretation.",
+    entries: harpExplanationCodes.map((code) => ({ code, meaning: `HARP explanation: ${code.toLowerCase().replaceAll("_", " ")}.` })),
+  },
+  {
+    name: "composition-assertion-predicates",
+    description: "Canonical composition relationship predicates used by existing provenance assertions.",
+    entries: compositionAssertionPredicates.map((code) => ({ code, meaning: `Assertion relationship: ${code.replaceAll("_", " ")}.` })),
   },
 ].map((registry) => ({
-  registry_version: "1.0",
+  registry_version: compositionRegistryNames.has(registry.name) ? "1.1" : "1.0",
   provenance_schema_version: "1.0",
-  application_version: "0.4.0",
+  application_version: compositionRegistryNames.has(registry.name) ? "0.5.2" : "0.4.0",
+  introduced_in_application_version: compositionRegistryNames.has(registry.name) ? "0.5.2" : "0.4.0",
+  compatible_application_versions: compositionRegistryNames.has(registry.name) ? ["0.5.2", "0.5.3", "0.5.4", "0.5.5", "0.5.6", "0.5.7", "0.5.8", "0.5.9", "0.5.10", "0.5.11", "0.6.0"] : ["0.4.0", "0.5.0", "0.5.1", "0.5.2", "0.5.3", "0.5.4", "0.5.5", "0.5.6", "0.5.7", "0.5.8", "0.5.9", "0.5.10", "0.5.11", "0.6.0"],
   ...registry,
   entries: registry.entries.map((entry) => registry.name === "assertion-reason-codes" ? { ...entry, meaning: assertionReasonMeanings[entry.code] } : entry),
 }));
 for (const registry of registries) await writeJson(path.join(registryDir, `${registry.name}.json`), registry);
 const catalog = {
-  catalog_version: "1.0",
+  catalog_version: "1.1",
+  package_version: "0.5.2",
   dialect: draft,
   provenance_schema_version: "1.0",
-  application_version: "0.4.0",
-  compatible_application_versions: ["0.4.0"],
+  application_version: "0.5.2",
+  compatible_application_versions: ["0.4.0", "0.5.0", "0.5.1", "0.5.2", "0.5.3", "0.5.4", "0.5.5", "0.5.6", "0.5.7", "0.5.8", "0.5.9", "0.5.10", "0.5.11", "0.6.0"],
+  cpl_runtime_target: "0.6.0",
   native_writer_conformance: false,
-  registries: registries.map(({ name, description }) => ({
+  assertion_semantics_compatibility: "Existing v0.4 provenance-assertion and assertion-evaluation semantics remain valid and unchanged by the additive composition extension.",
+  registries: registries.map(({ name, description, registry_version, introduced_in_application_version, compatible_application_versions }) => ({
     name,
     description,
+    registry_version,
+    introduced_in_application_version,
+    compatible_application_versions,
     id: `${baseId}/registries/${name}.json`,
     file: `registries/${name}.json`,
   })),
@@ -770,6 +988,8 @@ const catalog = {
   generated_by: "scripts/generate-provenance-stage2.mjs",
   schemas: schemaNames.map((name) => ({
     name,
+    introduced_in_application_version: compositionSchemaNames.has(name) ? "0.5.2" : "0.4.0",
+    compatible_application_versions: compositionSchemaNames.has(name) ? ["0.5.2", "0.5.3", "0.5.4", "0.5.5", "0.5.6", "0.5.7", "0.5.8", "0.5.9", "0.5.10", "0.5.11", "0.6.0"] : ["0.4.0", "0.5.0", "0.5.1", "0.5.2", "0.5.3", "0.5.4", "0.5.5", "0.5.6", "0.5.7", "0.5.8", "0.5.9", "0.5.10", "0.5.11", "0.6.0"],
     id: schemas.get(name).$id,
     file: `${name}.schema.json`,
     valid_fixture: `fixtures/valid/${name}.valid.json`,
@@ -972,15 +1192,25 @@ await writeJson(path.join(vectorDir, "self-digest-identities.json"), {
     merkle_identity: releaseFiles,
     digest: releaseMerkleRoot(releaseFiles),
     excluded_paths: ["release-manifest.json", "release-files.sha256"],
-  },
+  },  contribution_map: { identity: contributionMapIdentity, digest: contributionMapExample.contribution_map_sha256, complete_record: contributionMapExample, excluded_fields: ["contribution_map_sha256"] },
+  registration_policy_profile: { identity: policyProfileIdentity, digest: policyProfileExample.profile_sha256, complete_record: policyProfileExample, excluded_fields: ["profile_sha256"] },
+  human_authorship_record: { identity: harpIdentity, digest: harpExample.harp_sha256, complete_record: harpExample, excluded_fields: ["harp_sha256"] },
+  harp_export_manifest: { identity: harpManifestIdentity, digest: harpManifestExample.manifest_sha256, complete_record: harpManifestExample, excluded_fields: ["manifest_sha256"] },
 });
 
+const sanitizationRule = (category, action, count, retainedBinding) => {
+  const identity = { category, action, count, retained_binding_sha256: retainedBinding };
+  return { ...identity, disclosure_sha256: sha256(identity) };
+};
 const sanitizationRules = [
-  { category: "private_conversation", action: "exclude", count: 2 },
-  { category: "personal_identifier", action: "redact", count: 1 },
-  { category: "provider_detail", action: "summarize", count: 1 },
-];
-const sanitizedManifestVector = {
+  sanitizationRule("private_conversation", "exclude", 2, digest("1")),
+  sanitizationRule("rejected_model_output", "exclude", 1, digest("2")),
+  sanitizationRule("credential_authorization_material", "exclude", 0, digest("3")),
+  sanitizationRule("personal_identifier", "redact", 1, digest("4")),
+  sanitizationRule("internal_path", "exclude", 7, digest("5")),
+  sanitizationRule("provider_metadata_not_required", "exclude", 1, digest("6")),
+  sanitizationRule("protected_source_body", "exclude", 3, digest("7")),
+];const sanitizedManifestVector = {
   ...sanitizedExample,
   omission_rules: sanitizationRules,
   rules_sha256: sha256(sanitizationRules),
@@ -1137,7 +1367,97 @@ await writeJson(path.join(vectorDir, "assertion-envelope-and-invalidation.json")
     "Consumers decide from canonical assertions, evaluations, and registries without producer-specific internal state.",
   ],
 });
-const readme = `# Thinkloom provenance schemas 1.0\n\nThis generated package is the formal Stage 2 contract for the approved provenance architecture. It targets JSON Schema Draft 2020-12 and ships with ${schemaNames.length} schemas, valid fixtures, invalid fixture suites, and deterministic verification vectors.\n\n- \`catalog.json\` is the machine-readable inventory.\n- \`*.schema.json\` are the formal contracts.\n- \`registries\` defines assertion lifecycle, evaluation status, confidence, evidence, boundary, and reason semantics.\n- \`fixtures/valid\` contains one canonical valid instance per schema.\n- \`fixtures/invalid\` covers required fields, closed-object policy, and populated enum, pattern, and numeric/string/array bounds.\n- \`vectors\` fixes canonicalization, timestamps, paths, JSONL, event and segment chains, self-digests, protected records, key rotation and recovery, retention policy, sanitized export, deterministic indexes, verification reports, canonical assertions and evaluations, dependency invalidation, backups, and release-Merkle behavior.\n\nRegenerate with \`npm run provenance:schema:generate\`. Verify with \`npm run provenance:schema:test\`. Generated files must be committed together with generator and vector changes. Runtime adoption is a later implementation stage; presence of this package does not imply the current native writer already conforms.\n`;
-await writeFile(path.join(output, "README.md"), readme, "utf8");
+const secondExpressionSegment = {
+  ...expressionSegmentExample,
+  segment_id: typedId("segment", "6"),
+  segment_sequence: 2,
+  range: { ...expressionSegmentExample.range, start: 12, end: 24, preimage_sha256: digest("6"), text_fragment_id: typedId("fragment", "7") },
+  content_sha256: digest("6"),
+};
+const contributionInputsA = [secondExpressionSegment, expressionSegmentExample];
+const contributionInputsB = [...contributionInputsA].reverse();
+const sortedContributionSegments = [...contributionInputsA].sort((left, right) => left.segment_sequence - right.segment_sequence || (left.segment_id < right.segment_id ? -1 : left.segment_id > right.segment_id ? 1 : 0));
+const deterministicContributionMapIdentity = {
+  ...contributionMapIdentity,
+  coverage: { denominator: 24, recorded_positions: 24, coverage_status: "complete", denominator_unit: "normalized_unicode_scalar_position", denominator_definition: contributionCoverageDefinition },
+  segments: sortedContributionSegments,
+  structural_locators: [
+    { segment_id: expressionSegmentExample.segment_id, chapter: 1, paragraph: 1, page: 1 },
+    { segment_id: secondExpressionSegment.segment_id, chapter: 1, paragraph: 1, page: 1 },
+  ],
+};
+const deterministicContributionMap = { ...deterministicContributionMapIdentity, contribution_map_sha256: sha256(deterministicContributionMapIdentity) };
+await writeJson(path.join(vectorDir, "composition-and-harp-classification.json"), {
+  vector_version: "1.1",
+  operations: {
+    direct_human_insert: compositionOperationExample,
+    paste: { ...compositionOperationExample, operation_id: typedId("operation", "7"), operation_kind: "paste", recorded_origin_kind: "imported_or_pasted", transformation_relationships: ["pasted_from_external"], source_record_ids: [ids.record], lineage_reference_ids: [ids.record] },
+    transcription: { ...compositionOperationExample, operation_id: typedId("operation", "8"), operation_kind: "transcription", recorded_origin_kind: "human_expressive_input_via_transcription", transformation_relationships: ["transcribed_from_human_speech"] },
+    ai_acceptance: { ...compositionOperationExample, operation_id: typedId("operation", "9"), operation_kind: "ai_acceptance", recorded_origin_kind: "accepted_ai_output", invocation_id: ids.invocation, disposition_id: ids.disposition, transformation_relationships: ["generated_by_ai"] },
+    restoration: { ...compositionOperationExample, operation_id: typedId("operation", "A"), operation_kind: "restoration", recorded_origin_kind: "system_restoration", transformation_relationships: ["restored_from_revision"], lineage_reference_ids: [ids.revision] },
+  },
+  exact_expression_segment: expressionSegmentExample,
+  exact_harp: harpExample,
+  forbidden_exact_segments: {
+    unknown_origin: { ...expressionSegmentExample, recorded_origin_kind: "unattested" },
+    unknown_identity: { ...expressionSegmentExample, actor_identity_status: "unknown" },
+    unknown_generation: { ...expressionSegmentExample, generation_status: "unknown" },
+    unknown_lineage: { ...expressionSegmentExample, lineage_status: "unknown" },
+  },
+  forbidden_exact_harps: {
+    unknown_origin: { ...harpExample, origin_coverage_status: "unknown" },
+    unknown_identity: { ...harpExample, identity_declaration: { ...harpExample.identity_declaration, declared_name: null, identity_status: "unknown" } },
+    unknown_generation: { ...harpExample, generation_status: "unknown" },
+    unknown_lineage: { ...harpExample, lineage_coverage_status: "unknown" },
+    unknown_ai_system: { ...harpExample, ai_system_disclosures: [{ provider_id: null, model_id: null, identity_status: "unknown", included_expression_segment_ids: [ids.segment] }] },
+  },
+  independent_dimensions: ["recorded_origin", "transformation", "selection_arrangement", "evidentiary_evaluation", "suggested_registration_treatment"],
+  prohibited_claim_fields: ["human_percentage", "ai_percentage", "authorship_score", "originality_score", "copyrightability_score"],
+});
+await writeJson(path.join(vectorDir, "contribution-map-determinism.json"), {
+  vector_version: "1.1",
+  input_orders: [contributionInputsA, contributionInputsB],
+  sorting_rule: "Sort by segment_sequence, then stable segment_id; never use locale-sensitive presentation order.",
+  deterministic_map: deterministicContributionMap,
+  canonical_map_sha256: sha256(canonicalize(deterministicContributionMap)),
+  coverage_invariant: "Ranges are ordered, non-overlapping, and cover every normalized Unicode scalar position from zero through the denominator.",
+  locator_invariant: "Revision, deposit digest, and stable segment ID are authoritative; page, chapter, and paragraph are layout-derived.",
+});
+const staleHarpIdentity = {
+  ...harpIdentity,
+  evidentiary_status: "stale",
+  applicability_status: "stale",
+  deposit: { ...harpIdentity.deposit, manuscript_revision_id: typedId("revision", "8"), manuscript_revision_sha256: digest("8") },
+  limitation_codes: [...harpIdentity.limitation_codes, "SUPERSEDED_POLICY_PROFILE"],
+};
+const staleHarp = { ...staleHarpIdentity, harp_sha256: sha256(staleHarpIdentity) };
+await writeJson(path.join(vectorDir, "harp-deposit-staleness.json"), {
+  vector_version: "1.1",
+  deposit_snapshot: depositSnapshotExample,
+  current_harp: harpExample,
+  stale_after_edit: staleHarp,
+  export_manifest: harpManifestExample,
+  changed_dependency: { kind: "manuscript_revision", previous_revision_id: ids.revision2, current_revision_id: staleHarp.deposit.manuscript_revision_id, previous_sha256: digest("2"), current_sha256: staleHarp.deposit.manuscript_revision_sha256 },
+  historical_integrity_rule: "Staleness for the current work does not invalidate the immutable HARP for its original exact deposit.",
+  registration_language_rule: "All suggested application strings are editable and bound only after explicit user approval.",
+  legal_scope_rule: "HARP does not determine identity, legal authorship, originality, copyrightability, ownership, or registrability.",
+});
+const readme = `# Thinkloom provenance schemas 1.0
+
+Package release: **Thinkloom 0.5.2**
+
+CPL runtime target: **Thinkloom 0.6.0**
+
+This generated additive package is the formal schema contract for the approved provenance architecture, composition lineage, and HARP projection. It targets JSON Schema Draft 2020-12 and ships with ${schemaNames.length} schemas, valid fixtures, invalid fixture suites, versioned semantic registries, and deterministic verification vectors.
+
+- \`catalog.json\` declares package, schema-family, per-schema introduction, and v0.6.0 compatibility without claiming native CPL conformance.
+- \`*.schema.json\` are closed formal contracts. The seven composition/HARP records extend rather than overload v0.4 assertions or edit transactions.
+- \`registries\` keeps recorded origin, transformation, selection/arrangement, evidentiary evaluation, and suggested registration treatment independent.
+- \`fixtures/valid\` contains one canonical valid instance per schema.
+- \`fixtures/invalid\` covers required fields, closed-object policy, populated constraints, and HARP-specific unknown-origin, identity, generation, and lineage boundaries.
+- \`vectors\` fixes canonicalization, event and segment chains, self-digests, protected records, deterministic contribution maps, exact-deposit HARP binding, staleness, policy profiles, assertions/evaluations, backups, sanitization, and release-Merkle behavior.
+
+Existing v0.4 provenance-assertion and assertion-evaluation semantics remain valid. Regenerate with \`npm run provenance:schema:generate\`. Verify with \`npm run provenance:schema:test\`. Generated files must be committed together with generator and vector changes. Package presence does not confer CPL project-format conformance. Thinkloom 0.5.4 established the exact CPL 1.0 project marker and opener boundary. Thinkloom 0.5.5 adds typed, replayable Phase 1 commands, and Thinkloom 0.5.6 adds deterministic manuscript composition lineage, and Thinkloom 0.5.7 adds the frozen-deposit contribution-map projection, and Thinkloom 0.5.8 adds deterministic exact-deposit HARP generation, and Thinkloom 0.5.9 adds connected native CPL exploration and gated HARP preparation, and Thinkloom 0.5.10 adds separate registration artifacts plus verifiable sanitized and full-private HARP archives, and Thinkloom 0.5.11 adds the executable verification matrix, native release gate, origin-preserving arrangement checks, and packaged Windows end-to-end gate, without converting unmarked v0.5.x preview projects.
+`;await writeFile(path.join(output, "README.md"), readme, "utf8");
 
 console.log(`Generated ${schemaNames.length} provenance schemas and fixtures in ${path.relative(root, output)}.`);

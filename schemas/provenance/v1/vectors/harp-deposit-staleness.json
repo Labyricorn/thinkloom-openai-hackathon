@@ -1,0 +1,287 @@
+{
+  "vector_version": "1.1",
+  "deposit_snapshot": {
+    "schema_version": "1.0",
+    "deposit_id": "deposit_01J00000000000000000000000",
+    "project_id": "project_01J00000000000000000000001",
+    "application_version": "0.5.2",
+    "deposit_path": "deposits/registration-manuscript.pdf",
+    "media_type": "application/pdf",
+    "byte_length": 4096,
+    "deposit_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+    "manuscript_revision_id": "revision_01J0000000000000000000000B",
+    "manuscript_revision_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+    "cpl_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+    "cpl_event_sequence": 42,
+    "layout_profile": {
+      "layout_profile_id": "layout_01J00000000000000000000005",
+      "layout_profile_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555"
+    },
+    "created_at": "2026-07-17T18:42:10.123Z"
+  },
+  "current_harp": {
+    "schema_version": "1.0",
+    "harp_id": "harp_01J00000000000000000000002",
+    "project_id": "project_01J00000000000000000000001",
+    "application_version": "0.5.2",
+    "generator_version": "1.0.0",
+    "deposit": {
+      "deposit_id": "deposit_01J00000000000000000000000",
+      "deposit_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+      "manuscript_revision_id": "revision_01J0000000000000000000000B",
+      "manuscript_revision_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222"
+    },
+    "cpl_binding": {
+      "chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+      "event_sequence": 42
+    },
+    "contribution_map": {
+      "contribution_map_id": "map_01J0000000000000000000000Z",
+      "contribution_map_sha256": "sha256:28562ec310a4eda35436bf01ec534d0639939365af453e3c922c492ee0ebff00"
+    },
+    "policy_profile": {
+      "policy_profile_id": "policyprofile_01J00000000000000000000004",
+      "profile_version": "1.0.0",
+      "profile_sha256": "sha256:77bfc640282012169a92feb92b9539ca6826b798659cb3f7d07beb864e53abba",
+      "retrieved_on": "2026-07-19",
+      "status": "current"
+    },
+    "evidentiary_status": "exact",
+    "applicability_status": "current",
+    "generation_status": "recorded",
+    "origin_coverage_status": "complete",
+    "lineage_coverage_status": "complete",
+    "identity_declaration": {
+      "declared_name": "Example Author",
+      "identity_status": "self_declared",
+      "evidence_reference_ids": [
+        "assertion_01J0000000000000000000000V"
+      ],
+      "user_approved": true
+    },
+    "claim_summary": "CPL records direct human input, accepted AI output, and subsequent recorded transformations for the exact deposit.",
+    "ai_system_disclosures": [
+      {
+        "provider_id": "openai",
+        "model_id": "gpt-example",
+        "identity_status": "recorded",
+        "included_expression_segment_ids": [
+          "segment_01J0000000000000000000000Y"
+        ]
+      }
+    ],
+    "coverage": {
+      "unit": "normalized_unicode_scalar_positions",
+      "denominator": 12,
+      "recorded_positions": 12,
+      "statement": "12 of 12 normalized Unicode scalar positions have recorded origin."
+    },
+    "suggested_registration_language": {
+      "author_created": "Text and revisions described in the attached provenance record",
+      "material_excluded": "AI-generated text identified in the attached provenance record",
+      "new_material_included": "Human-authored text and revisions",
+      "note_to_co": "This work contains disclosed AI-generated material.",
+      "registration_treatment_suggestions": [
+        "disclose_ai_use",
+        "manual_review_required"
+      ],
+      "user_approved": true,
+      "approval_event_id": "event_01J00000000000000000000004",
+      "approved_language_sha256": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+    },
+    "representative_transformation_operation_ids": [
+      "operation_01J0000000000000000000000X"
+    ],
+    "limitation_codes": [
+      "SELF_DECLARED_IDENTITY",
+      "COPYRIGHT_OFFICE_DETERMINES_SCOPE"
+    ],
+    "explanation_codes": [
+      "INTEGRITY_ONLY_VERIFICATION",
+      "RECORDED_ORIGIN_NOT_LEGAL_AUTHORSHIP",
+      "SELECTION_ARRANGEMENT_IS_OVERLAY",
+      "PAGE_LOCATORS_ARE_DERIVED",
+      "REGISTRATION_LANGUAGE_IS_SUGGESTED",
+      "HARP_STALE_AFTER_EDIT"
+    ],
+    "sanitization_profile": "full_private",
+    "harp_sha256": "sha256:20e3ba5bb0c6c25c8d047e0e8b82a17044193e0b8ce521612d48cc85fed5feb9"
+  },
+  "stale_after_edit": {
+    "schema_version": "1.0",
+    "harp_id": "harp_01J00000000000000000000002",
+    "project_id": "project_01J00000000000000000000001",
+    "application_version": "0.5.2",
+    "generator_version": "1.0.0",
+    "deposit": {
+      "deposit_id": "deposit_01J00000000000000000000000",
+      "deposit_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+      "manuscript_revision_id": "revision_01J00000000000000000000008",
+      "manuscript_revision_sha256": "sha256:8888888888888888888888888888888888888888888888888888888888888888"
+    },
+    "cpl_binding": {
+      "chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+      "event_sequence": 42
+    },
+    "contribution_map": {
+      "contribution_map_id": "map_01J0000000000000000000000Z",
+      "contribution_map_sha256": "sha256:28562ec310a4eda35436bf01ec534d0639939365af453e3c922c492ee0ebff00"
+    },
+    "policy_profile": {
+      "policy_profile_id": "policyprofile_01J00000000000000000000004",
+      "profile_version": "1.0.0",
+      "profile_sha256": "sha256:77bfc640282012169a92feb92b9539ca6826b798659cb3f7d07beb864e53abba",
+      "retrieved_on": "2026-07-19",
+      "status": "current"
+    },
+    "evidentiary_status": "stale",
+    "applicability_status": "stale",
+    "generation_status": "recorded",
+    "origin_coverage_status": "complete",
+    "lineage_coverage_status": "complete",
+    "identity_declaration": {
+      "declared_name": "Example Author",
+      "identity_status": "self_declared",
+      "evidence_reference_ids": [
+        "assertion_01J0000000000000000000000V"
+      ],
+      "user_approved": true
+    },
+    "claim_summary": "CPL records direct human input, accepted AI output, and subsequent recorded transformations for the exact deposit.",
+    "ai_system_disclosures": [
+      {
+        "provider_id": "openai",
+        "model_id": "gpt-example",
+        "identity_status": "recorded",
+        "included_expression_segment_ids": [
+          "segment_01J0000000000000000000000Y"
+        ]
+      }
+    ],
+    "coverage": {
+      "unit": "normalized_unicode_scalar_positions",
+      "denominator": 12,
+      "recorded_positions": 12,
+      "statement": "12 of 12 normalized Unicode scalar positions have recorded origin."
+    },
+    "suggested_registration_language": {
+      "author_created": "Text and revisions described in the attached provenance record",
+      "material_excluded": "AI-generated text identified in the attached provenance record",
+      "new_material_included": "Human-authored text and revisions",
+      "note_to_co": "This work contains disclosed AI-generated material.",
+      "registration_treatment_suggestions": [
+        "disclose_ai_use",
+        "manual_review_required"
+      ],
+      "user_approved": true,
+      "approval_event_id": "event_01J00000000000000000000004",
+      "approved_language_sha256": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+    },
+    "representative_transformation_operation_ids": [
+      "operation_01J0000000000000000000000X"
+    ],
+    "limitation_codes": [
+      "SELF_DECLARED_IDENTITY",
+      "COPYRIGHT_OFFICE_DETERMINES_SCOPE",
+      "SUPERSEDED_POLICY_PROFILE"
+    ],
+    "explanation_codes": [
+      "INTEGRITY_ONLY_VERIFICATION",
+      "RECORDED_ORIGIN_NOT_LEGAL_AUTHORSHIP",
+      "SELECTION_ARRANGEMENT_IS_OVERLAY",
+      "PAGE_LOCATORS_ARE_DERIVED",
+      "REGISTRATION_LANGUAGE_IS_SUGGESTED",
+      "HARP_STALE_AFTER_EDIT"
+    ],
+    "sanitization_profile": "full_private",
+    "harp_sha256": "sha256:0ff68e9327f252d6091f1fdeff6c430a3ad39f238ef892b182bd12be890d691f"
+  },
+  "export_manifest": {
+    "schema_version": "1.0",
+    "manifest_id": "manifest_01J00000000000000000000003",
+    "project_id": "project_01J00000000000000000000001",
+    "harp_id": "harp_01J00000000000000000000002",
+    "harp_sha256": "sha256:20e3ba5bb0c6c25c8d047e0e8b82a17044193e0b8ce521612d48cc85fed5feb9",
+    "deposit_id": "deposit_01J00000000000000000000000",
+    "deposit_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+    "contribution_map_id": "map_01J0000000000000000000000Z",
+    "contribution_map_sha256": "sha256:28562ec310a4eda35436bf01ec534d0639939365af453e3c922c492ee0ebff00",
+    "cpl_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+    "report_metadata": {
+      "deposit_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+      "manuscript_revision_id": "revision_01J0000000000000000000000B",
+      "manuscript_revision_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+      "cpl_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+      "cpl_event_sequence": 42,
+      "harp_schema_version": "1.0",
+      "harp_generator_version": "1.0.0",
+      "application_version": "0.5.11",
+      "policy_profile_id": "policyprofile_01J00000000000000000000004",
+      "policy_profile_version": "1.0.0",
+      "policy_profile_sha256": "sha256:77bfc640282012169a92feb92b9539ca6826b798659cb3f7d07beb864e53abba",
+      "policy_retrieval_date": "2026-07-19",
+      "sanitization_profile": "full_private",
+      "legal_scope_statement": "Copyrightability and registration scope remain determinations of the U.S. Copyright Office."
+    },
+    "verification_report_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+    "sanitization_profile": "full_private",
+    "sanitization_rules_sha256": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+    "omissions": [],
+    "files": [
+      {
+        "role": "human_readable_harp",
+        "path": "reports/harp/harp.pdf",
+        "sha256": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "size": 2048,
+        "privacy_classification": "registration"
+      },
+      {
+        "role": "machine_readable_harp",
+        "path": "reports/harp/harp.json",
+        "sha256": "sha256:20e3ba5bb0c6c25c8d047e0e8b82a17044193e0b8ce521612d48cc85fed5feb9",
+        "size": 4096,
+        "privacy_classification": "registration"
+      },
+      {
+        "role": "contribution_map",
+        "path": "reports/harp/contribution-map.json",
+        "sha256": "sha256:28562ec310a4eda35436bf01ec534d0639939365af453e3c922c492ee0ebff00",
+        "size": 3072,
+        "privacy_classification": "registration"
+      },
+      {
+        "role": "deposit_copy",
+        "path": "deposits/registration-manuscript.pdf",
+        "sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "size": 4096,
+        "privacy_classification": "deposit"
+      },
+      {
+        "role": "verification_report",
+        "path": "reports/harp/verification.json",
+        "sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "size": 1024,
+        "privacy_classification": "registration"
+      },
+      {
+        "role": "supporting_archive",
+        "path": "reports/harp/supporting-archive.zip",
+        "sha256": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "size": 8192,
+        "privacy_classification": "private"
+      }
+    ],
+    "created_at": "2026-07-17T18:43:11.456Z",
+    "manifest_sha256": "sha256:50be7f8f16d6f83dc58ec26670499403ccc2f7f7655e28cd8e1bf7485d768324"
+  },
+  "changed_dependency": {
+    "kind": "manuscript_revision",
+    "previous_revision_id": "revision_01J0000000000000000000000B",
+    "current_revision_id": "revision_01J00000000000000000000008",
+    "previous_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+    "current_sha256": "sha256:8888888888888888888888888888888888888888888888888888888888888888"
+  },
+  "historical_integrity_rule": "Staleness for the current work does not invalidate the immutable HARP for its original exact deposit.",
+  "registration_language_rule": "All suggested application strings are editable and bound only after explicit user approval.",
+  "legal_scope_rule": "HARP does not determine identity, legal authorship, originality, copyrightability, ownership, or registrability."
+}

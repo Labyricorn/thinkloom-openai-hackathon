@@ -20,16 +20,18 @@ test("defines a native-only Thinkloom application shell", async () => {
 });
 
 test("implements the control and privacy contracts", async () => {
-  const [source, css] = await Promise.all([
+  const [source, provenance, css] = await Promise.all([
     readFile(new URL("../src/Thinkloom.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../src/ProvenanceWorkspace.tsx", import.meta.url), "utf8"),
     readFile(new URL("../src/globals.css", import.meta.url), "utf8"),
   ]);
 
-  for (const phrase of ["Append to ideas", "Summarize draft", "Lore & context", "Insert at cursor", "Replace selection", "New section", "Discard", "History recorded", "No audio retained", "Approve for this project", "Relationships, not percentages"]) {
+  for (const phrase of ["Append to ideas", "Summarize draft", "Lore & context", "Insert at cursor", "Replace selection", "New section", "Discard", "History recorded", "No audio retained", "Approve for this project"]) {
     assert.match(source, new RegExp(phrase, "i"));
   }
+  assert.match(provenance, /Provenance coverage is not a human-authorship score/);
   assert.match(source, /GENERATION_PARTIALLY_ACCEPTED/);
-  assert.match(source, /CLOUD_PROCESSING_APPROVED/);
+  assert.match(source, /CLOUD_APPROVAL_CHANGED/);
   assert.match(source, /store_provider_secret/);
   assert.match(source, /New empty project/);
   assert.match(source, /function createEmptyProject/);
@@ -139,7 +141,7 @@ test("externalizes and documents every model prompt", async () => {
   }
 
   const version = JSON.parse(packageRaw).version;
-  assert.equal(version, "0.5.0");
+  assert.equal(version, "0.5.11");
   const packageLock = JSON.parse(packageLockRaw);
   assert.equal(packageLock.version, version);
   assert.equal(packageLock.packages[""].version, version);

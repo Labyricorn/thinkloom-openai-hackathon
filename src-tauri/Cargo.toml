@@ -1,6 +1,6 @@
 [package]
 name = "thinkloom"
-version = "0.5.0"
+version = "0.5.11"
 description = "Local-first writing studio with creative provenance"
 authors = ["Christopher Chambers"]
 license = "AGPL-3.0-only"
@@ -24,6 +24,8 @@ sha2 = "0.10"
 hex = "0.4"
 chrono = { version = "0.4", features = ["serde"] }
 uuid = { version = "1", features = ["v4", "serde"] }
+unicode-normalization = "0.1"
+ryu = "1"
 reqwest = { version = "0.12", default-features = false, features = ["blocking", "json", "rustls-tls"] }
 zip = { version = "2", default-features = false, features = ["deflate"] }
 keyring = "3"

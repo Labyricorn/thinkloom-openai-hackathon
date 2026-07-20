@@ -6,19 +6,26 @@
       "instance": {
         "export_id": "record_01J00000000000000000000005",
         "project_id": "project_01J00000000000000000000001",
+        "harp_id": "harp_01J00000000000000000000002",
+        "harp_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "deposit_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
         "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
         "profile": "sanitized",
+        "completeness_claim": "selective_disclosed_subset",
+        "verification_scope_statement": "Verified only against disclosed retained evidence; this archive is intentionally incomplete.",
         "omission_rules": [
           {
             "category": "private_conversation",
             "action": "exclude",
-            "count": 2
+            "count": 2,
+            "retained_binding_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "disclosure_sha256": "sha256:b58311ab980eecb4da1b7af0b80a6151eb0f90e287c6b30352e0b91eab8cb59b"
           }
         ],
         "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
         "files": [
           {
-            "path": "final-manuscript.md",
+            "path": "evidence/harp-binding.json",
             "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
             "size": 1024
           }
@@ -31,19 +38,26 @@
       "instance": {
         "schema_version": "1.0",
         "project_id": "project_01J00000000000000000000001",
+        "harp_id": "harp_01J00000000000000000000002",
+        "harp_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "deposit_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
         "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
         "profile": "sanitized",
+        "completeness_claim": "selective_disclosed_subset",
+        "verification_scope_statement": "Verified only against disclosed retained evidence; this archive is intentionally incomplete.",
         "omission_rules": [
           {
             "category": "private_conversation",
             "action": "exclude",
-            "count": 2
+            "count": 2,
+            "retained_binding_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "disclosure_sha256": "sha256:b58311ab980eecb4da1b7af0b80a6151eb0f90e287c6b30352e0b91eab8cb59b"
           }
         ],
         "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
         "files": [
           {
-            "path": "final-manuscript.md",
+            "path": "evidence/harp-binding.json",
             "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
             "size": 1024
           }
@@ -56,19 +70,122 @@
       "instance": {
         "schema_version": "1.0",
         "export_id": "record_01J00000000000000000000005",
+        "harp_id": "harp_01J00000000000000000000002",
+        "harp_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "deposit_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
         "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
         "profile": "sanitized",
+        "completeness_claim": "selective_disclosed_subset",
+        "verification_scope_statement": "Verified only against disclosed retained evidence; this archive is intentionally incomplete.",
         "omission_rules": [
           {
             "category": "private_conversation",
             "action": "exclude",
-            "count": 2
+            "count": 2,
+            "retained_binding_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "disclosure_sha256": "sha256:b58311ab980eecb4da1b7af0b80a6151eb0f90e287c6b30352e0b91eab8cb59b"
           }
         ],
         "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
         "files": [
           {
-            "path": "final-manuscript.md",
+            "path": "evidence/harp-binding.json",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          }
+        ],
+        "created_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "sanitized-export-manifest.harp_id: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "export_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "harp_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "deposit_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "profile": "sanitized",
+        "completeness_claim": "selective_disclosed_subset",
+        "verification_scope_statement": "Verified only against disclosed retained evidence; this archive is intentionally incomplete.",
+        "omission_rules": [
+          {
+            "category": "private_conversation",
+            "action": "exclude",
+            "count": 2,
+            "retained_binding_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "disclosure_sha256": "sha256:b58311ab980eecb4da1b7af0b80a6151eb0f90e287c6b30352e0b91eab8cb59b"
+          }
+        ],
+        "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "files": [
+          {
+            "path": "evidence/harp-binding.json",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          }
+        ],
+        "created_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "sanitized-export-manifest.harp_sha256: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "export_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "harp_id": "harp_01J00000000000000000000002",
+        "deposit_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "profile": "sanitized",
+        "completeness_claim": "selective_disclosed_subset",
+        "verification_scope_statement": "Verified only against disclosed retained evidence; this archive is intentionally incomplete.",
+        "omission_rules": [
+          {
+            "category": "private_conversation",
+            "action": "exclude",
+            "count": 2,
+            "retained_binding_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "disclosure_sha256": "sha256:b58311ab980eecb4da1b7af0b80a6151eb0f90e287c6b30352e0b91eab8cb59b"
+          }
+        ],
+        "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "files": [
+          {
+            "path": "evidence/harp-binding.json",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          }
+        ],
+        "created_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "sanitized-export-manifest.deposit_sha256: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "export_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "harp_id": "harp_01J00000000000000000000002",
+        "harp_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "profile": "sanitized",
+        "completeness_claim": "selective_disclosed_subset",
+        "verification_scope_statement": "Verified only against disclosed retained evidence; this archive is intentionally incomplete.",
+        "omission_rules": [
+          {
+            "category": "private_conversation",
+            "action": "exclude",
+            "count": 2,
+            "retained_binding_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "disclosure_sha256": "sha256:b58311ab980eecb4da1b7af0b80a6151eb0f90e287c6b30352e0b91eab8cb59b"
+          }
+        ],
+        "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "files": [
+          {
+            "path": "evidence/harp-binding.json",
             "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
             "size": 1024
           }
@@ -82,18 +199,25 @@
         "schema_version": "1.0",
         "export_id": "record_01J00000000000000000000005",
         "project_id": "project_01J00000000000000000000001",
+        "harp_id": "harp_01J00000000000000000000002",
+        "harp_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "deposit_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
         "profile": "sanitized",
+        "completeness_claim": "selective_disclosed_subset",
+        "verification_scope_statement": "Verified only against disclosed retained evidence; this archive is intentionally incomplete.",
         "omission_rules": [
           {
             "category": "private_conversation",
             "action": "exclude",
-            "count": 2
+            "count": 2,
+            "retained_binding_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "disclosure_sha256": "sha256:b58311ab980eecb4da1b7af0b80a6151eb0f90e287c6b30352e0b91eab8cb59b"
           }
         ],
         "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
         "files": [
           {
-            "path": "final-manuscript.md",
+            "path": "evidence/harp-binding.json",
             "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
             "size": 1024
           }
@@ -107,18 +231,89 @@
         "schema_version": "1.0",
         "export_id": "record_01J00000000000000000000005",
         "project_id": "project_01J00000000000000000000001",
+        "harp_id": "harp_01J00000000000000000000002",
+        "harp_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "deposit_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
         "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "completeness_claim": "selective_disclosed_subset",
+        "verification_scope_statement": "Verified only against disclosed retained evidence; this archive is intentionally incomplete.",
         "omission_rules": [
           {
             "category": "private_conversation",
             "action": "exclude",
-            "count": 2
+            "count": 2,
+            "retained_binding_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "disclosure_sha256": "sha256:b58311ab980eecb4da1b7af0b80a6151eb0f90e287c6b30352e0b91eab8cb59b"
           }
         ],
         "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
         "files": [
           {
-            "path": "final-manuscript.md",
+            "path": "evidence/harp-binding.json",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          }
+        ],
+        "created_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "sanitized-export-manifest.completeness_claim: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "export_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "harp_id": "harp_01J00000000000000000000002",
+        "harp_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "deposit_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "profile": "sanitized",
+        "verification_scope_statement": "Verified only against disclosed retained evidence; this archive is intentionally incomplete.",
+        "omission_rules": [
+          {
+            "category": "private_conversation",
+            "action": "exclude",
+            "count": 2,
+            "retained_binding_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "disclosure_sha256": "sha256:b58311ab980eecb4da1b7af0b80a6151eb0f90e287c6b30352e0b91eab8cb59b"
+          }
+        ],
+        "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "files": [
+          {
+            "path": "evidence/harp-binding.json",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          }
+        ],
+        "created_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "sanitized-export-manifest.verification_scope_statement: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "export_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "harp_id": "harp_01J00000000000000000000002",
+        "harp_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "deposit_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "profile": "sanitized",
+        "completeness_claim": "selective_disclosed_subset",
+        "omission_rules": [
+          {
+            "category": "private_conversation",
+            "action": "exclude",
+            "count": 2,
+            "retained_binding_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "disclosure_sha256": "sha256:b58311ab980eecb4da1b7af0b80a6151eb0f90e287c6b30352e0b91eab8cb59b"
+          }
+        ],
+        "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "files": [
+          {
+            "path": "evidence/harp-binding.json",
             "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
             "size": 1024
           }
@@ -132,12 +327,17 @@
         "schema_version": "1.0",
         "export_id": "record_01J00000000000000000000005",
         "project_id": "project_01J00000000000000000000001",
+        "harp_id": "harp_01J00000000000000000000002",
+        "harp_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "deposit_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
         "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
         "profile": "sanitized",
+        "completeness_claim": "selective_disclosed_subset",
+        "verification_scope_statement": "Verified only against disclosed retained evidence; this archive is intentionally incomplete.",
         "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
         "files": [
           {
-            "path": "final-manuscript.md",
+            "path": "evidence/harp-binding.json",
             "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
             "size": 1024
           }
@@ -151,18 +351,25 @@
         "schema_version": "1.0",
         "export_id": "record_01J00000000000000000000005",
         "project_id": "project_01J00000000000000000000001",
+        "harp_id": "harp_01J00000000000000000000002",
+        "harp_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "deposit_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
         "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
         "profile": "sanitized",
+        "completeness_claim": "selective_disclosed_subset",
+        "verification_scope_statement": "Verified only against disclosed retained evidence; this archive is intentionally incomplete.",
         "omission_rules": [
           {
             "category": "private_conversation",
             "action": "exclude",
-            "count": 2
+            "count": 2,
+            "retained_binding_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "disclosure_sha256": "sha256:b58311ab980eecb4da1b7af0b80a6151eb0f90e287c6b30352e0b91eab8cb59b"
           }
         ],
         "files": [
           {
-            "path": "final-manuscript.md",
+            "path": "evidence/harp-binding.json",
             "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
             "size": 1024
           }
@@ -176,13 +383,20 @@
         "schema_version": "1.0",
         "export_id": "record_01J00000000000000000000005",
         "project_id": "project_01J00000000000000000000001",
+        "harp_id": "harp_01J00000000000000000000002",
+        "harp_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "deposit_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
         "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
         "profile": "sanitized",
+        "completeness_claim": "selective_disclosed_subset",
+        "verification_scope_statement": "Verified only against disclosed retained evidence; this archive is intentionally incomplete.",
         "omission_rules": [
           {
             "category": "private_conversation",
             "action": "exclude",
-            "count": 2
+            "count": 2,
+            "retained_binding_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "disclosure_sha256": "sha256:b58311ab980eecb4da1b7af0b80a6151eb0f90e287c6b30352e0b91eab8cb59b"
           }
         ],
         "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
@@ -195,19 +409,26 @@
         "schema_version": "1.0",
         "export_id": "record_01J00000000000000000000005",
         "project_id": "project_01J00000000000000000000001",
+        "harp_id": "harp_01J00000000000000000000002",
+        "harp_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "deposit_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
         "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
         "profile": "sanitized",
+        "completeness_claim": "selective_disclosed_subset",
+        "verification_scope_statement": "Verified only against disclosed retained evidence; this archive is intentionally incomplete.",
         "omission_rules": [
           {
             "category": "private_conversation",
             "action": "exclude",
-            "count": 2
+            "count": 2,
+            "retained_binding_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "disclosure_sha256": "sha256:b58311ab980eecb4da1b7af0b80a6151eb0f90e287c6b30352e0b91eab8cb59b"
           }
         ],
         "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
         "files": [
           {
-            "path": "final-manuscript.md",
+            "path": "evidence/harp-binding.json",
             "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
             "size": 1024
           }
@@ -220,19 +441,26 @@
         "schema_version": "1.0",
         "export_id": "record_01J00000000000000000000005",
         "project_id": "project_01J00000000000000000000001",
+        "harp_id": "harp_01J00000000000000000000002",
+        "harp_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "deposit_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
         "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
         "profile": "sanitized",
+        "completeness_claim": "selective_disclosed_subset",
+        "verification_scope_statement": "Verified only against disclosed retained evidence; this archive is intentionally incomplete.",
         "omission_rules": [
           {
             "category": "private_conversation",
             "action": "exclude",
-            "count": 2
+            "count": 2,
+            "retained_binding_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "disclosure_sha256": "sha256:b58311ab980eecb4da1b7af0b80a6151eb0f90e287c6b30352e0b91eab8cb59b"
           }
         ],
         "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
         "files": [
           {
-            "path": "final-manuscript.md",
+            "path": "evidence/harp-binding.json",
             "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
             "size": 1024
           }
@@ -247,19 +475,26 @@
         "schema_version": "__INVALID_CONST__",
         "export_id": "record_01J00000000000000000000005",
         "project_id": "project_01J00000000000000000000001",
+        "harp_id": "harp_01J00000000000000000000002",
+        "harp_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "deposit_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
         "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
         "profile": "sanitized",
+        "completeness_claim": "selective_disclosed_subset",
+        "verification_scope_statement": "Verified only against disclosed retained evidence; this archive is intentionally incomplete.",
         "omission_rules": [
           {
             "category": "private_conversation",
             "action": "exclude",
-            "count": 2
+            "count": 2,
+            "retained_binding_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "disclosure_sha256": "sha256:b58311ab980eecb4da1b7af0b80a6151eb0f90e287c6b30352e0b91eab8cb59b"
           }
         ],
         "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
         "files": [
           {
-            "path": "final-manuscript.md",
+            "path": "evidence/harp-binding.json",
             "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
             "size": 1024
           }
@@ -273,19 +508,26 @@
         "schema_version": "1.0",
         "export_id": "invalid-id",
         "project_id": "project_01J00000000000000000000001",
+        "harp_id": "harp_01J00000000000000000000002",
+        "harp_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "deposit_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
         "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
         "profile": "sanitized",
+        "completeness_claim": "selective_disclosed_subset",
+        "verification_scope_statement": "Verified only against disclosed retained evidence; this archive is intentionally incomplete.",
         "omission_rules": [
           {
             "category": "private_conversation",
             "action": "exclude",
-            "count": 2
+            "count": 2,
+            "retained_binding_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "disclosure_sha256": "sha256:b58311ab980eecb4da1b7af0b80a6151eb0f90e287c6b30352e0b91eab8cb59b"
           }
         ],
         "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
         "files": [
           {
-            "path": "final-manuscript.md",
+            "path": "evidence/harp-binding.json",
             "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
             "size": 1024
           }
@@ -299,19 +541,125 @@
         "schema_version": "1.0",
         "export_id": "record_01J00000000000000000000005",
         "project_id": "invalid-id",
+        "harp_id": "harp_01J00000000000000000000002",
+        "harp_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "deposit_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
         "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
         "profile": "sanitized",
+        "completeness_claim": "selective_disclosed_subset",
+        "verification_scope_statement": "Verified only against disclosed retained evidence; this archive is intentionally incomplete.",
         "omission_rules": [
           {
             "category": "private_conversation",
             "action": "exclude",
-            "count": 2
+            "count": 2,
+            "retained_binding_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "disclosure_sha256": "sha256:b58311ab980eecb4da1b7af0b80a6151eb0f90e287c6b30352e0b91eab8cb59b"
           }
         ],
         "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
         "files": [
           {
-            "path": "final-manuscript.md",
+            "path": "evidence/harp-binding.json",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          }
+        ],
+        "created_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "sanitized-export-manifest.harp_id: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "export_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "harp_id": "invalid-id",
+        "harp_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "deposit_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "profile": "sanitized",
+        "completeness_claim": "selective_disclosed_subset",
+        "verification_scope_statement": "Verified only against disclosed retained evidence; this archive is intentionally incomplete.",
+        "omission_rules": [
+          {
+            "category": "private_conversation",
+            "action": "exclude",
+            "count": 2,
+            "retained_binding_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "disclosure_sha256": "sha256:b58311ab980eecb4da1b7af0b80a6151eb0f90e287c6b30352e0b91eab8cb59b"
+          }
+        ],
+        "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "files": [
+          {
+            "path": "evidence/harp-binding.json",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          }
+        ],
+        "created_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "sanitized-export-manifest.harp_sha256: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "export_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "harp_id": "harp_01J00000000000000000000002",
+        "harp_sha256": "sha256:INVALID",
+        "deposit_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "profile": "sanitized",
+        "completeness_claim": "selective_disclosed_subset",
+        "verification_scope_statement": "Verified only against disclosed retained evidence; this archive is intentionally incomplete.",
+        "omission_rules": [
+          {
+            "category": "private_conversation",
+            "action": "exclude",
+            "count": 2,
+            "retained_binding_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "disclosure_sha256": "sha256:b58311ab980eecb4da1b7af0b80a6151eb0f90e287c6b30352e0b91eab8cb59b"
+          }
+        ],
+        "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "files": [
+          {
+            "path": "evidence/harp-binding.json",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          }
+        ],
+        "created_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "sanitized-export-manifest.deposit_sha256: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "export_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "harp_id": "harp_01J00000000000000000000002",
+        "harp_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "deposit_sha256": "sha256:INVALID",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "profile": "sanitized",
+        "completeness_claim": "selective_disclosed_subset",
+        "verification_scope_statement": "Verified only against disclosed retained evidence; this archive is intentionally incomplete.",
+        "omission_rules": [
+          {
+            "category": "private_conversation",
+            "action": "exclude",
+            "count": 2,
+            "retained_binding_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "disclosure_sha256": "sha256:b58311ab980eecb4da1b7af0b80a6151eb0f90e287c6b30352e0b91eab8cb59b"
+          }
+        ],
+        "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "files": [
+          {
+            "path": "evidence/harp-binding.json",
             "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
             "size": 1024
           }
@@ -325,19 +673,26 @@
         "schema_version": "1.0",
         "export_id": "record_01J00000000000000000000005",
         "project_id": "project_01J00000000000000000000001",
+        "harp_id": "harp_01J00000000000000000000002",
+        "harp_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "deposit_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
         "source_chain_head": "sha256:INVALID",
         "profile": "sanitized",
+        "completeness_claim": "selective_disclosed_subset",
+        "verification_scope_statement": "Verified only against disclosed retained evidence; this archive is intentionally incomplete.",
         "omission_rules": [
           {
             "category": "private_conversation",
             "action": "exclude",
-            "count": 2
+            "count": 2,
+            "retained_binding_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "disclosure_sha256": "sha256:b58311ab980eecb4da1b7af0b80a6151eb0f90e287c6b30352e0b91eab8cb59b"
           }
         ],
         "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
         "files": [
           {
-            "path": "final-manuscript.md",
+            "path": "evidence/harp-binding.json",
             "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
             "size": 1024
           }
@@ -351,19 +706,92 @@
         "schema_version": "1.0",
         "export_id": "record_01J00000000000000000000005",
         "project_id": "project_01J00000000000000000000001",
+        "harp_id": "harp_01J00000000000000000000002",
+        "harp_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "deposit_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
         "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
         "profile": "__INVALID_CONST__",
+        "completeness_claim": "selective_disclosed_subset",
+        "verification_scope_statement": "Verified only against disclosed retained evidence; this archive is intentionally incomplete.",
         "omission_rules": [
           {
             "category": "private_conversation",
             "action": "exclude",
-            "count": 2
+            "count": 2,
+            "retained_binding_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "disclosure_sha256": "sha256:b58311ab980eecb4da1b7af0b80a6151eb0f90e287c6b30352e0b91eab8cb59b"
           }
         ],
         "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
         "files": [
           {
-            "path": "final-manuscript.md",
+            "path": "evidence/harp-binding.json",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          }
+        ],
+        "created_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "sanitized-export-manifest.completeness_claim: reject value different from const",
+      "instance": {
+        "schema_version": "1.0",
+        "export_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "harp_id": "harp_01J00000000000000000000002",
+        "harp_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "deposit_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "profile": "sanitized",
+        "completeness_claim": "__INVALID_CONST__",
+        "verification_scope_statement": "Verified only against disclosed retained evidence; this archive is intentionally incomplete.",
+        "omission_rules": [
+          {
+            "category": "private_conversation",
+            "action": "exclude",
+            "count": 2,
+            "retained_binding_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "disclosure_sha256": "sha256:b58311ab980eecb4da1b7af0b80a6151eb0f90e287c6b30352e0b91eab8cb59b"
+          }
+        ],
+        "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "files": [
+          {
+            "path": "evidence/harp-binding.json",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          }
+        ],
+        "created_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "sanitized-export-manifest.verification_scope_statement: reject string below minLength",
+      "instance": {
+        "schema_version": "1.0",
+        "export_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "harp_id": "harp_01J00000000000000000000002",
+        "harp_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "deposit_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "profile": "sanitized",
+        "completeness_claim": "selective_disclosed_subset",
+        "verification_scope_statement": "",
+        "omission_rules": [
+          {
+            "category": "private_conversation",
+            "action": "exclude",
+            "count": 2,
+            "retained_binding_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "disclosure_sha256": "sha256:b58311ab980eecb4da1b7af0b80a6151eb0f90e287c6b30352e0b91eab8cb59b"
+          }
+        ],
+        "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "files": [
+          {
+            "path": "evidence/harp-binding.json",
             "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
             "size": 1024
           }
@@ -377,18 +805,25 @@
         "schema_version": "1.0",
         "export_id": "record_01J00000000000000000000005",
         "project_id": "project_01J00000000000000000000001",
+        "harp_id": "harp_01J00000000000000000000002",
+        "harp_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "deposit_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
         "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
         "profile": "sanitized",
+        "completeness_claim": "selective_disclosed_subset",
+        "verification_scope_statement": "Verified only against disclosed retained evidence; this archive is intentionally incomplete.",
         "omission_rules": [
           {
             "action": "exclude",
-            "count": 2
+            "count": 2,
+            "retained_binding_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "disclosure_sha256": "sha256:b58311ab980eecb4da1b7af0b80a6151eb0f90e287c6b30352e0b91eab8cb59b"
           }
         ],
         "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
         "files": [
           {
-            "path": "final-manuscript.md",
+            "path": "evidence/harp-binding.json",
             "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
             "size": 1024
           }
@@ -402,18 +837,25 @@
         "schema_version": "1.0",
         "export_id": "record_01J00000000000000000000005",
         "project_id": "project_01J00000000000000000000001",
+        "harp_id": "harp_01J00000000000000000000002",
+        "harp_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "deposit_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
         "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
         "profile": "sanitized",
+        "completeness_claim": "selective_disclosed_subset",
+        "verification_scope_statement": "Verified only against disclosed retained evidence; this archive is intentionally incomplete.",
         "omission_rules": [
           {
             "category": "private_conversation",
-            "count": 2
+            "count": 2,
+            "retained_binding_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "disclosure_sha256": "sha256:b58311ab980eecb4da1b7af0b80a6151eb0f90e287c6b30352e0b91eab8cb59b"
           }
         ],
         "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
         "files": [
           {
-            "path": "final-manuscript.md",
+            "path": "evidence/harp-binding.json",
             "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
             "size": 1024
           }
@@ -427,18 +869,89 @@
         "schema_version": "1.0",
         "export_id": "record_01J00000000000000000000005",
         "project_id": "project_01J00000000000000000000001",
+        "harp_id": "harp_01J00000000000000000000002",
+        "harp_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "deposit_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
         "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
         "profile": "sanitized",
+        "completeness_claim": "selective_disclosed_subset",
+        "verification_scope_statement": "Verified only against disclosed retained evidence; this archive is intentionally incomplete.",
         "omission_rules": [
           {
             "category": "private_conversation",
-            "action": "exclude"
+            "action": "exclude",
+            "retained_binding_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "disclosure_sha256": "sha256:b58311ab980eecb4da1b7af0b80a6151eb0f90e287c6b30352e0b91eab8cb59b"
           }
         ],
         "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
         "files": [
           {
-            "path": "final-manuscript.md",
+            "path": "evidence/harp-binding.json",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          }
+        ],
+        "created_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "sanitized-export-manifest.omission_rules[0].retained_binding_sha256: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "export_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "harp_id": "harp_01J00000000000000000000002",
+        "harp_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "deposit_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "profile": "sanitized",
+        "completeness_claim": "selective_disclosed_subset",
+        "verification_scope_statement": "Verified only against disclosed retained evidence; this archive is intentionally incomplete.",
+        "omission_rules": [
+          {
+            "category": "private_conversation",
+            "action": "exclude",
+            "count": 2,
+            "disclosure_sha256": "sha256:b58311ab980eecb4da1b7af0b80a6151eb0f90e287c6b30352e0b91eab8cb59b"
+          }
+        ],
+        "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "files": [
+          {
+            "path": "evidence/harp-binding.json",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          }
+        ],
+        "created_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "sanitized-export-manifest.omission_rules[0].disclosure_sha256: reject missing required property",
+      "instance": {
+        "schema_version": "1.0",
+        "export_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "harp_id": "harp_01J00000000000000000000002",
+        "harp_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "deposit_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "profile": "sanitized",
+        "completeness_claim": "selective_disclosed_subset",
+        "verification_scope_statement": "Verified only against disclosed retained evidence; this archive is intentionally incomplete.",
+        "omission_rules": [
+          {
+            "category": "private_conversation",
+            "action": "exclude",
+            "count": 2,
+            "retained_binding_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555"
+          }
+        ],
+        "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "files": [
+          {
+            "path": "evidence/harp-binding.json",
             "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
             "size": 1024
           }
@@ -452,20 +965,27 @@
         "schema_version": "1.0",
         "export_id": "record_01J00000000000000000000005",
         "project_id": "project_01J00000000000000000000001",
+        "harp_id": "harp_01J00000000000000000000002",
+        "harp_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "deposit_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
         "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
         "profile": "sanitized",
+        "completeness_claim": "selective_disclosed_subset",
+        "verification_scope_statement": "Verified only against disclosed retained evidence; this archive is intentionally incomplete.",
         "omission_rules": [
           {
             "category": "private_conversation",
             "action": "exclude",
             "count": 2,
+            "retained_binding_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "disclosure_sha256": "sha256:b58311ab980eecb4da1b7af0b80a6151eb0f90e287c6b30352e0b91eab8cb59b",
             "__unexpected": true
           }
         ],
         "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
         "files": [
           {
-            "path": "final-manuscript.md",
+            "path": "evidence/harp-binding.json",
             "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
             "size": 1024
           }
@@ -479,19 +999,26 @@
         "schema_version": "1.0",
         "export_id": "record_01J00000000000000000000005",
         "project_id": "project_01J00000000000000000000001",
+        "harp_id": "harp_01J00000000000000000000002",
+        "harp_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "deposit_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
         "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
         "profile": "sanitized",
+        "completeness_claim": "selective_disclosed_subset",
+        "verification_scope_statement": "Verified only against disclosed retained evidence; this archive is intentionally incomplete.",
         "omission_rules": [
           {
             "category": "__INVALID_ENUM__",
             "action": "exclude",
-            "count": 2
+            "count": 2,
+            "retained_binding_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "disclosure_sha256": "sha256:b58311ab980eecb4da1b7af0b80a6151eb0f90e287c6b30352e0b91eab8cb59b"
           }
         ],
         "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
         "files": [
           {
-            "path": "final-manuscript.md",
+            "path": "evidence/harp-binding.json",
             "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
             "size": 1024
           }
@@ -505,19 +1032,26 @@
         "schema_version": "1.0",
         "export_id": "record_01J00000000000000000000005",
         "project_id": "project_01J00000000000000000000001",
+        "harp_id": "harp_01J00000000000000000000002",
+        "harp_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "deposit_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
         "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
         "profile": "sanitized",
+        "completeness_claim": "selective_disclosed_subset",
+        "verification_scope_statement": "Verified only against disclosed retained evidence; this archive is intentionally incomplete.",
         "omission_rules": [
           {
             "category": "private_conversation",
             "action": "__INVALID_ENUM__",
-            "count": 2
+            "count": 2,
+            "retained_binding_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "disclosure_sha256": "sha256:b58311ab980eecb4da1b7af0b80a6151eb0f90e287c6b30352e0b91eab8cb59b"
           }
         ],
         "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
         "files": [
           {
-            "path": "final-manuscript.md",
+            "path": "evidence/harp-binding.json",
             "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
             "size": 1024
           }
@@ -531,19 +1065,92 @@
         "schema_version": "1.0",
         "export_id": "record_01J00000000000000000000005",
         "project_id": "project_01J00000000000000000000001",
+        "harp_id": "harp_01J00000000000000000000002",
+        "harp_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "deposit_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
         "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
         "profile": "sanitized",
+        "completeness_claim": "selective_disclosed_subset",
+        "verification_scope_statement": "Verified only against disclosed retained evidence; this archive is intentionally incomplete.",
         "omission_rules": [
           {
             "category": "private_conversation",
             "action": "exclude",
-            "count": -1
+            "count": -1,
+            "retained_binding_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "disclosure_sha256": "sha256:b58311ab980eecb4da1b7af0b80a6151eb0f90e287c6b30352e0b91eab8cb59b"
           }
         ],
         "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
         "files": [
           {
-            "path": "final-manuscript.md",
+            "path": "evidence/harp-binding.json",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          }
+        ],
+        "created_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "sanitized-export-manifest.omission_rules[0].retained_binding_sha256: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "export_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "harp_id": "harp_01J00000000000000000000002",
+        "harp_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "deposit_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "profile": "sanitized",
+        "completeness_claim": "selective_disclosed_subset",
+        "verification_scope_statement": "Verified only against disclosed retained evidence; this archive is intentionally incomplete.",
+        "omission_rules": [
+          {
+            "category": "private_conversation",
+            "action": "exclude",
+            "count": 2,
+            "retained_binding_sha256": "sha256:INVALID",
+            "disclosure_sha256": "sha256:b58311ab980eecb4da1b7af0b80a6151eb0f90e287c6b30352e0b91eab8cb59b"
+          }
+        ],
+        "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "files": [
+          {
+            "path": "evidence/harp-binding.json",
+            "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "size": 1024
+          }
+        ],
+        "created_at": "2026-07-17T18:43:11.456Z"
+      }
+    },
+    {
+      "description": "sanitized-export-manifest.omission_rules[0].disclosure_sha256: reject pattern mismatch",
+      "instance": {
+        "schema_version": "1.0",
+        "export_id": "record_01J00000000000000000000005",
+        "project_id": "project_01J00000000000000000000001",
+        "harp_id": "harp_01J00000000000000000000002",
+        "harp_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "deposit_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+        "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "profile": "sanitized",
+        "completeness_claim": "selective_disclosed_subset",
+        "verification_scope_statement": "Verified only against disclosed retained evidence; this archive is intentionally incomplete.",
+        "omission_rules": [
+          {
+            "category": "private_conversation",
+            "action": "exclude",
+            "count": 2,
+            "retained_binding_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "disclosure_sha256": "sha256:INVALID"
+          }
+        ],
+        "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "files": [
+          {
+            "path": "evidence/harp-binding.json",
             "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
             "size": 1024
           }
@@ -557,19 +1164,26 @@
         "schema_version": "1.0",
         "export_id": "record_01J00000000000000000000005",
         "project_id": "project_01J00000000000000000000001",
+        "harp_id": "harp_01J00000000000000000000002",
+        "harp_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "deposit_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
         "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
         "profile": "sanitized",
+        "completeness_claim": "selective_disclosed_subset",
+        "verification_scope_statement": "Verified only against disclosed retained evidence; this archive is intentionally incomplete.",
         "omission_rules": [
           {
             "category": "private_conversation",
             "action": "exclude",
-            "count": 2
+            "count": 2,
+            "retained_binding_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "disclosure_sha256": "sha256:b58311ab980eecb4da1b7af0b80a6151eb0f90e287c6b30352e0b91eab8cb59b"
           }
         ],
         "rules_sha256": "sha256:INVALID",
         "files": [
           {
-            "path": "final-manuscript.md",
+            "path": "evidence/harp-binding.json",
             "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
             "size": 1024
           }
@@ -583,13 +1197,20 @@
         "schema_version": "1.0",
         "export_id": "record_01J00000000000000000000005",
         "project_id": "project_01J00000000000000000000001",
+        "harp_id": "harp_01J00000000000000000000002",
+        "harp_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "deposit_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
         "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
         "profile": "sanitized",
+        "completeness_claim": "selective_disclosed_subset",
+        "verification_scope_statement": "Verified only against disclosed retained evidence; this archive is intentionally incomplete.",
         "omission_rules": [
           {
             "category": "private_conversation",
             "action": "exclude",
-            "count": 2
+            "count": 2,
+            "retained_binding_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "disclosure_sha256": "sha256:b58311ab980eecb4da1b7af0b80a6151eb0f90e287c6b30352e0b91eab8cb59b"
           }
         ],
         "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
@@ -603,13 +1224,20 @@
         "schema_version": "1.0",
         "export_id": "record_01J00000000000000000000005",
         "project_id": "project_01J00000000000000000000001",
+        "harp_id": "harp_01J00000000000000000000002",
+        "harp_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "deposit_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
         "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
         "profile": "sanitized",
+        "completeness_claim": "selective_disclosed_subset",
+        "verification_scope_statement": "Verified only against disclosed retained evidence; this archive is intentionally incomplete.",
         "omission_rules": [
           {
             "category": "private_conversation",
             "action": "exclude",
-            "count": 2
+            "count": 2,
+            "retained_binding_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "disclosure_sha256": "sha256:b58311ab980eecb4da1b7af0b80a6151eb0f90e287c6b30352e0b91eab8cb59b"
           }
         ],
         "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
@@ -628,19 +1256,26 @@
         "schema_version": "1.0",
         "export_id": "record_01J00000000000000000000005",
         "project_id": "project_01J00000000000000000000001",
+        "harp_id": "harp_01J00000000000000000000002",
+        "harp_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "deposit_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
         "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
         "profile": "sanitized",
+        "completeness_claim": "selective_disclosed_subset",
+        "verification_scope_statement": "Verified only against disclosed retained evidence; this archive is intentionally incomplete.",
         "omission_rules": [
           {
             "category": "private_conversation",
             "action": "exclude",
-            "count": 2
+            "count": 2,
+            "retained_binding_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "disclosure_sha256": "sha256:b58311ab980eecb4da1b7af0b80a6151eb0f90e287c6b30352e0b91eab8cb59b"
           }
         ],
         "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
         "files": [
           {
-            "path": "final-manuscript.md",
+            "path": "evidence/harp-binding.json",
             "size": 1024
           }
         ],
@@ -653,19 +1288,26 @@
         "schema_version": "1.0",
         "export_id": "record_01J00000000000000000000005",
         "project_id": "project_01J00000000000000000000001",
+        "harp_id": "harp_01J00000000000000000000002",
+        "harp_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "deposit_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
         "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
         "profile": "sanitized",
+        "completeness_claim": "selective_disclosed_subset",
+        "verification_scope_statement": "Verified only against disclosed retained evidence; this archive is intentionally incomplete.",
         "omission_rules": [
           {
             "category": "private_conversation",
             "action": "exclude",
-            "count": 2
+            "count": 2,
+            "retained_binding_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "disclosure_sha256": "sha256:b58311ab980eecb4da1b7af0b80a6151eb0f90e287c6b30352e0b91eab8cb59b"
           }
         ],
         "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
         "files": [
           {
-            "path": "final-manuscript.md",
+            "path": "evidence/harp-binding.json",
             "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
           }
         ],
@@ -678,19 +1320,26 @@
         "schema_version": "1.0",
         "export_id": "record_01J00000000000000000000005",
         "project_id": "project_01J00000000000000000000001",
+        "harp_id": "harp_01J00000000000000000000002",
+        "harp_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "deposit_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
         "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
         "profile": "sanitized",
+        "completeness_claim": "selective_disclosed_subset",
+        "verification_scope_statement": "Verified only against disclosed retained evidence; this archive is intentionally incomplete.",
         "omission_rules": [
           {
             "category": "private_conversation",
             "action": "exclude",
-            "count": 2
+            "count": 2,
+            "retained_binding_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "disclosure_sha256": "sha256:b58311ab980eecb4da1b7af0b80a6151eb0f90e287c6b30352e0b91eab8cb59b"
           }
         ],
         "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
         "files": [
           {
-            "path": "final-manuscript.md",
+            "path": "evidence/harp-binding.json",
             "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
             "size": 1024,
             "__unexpected": true
@@ -705,13 +1354,20 @@
         "schema_version": "1.0",
         "export_id": "record_01J00000000000000000000005",
         "project_id": "project_01J00000000000000000000001",
+        "harp_id": "harp_01J00000000000000000000002",
+        "harp_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "deposit_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
         "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
         "profile": "sanitized",
+        "completeness_claim": "selective_disclosed_subset",
+        "verification_scope_statement": "Verified only against disclosed retained evidence; this archive is intentionally incomplete.",
         "omission_rules": [
           {
             "category": "private_conversation",
             "action": "exclude",
-            "count": 2
+            "count": 2,
+            "retained_binding_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "disclosure_sha256": "sha256:b58311ab980eecb4da1b7af0b80a6151eb0f90e287c6b30352e0b91eab8cb59b"
           }
         ],
         "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
@@ -731,13 +1387,20 @@
         "schema_version": "1.0",
         "export_id": "record_01J00000000000000000000005",
         "project_id": "project_01J00000000000000000000001",
+        "harp_id": "harp_01J00000000000000000000002",
+        "harp_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "deposit_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
         "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
         "profile": "sanitized",
+        "completeness_claim": "selective_disclosed_subset",
+        "verification_scope_statement": "Verified only against disclosed retained evidence; this archive is intentionally incomplete.",
         "omission_rules": [
           {
             "category": "private_conversation",
             "action": "exclude",
-            "count": 2
+            "count": 2,
+            "retained_binding_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "disclosure_sha256": "sha256:b58311ab980eecb4da1b7af0b80a6151eb0f90e287c6b30352e0b91eab8cb59b"
           }
         ],
         "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
@@ -757,19 +1420,26 @@
         "schema_version": "1.0",
         "export_id": "record_01J00000000000000000000005",
         "project_id": "project_01J00000000000000000000001",
+        "harp_id": "harp_01J00000000000000000000002",
+        "harp_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "deposit_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
         "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
         "profile": "sanitized",
+        "completeness_claim": "selective_disclosed_subset",
+        "verification_scope_statement": "Verified only against disclosed retained evidence; this archive is intentionally incomplete.",
         "omission_rules": [
           {
             "category": "private_conversation",
             "action": "exclude",
-            "count": 2
+            "count": 2,
+            "retained_binding_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "disclosure_sha256": "sha256:b58311ab980eecb4da1b7af0b80a6151eb0f90e287c6b30352e0b91eab8cb59b"
           }
         ],
         "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
         "files": [
           {
-            "path": "final-manuscript.md",
+            "path": "evidence/harp-binding.json",
             "sha256": "sha256:INVALID",
             "size": 1024
           }
@@ -783,19 +1453,26 @@
         "schema_version": "1.0",
         "export_id": "record_01J00000000000000000000005",
         "project_id": "project_01J00000000000000000000001",
+        "harp_id": "harp_01J00000000000000000000002",
+        "harp_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "deposit_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
         "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
         "profile": "sanitized",
+        "completeness_claim": "selective_disclosed_subset",
+        "verification_scope_statement": "Verified only against disclosed retained evidence; this archive is intentionally incomplete.",
         "omission_rules": [
           {
             "category": "private_conversation",
             "action": "exclude",
-            "count": 2
+            "count": 2,
+            "retained_binding_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "disclosure_sha256": "sha256:b58311ab980eecb4da1b7af0b80a6151eb0f90e287c6b30352e0b91eab8cb59b"
           }
         ],
         "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
         "files": [
           {
-            "path": "final-manuscript.md",
+            "path": "evidence/harp-binding.json",
             "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
             "size": -1
           }
@@ -809,19 +1486,26 @@
         "schema_version": "1.0",
         "export_id": "record_01J00000000000000000000005",
         "project_id": "project_01J00000000000000000000001",
+        "harp_id": "harp_01J00000000000000000000002",
+        "harp_sha256": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "deposit_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
         "source_chain_head": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
         "profile": "sanitized",
+        "completeness_claim": "selective_disclosed_subset",
+        "verification_scope_statement": "Verified only against disclosed retained evidence; this archive is intentionally incomplete.",
         "omission_rules": [
           {
             "category": "private_conversation",
             "action": "exclude",
-            "count": 2
+            "count": 2,
+            "retained_binding_sha256": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "disclosure_sha256": "sha256:b58311ab980eecb4da1b7af0b80a6151eb0f90e287c6b30352e0b91eab8cb59b"
           }
         ],
         "rules_sha256": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
         "files": [
           {
-            "path": "final-manuscript.md",
+            "path": "evidence/harp-binding.json",
             "sha256": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
             "size": 1024
           }

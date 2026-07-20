@@ -1,0 +1,41 @@
+{
+  "schema": "https://thinkloom.app/schemas/provenance/1.0/expression-segment.schema.json",
+  "description": "Valid Surviving expression segment example.",
+  "instance": {
+    "schema_version": "1.0",
+    "segment_id": "segment_01J0000000000000000000000Y",
+    "project_id": "project_01J00000000000000000000001",
+    "revision_id": "revision_01J0000000000000000000000B",
+    "segment_sequence": 1,
+    "range": {
+      "schema_version": "1.0",
+      "document_revision_id": "revision_01J0000000000000000000000B",
+      "coordinate_system": "unicode_scalar",
+      "start": 0,
+      "end": 12,
+      "preimage_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+      "text_fragment_id": "fragment_01J0000000000000000000000C"
+    },
+    "content_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+    "normalized_unicode_scalar_length": 12,
+    "recorded_origin_kind": "recorded_direct_human_input",
+    "actor_identity_status": "self_declared",
+    "generation_status": "recorded",
+    "lineage_status": "recorded",
+    "lineage_reference_ids": [
+      "operation_01J0000000000000000000000X"
+    ],
+    "operation_ids": [
+      "operation_01J0000000000000000000000X"
+    ],
+    "transformation_relationships": [
+      "inserted"
+    ],
+    "assertion_ids": [
+      "assertion_01J0000000000000000000000V"
+    ],
+    "selection_arrangement_assertion_ids": [],
+    "included_in_deposit_assertion_id": "assertion_01J0000000000000000000000V",
+    "classification_status": "exact"
+  }
+}
